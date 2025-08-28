@@ -41,7 +41,13 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 20px;
-      border: 4px solid #9333ea;
+      border: 4px solid #facc15; /* yellow border */
+      box-shadow: 0 0 15px 5px rgba(250, 204, 21, 0.6); /* soft yellow glow */
+      transition: box-shadow 0.3s ease;
+    }
+
+    .profile-pic:hover {
+      box-shadow: 0 0 25px 10px rgba(250, 204, 21, 0.8); /* stronger glow on hover */
     }
 
     h1 {
@@ -99,26 +105,27 @@
 <body>
   <div class="card">
     <!-- Profile Picture -->
-    <img src="c:\Users\MyBook Pro L7V\Downloads\Bugged-but-Brilliant-main\Porscha's page\porscha-profile-pic.png">
+    <img src="images/porscha-profile-pic.png" alt="Porscha Scarlett Suwanto" class="profile-pic">
 
     <!-- Name and Info -->
     <h1> 黄昭君 (Porscha Scarlett Suwanto)</h1>
     <p><span class="highlight">Student ID:</span> 1820242124</p>
-    <p><span class="highlight">Nationality:</span> Indonesia </p>
+    <p><span class="highlight">Nationality:</span> Indonesia</p>
 
     <!-- About Me Section -->
     <div class="about-me">
       <h2>About Me</h2>
       <p>
-        I am a motivated student who enjoys learning new technologies and applying them to real-world projects. I aim to create solutions that combine both innovation and creativity.
-        My academic journey has shaped me into someone who values persistence, curiosity, and problem-solving
+        I am a motivated student who enjoys learning new technologies and applying them to real-world projects. 
+        I aim to create solutions that combine both innovation and creativity. 
+        My academic journey has shaped me into someone who values persistence, curiosity, and problem-solving.
       </p>
     </div>
 
     <!-- Contact Info Section -->
     <div class="contact-info">
       <h2>Contact Info</h2>
-      <p><span class="highlight">WeChat:</span> </p>
+      <p><span class="highlight">WeChat:</span></p>
       <p><span class="highlight">Email:</span> porschascarlettsuwanto@gmail.com</p>
     </div>
 
