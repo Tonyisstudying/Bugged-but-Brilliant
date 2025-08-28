@@ -56,6 +56,20 @@ body {
     margin-right: 10px;
     font-size: 20px;
     color: black;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.fa-arrow-left:hover {
+    background-color: #f9c0f9;
+    color:rgb(77, 173, 236);
+}
+.fa-arrow-left:active {
+    transform: scale(0.8);
+    background-color: #c8a2c8;
+    color: black;
 }
 
 .circle {
