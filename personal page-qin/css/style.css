@@ -1,0 +1,129 @@
+/*global **/
+body{
+	background-color: #fae1dd;
+	padding: 0;
+	margin: 0;
+}
+a:hover{
+    color:yellowgreen;
+}
+a:active{
+	color:darkred;
+}
+.box{
+	width:80%;
+	margin: auto;
+	overflow:hidden;
+}
+
+header{
+	background: #ff99ac;
+	border-bottom: darkred 5px dotted;
+}
+
+header ll{
+	float:left;
+	display: inline;
+	text-align: center;
+	padding: 30px 30px;
+	font-size: 20px;
+	font-family: georgia,"times new roman",times,serif;
+}
+header li{
+	float:right;
+	display: inline;
+	text-align: center;
+	padding: 30px 30px;
+	font-size: 20px;
+	font-family: georgia,"times new roman",times,serif;
+}
+header a{
+	color:#da5552;
+	text-transform: uppercase;
+}
+.box-2 {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+}
+.box-2 p{
+	font-size: 40px;
+	color:#ff477e;
+	font-family: georgia,"times new roman",times,serif;
+}
+
+.box-2 img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+}
+
+.box-3 img{ 
+	float:right;
+	width:23.5%;
+	margin:0 ; 
+}
+.box-3 p{
+	font-size: 35px;
+	color:#ff477e;
+	padding-left: 30px;
+	font-family: georgia,"times new roman",times,serif;
+}
+.box-4 p{
+	font-size: 35px;
+	color:#ff477e;
+	padding-left: 30px;
+	font-family: georgia,"times new roman",times,serif;
+}
+.box-5 p{
+	font-size: 35px;
+	color:#ff477e;
+	padding-left: 30px;
+	font-family: georgia,"times new roman",times,serif;
+}
+.box-5 img{
+	width:12%;
+	margin-left: auto; 
+	float:right;
+}
+.box-3{
+	border:20px #ffebe7 solid;
+	padding:0px;
+	border-radius:15px;
+	background-color: #fae0e4;
+}
+.box-4{
+	border:20px #ffebe7 solid;
+	padding:0px;
+	border-radius:15px;
+	background-color: #fae0e4;
+}
+.box-6 img{
+	width:10%;
+	margin-left: auto; 
+	float:right;
+}
+.box-5{
+	border:20px #ffebe7 solid;
+	padding:0px;
+	border-radius:15px;
+	background-color: #fae0e4;
+}
+.box-5 h3{
+    font-size: 30px;
+    text-align: center;
+}
+
+.box-6{
+	border:20px #ffebe7 solid;
+	padding:0px;
+	border-radius:15px;
+	background-color: #fae0e4;
+}
+.box-6 p{
+	font-size: 35px;
+	color:#df7373;
+	padding-left: 30px;
+	font-family: georgia,"times new roman",times,serif;
+}
