@@ -1,55 +1,6 @@
 body {
-  background-color: #ffc8dd;
   margin: 0;
   font-family: "Comic Sans MS", cursive, sans-serif;
-}
-
-/* --- Navbar --- */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  padding: 20px 9%;
-  background-color: #b199df;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
-  box-sizing: border-box;
-}
-.navbar .logo {
-  font-weight: 900;
-  text-decoration: none;
-  color: #ffc8dd;
-}
-.navbar ul {
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar ul li {
-  list-style: none;
-  margin-left: 40px;
-}
-.navbar ul li a {
-  text-decoration: none;
-  color: #ffc8dd;
-  font-weight: 900;
-  font-size: x-large;
-  padding: 5px 12px;
-  border-radius: 8px;
-  transition: background 0.3s, color 0.3s;
-}
-
-.navbar ul li a:hover {
-  background-color: rgba(181, 140, 217, 1);
-  color: white;
-}
-
-.navbar ul li a.active {
-  background-color: #9324c3;
-  color: white;
+  background: linear-gradient(135deg, #ffc8dd, #bde0fe, #a2d2ff);
+  height: 100vh;
 }
