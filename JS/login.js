@@ -4,20 +4,20 @@ function handleLogin(event) {
     
     if (username) {
         localStorage.setItem('username', username);
-        window.location.href = '/pages/home.html';
+        window.location.href = 'home.html';
     }
     return false;
 }
 // logout
 function logout() {
     localStorage.removeItem('username');
-    window.location.href = '/pages/login.html';
+    window.location.href = 'login.html';
 }
 
 function checkAuth() {
     const username = localStorage.getItem('username');
     if (!username) {
-        window.location.href = '/pages/login.html';
+        window.location.href = 'login.html';
     }
     return username;
 }
@@ -26,6 +26,6 @@ function checkAuth() {
 if (window.location.pathname.includes('login.html')) {
     const username = localStorage.getItem('username');
     if (username) {
-        window.location.href = '/pages/home.html';
+        window.location.href = 'home.html';
     }
 }
