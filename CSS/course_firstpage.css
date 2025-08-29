@@ -8,4 +8,54 @@ body {
   font-family: "Comic Sans MS", cursive, sans-serif;
   background: linear-gradient(135deg, #ffc8dd, #d2bfdd, #ddedfb, #bde0fe);
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.header {
+  display: flex;
+  align-items: center;
+}
+.header .icon {
+  background: #7c6a9c;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 900px;
+  margin-right: 15px;
+  color: white;
+  margin-bottom: 100px;
+}
+.header h1 {
+  font-size: 60px;
+  font-weight: bold;
+  color: #7c6a9c;
+  margin-bottom: 100px;
+}
+.course-list {
+  display: flex;
+  gap: 100px;
+}
+.course-item {
+  text-decoration: none;
+  background: #ffafcc;
+  width: 450px;
+  height: 250px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  transition: background 0.3s;
+}
+.course-item:hover {
+  background: #f78db4;
 }
