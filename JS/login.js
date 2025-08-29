@@ -11,13 +11,13 @@ function handleLogin(event) {
 // logout
 function logout() {
     localStorage.removeItem('username');
-    window.location.href = '/login.html';
+    window.location.href = '/pages/login.html';
 }
 
 function checkAuth() {
     const username = localStorage.getItem('username');
     if (!username) {
-        window.location.href = '/login.html';
+        window.location.href = '/pages/login.html';
     }
     return username;
 }
