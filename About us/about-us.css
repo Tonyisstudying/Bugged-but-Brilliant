@@ -30,6 +30,10 @@ body {
     padding-top: 10px;
 }
 
+.top a {
+    text-decoration: none;
+}
+
 .star{
     position: absolute;
     width: 300px;
