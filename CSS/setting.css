@@ -218,8 +218,6 @@ input:checked + .slider:before {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-
-/* Custom button-like dropdowns */
 .custom-dropdown {
     position: relative;
     display: inline-block;
@@ -260,7 +258,6 @@ input:checked + .slider:before {
 .custom-dropdown:hover .dropdown-content {
     display: block;
 }
-
 @media (max-width: 900px) {
     .settings-container {
         flex-direction: column;
