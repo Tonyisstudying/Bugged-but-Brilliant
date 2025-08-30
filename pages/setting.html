@@ -3,145 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings</title>
-    <link rel="icon"  type="image/x-icon" href="/Assets/images/team logo.png">
-    <link rel="stylesheet" href="/CSS/setting.css">
+    <title>Lexio Settings</title>
+    <link rel="icon" type="image/x-icon" href="/Assets/images/team-logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="settings-container">
-        <div class="sidebar">
-            <div>
-                <div class="logo">
-                    <i class="fas fa-cog"></i>
-                    <span>Settings</span>
-                </div>
-                
-                <ul class="nav-links">
-                    <li><a href="#" class="active"><i class="fas fa-user"></i> Profile</a></li>
-                    <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
-                    <li><a href="#"><i class="fas fa-moon"></i> Dark - Light Mode</a></li>
-                    <li><a href="#"><i class="fas fa-lock"></i> Privacy & Security</a></li>
-                    <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
-                </ul>
+<div class="settings-container">
+    <div class="sidebar">
+        <div>
+            <div class="logo">
+                <i class="fas fa-language"></i>
+                <span>Lexio Settings</span>
             </div>
-            
-            <div class="contact-info">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-mobile-alt"></i> +86 123456789</p>
-                <p><i class="fas fa-envelope"></i> lexio@gmail.com</p>
+            <ul class="nav-links">
+                <li><a href="#" class="active"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                <li><a href="#"><i class="fas fa-sun"></i> Appearance</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> Learning</a></li>
+                <li><a href="#"><i class="fas fa-crown"></i> Subscription</a></li>
+                <li><a href="#"><i class="fas fa-question-circle"></i> Support</a></li>
+            </ul>
+        </div>
+        <div class="logout">
+            <button><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h1>Account Settings</h1>
+        </div>
+        <div class="settings-section">
+            <h2>Profile</h2>
+            <div class="profile-info">
+                <img src="/Assets/images/default-avatar.png" alt="Profile Picture">
+                <div>
+                    <h3>Tonyisstudying</h3>
+                    <p>Username: @tony123</p>
+                    <button>Edit Profile</button>
+                </div>
             </div>
         </div>
-        
-        <div class="main-content">
-            <div class="header">
-                <h1>Account Settings</h1>
+        <div class="settings-section">
+            <h2>Notifications</h2>
+            <div class="setting-item">
+                <div class="setting-info">
+                    <h3>Email Updates</h3>
+                    <p>Get progress reports and reminders</p>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
             </div>
-            
-            <div class="settings-section">
-                <h2>Profile Settings</h2>
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <h3>Public Profile</h3>
-                        <p>Make your profile visible to other users</p>
-                    </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox" checked>
-                        <span class="slider"></span>
-                    </label>
+            <div class="setting-item">
+                <div class="setting-info">
+                    <h3>Push Notifications</h3>
+                    <p>Daily streak reminders</p>
                 </div>
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <h3>Email Notifications</h3>
-                        <p>Receive updates, announcements and offers</p>
-                    </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox" checked>
-                        <span class="slider"></span>
-                    </label>
-                </div>
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <h3>Two-Factor Authentication</h3>
-                        <p>Add an extra layer of security to your account</p>
-                    </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox">
-                        <span class="slider"></span>
-                    </label>
-                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
             </div>
-            
-            <div class="settings-section">
-                <h2>Appearance</h2>
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <h3>Theme Preference</h3>
-                        <p>Select how the website appears to you</p>
-                    </div>
-                    <div class="theme-selector">
-                        <div class="theme-option theme-light active" title="Light Mode"></div>
-                        <div class="theme-option theme-dark" title="Dark Mode"></div>
-                        <div class="theme-option theme-auto" title="Auto (System)"></div>
-                    </div>
+        </div>
+        <div class="settings-section">
+            <h2>Learning Preferences</h2>
+            <div class="setting-item">
+                <div class="setting-info">
+                    <h3>Target Language</h3>
+                    <p>Select the language you’re learning</p>
                 </div>
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <h3>Font Size</h3>
-                        <p>Adjust the text size across the website</p>
-                    </div>
-                    <select>
-                        <option>Small</option>
-                        <option selected>Medium</option>
-                        <option>Large</option>
-                    </select>
+                <div class="custom-dropdown">
+                    <button class="dropbtn">Chinese <i class="fas fa-caret-down"></i></button>
+                    <ul class="dropdown-content">
+                        <li>Chinese</li>
+                        <li>English</li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="settings-section">
-                <h2>Privacy & Data</h2>
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <h3>Data Collection</h3>
-                        <p>Allow us to collect analytics data to improve our services</p>
-                    </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox" checked>
-                        <span class="slider"></span>
-                    </label>
+            <div class="setting-item">
+                <div class="setting-info">
+                    <h3>Daily Goal</h3>
+                    <p>How much time you want to practice per day</p>
                 </div>
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <h3>Personalized Ads</h3>
-                        <p>See ads that are more relevant to your interests</p>
-                    </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox">
-                        <span class="slider"></span>
-                    </label>
+                <div class="custom-dropdown">
+                    <button class="dropbtn">10 minutes <i class="fas fa-caret-down"></i></button>
+                    <ul class="dropdown-content">
+                        <li>5 minutes</li>
+                        <li>10 minutes</li>
+                        <li>20 minutes</li>
+                        <li>30 minutes</li>
+                    </ul>
                 </div>
+            </div>
+        </div>
+        <div class="settings-section">
+            <h2>Appearance</h2>
+            <div class="setting-item">
+                <div class="setting-info">
+                    <h3>Theme</h3>
+                    <p>Light or dark mode</p>
+                </div>
+                <div class="theme-selector">
+                    <div class="theme-option theme-light active" title="Light Mode"></div>
+                    <div class="theme-option theme-dark" title="Dark Mode"></div>
+                </div>
+            </div>
+        </div>
+        <div class="settings-section">
+            <h2>Subscription</h2>
+            <p>Current Plan: <strong>Free</strong></p>
+            <div style="margin-top: 20px;">
+                <button class="upgrade-btn">Upgrade to Lexio Plus</button>
             </div>
         </div>
     </div>
-
-    <script>
-        // Toggle switch functionality
-        document.querySelectorAll('.toggle-switch input').forEach(switchInput => {
-            switchInput.addEventListener('change', function() {
-                console.log(`Toggle switched: ${this.checked ? 'on' : 'off'}`);
-            });
+</div>
+<script>
+    document.querySelectorAll('.toggle-switch input').forEach(switchInput => {
+        switchInput.addEventListener('change', function() {
+            console.log(`Toggle switched: ${this.checked ? 'on' : 'off'}`);
         });
-        
-        // Theme selection functionality
-        document.querySelectorAll('.theme-option').forEach(themeOption => {
-            themeOption.addEventListener('click', function() {
-                document.querySelectorAll('.theme-option').forEach(opt => {
-                    opt.classList.remove('active');
-                });
-                this.classList.add('active');
-                console.log('Theme changed');
+    });
+    document.querySelectorAll('.theme-option').forEach(themeOption => {
+        themeOption.addEventListener('click', function() {
+            document.querySelectorAll('.theme-option').forEach(opt => {
+                opt.classList.remove('active');
             });
+            this.classList.add('active');
+            console.log('Theme changed');
         });
-    </script>
+    });
+</script>
 </body>
 </html>
