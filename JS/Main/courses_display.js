@@ -37,7 +37,7 @@ class CourseDisplay {
         const lesson = data.lessons[this.currentLesson];
         const html = `
             <div class="course-header">
-                <div class="course-title">Chinese</div>
+                <div class="excercises-title">Chinese</div>
                 <div class="lesson-type">Vocabulary</div>
                 <button class="close-btn" onclick="courseDisplay.hideContent()">X</button>
             </div>

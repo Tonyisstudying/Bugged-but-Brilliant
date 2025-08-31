@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
 .course-container {
     padding: 20px;
     background-color: #FFE5EC;
@@ -89,4 +95,98 @@
     cursor: pointer;
     float: right;
     margin-top: 10px;
+}
+
+
+
+/* Add styles from courses_display.js below */
+.course-header {
+    /* Change header appearance */
+    background-color: your-color;
+    padding: your-padding;
+    border-radius: your-radius;
+    /* Layout */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.exercises-title {
+    font-size: your-size;
+    font-weight: bold;
+}
+
+.lesson-type {
+    /* Style the "Vocabulary" text */
+}
+.close-btn {
+    /* Style the X button */
+    border: none;
+    background: none;
+    font-size: your-size;
+    cursor: pointer;
+}
+.vocab-section {
+    /* Grid layout for 4 columns */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: your-gap;
+    margin: your-margin;
+}
+.vocab-header {
+    /* Style column headers */
+    font-weight: bold;
+    padding: your-padding;
+    background-color: your-color;
+}
+
+.vocab-content {
+    /* Style content cells */
+    padding: your-padding;
+    background-color: your-color;
+}
+.navigation-controls {
+    /* Position controls at bottom */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+.progress-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: your-size;
+    height: your-size;
+    border-radius: 50%;
+    background-color: your-color;
+}
+
+.dot.active {
+    background-color: your-active-color;
+}
+.navigation-btn {
+    /* Style the arrow button */
+    border: none;
+    border-radius: 50%;
+    width: your-size;
+    height: your-size;
+    cursor: pointer;
+}
+/* Add transitions */
+.lesson-content {
+    transition: all 0.3s ease;
+}
+
+/* Add hover effects */
+.vocab-content:hover {
+    transform: scale(1.05);
+}
+@media (max-width: 768px) {
+    .vocab-section {
+        /* Adjust for smaller screens */
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
