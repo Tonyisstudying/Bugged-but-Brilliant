@@ -32,7 +32,7 @@ class CourseDisplay {
         this.contentArea.classList.add('hidden');
         document.querySelector('.course-title').classList.remove('minimized');
     }
-
+// Vocabulary Display
     displayVocabulary(data) {
         const lesson = data.lessons[this.currentLesson];
         const html = `
@@ -68,6 +68,84 @@ class CourseDisplay {
             <div class="vocab-content">${word.example}</div>
         `).join('');
     }
+// Fill in the blank
+    getFillBlankTemplate(data) {
+        return `
+            <div class="course-header">
+                <div class="course-title">Chinese</div>
+                <div class="lesson-type">Fill in the Blank</div>
+                <button class="close-btn" onclick="courseDisplay.hideContent()">X</button>
+            </div>
+            <div class="lesson-content">
+                <div class="fillblank-section">
+                    <div class="question">${data.question}</div>
+                    <input type="text" class="answer-input" placeholder="Type your answer">
+                    <button class="check-btn">Check Answer</button>
+                </div>
+            </div>
+        `;
+    }
+// Arranging
+    getArrangingTemplate(data) {
+        return `
+            <div class="course-header">
+                <div class="course-title">Chinese</div>
+                <div class="lesson-type">Arranging</div>
+                <button class="close-btn" onclick="courseDisplay.hideContent()">X</button>
+            </div>
+            <div class="lesson-content">
+                <div class="arranging-section">
+                    <div class="question">${data.question}</div>
+                    <div class="characters-container">
+                        ${data.characters.map(char => `
+                            <div class="character" draggable="true">${char}</div>
+                        `).join('')}
+                    </div>
+                    <div class="answer-box"></div>
+                </div>
+            </div>
+        `;
+    }
+    // Display method that uses templates
+    displayExercise(data) {
+        let template;
+        switch(data.type) {
+            case 'vocabulary':
+                template = this.getVocabularyTemplate(data);
+                break;
+            case 'arranging':
+                template = this.getArrangingTemplate(data);
+                break;
+            case 'fillBlank':
+                template = this.getFillBlankTemplate(data);
+                break;
+        }
+
+        // Add navigation controls to all templates
+        template += `
+            <div class="navigation-controls">
+                <div class="progress-dots">
+                    ${this.createProgressDots(data.totalParts)}
+                </div>
+                <button class="navigation-btn" onclick="courseDisplay.nextPart()">→</button>
+            </div>
+        `;
+
+        this.contentArea.innerHTML = template;
+        this.initializeExerciseHandlers(data.type);
+    }
+        // Initialize exercise-specific handlers
+    initializeExerciseHandlers(type) {
+        switch(type) {
+            case 'arranging':
+                this.initDragAndDrop();
+                break;
+            case 'fillBlank':
+                this.initFillBlankHandlers();
+                break;
+        }
+    }
+
 
     createProgressDots(total) {
         return Array(total).fill(0).map((_, index) => `
@@ -98,6 +176,14 @@ class CourseDisplay {
                 console.error('Error loading lesson:', error);
                 alert('Error loading the next lesson. Please try again.');
             });
+    }
+    loadExercise(level, exerciseIndex) {
+    fetch(`../Data/Json/courses/chinese/level${level}/content.json`)
+        .then(response => response.json())
+        .then(data => {
+            const exercise = data.exercises[exerciseIndex];
+            this.displayExercise(exercise);
+        });
     }
 }
 
