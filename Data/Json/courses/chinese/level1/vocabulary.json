@@ -1,0 +1,22 @@
+{
+    "lessons": [
+        {
+            "id": "lesson1",
+            "title": "Basic Colors",
+            "words": [
+                {
+                    "hanzi": "白",
+                    "pinyin": "bái",
+                    "english": "white",
+                    "example": "他穿了白衬衫"
+                },
+                {
+                    "hanzi": "黑",
+                    "pinyin": "hēi",
+                    "english": "black",
+                    "example": "黑夜"
+                }
+            ]
+        }
+    ]
+}

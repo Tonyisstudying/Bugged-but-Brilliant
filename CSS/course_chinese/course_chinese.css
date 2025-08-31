@@ -1,0 +1,92 @@
+.course-container {
+    padding: 20px;
+    background-color: #FFE5EC;
+    min-height: 100vh;
+}
+
+.course-title {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+}
+
+.course-title.minimized {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.level-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.level-path {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.level {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #FF9EAA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.level:hover {
+    transform: scale(1.1);
+    background: #FF7F96;
+}
+
+.lesson-content {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    transform-origin: top;
+    transition: all 0.5s ease;
+}
+
+.lesson-content.hidden {
+    transform: scaleY(0);
+    height: 0;
+    padding: 0;
+    opacity: 0;
+}
+
+.vocab-card {
+    background: #FFF0F3;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.close-btn {
+    float: right;
+    cursor: pointer;
+    padding: 5px 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+}
+
+.navigation-btn {
+    background: #FF9EAA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    float: right;
+    margin-top: 10px;
+}
