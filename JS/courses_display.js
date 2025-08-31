@@ -36,31 +36,68 @@ class CourseDisplay {
     displayVocabulary(data) {
         const lesson = data.lessons[this.currentLesson];
         const html = `
-            <button class="close-btn" onclick="courseDisplay.hideContent()">×</button>
-            <div class="lesson-header">
-                <h2>${lesson.title}</h2>
+            <div class="course-header">
+                <div class="course-title">Chinese</div>
+                <div class="lesson-type">Vocabulary</div>
+                <button class="close-btn" onclick="courseDisplay.hideContent()">X</button>
             </div>
-            ${lesson.words.map(word => this.createVocabCard(word)).join('')}
-            <button class="navigation-btn" onclick="courseDisplay.nextLesson()">→</button>
+            <div class="lesson-content">
+                <div class="vocab-section">
+                    <div class="vocab-header">Hanzi</div>
+                    <div class="vocab-header">Transcription</div>
+                    <div class="vocab-header">Translation</div>
+                    <div class="vocab-header">Examples</div>
+                    ${this.createVocabContent(lesson.words)}
+                </div>
+                <div class="navigation-controls">
+                    <div class="progress-dots">
+                        ${this.createProgressDots(data.lessons.length)}
+                    </div>
+                    <button class="navigation-btn" onclick="courseDisplay.nextLesson()">→</button>
+                </div>
+            </div>
         `;
         this.contentArea.innerHTML = html;
     }
 
-    createVocabCard(word) {
-        return `
-            <div class="vocab-card">
-                <div class="hanzi">${word.hanzi}</div>
-                <div class="pinyin">${word.pinyin}</div>
-                <div class="english">${word.english}</div>
-                <div class="example">${word.example}</div>
-            </div>
-        `;
+    createVocabContent(words) {
+        return words.map(word => `
+            <div class="vocab-content">${word.hanzi}</div>
+            <div class="vocab-content">${word.pinyin}</div>
+            <div class="vocab-content">${word.english}</div>
+            <div class="vocab-content">${word.example}</div>
+        `).join('');
+    }
+
+    createProgressDots(total) {
+        return Array(total).fill(0).map((_, index) => `
+            <div class="dot ${index === this.currentLesson ? 'active' : ''}"></div>
+        `).join('');
     }
 
     nextLesson() {
-        // Implement next lesson logic
-        this.currentLesson++;
-        this.loadLevel(this.currentLevel);
+        fetch(`../Data/Json/courses/chinese/level${this.currentLevel}/vocabulary.json`)
+            .then(response => response.json())
+            .then(data => {
+                // Check if there's a next lesson
+                if (this.currentLesson < data.lessons.length - 1) {
+                    this.currentLesson++;
+                    this.displayVocabulary(data);
+                } else {
+                    // If we're at the last lesson, try to move to next level
+                    if (this.currentLevel < 3) {
+                        this.currentLevel++;
+                        this.currentLesson = 0;
+                        this.loadLevel(this.currentLevel);
+                    } else {
+                        alert('Congratulations! You have completed all lessons!');
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error loading lesson:', error);
+                alert('Error loading the next lesson. Please try again.');
+            });
     }
 }
 

@@ -6,7 +6,7 @@
 body {
   margin: 0;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  background: linear-gradient(135deg, #ffc8dd, #d2bfdd, #ddedfb, #bde0fe);
+  background: linear-gradient(135deg, hsl(337, 100%, 89%), #d2bfdd, #ddedfb, #bde0fe);
   height: 100vh;
   display: flex;
   flex-direction: column;
