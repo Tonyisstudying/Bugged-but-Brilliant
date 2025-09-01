@@ -21,7 +21,7 @@ class CourseDisplay {
             .then(response => response.json())
             .then(data => this.displayVocabulary(data));
     }
-
+//show and hide content
     showContent() {
         const content = this.contentArea;
         content.classList.remove('hidden');
@@ -134,7 +134,7 @@ class CourseDisplay {
         this.contentArea.innerHTML = template;
         this.initializeExerciseHandlers(data.type);
     }
-        // Initialize exercise-specific handlers
+// Initialize exercise-specific handlers
     initializeExerciseHandlers(type) {
         switch(type) {
             case 'arranging':
@@ -177,6 +177,7 @@ class CourseDisplay {
                 alert('Error loading the next lesson. Please try again.');
             });
     }
+    //automatically load contents from json file :>
     loadExercise(level, exerciseIndex) {
     fetch(`../Data/Json/courses/chinese/level${level}/content.json`)
         .then(response => response.json())
