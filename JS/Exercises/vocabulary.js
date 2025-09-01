@@ -19,7 +19,7 @@ export default class VocabularyExercise {
 
     async loadData(level, stage) {
         try {
-            const response = await fetch(`../../../Data/Json/courses/chinese/level${level}/stages/stage${stage}/vocab.json`);
+            const response = await fetch(`../../../Json/courses/chinese/level${level}/stages/stage${stage}/vocab.json`);
             if (!response.ok) throw new Error('Failed to load vocabulary data');
             const data = await response.json();
             this.words = data.words;
