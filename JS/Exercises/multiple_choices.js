@@ -22,7 +22,7 @@ export default class MultipleChoiceExercise {
 
     async loadData(level, stage) {
         try {
-            const response = await fetch(`../../../Json/courses/chinese/level${level}/stages/stage${stage}/multiple_choice.json`);
+            const response = await fetch(`../Json/courses/chinese/level${level}/stages/stage${stage}/multiple_choice.json`);
             if (!response.ok) throw new Error('Failed to load multiple choice data');
             const data = await response.json();
             this.questions = data.questions;
