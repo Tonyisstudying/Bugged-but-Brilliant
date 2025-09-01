@@ -1,10 +1,7 @@
 export default class VocabularyTemplate {
-    render(data) {
-        const { hanzi, pinyin, translation, example, progress } = data;
-        
+    render(words) {
         return `
             <div class="course-header">
-                <h1>Chinese</h1>
                 <div class="section-title">Vocabulary</div>
                 <button class="close-btn">X</button>
             </div>
@@ -16,22 +13,29 @@ export default class VocabularyTemplate {
                     <div class="header">Translation</div>
                     <div class="header">Examples</div>
                 </div>
-                
-                <div class="vocab-row">
-                    <div class="vocab-cell">${data.hanzi}</div>
-                    <div class="vocab-cell">${data.pinyin}</div>
-                    <div class="vocab-cell">${data.translation}</div>
-                    <div class="vocab-cell">${data.example}</div>
-                </div>
+                ${this.generateWordList(words)}
             </div>
 
             <div class="navigation">
-                <div class="progress-dots">
-                    ${this.generateProgressDots(progress)}
+                <div class="progress-indicator">
+                    ${words.length} words loaded
                 </div>
-                <button class="next-btn">→</button>
+                <button class="next-btn">
+                    <span class="material-symbols-outlined">arrow_right_alt</span>
+                </button>
             </div>
-        `;
+        `;  
+    }
+
+    generateWordList(words) {
+        return words.map(word => `
+            <div class="vocab-row">
+                <div class="vocab-cell">${word.hanzi}</div>
+                <div class="vocab-cell">${word.pinyin}</div>
+                <div class="vocab-cell">${word.translation}</div>
+                <div class="vocab-cell">${word.example}</div>
+            </div>
+        `).join('');
     }
 
     generateProgressDots(progress) {

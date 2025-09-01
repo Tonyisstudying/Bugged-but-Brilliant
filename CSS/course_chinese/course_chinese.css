@@ -61,6 +61,8 @@
     margin-top: 20px;
     transform-origin: top;
     transition: all 0.5s ease;
+    max-height: 80vh; /* Limit height to viewport */
+    overflow: hidden; /* Prevent overflow */
 }
 
 .lesson-content.hidden {
@@ -126,6 +128,28 @@
     background-color: #FF9EAA;
     padding: 20px;
     border-radius: 0 0 15px 15px;
+    max-height: 400px; /* Set maximum height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    gap: 20px;
+}
+
+/* Custom scrollbar styling */
+.vocab-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.vocab-content::-webkit-scrollbar-track {
+    background: #FFE5EC;
+    border-radius: 10px;
+}
+
+.vocab-content::-webkit-scrollbar-thumb {
+    background: #FF9EAA;
+    border-radius: 10px;
+}
+
+.vocab-content::-webkit-scrollbar-thumb:hover {
+    background: #FF7F96;
 }
 
 .vocab-headers {
@@ -136,6 +160,9 @@
     background-color: #FFB6C1;
     border-radius: 10px;
     margin-bottom: 15px;
+    position: sticky; /* Keep headers visible while scrolling */
+    top: 0;
+    z-index: 1;
 }
 
 .header {
@@ -151,11 +178,13 @@
     padding: 15px;
     background-color: #FFE5EC;
     border-radius: 10px;
+    margin-bottom: 15px; /* Add gap between rows */
 }
 
 .vocab-cell {
     text-align: center;
     padding: 10px;
+    gap: 10px;
 }
 
 .navigation {

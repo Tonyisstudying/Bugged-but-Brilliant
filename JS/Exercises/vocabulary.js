@@ -2,7 +2,6 @@ import VocabularyTemplate from '../Templates/vocabulary.template.js';
 
 export default class VocabularyExercise {
     constructor() {
-        this.currentWord = 0;
         this.words = [];
         this.template = new VocabularyTemplate();
     }
@@ -10,7 +9,7 @@ export default class VocabularyExercise {
     async display(level = 1, stage = 1) {
         try {
             await this.loadData(level, stage);
-            this.displayCurrentWord();
+            this.displayWords();
         } catch (error) {
             console.error('Error displaying vocabulary:', error);
             this.showError('Failed to display vocabulary');
@@ -30,21 +29,12 @@ export default class VocabularyExercise {
         }
     }
 
-    displayCurrentWord() {
+    displayWords() {
         if (!this.words.length) return;
         
         const content = document.getElementById('lesson-content');
         if (!content) return;
-
-        const word = this.words[this.currentWord];
-        const html = this.template.render({
-            ...word,
-            progress: {
-                current: this.currentWord + 1,
-                total: this.words.length
-            }
-        });
-
+        const html = this.template.render(this.words);
         content.innerHTML = html;
         this.attachEventListeners();
     }
@@ -54,7 +44,7 @@ export default class VocabularyExercise {
         const closeBtn = document.querySelector('.close-btn');
         
         if (nextBtn) {
-            nextBtn.addEventListener('click', () => this.nextWord());
+            nextBtn.addEventListener('click', () => this.nextExercise());
         }
         
         if (closeBtn) {
@@ -62,14 +52,9 @@ export default class VocabularyExercise {
         }
     }
 
-    nextWord() {
-        if (this.currentWord < this.words.length - 1) {
-            this.currentWord++;
-            this.displayCurrentWord();
-        } else {
-            // Move to next exercise type
-            this.complete();
-        }
+    nextExercise() {
+        // Move to next exercise type (e.g., fill-in-the-blank, multiple choice)
+        this.complete();
     }
 
     close() {
@@ -81,5 +66,13 @@ export default class VocabularyExercise {
     complete() {
         // Handle completion - can be customized based on needs
         console.log('Vocabulary section completed');
+    }
+
+    showError(message) {
+        const content = document.getElementById('lesson-content');
+        if (content) {
+            content.innerHTML = `<div style="color: red; padding: 20px;">${message}</div>`;
+            content.classList.remove('hidden');
+        }
     }
 }
