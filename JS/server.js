@@ -24,7 +24,7 @@ app.get('/home', (req, res) => {
 
 // Handle about page
 app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'About us', '../pages/about-us.html'));
+    res.sendFile(path.join(__dirname, '..', 'About us', '../About us/about.html'));
 });
 
 // Handle settings page
