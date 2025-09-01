@@ -1,0 +1,39 @@
+{
+    "questions": [
+        {
+            "id": "mc1",
+            "question": "What does '白' mean?",
+            "options": ["White", "Black", "Red", "Blue"],
+            "correct": 0,
+            "explanation": "'白' means white in English."
+        },
+        {
+            "id": "mc2",
+            "question": "Which character means 'black'?",
+            "options": ["白", "黑", "红", "蓝"],
+            "correct": 1,
+            "explanation": "'黑' means black in English."
+        },
+        {
+            "id": "mc3",
+            "question": "What is the pinyin for '白'?",
+            "options": ["bái", "hēi", "hóng", "lán"],
+            "correct": 0,
+            "explanation": "The pinyin for '白' is 'bái'."
+        },
+        {
+            "id": "mc4",
+            "question": "Which option is the correct translation for '红'?",
+            "options": ["Green", "Red", "Yellow", "Purple"],
+            "correct": 1,
+            "explanation": "'红' means red in English."
+        },
+        {
+            "id": "mc5",
+            "question": "What does '蓝' mean?",
+            "options": ["Orange", "Pink", "Blue", "Brown"],
+            "correct": 2,
+            "explanation": "'蓝' means blue in English."
+        }
+    ]
+}

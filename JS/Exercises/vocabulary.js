@@ -5,9 +5,13 @@ export default class VocabularyExercise {
     constructor() {
         this.words = [];
         this.template = new VocabularyTemplate();
+        this.currentLevel = 1;
+        this.currentStage = 1;
     }
 
     async display(level = 1, stage = 1) {
+        this.currentLevel = level;
+        this.currentStage = stage;
         try {
             await this.loadData(level, stage);
             this.displayWords();
@@ -54,8 +58,12 @@ export default class VocabularyExercise {
     }
 
     nextExercise() {
-        // Move to next exercise type (e.g., fill-in-the-blank, multiple choice)
-        this.complete();
+        // Move to multiple choice exercise via CourseDisplay
+        if (window.courseDisplay) {
+            window.courseDisplay.nextExercise();
+        } else {
+            console.error('CourseDisplay not available');
+        }
     }
 
     close() {
