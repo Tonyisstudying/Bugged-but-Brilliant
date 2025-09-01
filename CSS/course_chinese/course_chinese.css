@@ -99,92 +99,100 @@
 
 
 
-/* Add styles from courses_display.js below */
+/* filepath: CSS/course_chinese/course_chinese.css */
 .course-header {
-    /* Change header appearance */
-    background-color: your-color;
-    padding: your-padding;
-    border-radius: your-radius;
-    /* Layout */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px;
+    background-color: #FFB6C1;
+    border-radius: 15px 15px 0 0;
 }
 
-.exercises-title {
-    font-size: your-size;
-    font-weight: bold;
+.section-title {
+    font-size: 1.5em;
+    color: white;
 }
-
 
 .close-btn {
-    /* Style the X button */
-    border: none;
     background: none;
-    font-size: your-size;
+    border: none;
+    color: white;
+    font-size: 1.5em;
     cursor: pointer;
-}
-.vocab-section {
-    /* Grid layout for 4 columns */
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: your-gap;
-    margin: your-margin;
-}
-.vocab-header {
-    /* Style column headers */
-    font-weight: bold;
-    padding: your-padding;
-    background-color: your-color;
 }
 
 .vocab-content {
-    /* Style content cells */
-    padding: your-padding;
-    background-color: your-color;
+    background-color: #FF9EAA;
+    padding: 20px;
+    border-radius: 0 0 15px 15px;
 }
-.navigation-controls {
-    /* Position controls at bottom */
+
+.vocab-headers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 10px;
+    background-color: #FFB6C1;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.header {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.vocab-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 15px;
+    background-color: #FFE5EC;
+    border-radius: 10px;
+}
+
+.vocab-cell {
+    text-align: center;
+    padding: 10px;
+}
+
+.navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto;
+    padding: 20px;
 }
+
 .progress-dots {
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
 .dot {
-    width: your-size;
-    height: your-size;
+    width: 10px;
+    height: 10px;
+    background-color: #FFB6C1;
     border-radius: 50%;
-    background-color: your-color;
 }
 
 .dot.active {
-    background-color: your-active-color;
-}
-.navigation-btn {
-    /* Style the arrow button */
-    border: none;
-    border-radius: 50%;
-    width: your-size;
-    height: your-size;
-    cursor: pointer;
-}
-/* Add transitions */
-.lesson-content {
-    transition: all 0.3s ease;
+    background-color: #FF69B4;
 }
 
-/* Add hover effects */
-.vocab-content:hover {
-    transform: scale(1.05);
+.next-btn {
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
-@media (max-width: 768px) {
-    .vocab-section {
-        /* Adjust for smaller screens */
-        grid-template-columns: repeat(2, 1fr);
-    }
+
+.next-btn:hover {
+    transform: scale(1.1);
 }

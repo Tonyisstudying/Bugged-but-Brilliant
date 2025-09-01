@@ -37,7 +37,8 @@ app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, '..', '../index.html'));
 });
 
-// Start the server
+app.use(express.static('.'));
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });

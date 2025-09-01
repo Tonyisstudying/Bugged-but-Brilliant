@@ -1,0 +1,19 @@
+{
+    "totalStages": 3,
+    "stages": [
+    {
+        "id": 1,
+        "title": "Basic Colors",
+        "description": "Learn basic color vocabulary in Chinese",
+        "exercises": ["vocab", "arrange", "fill"],
+        "unlocked": true
+    },
+    {
+        "id": 2,
+        "title": "Numbers",
+        "description": "Learn counting in Chinese",
+        "exercises": ["vocab", "match", "fill"],
+        "unlocked": false
+    }
+    ]
+}
