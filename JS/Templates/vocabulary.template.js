@@ -1,3 +1,4 @@
+//this file serves as the template for vocabulary.js and to design it access the course_chinese.css
 export default class VocabularyTemplate {
     render(words) {
         return `
