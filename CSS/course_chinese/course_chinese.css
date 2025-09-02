@@ -6,7 +6,7 @@
 }
 .course-container {
     padding: 20px;
-    background-color: #FFE5EC;
+    background: linear-gradient(135deg, #FFC8DD 0%, #A2D2FF 100%);
     min-height: 100vh;
 }
 
