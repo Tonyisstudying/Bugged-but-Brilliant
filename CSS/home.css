@@ -7,7 +7,9 @@ body {
   margin: 0;
   font-family: "Comic Sans MS", cursive, sans-serif;
   background: linear-gradient(135deg, #ffc8dd, #d2bfdd, #ddedfb, #bde0fe);
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* --- Navbar --- */
@@ -63,13 +65,15 @@ body {
 .firstpage {
   position: relative;
   display: flex;
+  height: calc(100vh - 140px);
   justify-content: space-between;
   align-items: center;
-  padding: 80px 9%;
+  padding: 40px 9%;
   background: linear-gradient(to right, #feb9d2, #cdb4db);
   border-radius: 25px;
-  margin: 120px 9% 40px;
+  margin: 100px 9% 40px;
   overflow: hidden;
+  max-height: 600px;
 }
 
 /* Star pastel */
@@ -128,4 +132,28 @@ body {
   object-fit: cover;
   border: 6px solid white;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 992px) {
+  .firstpage {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 5%;
+    height: auto;
+  }
+  
+  .firstpage_image img {
+    width: 250px;
+    height: 250px;
+    margin-top: 30px;
+  }
+  
+  .navbar ul li {
+    margin-left: 20px;
+  }
+  
+  .navbar ul li a {
+    font-size: large;
+  }
 }
