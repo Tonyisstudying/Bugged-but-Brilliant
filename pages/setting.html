@@ -33,10 +33,8 @@
     <div class="settings-section">
         <h2>Profile</h2>
         <div class="profile-info">
-        <img src="/Assets/images/default-avatar.png" alt="Profile Picture" />
-        <div>
-            <h3>Tonyisstudying</h3>
-            <p>Username: @tony123</p>
+        <div class="username">
+            <p id="username-display">Username: Loading...</p>
             <button>Edit Profile</button>
         </div>
         </div>
@@ -55,10 +53,10 @@
 
         <!-- Streak -->
         <div class="setting-item streak-item">
-        <div class="setting-info">
-            <h3>Daily Streak</h3>
-            <p>Keep your learning streak alive!</p>
-        </div>
+            <div class="setting-info">
+                <h3>Daily Streak</h3>
+                <p>Keep your learning streak alive!</p>
+            </div>
         <div id="streak-container">
             <span class="streak-day" title="Day 1">🔥</span>
             <span class="streak-day" title="Day 2">🔥</span>
@@ -123,25 +121,26 @@
 
     <!-- SUBSCRIPTION PAGE -->
     <div class="settings-page" id="subscription" style="display:none;">
-    <div class="settings-section">
-        <h2>Subscription</h2>
-        <p>Current Plan: <strong>Free</strong></p>
-        <div style="margin-top: 20px;">
-        <button class="upgrade-btn">Upgrade to Lexio Plus</button>
+        <div class="settings-section">
+                <h2>Subscription</h2>
+                <p>Current Plan: <strong>Free</strong></p>
+                <div style="margin-top: 20px;">
+                <button class="upgrade-btn">Upgrade to Lexio Plus</button>
+            </div>
         </div>
-    </div>
     </div>
 
     <!-- SUPPORT PAGE -->
     <div class="settings-page" id="support" style="display:none;">
-    <div class="settings-section">
-        <h2>Support</h2>
-        <p>Need help? Contact our support team at <strong>lexio@gmail.com</strong>.</p>
-    </div>
+        <div class="settings-section">
+            <h2>Support</h2>
+            <p>Need help? Contact our support team at <strong>lexio@gmail.com</strong>.</p>
+        </div>
     </div>
 </div>
 </div>
 
 <script src="../JS/setting.js"></script>
+<script src="../JS/Main/login.js"></script>
 </body>
 </html>
