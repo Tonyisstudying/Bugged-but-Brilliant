@@ -1,0 +1,12 @@
+{
+"type": "arranging",
+"exercises": [
+    {
+        "id": "arr1",
+        "question": "Arrange the characters to form 'white clothes'",
+        "characters": ["衣", "白", "服"],
+        "correctAnswer": "白衣服",
+        "hint": "White goes first"
+    }
+]
+}

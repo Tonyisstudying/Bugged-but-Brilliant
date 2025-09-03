@@ -1,0 +1,28 @@
+{
+  "name": "bugged-but-brilliant",
+  "version": "1.0.0",
+  "description": "Personal Page",
+  "main": "index.js",
+  "scripts": {
+    "start": "node JS/server.js",
+    "dev": "nodemon JS/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tonyisstudying/Bugged-but-Brilliant.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tonyisstudying/Bugged-but-Brilliant/issues"
+  },
+  "homepage": "https://github.com/Tonyisstudying/Bugged-but-Brilliant#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

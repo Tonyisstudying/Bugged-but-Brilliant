@@ -1,0 +1,12 @@
+{
+"type": "fillBlank",
+"exercises": [
+    {
+        "id": "fill1",
+        "sentence": "The sky is ___ today.",
+        "answer": "白",
+        "hint": "Color of clouds",
+        "acceptableAnswers": ["白", "白色"]
+    }
+]
+}

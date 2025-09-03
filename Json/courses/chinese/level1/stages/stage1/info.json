@@ -1,0 +1,21 @@
+{
+"stageId": 1,
+"title": "Basic Colors",
+"exerciseOrder": [
+{
+    "type": "vocabulary",
+    "file": "vocab.json",
+    "title": "Color Vocabulary"
+},
+{
+    "type": "arranging",
+    "file": "arrange.json",
+    "title": "Arrange Characters"
+},
+{
+    "type": "fillBlank",
+    "file": "fill.json",
+    "title": "Practice Writing"
+}
+]
+}
