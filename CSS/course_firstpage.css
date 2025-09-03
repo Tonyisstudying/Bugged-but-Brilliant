@@ -13,10 +13,35 @@ body {
   align-items: center;
   justify-content: center;
 }
+/* Update header to have position: relative */
 .header {
   display: flex;
   align-items: center;
+  position: relative;
+  margin-bottom: 100px; /* Moved margin from individual elements to container */
+  width: 100%;
+  justify-content: center;
+  padding: 0 40px;
 }
+/* Add to course_firstpage.css */
+.home-btn {
+  background: #ffafcc;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s;
+  margin-right: 20px;
+}
+
+.home-btn:hover {
+  background: #f78db4;
+}
+
 .header .icon {
   background: #7c6a9c;
   border-radius: 50%;
@@ -29,13 +54,11 @@ body {
   font-weight: 900px;
   margin-right: 15px;
   color: white;
-  margin-bottom: 100px;
 }
 .header h1 {
   font-size: 60px;
   font-weight: bold;
   color: #7c6a9c;
-  margin-bottom: 100px;
 }
 .course-list {
   display: flex;
@@ -59,4 +82,22 @@ body {
 }
 .course-item:hover {
   background: #f78db4;
+}
+
+/* Add responsive adjustments for smaller screens */
+@media (max-width: 992px) {
+  .course-list {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .course-item {
+    width: 300px;
+    height: 150px;
+    font-size: 18px;
+  }
+  
+  .header h1 {
+    font-size: 36px;
+  }
 }
