@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update the username display
     const usernameDisplay = document.getElementById('username-display');
     if (username) {
-        usernameDisplay.textContent = `Username: @${username}`;
+        usernameDisplay.textContent = `Username: ${username}`;
     } else {
         usernameDisplay.textContent = 'Username: Not logged in';
         // Redirect to login page if not logged in
