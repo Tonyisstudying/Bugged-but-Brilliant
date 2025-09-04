@@ -11,10 +11,309 @@ body {
     padding: 2rem;
     color: #333;
 }
-
-.nac-container {
+/*A bar above the title*/
+.nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+}
+.back-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #84b8ef;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+.back-button:hover {
+    background-color: #96d3f1;
+}
+.nav-title {
+    font-size: 1.5rem;
+}
+
+
+/*title*/
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header h1 {
+    font-size: 2.8rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.header h2 {
+    font-size: 1.6rem;
+    color: #555;
+    font-weight: normal;
+    margin-bottom: 2rem;
+}
+
+
+
+/*timeline styling*/
+.timeline {
+    position: relative;
+    max-width: 1200px;
+}
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #000000;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    z-index: 1;
+}
+
+.era {
+    position: relative;              /* was: position: space-between; */
+    width: 100%;
+    margin: 60px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;   /* space around the two children */
+    gap: 2rem;                       /* optional extra spacing */
+    clear: both;
+    min-height: 80px;
+}
+.era::before {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: #e98573;
+    border: 4px solid #ff9f92;
+    border-radius: 50%;
+    z-index: 3;
+    left: 50%;
+    top: calc(50% - 12.5px); /* Center vertically in the row */
+    transform: translateX(-50%);
+}
+.era-content {
+    width: 40%;
+    padding: 20px;
+    background-color: #e98573;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+.era-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.era-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.era-details {
+    display: none;
+    margin-top: 15px;
+    line-height: 1.6;
+    color: #fff;
+}
+/*img display*/
+.era-image-container {
+    width: 40%;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    z-index: 2;
+}
+.era-image-container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.era-image {
+    width: 100%;
+    border-radius: 10px;
+    border: 3px solid white;
+    display: block;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.era-content.expanded .era-details {
+    display: block;
+}
+
+
+/* Circles on the timeline */
+.era::before {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: #e98573;
+    border: 4px solid #ff9f92;
+    border-radius: 50%;
+    z-index: 3;
+    left: 50%;
+    top: calc(50% - 20px); /* Center vertically in the row */
+    transform: translateX(-50%);
+}
+
+.era-image-container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.era:nth-child(odd) .era-content::after{
+    content: '';
+    position: absolute;
+    top: calc(50% - 15px); /* Center arrow with content */
+    right: -20px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 20px solid #e98573;
+    z-index: 2;
+}
+
+.era:nth-child(even) .era-image-container {
+    right: auto;
+    left: 0;
+}
+.era:nth-child(even) .era-content::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 15px);
+    left: -20px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 20px solid #e98573;
+    z-index: 2;
+}
+
+
+/*media*/
+/* Responsive styling */
+@media screen and (max-width: 992px) {
+    /* Keep timeline centered */
+    .timeline::after {
+        left: 50%;
+    }
+
+    /* Maintain layout but scale down */
+    .era {
+        margin: 40px 0; /* Reduce vertical spacing */
+    }
+
+    .era-content,
+    .era-image-container {
+        width: 45%; /* Keep proportional width */
+    }
+
+    /* Keep circle on timeline */
+    .era::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Keep arrows visible */
+    .era-content::after {
+        display: block;
+    }
+
+    /* Scale down fonts */
+    .era-title {
+        font-size: 1.2rem;
+    }
+
+    .era-details {
+        font-size: 0.9rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Keep navigation horizontal */
+    .nav-container {
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 0.8rem;
+    }
+
+    .timeline {
+        max-width: 100%;
+    }
+
+    .era {
+        margin: 30px 0;
+        min-height: 60px;
+    }
+
+    /* Keep same layout but smaller */
+    .era-content,
+    .era-image-container {
+        width: 45%; /* Same proportion */
+        padding: 12px;
+    }
+
+    .era-title {
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+
+    .era-details {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .header h2 {
+        font-size: 0.9rem;
+    }
+
+    .back-button,
+    .home-button {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    /* Keep circle but make smaller */
+    .era::before {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Make arrows smaller */
+    .era-content::after {
+        border-top-width: 10px;
+        border-bottom-width: 10px;
+    }
+
+    .era:nth-child(odd) .era-content::after {
+        border-left-width: 15px;
+    }
+
+    .era:nth-child(even) .era-content::after {
+        border-right-width: 15px;
+    }
 }
