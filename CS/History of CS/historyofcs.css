@@ -46,8 +46,27 @@ body {
     font-size: 2.8rem;
     color: #333;
     margin-bottom: 0.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto 0.5rem;
+    animation: typing 3s steps(40, end);
+    width: 100%;
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+/* Optional blinking cursor */
+.header h1::after {
+    content: "|";
+    animation: blink-caret 0.75s step-end infinite;
+    color: #e98573;
 }
 
+@keyframes blink-caret {
+    from, to { opacity: 0 }
+    50% { opacity: 1 }
+}
 .header h2 {
     font-size: 1.6rem;
     color: #555;
@@ -71,19 +90,23 @@ body {
     bottom: 0;
     left: 50%;
     margin-left: -3px;
-    z-index: 1;
+    z-index: -1;
 }
 
 .era {
     position: relative;              /* was: position: space-between; */
     width: 100%;
-    margin: 60px 0;
+    margin: 10px 0;
     display: flex;
     align-items: center;
     justify-content: space-around;   /* space around the two children */
     gap: 2rem;                       /* optional extra spacing */
     clear: both;
     min-height: 80px;
+}
+.era.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 .era::before {
     content: '';
@@ -95,8 +118,9 @@ body {
     border-radius: 50%;
     z-index: 3;
     left: 50%;
-    top: calc(50% - 12.5px); /* Center vertically in the row */
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s ease;
 }
 .era-content {
     width: 40%;
@@ -124,6 +148,10 @@ body {
     margin-top: 15px;
     line-height: 1.6;
     color: #fff;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.3s ease;
 }
 /*img display*/
 .era-image-container {
@@ -131,7 +159,7 @@ body {
     position: relative;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.4s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease;
     z-index: 2;
 }
 .era-image-container.show {
@@ -147,6 +175,8 @@ body {
 }
 .era-content.expanded .era-details {
     display: block;
+    max-height: 1000px;
+    opacity: 1;
 }
 
 
