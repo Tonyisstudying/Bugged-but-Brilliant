@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../Assets/images/team logo.png">
+    <link rel="stylesheet" href="../CS/css/historyofcs.css">
+    <title>History of Computer Science</title>
+</head>
+<body>
+    <div class="nav-container">
+        <a href="course_page.html" class="back-button">← Back to Computer Science</a>
+        <a href="../pages/home.html" class="home-button"><i class="fas fa-home"></i> Home</a>
+        <div class="nav-title">History of CS</div>
+    </div>
+
+    <div class="header">
+        <h1>The history of computer science</h1>
+        <h2>A Brief History of Computer Science From Its Beginnings to Today</h2>
+    </div>
+
+    <div class="timeline">
+        <div class="era">
+            <div class="era-content" onclick="toggleDetails(this)">
+                <div class="era-text">
+                    <h3 class="era-title">Precursors (1830s-1930s)</h3>
+                    <div class="era-details">
+                        <p>Long before electronic circuits, innovators pursued mechanical and electromechanical ways to automate calculation. Charles Babbage's designs—from the Difference Engine to the concept of the Analytical Engine in the 1830s—foreshadowed the stored program, punched-card input, and conditional branching that define modern computing. Meanwhile, the Jacquard loom used punch cards in the early 19th century to encode weaving patterns, directly inspiring how punched cards would later serve in data processing and programming. Herman Hollerith transformed census tabulation in the late 1800s by combining punched cards with electromechanical tabulators, enabling faster, cheaper processing and eventually forming the business roots of IBM. Collectively, these developments laid the conceptual and commercial foundation critical to the rise of electronic computing.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="precursors-img" class="era-image-container">
+                <img src="../Assets/images/babbage_engine.jpg" alt="Babbage Analytical Engine" class="era-image">
+            </div>
+        </div>
+
+        <div class="era">
+            <div class="era-content" onclick="toggleDetails(this)">
+                <div class="era-text">
+                    <h3 class="era-title">1st Generation: Vacuum Tubes (1940s-1959)</h3>
+                    <div class="era-details">
+                        <p>The first truly electronic, digital, general-purpose computers emerged in this era. ENIAC, completed in 1945, featured around 18,000 vacuum tubes and could perform 5,000 additions per second—its assembly by six women programmers and groundbreaking performance marked a leap in computing. These machines operated via complex rewiring, plugboards, and switch settings, consuming vast amounts of power and generating intense heat, making them fragile and costly to maintain. Despite these limitations, they proved electronic computation's viability, leading to early commercial systems like UNIVAC I and IBM's 701, setting in motion broader acceptance of digital machinery.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="vacuum-img" class="era-image-container">
+                <img src="../Assets/images/eniac.jpg" alt="ENIAC Computer" class="era-image">
+            </div>
+        </div>
+
+        <div class="era">
+            <div class="era-content" onclick="toggleDetails(this, 'transistor-img')">
+                <div class="era-text">
+                    <h3 class="era-title">2nd Generation: Transistors (1959-1965)</h3>
+                    <div class="era-details">
+                        <p>Transistors replaced bulky vacuum tubes, resulting in machines that were smaller, more reliable, and less power-hungry. This hardware shift coincided with a software revolution: high-level languages like FORTRAN and COBOL enabled abstractions away from binary or assembly code, bringing programming into the hands of engineers and business users. Core memory types (e.g., magnetic cores) improved speed and access, while systems like the IBM 1401 became staples in organizations, accelerating computing's business adoption.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="transistor-img" class="era-image-container">
+                <img src="../Assets/images/transistor_computer.jpg" alt="Transistor Computer" class="era-image">
+            </div>
+        </div>
+
+        <div class="era">
+            <div class="era-content" onclick="toggleDetails(this, 'ic-img')">
+                <div class="era-text">
+                    <h3 class="era-title">3rd Generation: Integrated Circuits & Minicomputers (1965-1975)</h3>
+                    <div class="era-details">
+                        <p>Integrated circuits packed multiple transistors into compact chips, dramatically reducing size and cost while boosting performance. The launch of IBM's System/360 introduced an architecture capable of scaling across different performance levels while maintaining software compatibility—a first-of-its-kind approach. Around the same time the PDP-8 opened computing doors for smaller businesses and universities. ICs also enabled interactive computing via time-sharing and multiprogramming, and operating systems and widely used high-level languages evolved, setting the stage for software-driven innovation.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="ic-img" class="era-image-container">
+                <img src="../Assets/images/ibm_system360.jpg" alt="IBM System/360" class="era-image">
+            </div>
+        </div>
+
+        <div class="era">
+            <div class="era-content" onclick="toggleDetails(this, 'micro-img')">
+                <div class="era-text">
+                    <h3 class="era-title">4th Generation: Microcomputers & Microprocessors (1971-1985)</h3>
+                    <div class="era-details">
+                        <p>The entire CPU's components were placed on a single chip beginning with Intel's 4004 in 1971—a watershed moment that democratized computing. Hobbyist platforms like the Altair 8800 led to a movement culminating in iconic home computers such as the Apple II and later the IBM PC, giving rise to widespread desktop computing. During this era, GUIs, networking foundations, and software ecosystems flourished, empowering individuals and businesses to own and develop for their own machines.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="micro-img" class="era-image-container">
+                <img src="../Assets/images/apple_ii.jpg" alt="Apple II Computer" class="era-image">
+            </div>
+        </div>
+        
+        <div class="era">
+            <div class="era-content" onclick="toggleDetails(this, 'modern-img')">
+                <div class="era-text">
+                    <h3 class="era-title">5th Generation: Mobility, Multimedia, Parallelism & AI (1985-Present)</h3>
+                    <div class="era-details">
+                        <p>Computing shifted from desktops to portable, media-rich, and networked experiences. Laptops and CD-ROMs expanded functionality while early virtual reality experiments broadened interactive possibilities. Increasing use of parallel processing—via GPUs and multi-core architectures—enabled gaming, graphics, and scientific workloads to escalate in scope and scale. AI ambitions, known as "fifth generation" by some, took root in research environments.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="modern-img" class="era-image-container">
+                <img src="../Assets/images/modern_computers.jpg" alt="Modern Computing" class="era-image">
+            </div>
+        </div>
+
+        <div class="era">
+            <div class="era-content" onclick="toggleDetails(this, 'internet-img')">
+                <div class="era-text">
+                    <h3 class="era-title">Internet & Mobile (1990s-2010s)</h3>
+                    <div class="era-details">
+                        <p>The Web and internet transformed computing from standalone devices into globally networked platforms. Mosaic's graphical browser helped make the Web accessible to everyday users. Search engines, e-commerce, and web services quickly followed. The iPhone's arrival in 2007 redefined mobile computing, merging powerful hardware with intuitive touch interfaces and apps. Simultaneously, cloud platforms began offering scalable, on-demand computing and storage, powering modern apps, enterprise infrastructure, and even AI services. This era forged the always-connected, service-driven landscape that dominates today.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="internet-img" class="era-image-container">
+                <img src="../Assets/images/modern_computers.jpg" alt="Modern Computing" class="era-image">
+            </div>
+        </div>
+    </div>
+    <script src="../CS/js/historyofcs.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</body>
+</html>
