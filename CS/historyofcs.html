@@ -20,8 +20,9 @@
     </div>
 
     <div class="timeline">
+        <!--analytical engineer-->
         <div class="era">
-            <div class="era-content" onclick="toggleDetails(this)">
+            <div class="era-content" onclick="toggleDetails(this, 'precursors-img')">
                 <div class="era-text">
                     <h3 class="era-title">Precursors (1830s-1930s)</h3>
                     <div class="era-details">
@@ -30,12 +31,16 @@
                 </div>
             </div>
             <div id="precursors-img" class="era-image-container">
-                <img src="../Assets/images/babbage_engine.jpg" alt="Babbage Analytical Engine" class="era-image">
+                <img src="../Assets/images/Historyofcs/analytical engine.png" alt="Babbage Analytical Engine" class="era-image">
             </div>
         </div>
 
+        <!--IBM 701-->
         <div class="era">
-            <div class="era-content" onclick="toggleDetails(this)">
+            <div id="vacuum-img" class="era-image-container">
+                <img src="../Assets/images/Historyofcs/IBM 701.png" alt="ENIAC Computer" class="era-image">
+            </div>
+            <div class="era-content" onclick="toggleDetails(this, 'vacuum-img')">
                 <div class="era-text">
                     <h3 class="era-title">1st Generation: Vacuum Tubes (1940s-1959)</h3>
                     <div class="era-details">
@@ -43,11 +48,9 @@
                     </div>
                 </div>
             </div>
-            <div id="vacuum-img" class="era-image-container">
-                <img src="../Assets/images/eniac.jpg" alt="ENIAC Computer" class="era-image">
-            </div>
         </div>
 
+        <!--Fortran and cobol-->
         <div class="era">
             <div class="era-content" onclick="toggleDetails(this, 'transistor-img')">
                 <div class="era-text">
@@ -58,11 +61,15 @@
                 </div>
             </div>
             <div id="transistor-img" class="era-image-container">
-                <img src="../Assets/images/transistor_computer.jpg" alt="Transistor Computer" class="era-image">
+                <img src="../Assets/images/Historyofcs/FORTRAN (1957) and COBOL (1959).png" alt="Transistor Computer" class="era-image">
             </div>
         </div>
 
+        <!--ibm 360-->
         <div class="era">
+            <div id="ic-img" class="era-image-container">
+                <img src="../Assets/images/Historyofcs/IBM 360.png" alt="IBM System/360" class="era-image">
+            </div>
             <div class="era-content" onclick="toggleDetails(this, 'ic-img')">
                 <div class="era-text">
                     <h3 class="era-title">3rd Generation: Integrated Circuits & Minicomputers (1965-1975)</h3>
@@ -71,11 +78,9 @@
                     </div>
                 </div>
             </div>
-            <div id="ic-img" class="era-image-container">
-                <img src="../Assets/images/ibm_system360.jpg" alt="IBM System/360" class="era-image">
-            </div>
         </div>
 
+        <!--intel-->
         <div class="era">
             <div class="era-content" onclick="toggleDetails(this, 'micro-img')">
                 <div class="era-text">
@@ -86,10 +91,26 @@
                 </div>
             </div>
             <div id="micro-img" class="era-image-container">
-                <img src="../Assets/images/apple_ii.jpg" alt="Apple II Computer" class="era-image">
+                <img src="../Assets/images/Historyofcs/intel.png" alt="Apple II Computer" class="era-image">
             </div>
         </div>
-        
+
+        <!--computer-->
+        <div class="era">
+            <div id="internet-img" class="era-image-container">
+                <img src="../Assets/images/Historyofcs/computer.png" alt="Modern Computing" class="era-image">
+            </div>
+            <div class="era-content" onclick="toggleDetails(this, 'internet-img')">
+                <div class="era-text">
+                    <h3 class="era-title">Internet & Mobile (1990s-2010s)</h3>
+                    <div class="era-details">
+                        <p>The Web and internet transformed computing from standalone devices into globally networked platforms. Mosaic's graphical browser helped make the Web accessible to everyday users. Search engines, e-commerce, and web services quickly followed. The iPhone's arrival in 2007 redefined mobile computing, merging powerful hardware with intuitive touch interfaces and apps. Simultaneously, cloud platforms began offering scalable, on-demand computing and storage, powering modern apps, enterprise infrastructure, and even AI services. This era forged the always-connected, service-driven landscape that dominates today.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--mobile computing-->
         <div class="era">
             <div class="era-content" onclick="toggleDetails(this, 'modern-img')">
                 <div class="era-text">
@@ -100,24 +121,12 @@
                 </div>
             </div>
             <div id="modern-img" class="era-image-container">
-                <img src="../Assets/images/modern_computers.jpg" alt="Modern Computing" class="era-image">
-            </div>
-        </div>
-
-        <div class="era">
-            <div class="era-content" onclick="toggleDetails(this, 'internet-img')">
-                <div class="era-text">
-                    <h3 class="era-title">Internet & Mobile (1990s-2010s)</h3>
-                    <div class="era-details">
-                        <p>The Web and internet transformed computing from standalone devices into globally networked platforms. Mosaic's graphical browser helped make the Web accessible to everyday users. Search engines, e-commerce, and web services quickly followed. The iPhone's arrival in 2007 redefined mobile computing, merging powerful hardware with intuitive touch interfaces and apps. Simultaneously, cloud platforms began offering scalable, on-demand computing and storage, powering modern apps, enterprise infrastructure, and even AI services. This era forged the always-connected, service-driven landscape that dominates today.</p>
-                    </div>
-                </div>
-            </div>
-            <div id="internet-img" class="era-image-container">
-                <img src="../Assets/images/modern_computers.jpg" alt="Modern Computing" class="era-image">
+                <img src="../Assets/images/Historyofcs/mobile computing.png" alt="Modern Computing" class="era-image">
             </div>
         </div>
     </div>
+
+
     <script src="../CS/js/historyofcs.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </body>
