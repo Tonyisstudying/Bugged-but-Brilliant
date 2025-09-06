@@ -1,133 +1,92 @@
 @echo off
-REM Lexio Website Launcher - Self-extracting Version
-TITLE Lexio Launcher
-
+TITLE Lexio GitHub Launcher
 echo ====================================================
-echo       Launching Lexio Language Learning Platform
+echo       Launching Lexio from GitHub Repository
 echo ====================================================
 echo.
 
-REM Check if running from a temporary directory
-echo Current directory: %cd%
-SET TEMP_DIR=%cd%
-SET CONTAINS_TEMP=0
-IF "%TEMP_DIR%"=="%TEMP_DIR:Temp=%"  (SET CONTAINS_TEMP=0) ELSE (SET CONTAINS_TEMP=1)
-IF "%TEMP_DIR%"=="%TEMP_DIR:temp=%"  (SET CONTAINS_TEMP=0) ELSE (SET CONTAINS_TEMP=1)
-IF "%TEMP_DIR%"=="%TEMP_DIR:Rar$=%"  (SET CONTAINS_TEMP=1)
-IF "%TEMP_DIR%"=="%TEMP_DIR:ZIP=%"   (SET CONTAINS_TEMP=1)
-
-REM If in temp directory, copy to Documents
-IF %CONTAINS_TEMP%==1 (
-    echo Detected temporary directory. Setting up proper installation...
-    
-    REM Create destination folder in Documents
-    SET DEST_FOLDER=%USERPROFILE%\Documents\Lexio
-    IF NOT EXIST "%DEST_FOLDER%" mkdir "%DEST_FOLDER%"
-    
-    echo Installing Lexio to: %DEST_FOLDER%
-    
-    REM Copy all files recursively (only if in temp folder)
-    xcopy "%cd%\*.*" "%DEST_FOLDER%" /E /H /I /Y
-
-    echo.
-    echo Installation complete!
-    
-    REM Create desktop shortcut
-    echo Creating desktop shortcut...
-    powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut('%USERPROFILE%\Desktop\Lexio.lnk');$s.TargetPath='%DEST_FOLDER%\start_lexio.bat';$s.WorkingDirectory='%DEST_FOLDER%';$s.Save()"
-    
-    REM Launch from new location
-    echo Launching Lexio from installed location...
-    start "" "%DEST_FOLDER%\start_lexio.bat"
-    exit /b 0
+REM Create a destination folder if it doesn't exist
+SET DEST_FOLDER=%USERPROFILE%\Documents\Lexio
+IF NOT EXIST "%DEST_FOLDER%" (
+    echo Creating Lexio folder...
+    mkdir "%DEST_FOLDER%"
 )
 
-REM Normal startup flow - not in temp directory
-cd /d "%~dp0"
+cd /d "%DEST_FOLDER%"
 
-REM Check if structure is valid
-IF NOT EXIST "pages\login.html" (
-    IF EXIST "index.html" (
-        REM Just a partial structure, but index exists
-        echo WARNING: Found partial website structure.
-        echo Will launch index.html but some features may not work.
-        goto LAUNCH_SITE
-    ) ELSE (
-        echo ERROR: Required files not found. This may not be a complete Lexio installation.
-        echo Please download the complete project from GitHub.
-        pause
-        exit /b 1
-    )
-)
+echo Downloading latest version from GitHub...
+echo This may take a moment depending on your internet speed...
 
-:LAUNCH_SITE
-echo Opening Lexio in your default browser...
+REM Use PowerShell to download the ZIP file from GitHub
+powershell -Command "& {Invoke-WebRequest -Uri 'https://github.com/Tonyisstudying/Bugged-but-Brilliant/archive/refs/heads/main.zip' -OutFile 'lexio_latest.zip'}" >nul 2>&1
 
-REM Try opening index.html directly
-IF EXIST "index.html" (
-    start "" "index.html"
-) ELSE IF EXIST "pages\login.html" (
-    start "" "pages\login.html"
-) ELSE (
-    echo ERROR: Could not find any HTML files to open.
+IF NOT EXIST "lexio_latest.zip" (
+    echo ERROR: Failed to download from GitHub. Please check your internet connection.
     pause
     exit /b 1
 )
 
-echo Website opened successfully!
-echo.
-echo Note: For the best experience, you may need Node.js
-echo from https://nodejs.org/ for full functionality.
-echo.
+echo Download complete!
+echo Extracting files...
 
-REM Optional: Try to start a server in the background for enhanced features
+REM Remove old files (but keep the zip for next time)
+IF EXIST "Bugged-but-Brilliant-main" (
+    rmdir /S /Q "Bugged-but-Brilliant-main"
+)
+
+REM Extract the ZIP file
+powershell -Command "& {Expand-Archive -Path 'lexio_latest.zip' -DestinationPath '.' -Force}" >nul 2>&1
+
+echo Launching Lexio...
+
+REM Check if extraction was successful
+IF EXIST "Bugged-but-Brilliant-main\index.html" (
+    REM Try to open in browser directly
+    start "" "Bugged-but-Brilliant-main\index.html"
+    echo Website opened successfully!
+) ELSE IF EXIST "Bugged-but-Brilliant-main\pages\login.html" (
+    REM Fallback to login page
+    start "" "Bugged-but-Brilliant-main\pages\login.html"
+    echo Website opened successfully!
+) ELSE (
+    echo ERROR: Could not find website files after extraction.
+    echo Please report this issue on GitHub.
+    pause
+    exit /b 1
+)
+
+REM Optional: Check if a local server can be started
+echo.
 echo Checking if we can start a local server for better functionality...
 where node >nul 2>nul
 IF %ERRORLEVEL% EQU 0 (
-    IF EXIST "node_modules\" (
-        echo Starting Node.js server in background...
-        start /B node JS/server.js >nul 2>&1
+    IF EXIST "Bugged-but-Brilliant-main\package.json" (
+        cd "Bugged-but-Brilliant-main"
+        echo Node.js found! Installing dependencies...
+        call npm install >nul 2>&1
+        echo Starting Node.js server...
+        start /B cmd /C "node JS\server.js" >nul 2>&1
         timeout /t 2 /nobreak >nul
-        echo Server started! You can also access at: http://localhost:3000
-    ) ELSE (
-        echo Node.js found but dependencies not installed.
-        echo Run 'npm install' for full server functionality.
-    )
-) ELSE (
-    where python >nul 2>nul
-    IF %ERRORLEVEL% EQU 0 (
-        echo Starting Python server in background...
-        start /B python -m http.server 8000 >nul 2>&1
-        timeout /t 2 /nobreak >nul
-        echo Server started! You can also access at: http://localhost:8000
-    ) ELSE (
-        echo No server software found. Website opened in basic mode.
+        echo Server started! You can also access Lexio at: http://localhost:3000
+        start "" http://localhost:3000
     )
 )
 
 echo.
 echo ====================================================
-echo Lexio is now open in your browser!
+echo Lexio is now ready!
 echo ====================================================
 echo.
-echo If the website didn't open, manually open: %cd%\index.html
+echo Your local copy is stored at: %DEST_FOLDER%
 echo.
+echo To create a desktop shortcut, press any key...
+pause >nul
 
-REM Add a first-run notice for new users
-IF NOT EXIST "%TEMP%\lexio_ran_before.txt" (
-    echo This file indicates Lexio has run before > "%TEMP%\lexio_ran_before.txt"
-    echo.
-    echo ====================================================
-    echo FIRST RUN NOTICE:
-    echo ====================================================
-    echo.
-    echo If you're enjoying Lexio, please consider:
-    echo 1. Creating a desktop shortcut (manually or run again)
-    echo 2. Installing Node.js for full functionality
-    echo.
-    echo For help or issues, visit:
-    echo https://github.com/Tonyisstudying/Bugged-but-Brilliant
-    echo.
-)
+REM Create desktop shortcut
+echo Creating desktop shortcut...
+powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut('%USERPROFILE%\Desktop\Lexio.lnk');$s.TargetPath='%DEST_FOLDER%\Bugged-but-Brilliant-main\index.html';$s.WorkingDirectory='%DEST_FOLDER%\Bugged-but-Brilliant-main';$s.Save()"
 
-pause
+echo Shortcut created! You can now launch Lexio directly from your desktop.
+echo.
+echo Press any key to exit...
+pause >nul
