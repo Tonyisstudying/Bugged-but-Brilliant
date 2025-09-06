@@ -1,5 +1,5 @@
 @echo off
-REM Lexio Website Launcher - Automatic Version
+REM Lexio Website Launcher - Direct Open Version
 TITLE Lexio Launcher
 
 echo ====================================================
@@ -7,91 +7,55 @@ echo       Launching Lexio Language Learning Platform
 echo ====================================================
 echo.
 
-SET SERVER_STARTED=0
-SET PORT=3000
+REM Change to the batch file's directory
+cd /d "%~dp0"
 
-REM Create folder for logs (if needed)
-IF NOT EXIST logs\ mkdir logs
+REM Check if index.html exists
+IF NOT EXIST "index.html" (
+    echo ERROR: index.html not found in the current directory.
+    echo Please make sure you're running this from the correct folder.
+    echo.
+    pause
+    exit /b 1
+)
 
-REM Check if Node.js is installed and working (preferred method)
-echo Checking for Node.js...
+REM Try to open the website directly first (works for everyone)
+echo Opening Lexio in your default browser...
+start "" "index.html"
+echo Website opened successfully!
+echo.
+echo Note: If some features don't work, you may need to install Node.js
+echo from https://nodejs.org/ for full functionality.
+echo.
+
+REM Optional: Try to start a server in the background for enhanced features
+echo Checking if we can start a local server for better functionality...
 where node >nul 2>nul
 IF %ERRORLEVEL% EQU 0 (
-    echo Node.js found! Starting server...
-    
-    REM Check if npm packages are installed
-    IF NOT EXIST node_modules\ (
-        echo Installing required packages...
-        call npm install
-        IF %ERRORLEVEL% NEQ 0 (
-            echo ERROR: Failed to install packages
-            goto NODE_FAILED
-        )
+    IF EXIST "node_modules\" (
+        echo Starting Node.js server in background...
+        start /B node JS/server.js >nul 2>&1
+        echo Server started! You can also access at: http://localhost:3000
+    ) ELSE (
+        echo Node.js found but dependencies not installed.
+        echo Run 'npm install' for full server functionality.
     )
-    
-    cd /d "%~dp0"
-    start "" http://localhost:%PORT%
-    echo Server starting on http://localhost:%PORT%
-    echo.
-    echo Press Ctrl+C to stop the server when finished.
-    node JS/server.js > logs\server.log 2>&1
-    SET SERVER_STARTED=1
-    goto END
+) ELSE (
+    where python >nul 2>nul
+    IF %ERRORLEVEL% EQU 0 (
+        echo Starting Python server in background...
+        start /B python -m http.server 8000 >nul 2>&1
+        echo Server started! You can also access at: http://localhost:8000
+    ) ELSE (
+        echo No server software found. Website opened in basic mode.
+    )
 )
 
-:NODE_FAILED
-echo Node.js failed or not found, trying Python...
-
-REM Try to use Python
-where python >nul 2>nul
-IF %ERRORLEVEL% EQU 0 (
-    echo Python found! Starting simple server...
-    cd /d "%~dp0"
-    SET PORT=8000
-    start "" http://localhost:%PORT%
-    echo Server starting on http://localhost:%PORT%
-    echo.
-    echo Press Ctrl+C to stop the server when finished.
-    python -m http.server %PORT% > logs\server.log 2>&1
-    SET SERVER_STARTED=1
-    goto END
-)
-
-REM Try Python3 if python command doesn't work
-where python3 >nul 2>nul
-IF %ERRORLEVEL% EQU 0 (
-    echo Python3 found! Starting simple server...
-    cd /d "%~dp0"
-    SET PORT=8000
-    start "" http://localhost:%PORT%
-    echo Server starting on http://localhost:%PORT%
-    echo.
-    echo Press Ctrl+C to stop the server when finished.
-    python3 -m http.server %PORT% > logs\server.log 2>&1
-    SET SERVER_STARTED=1
-    goto END
-)
-
-REM If we get here, nothing worked - open directly
-IF %SERVER_STARTED% EQU 0 (
-    echo ====================================================
-    echo No server software found. Opening website directly...
-    echo ====================================================
-    echo.
-    cd /d "%~dp0"
-    start "" "%~dp0index.html"
-    echo Website opened in your default browser.
-    echo.
-    echo Note: Some features may not work correctly without a server.
-    echo For full functionality, install Node.js or Python.
-    echo.
-    goto END
-)
-
-:END
 echo.
-echo If the website didn't open automatically, go to:
-echo http://localhost:%PORT%
+echo ====================================================
+echo Lexio is now open in your browser!
+echo ====================================================
 echo.
-echo Check logs\server.log if you encounter any issues.
+echo If the website didn't open, manually open: %~dp0index.html
 echo.
+pause
