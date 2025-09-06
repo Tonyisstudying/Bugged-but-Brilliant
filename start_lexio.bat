@@ -11,7 +11,7 @@ REM Change to the batch file's directory
 cd /d "%~dp0"
 
 REM Check if index.html exists
-IF NOT EXIST "index.html" (
+IF NOT EXIST "../index.html" (
     echo ERROR: index.html not found in the current directory.
     echo Please make sure you're running this from the correct folder.
     echo.
@@ -21,7 +21,7 @@ IF NOT EXIST "index.html" (
 
 REM Try to open the website directly first (works for everyone)
 echo Opening Lexio in your default browser...
-start "" "index.html"
+start "" "../index.html"
 echo Website opened successfully!
 echo.
 echo Note: If some features don't work, you may need to install Node.js
