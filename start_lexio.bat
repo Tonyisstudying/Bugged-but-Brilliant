@@ -1,53 +1,118 @@
 @echo off
 REM Lexio Website Launcher
+TITLE Lexio Launcher
 
-echo Launching Lexio Language Learning Platform...
+echo ====================================================
+echo       Launching Lexio Language Learning Platform
+echo ====================================================
 echo.
 
-REM Try to use Python (commonly pre-installed on many systems)
-where python >nul 2>nul
-if %ERRORLEVEL% EQU 0 (
-    echo Starting server using Python...
+SET SERVER_STARTED=0
+SET PORT=3000
+
+REM Create folder for logs
+IF NOT EXIST logs\ mkdir logs
+
+REM Check if Node.js is installed and working (preferred method)
+echo Checking for Node.js...
+where node >nul 2>nul
+IF %ERRORLEVEL% EQU 0 (
+    echo Node.js found! Starting server...
+    
+    REM Check if npm packages are installed
+    IF NOT EXIST node_modules\ (
+        echo Installing required packages...
+        call npm install
+        IF %ERRORLEVEL% NEQ 0 (
+            echo ERROR: Failed to install packages
+            goto NODE_FAILED
+        )
+    )
+    
     cd /d "%~dp0"
-    start "" http://localhost:8000
-    python -m http.server 8000
-    goto :end
+    start "" http://localhost:%PORT%
+    echo Server starting on http://localhost:%PORT%
+    echo.
+    echo Press Ctrl+C to stop the server when finished.
+    node JS/server.js > logs\server.log 2>&1
+    SET SERVER_STARTED=1
+    goto END
+)
+
+:NODE_FAILED
+echo Node.js failed or not found, trying Python...
+
+REM Try to use Python
+where python >nul 2>nul
+IF %ERRORLEVEL% EQU 0 (
+    echo Python found! Starting simple server...
+    cd /d "%~dp0"
+    SET PORT=8000
+    start "" http://localhost:%PORT%
+    echo Server starting on http://localhost:%PORT%
+    echo.
+    echo Press Ctrl+C to stop the server when finished.
+    python -m http.server %PORT% > logs\server.log 2>&1
+    SET SERVER_STARTED=1
+    goto END
 )
 
 REM Try Python3 if python command doesn't work
 where python3 >nul 2>nul
-if %ERRORLEVEL% EQU 0 (
-    echo Starting server using Python3...
+IF %ERRORLEVEL% EQU 0 (
+    echo Python3 found! Starting simple server...
     cd /d "%~dp0"
-    start "" http://localhost:8000
-    python3 -m http.server 8000
-    goto :end
+    SET PORT=8000
+    start "" http://localhost:%PORT%
+    echo Server starting on http://localhost:%PORT%
+    echo.
+    echo Press Ctrl+C to stop the server when finished.
+    python3 -m http.server %PORT% > logs\server.log 2>&1
+    SET SERVER_STARTED=1
+    goto END
 )
 
-REM Try Node.js if installed
-where node >nul 2>nul
-if %ERRORLEVEL% EQU 0 (
-    echo Starting server using Node.js...
-    cd /d "%~dp0"
-    start "" http://localhost:3000
-    node JS/server.js
-    goto :end
+REM If we get here, nothing worked
+IF %SERVER_STARTED% EQU 0 (
+    echo ====================================================
+    echo ERROR: No server software found on your system.
+    echo ====================================================
+    echo.
+    echo To run this website, you have these options:
+    echo.
+    echo 1. Install Node.js (RECOMMENDED):
+    echo    - Download from: https://nodejs.org/
+    echo    - Make sure to check "Add to PATH" during installation
+    echo.
+    echo 2. Install Python:
+    echo    - Download from: https://www.python.org/downloads/
+    echo    - Make sure to check "Add to PATH" during installation
+    echo.
+    echo 3. Open the website manually:
+    echo    - Navigate to: %~dp0index.html
+    echo    - Double-click to open in your browser
+    echo    (Note: Some features may not work correctly)
+    echo.
+    echo After installing software, run this batch file again.
+    echo.
+    echo ====================================================
+    echo For help, see: %~dp0README.md
+    echo ====================================================
+    
+    REM Offer to try opening the file directly
+    echo.
+    SET /P OPEN_DIRECT=Would you like to open index.html directly now? (Y/N): 
+    IF /I "%OPEN_DIRECT%"=="Y" (
+        start "" "%~dp0index.html"
+    )
+    
+    pause
 )
 
-REM If nothing works, provide instructions
+:END
 echo.
-echo No suitable server was found on your system.
-echo To run this website, you have a few options:
+echo If the website didn't open automatically, go to:
+echo http://localhost:%PORT%
 echo.
-echo 1. Open index.html directly in your web browser
-echo   (Note: Some features may not work correctly)
+echo Check logs\server.log if you encounter any issues.
 echo.
-echo 2. Install a lightweight web server:
-echo   - Python: https://www.python.org/downloads/
-echo   - Node.js: https://nodejs.org/
-echo.
-echo After installing either one, run this batch file again.
-echo.
-pause
-
-:end
