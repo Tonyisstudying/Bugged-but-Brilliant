@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Computer Science</title>
+    <link rel="icon" type="image/x-icon" href="../Assets/images/team logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, hsl(337, 100%, 89%), #d2bfdd, #ddedfb, #bde0fe);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .course-card {
+            position: relative;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s ease;
+        }
+
+        .course-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .course-card:hover .course-overlay {
+            opacity: 1;
+        }
+
+        .course-card:hover .course-image {
+            filter: blur(3px);
+        }
+
+        .course-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .course-description {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background-color: #84b8ef;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background-color: #96d3f1;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .nav-title {
+            font-size: 1.5rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <a href="../pages/course_firstpage.html" class="back-button">← Back to Courses</a>
+        <div class="nav-title">Computer Science</div>
+    </div>
+
+    <div class="header">
+        <h1>Introduction to Computer Science</h1>
+        <p>Explore the fascinating world of computer science through these fundamental topics. Click on any course to get started.</p>
+    </div>
+
+    <div class="courses-container">
+    <a href="../CS/historyofcs.html">
+        <div class="course-card">
+            <img src="../Assets/images/history_computerscience.png" alt="History of Computer Science" class="course-image">
+            <div class="course-overlay">
+                <h3 class="course-title">History of Computer Science</h3>
+                <p class="course-description">Explore the evolution of computing from early mechanical calculators to modern supercomputers and the pioneers who shaped this field.</p>
+            </div>
+        </div>
+    </a>
+
+        <div class="course-card">
+            <img src="../Assets//images/foundations_computerscience.png" alt="Core Foundations" class="course-image">
+            <div class="course-overlay">
+                <h3 class="course-title">Computer Science Core Foundations</h3>
+                <p class="course-description">Learn the fundamental concepts that form the building blocks of computer science including logic, computation, and information theory.</p>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <img src="../Assets/images/dsa_pic.png" alt="Data Structures and Algorithms" class="course-image">
+            <div class="course-overlay">
+                <h3 class="course-title">Data Structure and Algorithms</h3>
+                <p class="course-description">Master the essential tools of computing: efficient ways to organize data and powerful techniques to solve computational problems.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

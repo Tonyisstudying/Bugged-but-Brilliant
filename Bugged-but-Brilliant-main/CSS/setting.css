@@ -1,0 +1,372 @@
+/* Reset and global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #FFC8DD 0%, #A2D2FF 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container */
+.settings-container {
+  width: 95%;
+  max-width: 1200px;
+  height: 90vh;
+  background: rgba(255,255,255,0.9);
+  border-radius: 20px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #FFAFCC;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.sidebar .logo {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 20px 0;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+.sidebar .nav-links {
+  list-style: none;
+  padding: 20px;
+}
+
+.sidebar .nav-links li {
+  margin: 20px 0;
+}
+
+.sidebar .nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.sidebar .nav-links a i {
+  margin-right: 10px;
+}
+
+.sidebar .nav-links a.active,
+.sidebar .nav-links a:hover {
+  color: #6d597a;
+}
+
+.sidebar .logout {
+  text-align: center;
+  padding: 20px;
+}
+
+.sidebar .logout button {
+  background: #fff;
+  color: #FFAFCC;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sidebar .logout button:hover {
+  background: #6d597a;
+  color: #fff;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.main-content .header h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.settings-section {
+  margin-bottom: 40px;
+}
+
+.settings-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #FFAFCC;
+  border-bottom: 2px solid #FFAFCC;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+.username {
+  font-size: 2rem;
+}
+.setting-item {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.setting-info h3 {
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.setting-info p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Toggle switch */
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 25px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 25px;
+}
+
+.toggle-switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 19px;
+  width: 19px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.toggle-switch input:checked + .slider {
+  background-color: #FFAFCC;
+}
+
+.toggle-switch input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Theme selector */
+.theme-selector {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-option {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  cursor: pointer;
+}
+
+.theme-light {
+  background: #fff;
+}
+
+.theme-dark {
+  background: #333;
+}
+
+.theme-option.active {
+  border: 2px solid #FFAFCC;
+}
+
+/* Dropdown */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.custom-dropdown .dropbtn {
+  background: #FFAFCC;
+  color: #fff;
+  padding: 8px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.custom-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  border: 1px solid #ddd;
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.custom-dropdown .dropdown-content li {
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.custom-dropdown .dropdown-content li:hover {
+  background-color: #f1f1f1;
+}
+
+.custom-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Profile info */
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.profile-info img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile-info h3 {
+  font-size: 1.2rem;
+}
+
+.profile-info button {
+  margin-top: 5px;
+  padding: 6px 15px;
+  background: #FFAFCC;
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.profile-info button:hover {
+  background: #6d597a;
+}
+
+/* XP bar */
+.xp-bar-bg {
+  width: 100%;
+  background: #eee;
+  border-radius: 10px;
+  height: 20px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+#xp-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #FFAFCC, #A2D2FF);
+  transition: width 0.8s ease;
+}
+
+#xp-bar.animate {
+  animation: pulse 0.8s;
+}
+
+@keyframes pulse {
+  0% { transform: scaleX(1); }
+  50% { transform: scaleX(1.05); }
+  100% { transform: scaleX(1); }
+}
+
+/* Streak */
+#streak-container {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.streak-day {
+  font-size: 1.5rem;
+}
+
+.streak-day.inactive {
+  opacity: 0.4;
+}
+
+.active-fire {
+  animation: firePop 0.5s;
+}
+
+@keyframes firePop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* Upgrade button */
+.upgrade-btn {
+  padding: 10px 20px;
+  background: #FFAFCC;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.upgrade-btn:hover {
+  background: #6d597a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .settings-container {
+    flex-direction: column;
+    height: auto;
+  }
+  .sidebar {
+    flex-direction: row;
+    width: 100%;
+    overflow-x: auto;
+  }
+  .main-content {
+    padding: 20px;
+  }
+}
