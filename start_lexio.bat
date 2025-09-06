@@ -1,5 +1,5 @@
 @echo off
-REM Lexio Website Launcher
+REM Lexio Website Launcher - Automatic Version
 TITLE Lexio Launcher
 
 echo ====================================================
@@ -10,7 +10,7 @@ echo.
 SET SERVER_STARTED=0
 SET PORT=3000
 
-REM Create folder for logs
+REM Create folder for logs (if needed)
 IF NOT EXIST logs\ mkdir logs
 
 REM Check if Node.js is installed and working (preferred method)
@@ -72,41 +72,20 @@ IF %ERRORLEVEL% EQU 0 (
     goto END
 )
 
-REM If we get here, nothing worked
+REM If we get here, nothing worked - open directly
 IF %SERVER_STARTED% EQU 0 (
     echo ====================================================
-    echo ERROR: No server software found on your system.
+    echo No server software found. Opening website directly...
     echo ====================================================
     echo.
-    echo To run this website, you have these options:
+    cd /d "%~dp0"
+    start "" "%~dp0index.html"
+    echo Website opened in your default browser.
     echo.
-    echo 1. Install Node.js (RECOMMENDED):
-    echo    - Download from: https://nodejs.org/
-    echo    - Make sure to check "Add to PATH" during installation
+    echo Note: Some features may not work correctly without a server.
+    echo For full functionality, install Node.js or Python.
     echo.
-    echo 2. Install Python:
-    echo    - Download from: https://www.python.org/downloads/
-    echo    - Make sure to check "Add to PATH" during installation
-    echo.
-    echo 3. Open the website manually:
-    echo    - Navigate to: %~dp0index.html
-    echo    - Double-click to open in your browser
-    echo    (Note: Some features may not work correctly)
-    echo.
-    echo After installing software, run this batch file again.
-    echo.
-    echo ====================================================
-    echo For help, see: %~dp0README.md
-    echo ====================================================
-    
-    REM Offer to try opening the file directly
-    echo.
-    SET /P OPEN_DIRECT=Would you like to open index.html directly now? (Y/N): 
-    IF /I "%OPEN_DIRECT%"=="Y" (
-        start "" "%~dp0index.html"
-    )
-    
-    pause
+    goto END
 )
 
 :END
