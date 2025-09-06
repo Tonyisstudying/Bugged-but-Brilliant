@@ -10,10 +10,11 @@ echo.
 REM Change to the batch file's directory
 cd /d "%~dp0"
 
-REM Check if index.html exists
-IF NOT EXIST "../index.html" (
+REM Check if index.html exists in the current directory
+IF NOT EXIST "index.html" (
     echo ERROR: index.html not found in the current directory.
     echo Please make sure you're running this from the correct folder.
+    echo Current directory: %cd%
     echo.
     pause
     exit /b 1
@@ -21,7 +22,7 @@ IF NOT EXIST "../index.html" (
 
 REM Try to open the website directly first (works for everyone)
 echo Opening Lexio in your default browser...
-start "" "../index.html"
+start "" "index.html"
 echo Website opened successfully!
 echo.
 echo Note: If some features don't work, you may need to install Node.js
@@ -35,6 +36,7 @@ IF %ERRORLEVEL% EQU 0 (
     IF EXIST "node_modules\" (
         echo Starting Node.js server in background...
         start /B node JS/server.js >nul 2>&1
+        timeout /t 2 /nobreak >nul
         echo Server started! You can also access at: http://localhost:3000
     ) ELSE (
         echo Node.js found but dependencies not installed.
@@ -45,6 +47,7 @@ IF %ERRORLEVEL% EQU 0 (
     IF %ERRORLEVEL% EQU 0 (
         echo Starting Python server in background...
         start /B python -m http.server 8000 >nul 2>&1
+        timeout /t 2 /nobreak >nul
         echo Server started! You can also access at: http://localhost:8000
     ) ELSE (
         echo No server software found. Website opened in basic mode.
@@ -56,6 +59,6 @@ echo ====================================================
 echo Lexio is now open in your browser!
 echo ====================================================
 echo.
-echo If the website didn't open, manually open: %~dp0index.html
+echo If the website didn't open, manually open: %cd%\index.html
 echo.
 pause
