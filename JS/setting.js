@@ -23,20 +23,30 @@ document.querySelectorAll('.theme-option').forEach(themeOption => {
     document.querySelectorAll('.theme-option').forEach(opt => opt.classList.remove('active'));
     this.classList.add('active');
     if (this.classList.contains('theme-dark')) {
-      document.body.style.background = '#1a1a1a';
-      document.querySelector('.settings-container').style.background = '#2c2c2c';
-      document.querySelector('.main-content').style.color = '#f5f5f5';
-      document.querySelectorAll('.settings-section h2').forEach(h2 => (h2.style.color = '#FFAFCC'));
-      document.querySelectorAll('.setting-info h3').forEach(h3 => (h3.style.color = '#f5f5f5'));
-      document.querySelectorAll('.setting-info p').forEach(p => (p.style.color = '#ccc'));
-    } else {
-      document.body.style.background = 'linear-gradient(135deg, #FFC8DD 0%, #A2D2FF 100%)';
-      document.querySelector('.settings-container').style.background = 'rgba(255,255,255,0.9)';
-      document.querySelector('.main-content').style.color = '#333';
-      document.querySelectorAll('.settings-section h2').forEach(h2 => (h2.style.color = '#FFAFCC'));
-      document.querySelectorAll('.setting-info h3').forEach(h3 => (h3.style.color = '#444'));
-      document.querySelectorAll('.setting-info p').forEach(p => (p.style.color = '#777'));
-    }
+  document.body.style.background = '#1a1a1a';
+
+  const container = document.querySelector('.settings-container');
+  container.style.background = 'transparent';   // no grey box
+  container.style.borderRadius = '0';           // no rounded corners
+  container.style.boxShadow = 'none';           // no shadow
+
+  document.querySelector('.main-content').style.color = '#f5f5f5';
+  document.querySelectorAll('.settings-section h2').forEach(h2 => (h2.style.color = '#FFAFCC'));
+  document.querySelectorAll('.setting-info h3').forEach(h3 => (h3.style.color = '#f5f5f5'));
+  document.querySelectorAll('.setting-info p').forEach(p => (p.style.color = '#ccc'));
+} else {
+  document.body.style.background = 'linear-gradient(135deg, #FFC8DD 0%, #A2D2FF 100%)';
+
+  const container = document.querySelector('.settings-container');
+  container.style.background = 'rgba(255,255,255,0.9)';
+  container.style.borderRadius = '20px';
+  container.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
+
+  document.querySelector('.main-content').style.color = '#333';
+  document.querySelectorAll('.settings-section h2').forEach(h2 => (h2.style.color = '#FFAFCC'));
+  document.querySelectorAll('.setting-info h3').forEach(h3 => (h3.style.color = '#444'));
+  document.querySelectorAll('.setting-info p').forEach(p => (p.style.color = '#777'));
+}
   });
 });
 
