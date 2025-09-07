@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Programming</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+        
+        /* Hero section */
+        .hero-section {
+            background-color: #0052cc;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .content-section h2 {
+            color: #0052cc;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.8rem;
+            padding-right: 40px; /* Space for toggle icon */
+        }
+
+        .content-section h3 {
+            color: #0052cc;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Code section */
+        .code-section {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-tabs {
+            display: flex;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+            overflow-x: auto;
+        }
+
+        .code-tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .code-tab.active {
+            background-color: #0078d7;
+            color: white;
+        }
+
+        .code-content {
+            padding: 0;
+            position: relative;
+        }
+
+        .code-block {
+            display: none;
+            position: relative;
+        }
+
+        .code-block.active {
+            display: block;
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 1.5rem;
+            overflow-x: auto;
+            border-radius: 0;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 4px;
+            padding: 0.4rem 0.7rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Steps section */
+        .steps-section ul, .steps-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .steps-section li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* Comparison table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #e0e0e0;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Examples */
+        .example {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0078d7;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example h3 {
+            margin-bottom: 0.8rem;
+            color: #0052cc;
+        }
+
+        /* Toggle functionality */
+        .toggle-icon {
+            position: absolute;
+            top: 2.1rem;
+            right: 2rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #0052cc;
+            transition: transform 0.3s ease;
+            z-index: 10;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(0, 82, 204, 0.1);
+        }
+
+        .toggle-icon:hover {
+            background-color: rgba(0, 82, 204, 0.2);
+        }
+
+        .toggle-icon.active {
+            transform: rotate(45deg);
+        }
+
+        .toggle-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .toggle-content.active {
+            max-height: 2000px;
+        }
+
+        .algorithm-link {
+            color: #0078d7;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .algorithm-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Visual representation */
+        .visual-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        .dp-visual {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .visual-caption {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #555;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.3rem;
+            }
+            
+            .content-section h2 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../algorithms.html" class="back-btn">← Back to Algorithms</a>
+        </div>
+        
+        <div class="hero-section">
+            <h1>Dynamic Programming</h1>
+            <p>A commonly used algorithmic technique used to optimize recursive solutions when same subproblems are called again.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>What is Dynamic Programming?</h2>
+            <p>Dynamic Programming is a method for solving complex problems by breaking them down into simpler subproblems. It is applicable to problems exhibiting the properties of overlapping subproblems and optimal substructure.</p>
+            <p>The core idea behind DP is to store solutions to subproblems so that each is solved only once. This approach significantly improves the time complexity compared to naive recursive solutions.</p>
+            <p>To solve DP problems, we first write a recursive solution in a way that there are overlapping subproblems in the recursion tree (the recursive function is called with the same parameters multiple times). Then, to make sure that a recursive value is computed only once (to improve time complexity), we store results of the recursive calls.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Two Approaches to Dynamic Programming</h2>
+            <p>There are two ways to store the results in Dynamic Programming:</p>
+            <ol class="steps-section">
+                <li><strong>Top-Down (Memoization):</strong> Start with the original problem and break it down. Use recursion but store already computed results in a data structure (usually a hash map or array).</li>
+                <li><strong>Bottom-Up (Tabulation):</strong> Start from the simplest subproblems and build up. Use iteration to solve increasingly complex subproblems using solutions to previously solved subproblems.</li>
+            </ol>
+        </div>
+
+        <div class="content-section">
+            <h2>When to Use Dynamic Programming?</h2>
+            <p>Dynamic programming is used for solving problems that consists of the following characteristics:</p>
+            <ol class="steps-section">
+                <li><strong>Optimal Substructure:</strong> The property means that we use the optimal results of subproblems to achieve the optimal result of the bigger problem.<br><br>
+                <div class="example">
+                    <h3>Example:</h3>
+                    <p>Consider the problem of finding the minimum cost path in a weighted graph from a source node to a destination node. We can break this problem down into smaller subproblems:</p>
+                    <ul>
+                        <li>Find the minimum cost path from the source node to each intermediate node.</li>
+                        <li>Find the minimum cost path from each intermediate node to the destination node.</li>
+                    </ul>
+                    <p>The solution to the larger problem (finding the minimum cost path from the source node to the destination node) can be constructed from the solutions to the smaller subproblems.</p>
+                </div>
+                </li>
+                <li><strong>Overlapping Subproblems:</strong> The same subproblems are solved repeatedly in different parts of the problem.<br><br>
+                <div class="example">
+                    <h3>Example:</h3>
+                    <p>Consider the problem of computing the Fibonacci series. To compute the Fibonacci number at index n, we need to compute the Fibonacci numbers at indices n-1 and n-2. This means that the subproblem of computing the Fibonacci number at index n-1 will make two calls, one for n-2 and another for n-3 in the recursion.</p>
+                    <p>You may notice overlapping subproblems highlighted in the second recursion tree for Nth Fibonacci diagram below.</p>
+                </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="content-section visual-section">
+            <img src="../../Assets/images/fibonacci-recursion-tree.png" alt="Fibonacci Recursion Tree with Overlapping Subproblems" class="dp-visual">
+            <p class="visual-caption">Nth Term of Fibonacci Series - Recursion Tree with Overlapping Subproblems (same colors denote overlapping subproblems)</p>
+        </div>
+
+        <div class="content-section">
+            <h2>How Does Dynamic Programming Work?</h2>
+            <p>Let's examine how dynamic programming works using the example of calculating Fibonacci numbers:</p>
+            <ol class="steps-section">
+                <li><strong>Identify Subproblems:</strong> Divide the main problem into smaller, independent subproblems. For Fibonacci, the subproblems are F(n-1) and F(n-2).</li>
+                <li><strong>Store Solutions:</strong> Store the solution to each subproblem in a table or array so that we don't have to compute the same again.</li>
+                <li><strong>Build Up Solutions:</strong> Use the stored solutions to build up the solution to the main problem. For F(n), look up F(n-1) and F(n-2) in the table and add them.</li>
+                <li><strong>Avoid Recomputation:</strong> By storing solutions, DP ensures that each subproblem (for example, F(2)) is solved only once, reducing computation time.</li>
+            </ol>
+        </div>
+
+        <div class="content-section">
+            <h2>Comparison: Dynamic Programming vs Greedy Algorithms</h2>
+            <div class="toggle-icon" onclick="toggleContent('comparison')">
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="toggle-content" id="comparison">
+                <div class="comparison-table-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Dynamic Programming</th>
+                                <th>Greedy Algorithms</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Decision Making</td>
+                                <td>Considers all possible decisions and their outcomes</td>
+                                <td>Makes locally optimal choices at each step</td>
+                            </tr>
+                            <tr>
+                                <td>Problem Solving Approach</td>
+                                <td>Bottom-up (breaks problem into subproblems and builds solution)</td>
+                                <td>Top-down (starts with the given problem and directly solves it)</td>
+                            </tr>
+                            <tr>
+                                <td>Time Complexity</td>
+                                <td>Usually slower (often O(n²) or more)</td>
+                                <td>Generally faster (often O(n log n) or better)</td>
+                            </tr>
+                            <tr>
+                                <td>Space Complexity</td>
+                                <td>High (requires storage for all subproblem solutions)</td>
+                                <td>Low (doesn't need to store subproblem solutions)</td>
+                            </tr>
+                            <tr>
+                                <td>Problem Requirements</td>
+                                <td>Optimal Substructure + Overlapping Subproblems</td>
+                                <td>Greedy Choice Property + Optimal Substructure</td>
+                            </tr>
+                            <tr>
+                                <td>Solution Guarantee</td>
+                                <td>Always optimal if applied correctly</td>
+                                <td>Not always optimal (problem-specific)</td>
+                            </tr>
+                            <tr>
+                                <td>Reconsideration</td>
+                                <td>Evaluates all possible choices before making decision</td>
+                                <td>Never reconsiders choices once made</td>
+                            </tr>
+                            <tr>
+                                <td>Implementation</td>
+                                <td>Generally more complex implementation</td>
+                                <td>Typically easier to implement</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Key Differences</h3>
+                <ol class="steps-section">
+                    <li><strong>Decision-making approach:</strong> 
+                        <ul>
+                            <li>Dynamic Programming: Evaluates all possible choices to find the globally optimal solution</li>
+                            <li>Greedy algorithm: Makes the locally optimal choice at each step without looking ahead</li>
+                        </ul>
+                    </li>
+                    <li><strong>Problem characteristics:</strong> 
+                        <ul>
+                            <li>Dynamic programming works when a problem has Optimal Substructure and Overlapping Subproblems</li>
+                            <li>Greedy algorithm works when the problem has Greedy Choice Property and Optimal Substructure</li>
+                        </ul>
+                    </li>
+                    <li><strong>Solution approach:</strong> 
+                        <ul>
+                            <li>In dynamic programming, solution to the main problem depends on the overlapping subproblems</li>
+                            <li>In greedy algorithm, each local decision leads to an optimal solution for the entire problem</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Example Comparison: 0/1 Knapsack vs. Fractional Knapsack</h3>
+                <div class="example">
+                    <h4>0/1 Knapsack (Dynamic Programming)</h4>
+                    <p>Items cannot be broken, so we either take an item completely or don't take it at all.</p>
+                    <p><strong>Approach:</strong> Create a table to store results of subproblems. For each item, we have two choices: take it or leave it.</p>
+                    <p><strong>Why DP is needed:</strong> Greedy approach doesn't work because taking the highest value-per-weight item first might not leave enough capacity for a better combination of items.</p>
+                </div>
+
+                <div class="example">
+                    <h4>Fractional Knapsack (Greedy)</h4>
+                    <p>Items can be broken into smaller pieces, so we can take fractions of items.</p>
+                    <p><strong>Approach:</strong> Sort items by value-to-weight ratio and take as much as possible of the item with the highest ratio, then the next highest, and so on.</p>
+                    <p><strong>Why Greedy works:</strong> Taking the highest value-per-weight item first always gives the optimal solution because we can take fractions.</p>
+                </div>
+
+                <h3>When to Choose Which Approach</h3>
+                <p>Choose <strong>Dynamic Programming</strong> when:</p>
+                <ul class="steps-section">
+                    <li>The problem has overlapping subproblems</li>
+                    <li>The problem requires considering all possible choices to find the optimal solution</li>
+                    <li>You need the guaranteed optimal solution</li>
+                    <li>Problem examples: 0/1 Knapsack, Longest Common Subsequence, Matrix Chain Multiplication</li>
+                </ul>
+
+                <p>Choose <strong>Greedy</strong> when:</p>
+                <ul class="steps-section">
+                    <li>The problem has the greedy choice property</li>
+                    <li>A locally optimal choice leads to a globally optimal solution</li>
+                    <li>You need a fast solution even if it's not always optimal</li>
+                    <li>Problem examples: Huffman coding, Dijkstra's algorithm, Activity Selection</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Common Dynamic Programming Problems</h2>
+            <ul class="steps-section">
+                <li><a href="#" class="algorithm-link">Fibonacci Series</a> - Classic example of overlapping subproblems</li>
+                <li><a href="#" class="algorithm-link">0/1 Knapsack Problem</a> - Maximize value with weight constraint</li>
+                <li><a href="#" class="algorithm-link">Longest Common Subsequence</a> - Find the longest sequence common to two strings</li>
+                <li><a href="#" class="algorithm-link">Matrix Chain Multiplication</a> - Find the most efficient way to multiply matrices</li>
+                <li><a href="#" class="algorithm-link">Longest Increasing Subsequence</a> - Find the longest subsequence such that all elements are in increasing order</li>
+                <li><a href="#" class="algorithm-link">Coin Change Problem</a> - Find the minimum number of coins to make a given amount</li>
+            </ul>
+        </div>
+
+        <div class="code-section">
+            <div class="code-tabs">
+                <div class="code-tab active" onclick="switchTab(this, 'cpp')">C++</div>
+                <div class="code-tab" onclick="switchTab(this, 'java')">Java</div>
+                <div class="code-tab" onclick="switchTab(this, 'python')">Python</div>
+                <div class="code-tab" onclick="switchTab(this, 'javascript')">JavaScript</div>
+            </div>
+            <div class="code-content">
+                <div class="code-block active" id="cpp">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-cpp">// C++ Implementation of Fibonacci using Dynamic Programming
+
+// 1. Recursive approach (inefficient)
+#include &lt;iostream&gt;
+using namespace std;
+
+int fibRecursive(int n) {
+    if (n <= 1)
+        return n;
+    return fibRecursive(n-1) + fibRecursive(n-2);
+}
+
+// 2. Top-down approach with memoization
+int fibMemoization(int n, int* memo) {
+    if (memo[n] != -1)
+        return memo[n];
+    
+    if (n <= 1)
+        memo[n] = n;
+    else
+        memo[n] = fibMemoization(n-1, memo) + fibMemoization(n-2, memo);
+    
+    return memo[n];
+}
+
+// 3. Bottom-up approach with tabulation
+int fibTabulation(int n) {
+    int dp[n+1];
+    dp[0] = 0;
+    dp[1] = 1;
+    
+    for (int i = 2; i <= n; i++)
+        dp[i] = dp[i-1] + dp[i-2];
+    
+    return dp[n];
+}
+
+int main() {
+    int n = 10;
+    
+    // Recursive approach (exponential time complexity)
+    cout << "Recursive: " << fibRecursive(n) << endl;
+    
+    // Memoization approach (O(n) time, O(n) space + recursion overhead)
+    int memo[n+1];
+    fill(memo, memo+n+1, -1);
+    cout << "Memoization: " << fibMemoization(n, memo) << endl;
+    
+    // Tabulation approach (O(n) time, O(n) space)
+    cout << "Tabulation: " << fibTabulation(n) << endl;
+    
+    return 0;
+}</code></pre>
+                </div>
+                <div class="code-block" id="java">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-java">// Java Implementation of Fibonacci using Dynamic Programming
+
+public class FibonacciDP {
+    
+    // 1. Recursive approach (inefficient)
+    public static int fibRecursive(int n) {
+        if (n <= 1)
+            return n;
+        return fibRecursive(n-1) + fibRecursive(n-2);
+    }
+    
+    // 2. Top-down approach with memoization
+    public static int fibMemoization(int n, int[] memo) {
+        if (memo[n] != -1)
+            return memo[n];
+        
+        if (n <= 1)
+            memo[n] = n;
+        else
+            memo[n] = fibMemoization(n-1, memo) + fibMemoization(n-2, memo);
+        
+        return memo[n];
+    }
+    
+    // 3. Bottom-up approach with tabulation
+    public static int fibTabulation(int n) {
+        int[] dp = new int[n+1];
+        dp[0] = 0;
+        dp[1] = 1;
+        
+        for (int i = 2; i <= n; i++)
+            dp[i] = dp[i-1] + dp[i-2];
+        
+        return dp[n];
+    }
+    
+    public static void main(String[] args) {
+        int n = 10;
+        
+        // Recursive approach (exponential time complexity)
+        System.out.println("Recursive: " + fibRecursive(n));
+        
+        // Memoization approach (O(n) time, O(n) space + recursion overhead)
+        int[] memo = new int[n+1];
+        for (int i = 0; i <= n; i++)
+            memo[i] = -1;
+        System.out.println("Memoization: " + fibMemoization(n, memo));
+        
+        // Tabulation approach (O(n) time, O(n) space)
+        System.out.println("Tabulation: " + fibTabulation(n));
+    }
+}</code></pre>
+                </div>
+                <div class="code-block" id="python">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-python"># Python Implementation of Fibonacci using Dynamic Programming
+
+# 1. Recursive approach (inefficient)
+def fib_recursive(n):
+    if n <= 1:
+        return n
+    return fib_recursive(n-1) + fib_recursive(n-2)
+
+# 2. Top-down approach with memoization
+def fib_memoization(n, memo=None):
+    if memo is None:
+        memo = {0: 0, 1: 1}
+    
+    if n in memo:
+        return memo[n]
+    
+    memo[n] = fib_memoization(n-1, memo) + fib_memoization(n-2, memo)
+    return memo[n]
+
+# 3. Bottom-up approach with tabulation
+def fib_tabulation(n):
+    if n <= 1:
+        return n
+    
+    dp = [0] * (n + 1)
+    dp[1] = 1
+    
+    for i in range(2, n + 1):
+        dp[i] = dp[i-1] + dp[i-2]
+    
+    return dp[n]
+
+# 4. Space-optimized approach
+def fib_optimized(n):
+    if n <= 1:
+        return n
+    
+    a, b = 0, 1
+    for i in range(2, n + 1):
+        c = a + b
+        a = b
+        b = c
+    
+    return b
+
+if __name__ == "__main__":
+    n = 10
+    
+    # Warning: For large values of n, the recursive approach will be very slow
+    print(f"Recursive: {fib_recursive(n)}")
+    
+    # Memoization approach (O(n) time, O(n) space + recursion overhead)
+    print(f"Memoization: {fib_memoization(n)}")
+    
+    # Tabulation approach (O(n) time, O(n) space)
+    print(f"Tabulation: {fib_tabulation(n)}")
+    
+    # Optimized approach (O(n) time, O(1) space)
+    print(f"Optimized: {fib_optimized(n)}")</code></pre>
+                </div>
+                <div class="code-block" id="javascript">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-javascript">// JavaScript Implementation of Fibonacci using Dynamic Programming
+
+// 1. Recursive approach (inefficient)
+function fibRecursive(n) {
+    if (n <= 1)
+        return n;
+    return fibRecursive(n-1) + fibRecursive(n-2);
+}
+
+// 2. Top-down approach with memoization
+function fibMemoization(n, memo = {}) {
+    if (n in memo)
+        return memo[n];
+    
+    if (n <= 1)
+        return n;
+    
+    memo[n] = fibMemoization(n-1, memo) + fibMemoization(n-2, memo);
+    return memo[n];
+}
+
+// 3. Bottom-up approach with tabulation
+function fibTabulation(n) {
+    if (n <= 1)
+        return n;
+    
+    const dp = Array(n+1).fill(0);
+    dp[1] = 1;
+    
+    for (let i = 2; i <= n; i++)
+        dp[i] = dp[i-1] + dp[i-2];
+    
+    return dp[n];
+}
+
+// 4. Space-optimized approach
+function fibOptimized(n) {
+    if (n <= 1)
+        return n;
+    
+    let a = 0, b = 1;
+    for (let i = 2; i <= n; i++) {
+        const c = a + b;
+        a = b;
+        b = c;
+    }
+    
+    return b;
+}
+
+// Testing with n = 10
+const n = 10;
+
+console.log(`Recursive: ${fibRecursive(n)}`);
+console.log(`Memoization: ${fibMemoization(n)}`);
+console.log(`Tabulation: ${fibTabulation(n)}`);
+console.log(`Optimized: ${fibOptimized(n)}`);</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Advantages and Disadvantages of Dynamic Programming</h2>
+            <h3>Advantages:</h3>
+            <ul class="steps-section">
+                <li><strong>Optimal Solutions:</strong> Guarantees optimal solutions for problems with optimal substructure</li>
+                <li><strong>Efficiency:</strong> Reduces time complexity from exponential to polynomial in many cases</li>
+                <li><strong>Versatility:</strong> Applicable to a wide range of optimization problems</li>
+                <li><strong>Memoization:</strong> Eliminates redundant calculations by storing results</li>
+            </ul>
+
+            <h3>Disadvantages:</h3>
+            <ul class="steps-section">
+                <li><strong>Memory Requirements:</strong> Can require significant memory to store solutions to subproblems</li>
+                <li><strong>Implementation Complexity:</strong> Often more complex to implement than greedy or divide-and-conquer approaches</li>
+                <li><strong>Problem Identification:</strong> Sometimes difficult to identify if a problem can be solved using DP</li>
+                <li><strong>Suboptimal for Simple Problems:</strong> Adds unnecessary complexity for problems that can be solved with simpler methods</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+    <script>
+        hljs.highlightAll();
+        
+        function switchTab(element, language) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.code-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Add active class to selected tab
+            element.classList.add('active');
+            
+            // Hide all code blocks
+            document.querySelectorAll('.code-block').forEach(block => {
+                block.classList.remove('active');
+            });
+            
+            // Show selected code block
+            document.getElementById(language).classList.add('active');
+        }
+        
+        function copyCode(button) {
+            const pre = button.nextElementSibling;
+            const code = pre.textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                const originalIcon = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                }, 2000);
+            });
+        }
+        
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.classList.toggle('active');
+            
+            const icon = content.previousElementSibling;
+            icon.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

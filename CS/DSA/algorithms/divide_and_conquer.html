@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divide and Conquer Algorithms</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+        
+        /* Hero section */
+        .hero-section {
+            background-color: #0052cc;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .content-section h2 {
+            color: #0052cc;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.8rem;
+            padding-right: 40px; /* Space for toggle icon */
+        }
+
+        .content-section h3 {
+            color: #0052cc;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Code section */
+        .code-section {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-tabs {
+            display: flex;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+            overflow-x: auto;
+        }
+
+        .code-tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .code-tab.active {
+            background-color: #0078d7;
+            color: white;
+        }
+
+        .code-content {
+            padding: 0;
+            position: relative;
+        }
+
+        .code-block {
+            display: none;
+            position: relative;
+        }
+
+        .code-block.active {
+            display: block;
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 1.5rem;
+            overflow-x: auto;
+            border-radius: 0;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 4px;
+            padding: 0.4rem 0.7rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Steps section */
+        .steps-section ul, .steps-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .steps-section li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* Comparison table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #e0e0e0;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Examples */
+        .example {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0078d7;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example h3, .example h4 {
+            margin-bottom: 0.8rem;
+            color: #0052cc;
+        }
+
+        /* Toggle functionality */
+        .toggle-icon {
+            position: absolute;
+            top: 2.1rem;
+            right: 2rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #0052cc;
+            transition: transform 0.3s ease;
+            z-index: 10;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(0, 82, 204, 0.1);
+        }
+
+        .toggle-icon:hover {
+            background-color: rgba(0, 82, 204, 0.2);
+        }
+
+        .toggle-icon.active {
+            transform: rotate(45deg);
+        }
+
+        .toggle-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .toggle-content.active {
+            max-height: 2000px;
+        }
+
+        .algorithm-link {
+            color: #0078d7;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .algorithm-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Visual representation */
+        .visual-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        .dc-visual {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .visual-caption {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #555;
+            text-align: center;
+        }
+
+        /* Algorithm flowchart */
+        .flowchart {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .flowchart-step {
+            background-color: #e6f0ff;
+            border: 2px solid #0078d7;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .flowchart-arrow {
+            font-size: 2rem;
+            color: #0078d7;
+            margin: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.3rem;
+            }
+            
+            .content-section h2 {
+                font-size: 1.7rem;
+            }
+
+            .flowchart {
+                flex-direction: column;
+            }
+
+            .flowchart-arrow {
+                transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../algorithms.html" class="back-btn">← Back to Algorithms</a>
+        </div>
+        
+        <div class="hero-section">
+            <h1>Divide and Conquer Algorithms</h1>
+            <p>A problem-solving technique used to solve problems by dividing the main problem into subproblems, solving them individually and then merging them to find solution to the original problem.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>What is Divide and Conquer?</h2>
+            <p>Divide and Conquer is a problem-solving strategy that involves breaking down a complex problem into smaller, more manageable subproblems, solving each subproblem independently, and then combining these solutions to solve the original problem.</p>
+            <p>This paradigm is particularly useful when we can divide a problem into independent subproblems. If the subproblems overlap, then Dynamic Programming is typically a more appropriate approach.</p>
+
+            <div class="flowchart">
+                <div class="flowchart-step">
+                    <h3>Divide</h3>
+                    <p>Break the given problem into smaller non-overlapping problems</p>
+                </div>
+                <div class="flowchart-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="flowchart-step">
+                    <h3>Conquer</h3>
+                    <p>Solve each smaller problem independently</p>
+                </div>
+                <div class="flowchart-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="flowchart-step">
+                    <h3>Combine</h3>
+                    <p>Merge solutions of smaller problems to find the overall result</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Classic Examples of Divide and Conquer</h2>
+
+            <div class="example">
+                <h3>1. Merge Sort</h3>
+                <p>A sorting algorithm that divides the array into two halves, sorts each half independently, and then merges the sorted halves to produce a fully sorted array.</p>
+                <p>Process:</p>
+                <ol class="steps-section">
+                    <li><strong>Divide:</strong> Split the array into two equal halves</li>
+                    <li><strong>Conquer:</strong> Recursively sort each half</li>
+                    <li><strong>Combine:</strong> Merge the sorted halves</li>
+                </ol>
+                <p>Time Complexity: O(n log n)</p>
+            </div>
+
+            <div class="example">
+                <h3>2. Quick Sort</h3>
+                <p>A sorting algorithm that picks a pivot element and rearranges the array elements so that all elements smaller than the pivot are on the left side, and all greater elements are on the right side.</p>
+                <p>Process:</p>
+                <ol class="steps-section">
+                    <li><strong>Divide:</strong> Choose a pivot and partition the array</li>
+                    <li><strong>Conquer:</strong> Recursively sort the subarrays on the left and right of pivot</li>
+                    <li><strong>Combine:</strong> The array is already sorted after the recursive calls</li>
+                </ol>
+                <p>Average Time Complexity: O(n log n)</p>
+            </div>
+
+            <div class="example">
+                <h3>3. Binary Search</h3>
+                <p>A search algorithm that finds the position of a target value within a sorted array.</p>
+                <p>Process:</p>
+                <ol class="steps-section">
+                    <li><strong>Divide:</strong> Compare the target value with the middle element of the array</li>
+                    <li><strong>Conquer:</strong> If the target is not found, search in the appropriate half</li>
+                    <li><strong>Combine:</strong> Return the position if found, or indicate not found</li>
+                </ol>
+                <p>Time Complexity: O(log n)</p>
+            </div>
+
+            <div class="example">
+                <h3>4. Strassen's Matrix Multiplication</h3>
+                <p>An algorithm for multiplying two matrices that is more efficient than the standard matrix multiplication for large matrices.</p>
+                <p>Time Complexity: O(n^2.81) compared to O(n^3) for standard matrix multiplication</p>
+            </div>
+        </div>
+
+        <div class="content-section visual-section">
+            <img src="../../Assets/images/merge-sort-visualization.png" alt="Merge Sort Visualization" class="dc-visual">
+            <p class="visual-caption">Merge Sort: A visual representation of the divide, conquer, and combine steps</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Comparison with Other Algorithmic Paradigms</h2>
+            <div class="toggle-icon" onclick="toggleContent('comparison')">
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="toggle-content" id="comparison">
+                <div class="comparison-table-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Divide and Conquer</th>
+                                <th>Dynamic Programming</th>
+                                <th>Greedy Algorithms</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Subproblem Relationship</td>
+                                <td>Subproblems are independent and non-overlapping</td>
+                                <td>Subproblems are overlapping</td>
+                                <td>Subproblems may or may not be independent</td>
+                            </tr>
+                            <tr>
+                                <td>Solution Construction</td>
+                                <td>Bottom-up (solve small problems first, then combine)</td>
+                                <td>Can be top-down (memoization) or bottom-up (tabulation)</td>
+                                <td>Top-down (make one best choice at each step)</td>
+                            </tr>
+                            <tr>
+                                <td>Memory Usage</td>
+                                <td>Often requires additional space for recursive calls</td>
+                                <td>Uses storage for subproblem solutions</td>
+                                <td>Typically minimal memory requirements</td>
+                            </tr>
+                            <tr>
+                                <td>Decision Making</td>
+                                <td>Makes independent decisions for each subproblem</td>
+                                <td>Considers all possible choices for optimal solution</td>
+                                <td>Makes the locally optimal choice at each step</td>
+                            </tr>
+                            <tr>
+                                <td>Common Applications</td>
+                                <td>Sorting algorithms, searching, matrix operations</td>
+                                <td>Optimization problems, sequence alignment, shortest paths</td>
+                                <td>Scheduling, shortest path (Dijkstra's), minimum spanning trees</td>
+                            </tr>
+                            <tr>
+                                <td>Parallelization</td>
+                                <td>Easily parallelizable (independent subproblems)</td>
+                                <td>Difficult to parallelize (dependencies between subproblems)</td>
+                                <td>Often sequential in nature</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Divide and Conquer vs. Dynamic Programming</h3>
+                <div class="example">
+                    <h4>Key Distinctions:</h4>
+                    <ul class="steps-section">
+                        <li><strong>Subproblem Independence:</strong> In divide and conquer, subproblems are independent with no overlap. In dynamic programming, subproblems overlap and their solutions are stored to avoid recomputation.</li>
+                        <li><strong>Application Context:</strong> Use divide and conquer when subproblems are independent; use dynamic programming when subproblems overlap.</li>
+                        <li><strong>Example Comparison:</strong> Merge sort (divide and conquer) divides the array into non-overlapping parts. Fibonacci calculation (dynamic programming) has overlapping subproblems (calculating fib(4) requires fib(3) and fib(2), and calculating fib(3) requires fib(2) again).</li>
+                    </ul>
+                </div>
+
+                <h3>Divide and Conquer vs. Greedy Algorithms</h3>
+                <div class="example">
+                    <h4>Key Distinctions:</h4>
+                    <ul class="steps-section">
+                        <li><strong>Decision-making approach:</strong> Divide and conquer breaks problems into independent subproblems. Greedy algorithms make the locally optimal choice at each step.</li>
+                        <li><strong>Optimality:</strong> Divide and conquer algorithms generally guarantee optimal solutions. Greedy algorithms may not always yield the optimal solution.</li>
+                        <li><strong>Example Comparison:</strong> Merge sort (divide and conquer) breaks the array into halves, sorts them, and combines. Activity selection problem (greedy) selects the next activity with the earliest finish time.</li>
+                    </ul>
+                </div>
+
+                <h3>When to Choose Which Approach</h3>
+                <p>Choose <strong>Divide and Conquer</strong> when:</p>
+                <ul class="steps-section">
+                    <li>The problem can be broken down into independent, non-overlapping subproblems</li>
+                    <li>The solution to the original problem can be constructed from solutions to the subproblems</li>
+                    <li>The problem size reduces significantly with each division</li>
+                    <li>Examples: Sorting (merge sort, quick sort), binary search, Fast Fourier Transform</li>
+                </ul>
+
+                <p>Choose <strong>Dynamic Programming</strong> when:</p>
+                <ul class="steps-section">
+                    <li>The problem has overlapping subproblems</li>
+                    <li>The problem has optimal substructure (optimal solution contains optimal solutions to subproblems)</li>
+                    <li>You need to avoid redundant calculations</li>
+                    <li>Examples: Fibonacci numbers, knapsack problem, longest common subsequence</li>
+                </ul>
+
+                <p>Choose <strong>Greedy Algorithms</strong> when:</p>
+                <ul class="steps-section">
+                    <li>Making locally optimal choices leads to a globally optimal solution</li>
+                    <li>The problem has the greedy choice property</li>
+                    <li>A fast solution is needed, even if it's not always optimal</li>
+                    <li>Examples: Huffman coding, Dijkstra's algorithm, fractional knapsack</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Advantages of Divide and Conquer</h2>
+            <ul class="steps-section">
+                <li><strong>Solving difficult problems:</strong> Divide and conquer technique is a tool for solving difficult problems conceptually. It breaks the problem into sub-problems, solves them as individual cases, and then combines them to solve the original problem.</li>
+                <li><strong>Algorithm efficiency:</strong> The divide-and-conquer algorithm often helps in the discovery of efficient algorithms. It is the key to algorithms like Quick Sort, Merge Sort, and fast Fourier transforms.</li>
+                <li><strong>Parallelism:</strong> Divide and Conquer algorithms are used in multi-processor systems with shared-memory where distinct sub-problems can be executed on different processors simultaneously.</li>
+                <li><strong>Memory access:</strong> These algorithms naturally make efficient use of memory caches. Since the subproblems are small enough to be solved in cache without using the main memory, they are often referred to as "cache oblivious."</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Disadvantages of Divide and Conquer</h2>
+            <ul class="steps-section">
+                <li><strong>Overhead:</strong> The process of dividing the problem into subproblems and then combining the solutions can require additional time and resources. This overhead can be significant for problems that are already relatively small or have a simple solution.</li>
+                <li><strong>Complexity:</strong> Dividing a problem into smaller subproblems can increase the complexity of the overall solution, especially when the subproblems are interdependent and must be solved in a specific order.</li>
+                <li><strong>Difficulty of implementation:</strong> Some problems are difficult to divide into smaller subproblems or require a complex algorithm to do so. In these cases, implementing a divide and conquer solution can be challenging.</li>
+                <li><strong>Memory limitations:</strong> When working with large data sets, the memory requirements for storing the intermediate results of the subproblems can become a limiting factor.</li>
+            </ul>
+        </div>
+
+        <div class="code-section">
+            <div class="code-tabs">
+                <div class="code-tab active" onclick="switchTab(this, 'cpp')">C++</div>
+                <div class="code-tab" onclick="switchTab(this, 'java')">Java</div>
+                <div class="code-tab" onclick="switchTab(this, 'python')">Python</div>
+                <div class="code-tab" onclick="switchTab(this, 'javascript')">JavaScript</div>
+            </div>
+            <div class="code-content">
+                <div class="code-block active" id="cpp">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-cpp">// C++ implementation of Merge Sort using Divide and Conquer
+
+#include &lt;iostream&gt;
+using namespace std;
+
+// Merge two subarrays of arr[]
+// First subarray is arr[left..mid]
+// Second subarray is arr[mid+1..right]
+void merge(int arr[], int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    // Create temporary arrays
+    int L[n1], R[n2];
+
+    // Copy data to temporary arrays
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = arr[mid + 1 + j];
+
+    // Merge the temporary arrays back into arr[left..right]
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy the remaining elements of L[], if any
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[], if any
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+// Main function that sorts arr[left..right] using merge()
+void mergeSort(int arr[], int left, int right) {
+    if (left < right) {
+        // Same as (left+right)/2, but avoids overflow for large left and right
+        int mid = left + (right - left) / 2;
+
+        // Sort first and second halves
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+
+        // Merge the sorted halves
+        merge(arr, left, mid, right);
+    }
+}
+
+// Binary Search implementation using Divide and Conquer
+int binarySearch(int arr[], int left, int right, int x) {
+    if (right >= left) {
+        int mid = left + (right - left) / 2;
+
+        // If the element is present at the middle itself
+        if (arr[mid] == x)
+            return mid;
+
+        // If element is smaller than mid, then it can only be present in left subarray
+        if (arr[mid] > x)
+            return binarySearch(arr, left, mid - 1, x);
+
+        // Else the element can only be present in right subarray
+        return binarySearch(arr, mid + 1, right, x);
+    }
+
+    // We reach here when element is not present in array
+    return -1;
+}
+
+// Utility function to print an array
+void printArray(int A[], int size) {
+    for (int i = 0; i < size; i++)
+        cout << A[i] << " ";
+    cout << endl;
+}
+
+// Driver code
+int main() {
+    int arr[] = { 12, 11, 13, 5, 6, 7 };
+    int arr_size = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Given array is \n";
+    printArray(arr, arr_size);
+
+    mergeSort(arr, 0, arr_size - 1);
+
+    cout << "\nSorted array is \n";
+    printArray(arr, arr_size);
+
+    int x = 13;
+    int result = binarySearch(arr, 0, arr_size - 1, x);
+    (result == -1)
+        ? cout << "\nElement " << x << " is not present in the array"
+        : cout << "\nElement " << x << " is present at index " << result;
+
+    return 0;
+}</code></pre>
+                </div>
+                <div class="code-block" id="java">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-java">// Java implementation of Divide and Conquer algorithms
+
+class DivideAndConquerExamples {
+    // Merge two subarrays of arr[]
+    // First subarray is arr[left..mid]
+    // Second subarray is arr[mid+1..right]
+    void merge(int arr[], int left, int mid, int right) {
+        // Find sizes of two subarrays to be merged
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+
+        // Create temporary arrays
+        int L[] = new int[n1];
+        int R[] = new int[n2];
+
+        // Copy data to temporary arrays
+        for (int i = 0; i < n1; ++i)
+            L[i] = arr[left + i];
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[mid + 1 + j];
+
+        // Merge the temporary arrays
+        int i = 0, j = 0, k = left;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+
+        // Copy remaining elements of L[] if any
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        // Copy remaining elements of R[] if any
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+
+    // Main function that sorts arr[left..right] using merge()
+    void mergeSort(int arr[], int left, int right) {
+        if (left < right) {
+            // Find the middle point
+            int mid = (left + right) / 2;
+
+            // Sort first and second halves
+            mergeSort(arr, left, mid);
+            mergeSort(arr, mid + 1, right);
+
+            // Merge the sorted halves
+            merge(arr, left, mid, right);
+        }
+    }
+
+    // Binary Search using Divide and Conquer
+    int binarySearch(int arr[], int left, int right, int x) {
+        if (right >= left) {
+            int mid = left + (right - left) / 2;
+
+            // If the element is present at the middle itself
+            if (arr[mid] == x)
+                return mid;
+
+            // If element is smaller than mid, search in the left subarray
+            if (arr[mid] > x)
+                return binarySearch(arr, left, mid - 1, x);
+
+            // Else search in the right subarray
+            return binarySearch(arr, mid + 1, right, x);
+        }
+
+        // Element is not present in the array
+        return -1;
+    }
+
+    // Utility function to print array
+    static void printArray(int arr[]) {
+        for (int i = 0; i < arr.length; ++i)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+
+    // Quick Sort implementation
+    int partition(int arr[], int low, int high) {
+        int pivot = arr[high];
+        int i = (low - 1); // Index of smaller element
+        for (int j = low; j < high; j++) {
+            // If current element is smaller than or equal to pivot
+            if (arr[j] <= pivot) {
+                i++;
+
+                // Swap arr[i] and arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        // Swap arr[i+1] and arr[high] (or pivot)
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+
+        return i + 1;
+    }
+
+    void quickSort(int arr[], int low, int high) {
+        if (low < high) {
+            // pi is partitioning index
+            int pi = partition(arr, low, high);
+
+            // Sort elements before and after partition
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+
+    // Driver code
+    public static void main(String args[]) {
+        DivideAndConquerExamples ob = new DivideAndConquerExamples();
+        int arr[] = { 12, 11, 13, 5, 6, 7 };
+        
+        System.out.println("Given Array");
+        printArray(arr);
+        
+        ob.mergeSort(arr, 0, arr.length - 1);
+        
+        System.out.println("\nSorted array");
+        printArray(arr);
+        
+        int x = 13;
+        int result = ob.binarySearch(arr, 0, arr.length - 1, x);
+        if (result == -1)
+            System.out.println("\nElement " + x + " is not present in the array");
+        else
+            System.out.println("\nElement " + x + " found at index " + result);
+    }
+}</code></pre>
+                </div>
+                <div class="code-block" id="python">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-python"># Python implementation of Divide and Conquer algorithms
+
+# Merge Sort implementation
+def merge_sort(arr):
+    if len(arr) > 1:
+        # Finding the middle of the array
+        mid = len(arr) // 2
+        
+        # Dividing the array into two halves
+        L = arr[:mid]
+        R = arr[mid:]
+        
+        # Recursive call on each half
+        merge_sort(L)
+        merge_sort(R)
+        
+        # Two iterators for traversing the two halves
+        i = j = k = 0
+        
+        # Copy data to temporary arrays L[] and R[]
+        while i < len(L) and j < len(R):
+            if L[i] <= R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+        
+        # Checking if any element was left
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+        
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+
+# Binary Search implementation
+def binary_search(arr, left, right, x):
+    if right >= left:
+        mid = left + (right - left) // 2
+        
+        # If element is present at the middle itself
+        if arr[mid] == x:
+            return mid
+        
+        # If element is smaller than mid, search in the left subarray
+        elif arr[mid] > x:
+            return binary_search(arr, left, mid - 1, x)
+        
+        # Else search in the right subarray
+        else:
+            return binary_search(arr, mid + 1, right, x)
+    
+    # Element is not present in the array
+    else:
+        return -1
+
+# Quick Sort implementation
+def quick_sort(arr, low, high):
+    if low < high:
+        # pi is partitioning index
+        pi = partition(arr, low, high)
+        
+        # Sort elements before and after partition
+        quick_sort(arr, low, pi - 1)
+        quick_sort(arr, pi + 1, high)
+
+def partition(arr, low, high):
+    # Choose the rightmost element as pivot
+    pivot = arr[high]
+    
+    # Pointer for greater element
+    i = low - 1
+    
+    # Traverse through all elements
+    # Compare each element with pivot
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            # If element smaller than pivot is found
+            # swap it with the greater element pointed by i
+            i += 1
+            
+            # Swapping element at i with element at j
+            arr[i], arr[j] = arr[j], arr[i]
+    
+    # Swap the pivot element with the greater element at i
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    
+    # Return the position from where partition is done
+    return i + 1
+
+# Maximum subarray sum using Divide and Conquer
+def max_subarray_sum(arr, low, high):
+    # Base case: only one element
+    if low == high:
+        return arr[low]
+    
+    # Find middle point
+    mid = (low + high) // 2
+    
+    # Return maximum of following three possible cases
+    # Maximum subarray sum in left half
+    # Maximum subarray sum in right half
+    # Maximum subarray sum such that the subarray crosses the midpoint
+    return max(max_subarray_sum(arr, low, mid),
+               max_subarray_sum(arr, mid+1, high),
+               max_crossing_sum(arr, low, mid, high))
+
+def max_crossing_sum(arr, low, mid, high):
+    # Include elements on left of mid
+    sum = 0
+    left_sum = float("-inf")
+    
+    for i in range(mid, low-1, -1):
+        sum += arr[i]
+        if (sum > left_sum):
+            left_sum = sum
+    
+    # Include elements on right of mid
+    sum = 0
+    right_sum = float("-inf")
+    for i in range(mid + 1, high + 1):
+        sum += arr[i]
+        if (sum > right_sum):
+            right_sum = sum
+    
+    # Return sum of elements on left and right of mid
+    return left_sum + right_sum
+
+# Driver code
+if __name__ == "__main__":
+    arr = [12, 11, 13, 5, 6, 7]
+    print("Given array is:")
+    print(arr)
+    
+    merge_sort(arr)
+    print("\nSorted array is:")
+    print(arr)
+    
+    x = 13
+    result = binary_search(arr, 0, len(arr)-1, x)
+    if result != -1:
+        print(f"\nElement {x} is present at index {result}")
+    else:
+        print(f"\nElement {x} is not present in array")
+    
+    # Quick sort example
+    arr2 = [10, 7, 8, 9, 1, 5]
+    print("\nUnsorted array for quick sort:")
+    print(arr2)
+    quick_sort(arr2, 0, len(arr2)-1)
+    print("Sorted array is:")
+    print(arr2)
+    
+    # Maximum subarray sum example
+    arr3 = [-2, -5, 6, -2, -3, 1, 5, -6]
+    max_sum = max_subarray_sum(arr3, 0, len(arr3)-1)
+    print("\nMaximum subarray sum is:", max_sum)</code></pre>
+                </div>
+                <div class="code-block" id="javascript">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-javascript">// JavaScript implementation of Divide and Conquer algorithms
+
+// Merge Sort implementation
+function mergeSort(arr) {
+    // Base case: if the array has only one element, it's already sorted
+    if (arr.length <= 1) return arr;
+    
+    // Find the middle point to divide the array
+    const mid = Math.floor(arr.length / 2);
+    
+    // Divide the array into two halves
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid);
+    
+    // Recursively sort the two halves
+    return merge(mergeSort(left), mergeSort(right));
+}
+
+// Merge two sorted arrays
+function merge(left, right) {
+    let result = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
+    
+    // Compare elements from both arrays and add the smaller one to result
+    while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+            result.push(left[leftIndex]);
+            leftIndex++;
+        } else {
+            result.push(right[rightIndex]);
+            rightIndex++;
+        }
+    }
+    
+    // Add remaining elements from left array
+    while (leftIndex < left.length) {
+        result.push(left[leftIndex]);
+        leftIndex++;
+    }
+    
+    // Add remaining elements from right array
+    while (rightIndex < right.length) {
+        result.push(right[rightIndex]);
+        rightIndex++;
+    }
+    
+    return result;
+}
+
+// Binary Search implementation
+function binarySearch(arr, left, right, x) {
+    if (right >= left) {
+        const mid = Math.floor(left + (right - left) / 2);
+        
+        // If the element is present at the middle itself
+        if (arr[mid] === x) return mid;
+        
+        // If element is smaller than mid, search in the left subarray
+        if (arr[mid] > x) return binarySearch(arr, left, mid - 1, x);
+        
+        // Else search in the right subarray
+        return binarySearch(arr, mid + 1, right, x);
+    }
+    
+    // Element is not present in array
+    return -1;
+}
+
+// Quick Sort implementation
+function quickSort(arr, low = 0, high = arr.length - 1) {
+    if (low < high) {
+        // pi is the partitioning index
+        const pi = partition(arr, low, high);
+        
+        // Separately sort elements before and after partition
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+    return arr;
+}
+
+function partition(arr, low, high) {
+    // Pivot (Element to be placed at right position)
+    const pivot = arr[high];
+    
+    let i = low - 1; // Index of smaller element
+    
+    for (let j = low; j <= high - 1; j++) {
+        // If current element is smaller than the pivot
+        if (arr[j] < pivot) {
+            i++;
+            // Swap arr[i] and arr[j]
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+    }
+    // Swap arr[i + 1] and arr[high] (or pivot)
+    [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+    return i + 1;
+}
+
+// Maximum subarray sum using Divide and Conquer
+function maxSubarraySum(arr, low, high) {
+    // Base case: only one element
+    if (low === high) return arr[low];
+    
+    // Find middle point
+    const mid = Math.floor((low + high) / 2);
+    
+    /* Return maximum of following three possible cases:
+       a) Maximum subarray sum in left half
+       b) Maximum subarray sum in right half
+       c) Maximum subarray sum such that the subarray crosses the midpoint */
+    return Math.max(
+        maxSubarraySum(arr, low, mid),
+        maxSubarraySum(arr, mid + 1, high),
+        maxCrossingSum(arr, low, mid, high)
+    );
+}
+
+function maxCrossingSum(arr, low, mid, high) {
+    // Include elements on left of mid
+    let sum = 0;
+    let leftSum = -Infinity;
+    
+    for (let i = mid; i >= low; i--) {
+        sum += arr[i];
+        if (sum > leftSum) {
+            leftSum = sum;
+        }
+    }
+    
+    // Include elements on right of mid
+    sum = 0;
+    let rightSum = -Infinity;
+    
+    for (let i = mid + 1; i <= high; i++) {
+        sum += arr[i];
+        if (sum > rightSum) {
+            rightSum = sum;
+        }
+    }
+    
+    // Return sum of elements on left and right of mid
+    return leftSum + rightSum;
+}
+
+// Test the implementations
+const arr = [12, 11, 13, 5, 6, 7];
+console.log("Given array:", arr);
+
+// Test Merge Sort
+const sortedArr = mergeSort([...arr]);
+console.log("Sorted array:", sortedArr);
+
+// Test Binary Search
+const x = 13;
+const result = binarySearch(sortedArr, 0, sortedArr.length - 1, x);
+result !== -1
+    ? console.log(`Element ${x} is present at index ${result}`)
+    : console.log(`Element ${x} is not present in the array`);
+
+// Test Quick Sort
+const arr2 = [10, 7, 8, 9, 1, 5];
+console.log("Unsorted array for quick sort:", arr2);
+quickSort(arr2);
+console.log("Sorted array:", arr2);
+
+// Test Maximum Subarray Sum
+const arr3 = [-2, -5, 6, -2, -3, 1, 5, -6];
+const maxSum = maxSubarraySum(arr3, 0, arr3.length - 1);
+console.log("Maximum subarray sum is:", maxSum);</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+    <script>
+        hljs.highlightAll();
+        
+        function switchTab(element, language) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.code-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Add active class to selected tab
+            element.classList.add('active');
+            
+            // Hide all code blocks
+            document.querySelectorAll('.code-block').forEach(block => {
+                block.classList.remove('active');
+            });
+            
+            // Show selected code block
+            document.getElementById(language).classList.add('active');
+        }
+        
+        function copyCode(button) {
+            const pre = button.nextElementSibling;
+            const code = pre.textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                const originalIcon = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                }, 2000);
+            });
+        }
+        
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.classList.toggle('active');
+            
+            const icon = content.previousElementSibling;
+            icon.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
