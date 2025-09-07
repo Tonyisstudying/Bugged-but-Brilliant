@@ -1,39 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Add click listeners to category headers
-    const categories = document.querySelectorAll('.algo-category');
-    categories.forEach(category => {
-        const header = category.querySelector('.category-header');
-        const content = category.querySelector('.category-content');
+    // Title animation
+    const mainTitle = document.querySelector('.main-title');
+    const titleContainer = document.querySelector('.title-container');
+    const mainContent = document.querySelector('.main-content');
+    
+    // Show the title with animation after a small delay
+    setTimeout(() => {
+        mainTitle.classList.add('active');
+    }, 500);
+    
+    // Handle scroll to transform title
+    let titleAnimationComplete = false;
+    
+    window.addEventListener('scroll', function() {
+        const scrollPosition = window.scrollY;
         
-        // Skip if no content section
-        if (!content) return;
-        
-        // Initially hide all content sections
-        content.style.display = 'none';
-        
-        // Toggle content when header is clicked
-        header.addEventListener('click', function(e) {
-            // Don't toggle if clicking the see more button
-            if (e.target.classList.contains('see-more-btn')) return;
+        // Transform title when scrolled down
+        if (scrollPosition > 100) {
+            titleContainer.classList.add('scrolled');
+            mainTitle.classList.add('scrolled');
             
-            // Toggle display
-            if (content.style.display === 'none') {
-                content.style.display = 'block';
-                
-                // Add animation class
-                content.classList.add('fade-in');
-                
-                // Scroll to the category
-                setTimeout(() => {
-                    category.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }, 100);
-            } else {
-                content.style.display = 'none';
+            if (!titleAnimationComplete && scrollPosition > 300) {
+                mainContent.classList.add('visible');
+                titleAnimationComplete = true;
             }
-        });
+        } else {
+            titleContainer.classList.remove('scrolled');
+            mainTitle.classList.remove('scrolled');
+        }
     });
     
     // Animation for algorithm boxes

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms - DSA</title>
+    <link rel="icon" type="image/x-icon" href="../../Assets/images/team logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+        
+        /* Hero section */
+        .hero-section {
+            background-color: #0052cc;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        /* Algorithm examples */
+        .algo-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .algo-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .algo-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .algo-card h2 {
+            color: #0052cc;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .algo-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .code-example {
+            background-color: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        
+        code {
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+            white-space: pre;
+        }
+        
+        .complexity-info {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .complexity-info p {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .algo-card {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .algo-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .algo-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .algo-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="algorithms.html" class="back-btn">← Back to Algorithms</a>
+        </div>
+        
+        <div class="hero-section">
+            <h1>Sorting Algorithms</h1>
+            <p>Sorting algorithms are used to arrange the elements of a list in a specific order, such as numerical or alphabetical. It organizes the items in a systematic way, making it easier to search for and access specific elements.</p>
+        </div>
+        
+        <div class="algo-examples">
+            <div class="algo-card">
+                <h2>Bubble Sort</h2>
+                <p>Compares and swaps adjacent items repeatedly. Easy to understand but slow for large datasets.</p>
+                <div class="code-example">
+                    <code>function bubbleSort(arr) {
+  const n = arr.length;
+  
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      // Compare adjacent elements
+      if (arr[j] > arr[j + 1]) {
+        // Swap them if they are in wrong order
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+  
+  return arr;
+}</code>
+                </div>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n²) in worst and average cases.</p>
+                    <p><strong>Space Complexity:</strong> O(1) - Sorts in-place.</p>
+                    <p><strong>When to use:</strong> Educational purposes or very small datasets.</p>
+                </div>
+            </div>
+            
+            <div class="algo-card">
+                <h2>Merge Sort</h2>
+                <p>Divides the list into halves, sorts them, and merges. Reliable and efficient.</p>
+                <div class="code-example">
+                    <code>function mergeSort(arr) {
+  // Base case
+  if (arr.length <= 1) return arr;
+  
+  // Divide array in half
+  const mid = Math.floor(arr.length / 2);
+  const left = mergeSort(arr.slice(0, mid));
+  const right = mergeSort(arr.slice(mid));
+  
+  // Merge sorted halves
+  return merge(left, right);
+}
+
+function merge(left, right) {
+  let result = [];
+  let i = 0;
+  let j = 0;
+  
+  // Compare elements from both arrays and add smaller one to result
+  while (i < left.length && j < right.length) {
+    if (left[i] < right[j]) {
+      result.push(left[i]);
+      i++;
+    } else {
+      result.push(right[j]);
+      j++;
+    }
+  }
+  
+  // Add remaining elements
+  return [...result, ...left.slice(i), ...right.slice(j)];
+}</code>
+                </div>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n log n) in all cases.</p>
+                    <p><strong>Space Complexity:</strong> O(n) - Requires additional space.</p>
+                    <p><strong>When to use:</strong> General purpose sorting when stability is needed.</p>
+                </div>
+            </div>
+            
+            <div class="algo-card">
+                <h2>Quick Sort</h2>
+                <p>Picks a "pivot," splits the list around it, and sorts recursively. Fast for most cases.</p>
+                <div class="code-example">
+                    <code>function quickSort(arr) {
+  // Base case
+  if (arr.length <= 1) return arr;
+  
+  // Select pivot (first element for simplicity)
+  const pivot = arr[0];
+  
+  // Partition array
+  const less = arr.slice(1).filter(x => x <= pivot);
+  const greater = arr.slice(1).filter(x => x > pivot);
+  
+  // Recursive calls and combine results
+  return [...quickSort(less), pivot, ...quickSort(greater)];
+}</code>
+                </div>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n log n) average, O(n²) worst case.</p>
+                    <p><strong>Space Complexity:</strong> O(log n) average for call stack.</p>
+                    <p><strong>When to use:</strong> General purpose sorting when memory usage is a concern.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Syntax highlighting (simplified)
+            document.querySelectorAll('code').forEach(block => {
+                // Basic highlighting
+                block.innerHTML = block.innerHTML
+                    .replace(/\b(function|for|if|else|return|let|const|var|while)\b/g, '<span style="color: #0000ff;">$1</span>')
+                    .replace(/(\/\/.+)/g, '<span style="color: #008000;">$1</span>')
+                    .replace(/\b(\d+)\b/g, '<span style="color: #098658;">$1</span>')
+                    .replace(/("[^"]*")/g, '<span style="color: #a31515;">$1</span>');
+            });
+        });
+    </script>
+</body>
+</html>

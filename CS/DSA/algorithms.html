@@ -9,152 +9,67 @@
     <link rel="stylesheet" href="algorithms.css">
 </head>
 <body>
+    <!-- Title animation container -->
+    <div class="title-container">
+        <h1 class="main-title">
+            <span class="title-part-1">Algorithm</span> 
+            <span class="title-part-2">that makes</span> 
+            <span class="title-part-3">things fast:</span>
+        </h1>
+    </div>
+
     <div class="container">
-        <!-- Navigation bar with back and home buttons -->
+        <!-- Navigation bar with back button -->
         <div class="nav-container">
-            <a href="../course_page.html" class="back-btn">← Back to Computer Science</a>
-            <a href="../../pages/home.html" class="home-btn">
-                <i class="fas fa-home"></i> Home
-            </a>
-            <div class="nav-title">Algorithms</div>
+            <a href="../dsa.html" class="back-btn">← Back to DSA</a>
         </div>
-
-        <!-- Main algorithm concept diagram -->
-        <div class="main-diagram">
-            <div class="central-icon">
-                <img src="../../Assets/images/algorithm_icon.png" alt="Algorithm Icon">
-            </div>
-
-            <div class="algorithm-types">
-                <!-- Recursion -->
-                <div class="algo-box recursion">
-                    <h2>Recursion</h2>
-                    <p>A programming technique where a function calls itself within its own definition. It is usually used to solve problems that can be broken down into smaller instances of the same problem.</p>
-                </div>
-
-                <!-- Dynamic Programming -->
-                <div class="algo-box dynamic-programming">
-                    <h2>Dynamic Programming</h2>
-                    <p>Dynamic Programming is a method used to solve complex problems by breaking them down into simpler subproblems. By solving each subproblem only once and storing the results, it avoids redundant computations.</p>
-                </div>
-
-                <!-- Greedy -->
-                <div class="algo-box greedy">
-                    <h2>Greedy</h2>
-                    <p>Greedy Algorithm is a problem-solving approach that builds a solution step by step, always choosing the option that offers the most immediate benefit at each step.</p>
-                </div>
-
-                <!-- Backtracking -->
-                <div class="algo-box backtracking">
-                    <h2>Backtracking</h2>
-                    <p>Follow Recursion with the option to revert and traces back if the solution from current point is not feasible.</p>
-                </div>
-
-                <!-- Divide and Conquer -->
-                <div class="algo-box divide-conquer">
-                    <h2>Divide and Conquer</h2>
-                    <p>A strategy to solve problems by dividing them into smaller subproblems, solving those subproblems, and combining the solutions to obtain the final solution.</p>
-                </div>
-
-                <!-- Randomized algorithms -->
-                <div class="algo-box randomized">
-                    <h2>Randomized algorithms</h2>
-                    <p>Are algorithms that use random choices to solve problems. They might give different answers each time, but they are often faster and easier than regular methods.</p>
+        
+        <!-- Main content shown after animation -->
+        <div class="main-content">
+            <h1 class="section-header">Algorithms</h1>
+            
+            <!-- Searching algorithms section -->
+            <div class="algo-category">
+                <div class="category-header">
+                    <h2>Searching algorithms</h2>
+                    <p>Searching algorithms are used to locate specific data within a large set of data. It helps find a target value within the data.</p>
+                    <a href="searching.html" class="see-more-btn">See more</a>
                 </div>
             </div>
-        </div>
-
-        <!-- Algorithm categories with expandable sections -->
-        <h1 class="section-title">Algorithm Categories</h1>
-
-        <!-- Searching algorithms section -->
-        <div class="algo-category" id="searching-algorithms">
-            <div class="category-header">
-                <h2>Searching algorithms</h2>
-                <p>Searching algorithms are used to locate specific data within a large set of data. It helps find a target value within the data.</p>
-                <button class="see-more-btn" onclick="location.href='searching.html'">See more</button>
-            </div>
-            <div class="category-content">
-                <div class="algo-showcase">
-                    <div class="showcase-text">
-                        <h3>Searching</h3>
-                        <p>Searching algorithms are used to locate specific data within a large set of data. It helps find a target value within the data. There are various types of searching algorithms, each with its own approach and efficiency.</p>
-                    </div>
-                    <div class="showcase-examples">
-                        <div class="example">
-                            <h3>Linear Search</h3>
-                            <p>Checks each item one by one until it finds the target. Simple but slow for large data.</p>
-                        </div>
-                        <div class="example">
-                            <h3>Binary Search</h3>
-                            <p>Splits a sorted list in half repeatedly to find the target quickly. Very fast but requires sorted data.</p>
-                        </div>
-                    </div>
+            
+            <!-- Sorting algorithms section -->
+            <div class="algo-category">
+                <div class="category-header">
+                    <h2>Sorting algorithms</h2>
+                    <p>Sorting algorithms are used to arrange the elements of a list in a specific order, such as numerical or alphabetical. It organizes the items in a systematic way, making it easier to search for and access specific elements.</p>
+                    <a href="sorting.html" class="see-more-btn">See more</a>
                 </div>
             </div>
-        </div>
-
-        <!-- Sorting algorithms section -->
-        <div class="algo-category" id="sorting-algorithms">
-            <div class="category-header">
-                <h2>Sorting algorithms</h2>
-                <p>Sorting algorithms are used to arrange the elements of a list in a specific order, such as numerical or alphabetical. It organizes the items in a systematic way, making it easier to search for and access specific elements.</p>
-                <button class="see-more-btn" onclick="location.href='sorting.html'">See more</button>
-            </div>
-            <div class="category-content">
-                <div class="algo-showcase">
-                    <div class="showcase-text">
-                        <h3>Sorting</h3>
-                        <p>Sorting algorithms are used to arrange the elements of a list in a specific order, such as numerical or alphabetical. It organizes the items in a systematic way, making it easier to search for and access specific elements.</p>
-                    </div>
-                    <div class="showcase-examples">
-                        <div class="example">
-                            <h3>Bubble Sort</h3>
-                            <p>Compares and swaps adjacent items repeatedly. Easy to understand but slow.</p>
-                        </div>
-                        <div class="example">
-                            <h3>Merge Sort</h3>
-                            <p>Divides the list into halves, sorts them, and merges. Reliable and efficient.</p>
-                        </div>
-                        <div class="example">
-                            <h3>Quick Sort</h3>
-                            <p>Picks a "pivot," splits the list around it, and sorts recursively. Fast for most cases.</p>
-                        </div>
-                    </div>
+            
+            <!-- Graph algorithms section -->
+            <div class="algo-category">
+                <div class="category-header">
+                    <h2>Graph algorithms</h2>
+                    <p>Graph algorithms are used to solve problems related to graph data structures. They help find paths, cycles, and connectivity between nodes in a graph.</p>
+                    <a href="graph.html" class="see-more-btn">See more</a>
                 </div>
             </div>
-        </div>
-
-        <!-- Graph algorithms section -->
-        <div class="algo-category" id="graph-algorithms">
-            <div class="category-header">
-                <h2>Graph algorithms</h2>
-                <p>Graph algorithms are used to solve problems related to graph data structures. They help find paths, cycles, and connectivity between nodes in a graph.</p>
-                <button class="see-more-btn" onclick="location.href='graph.html'">See more</button>
+            
+            <!-- Dynamic programming section -->
+            <div class="algo-category">
+                <div class="category-header">
+                    <h2>Dynamic programming</h2>
+                    <p>Dynamic programming is an algorithmic technique for solving complex problems by breaking them down into simpler subproblems and storing the results of these subproblems to avoid redundant computations.</p>
+                    <a href="dynamic.html" class="see-more-btn">See more</a>
+                </div>
             </div>
-        </div>
-
-        <!-- Algorithm efficiency section -->
-        <div class="algo-category" id="algorithm-efficiency">
-            <div class="category-header">
-                <h2>Algorithm that makes things fast:</h2>
-                <p>Understanding algorithm efficiency is crucial for writing performant code. Learn about time and space complexity analysis.</p>
-                <button class="see-more-btn" onclick="location.href='efficiency.html'">See more</button>
-            </div>
-            <div class="category-content">
-                <div class="efficiency-container">
-                    <div class="efficiency-section">
-                        <h3>Time Complexity</h3>
-                        <p>How runtime increases as input size grows</p>
-                        <ul>
-                            <li>O(1) - Constant time</li>
-                            <li>O(log n) - Logarithmic time</li>
-                            <li>O(n) - Linear time</li>
-                            <li>O(n log n) - Linearithmic time</li>
-                            <li>O(n²) - Quadratic time</li>
-                            <li>O(2ⁿ) - Exponential time</li>
-                        </ul>
-                    </div>
+            
+            <!-- Algorithm efficiency section -->
+            <div class="algo-category">
+                <div class="category-header">
+                    <h2>Algorithm that makes things fast:</h2>
+                    <p>Understanding algorithm efficiency is crucial for writing performant code. Learn about time and space complexity analysis.</p>
+                    <a href="efficiency.html" class="see-more-btn">See more</a>
                 </div>
             </div>
         </div>
