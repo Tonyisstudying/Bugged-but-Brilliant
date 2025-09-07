@@ -23,14 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Title transformation
         if (scrollPosition > 100) {
             mainTitle.classList.add('scrolled');
-            // Add hide class after a small delay to ensure smooth transition
-            setTimeout(() => {
-                if (scrollPosition > 100) {  // Check again to make sure we're still scrolled down
-                    mainTitle.style.display = 'none';
-                }
-            }, 500);  // Match this with the CSS transition duration
         } else {
-            mainTitle.style.display = 'block';
             mainTitle.classList.remove('scrolled');
         }
         
