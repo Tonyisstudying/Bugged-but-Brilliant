@@ -1,0 +1,142 @@
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: linear-gradient(
+    135deg,
+    hsl(337, 100%, 89%),
+    #d2bfdd,
+    #ddedfb,
+    #bde0fe
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  color: rgb(60, 58, 58);
+}
+
+/* Header */
+header {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 34px;
+  color: #1e3a8a;
+  margin: 0;
+}
+
+/* Mindmap*/
+.mindmap {
+  position: relative;
+  width: 95vw;
+  height: 85vh;
+  margin-top: 0;
+}
+
+/* Center */
+.center {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f472b6;
+  padding: 25px 40px;
+  border-radius: 16px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  color: white;
+  font-size: 20px;
+}
+
+/* Branch */
+.branch {
+  position: absolute;
+  background: #e0e7ff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  max-width: 280px;
+  line-height: 1.5;
+}
+
+.branch h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: #1e3a8a;
+}
+
+.branch ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.branch ul li {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+/* Position */
+.branch-left {
+  left: 3%;
+  top: 18%;
+}
+
+.branch-right {
+  right: 3%;
+  top: 18%;
+}
+
+.branch-bottom {
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 450px;
+}
+
+/* Line */
+.line {
+  position: absolute;
+  background: #94a3b8;
+}
+
+.line-left {
+  width: 60px;
+  height: 2px;
+  top: 25%;
+  left: 30%;
+}
+
+.line-right {
+  width: 60px;
+  height: 2px;
+  top: 25%;
+  right: 30%;
+}
+
+.line-bottom {
+  width: 2px;
+  height: 50px;
+  bottom: 50%;
+  left: 50%;
+}
+
+/* Sub-branches */
+.sub-branch {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 15px;
+  border-left: 2px dashed #94a3b8;
+}
+
+.node {
+  background: #fde68a;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
