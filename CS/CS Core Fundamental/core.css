@@ -16,18 +16,18 @@ body {
 
 /* Header */
 header {
-  margin-top: 20px; /* sát trên */
-  margin-bottom: 10px; /* gần mindmap hơn */
+  margin-top: 20px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
 header h1 {
-  font-size: 34px; /* to hơn */
+  font-size: 34px;
   color: #1e3a8a;
   margin: 0;
 }
 
-/* Mindmap tổng thể */
+/* Mindmap*/
 .mindmap {
   position: relative;
   width: 95vw;
@@ -35,10 +35,10 @@ header h1 {
   margin-top: 0;
 }
 
-/* Trung tâm */
+/* Center */
 .center {
   position: absolute;
-  top: 25%; /* kéo mindmap lên cao */
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #f472b6;
@@ -51,7 +51,7 @@ header h1 {
   font-size: 20px;
 }
 
-/* Nhánh */
+/* Branch */
 .branch {
   position: absolute;
   background: #e0e7ff;
@@ -78,25 +78,25 @@ header h1 {
   margin-bottom: 6px;
 }
 
-/* Vị trí */
+/* Position */
 .branch-left {
   left: 3%;
-  top: 18%; /* dịch lên cao theo center */
+  top: 18%;
 }
 
 .branch-right {
   right: 3%;
-  top: 18%; /* dịch lên cao theo center */
+  top: 18%;
 }
 
 .branch-bottom {
-  bottom: 15%; /* kéo nhánh dưới lên một chút */
+  bottom: 15%;
   left: 50%;
   transform: translateX(-50%);
   max-width: 450px;
 }
 
-/* Đường nối */
+/* Line */
 .line {
   position: absolute;
   background: #94a3b8;
@@ -118,12 +118,12 @@ header h1 {
 
 .line-bottom {
   width: 2px;
-  height: 50px; /* chỉnh vừa đủ */
-  bottom: 50%; /* căn lại cao hơn, dừng trước box */
+  height: 50px;
+  bottom: 50%;
   left: 50%;
 }
 
-/* Sub-branches cho Storage Devices */
+/* Sub-branches */
 .sub-branch {
   margin-top: 8px;
   display: flex;
