@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort - DSA</title>
+    <link rel="icon" type="image/x-icon" href="../../../Assets/images/team logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/csharp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/php.min.js"></script>
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .back-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+
+        /* Algorithm content */
+        .algorithm-container {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .algorithm-header h1 {
+            font-size: 2.5rem;
+            color: #0052cc;
+        }
+        
+        .last-updated {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        .algorithm-description {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .algorithm-steps {
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-steps h2 {
+            margin-bottom: 1rem;
+            color: #0052cc;
+        }
+        
+        .algorithm-steps ul {
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-steps li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Implementation section */
+        .implementation {
+            margin-top: 2.5rem;
+        }
+        
+        .implementation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .implementation-header h2 {
+            color: #0052cc;
+        }
+        
+        .implementation-description {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        /* Code editor */
+        .code-container {
+            position: relative;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .language-tabs {
+            display: flex;
+            background: #333;
+            padding: 0.5rem;
+            overflow-x: auto;
+        }
+        
+        .language-tabs button {
+            background: none;
+            border: none;
+            color: #ccc;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            margin-right: 0.3rem;
+        }
+        
+        .language-tabs button.active {
+            background: #0e639c;
+            color: white;
+        }
+        
+        .language-tabs button:hover:not(.active) {
+            background: #444;
+        }
+        
+        .code-editor {
+            background: #1e1e1e;
+            position: relative;
+        }
+        
+        .editor-header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0.5rem;
+            background: #252526;
+            border-bottom: 1px solid #333;
+        }
+        
+        .editor-buttons button {
+            background: none;
+            border: none;
+            color: #ccc;
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: 0.3rem;
+        }
+        
+        .editor-buttons button:hover {
+            background: #444;
+        }
+        
+        .code-block {
+            display: none;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        
+        .code-block.active {
+            display: block;
+        }
+        
+        /* Practice button */
+        .practice-btn {
+            display: block;
+            background-color: #008964;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 2rem 0;
+            transition: background-color 0.3s ease;
+        }
+        
+        .practice-btn:hover {
+            background-color: #006e50;
+        }
+        
+        .practice-btn i {
+            margin-left: 0.5rem;
+        }
+        
+        /* Output section */
+        .output-container {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .output-header {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .output-content {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* Share buttons */
+        .share-buttons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .share-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #0052cc;
+            margin-left: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .share-btn:hover {
+            transform: scale(1.15);
+        }
+        
+        /* Step-by-step explanation box */
+        .explanation-box {
+            background-color: #262626;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            color: #fff;
+        }
+        
+        .explanation-box h2 {
+            margin-bottom: 1.5rem;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+        
+        .explanation-steps {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .explanation-steps li {
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .explanation-steps li strong {
+            color: #fff;
+            display: inline-block;
+            margin-right: 0.5rem;
+            position: absolute;
+            left: 0;
+        }
+        
+        .explanation-steps li span {
+            display: block;
+            margin-left: 1rem;
+        }
+        
+        /* Link styling */
+        .text-link {
+            color: #10B981;
+            text-decoration: none;
+            border-bottom: 1px dashed #10B981;
+            transition: all 0.3s ease;
+        }
+        
+        .text-link:hover {
+            color: #059669;
+            border-bottom: 1px solid #059669;
+        }
+        
+        @media (max-width: 768px) {
+            .algorithm-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .share-buttons {
+                margin-top: 1rem;
+            }
+            
+            .language-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .language-tabs button {
+                margin-bottom: 0.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../sorting.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Sorting Algorithms</a>
+        </div>
+        
+        <div class="algorithm-container">
+            <div class="algorithm-header">
+                <div>
+                    <h1>Merge Sort</h1>
+                    <p class="last-updated">Last Updated: 19 Aug, 2025</p>
+                </div>
+                <div class="share-buttons">
+                    <button class="share-btn" title="Share"><i class="fas fa-share-alt"></i></button>
+                    <button class="share-btn" title="Comment"><i class="far fa-comment-alt"></i></button>
+                    <button class="share-btn" title="Edit"><i class="far fa-edit"></i></button>
+                    <button class="share-btn" title="More"><i class="fas fa-ellipsis-v"></i></button>
+                </div>
+            </div>
+            
+            <div class="algorithm-description">
+                <p>Merge sort is a popular sorting algorithm known for its efficiency and stability. It follows the <a href="../concepts/divide-and-conquer.html" class="text-link">divide-and-conquer</a> approach. It works by recursively dividing the input array into two halves, recursively sorting the two halves and finally merging them back together to obtain the sorted array.</p>
+            </div>
+            
+            <div class="algorithm-steps">
+                <h2>How does Merge Sort work?</h2>
+                <div class="explanation-box">
+                    <p>Here's a step-by-step explanation of how merge sort works:</p>
+                    <ol class="explanation-steps">
+                        <li><strong>1. Divide:</strong> Divide the list or array recursively into two halves until it can no more be divided.</li>
+                        <li><strong>2. Conquer:</strong> Each subarray is sorted individually using the merge sort algorithm.</li>
+                        <li><strong>3. Merge:</strong> The sorted subarrays are merged back together in sorted order. The process continues until all elements from both subarrays have been merged.</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="implementation">
+                <div class="implementation-header">
+                    <h2>Implementation</h2>
+                </div>
+                
+                <a href="https://practice.geeksforgeeks.org/problems/merge-sort/1" target="_blank" class="practice-btn">
+                    Try it on GFG Practice <i class="fas fa-external-link-alt"></i>
+                </a>
+                
+                <div class="code-container">
+                    <div class="language-tabs">
+                        <button class="language-tab active" data-lang="cpp">C++</button>
+                        <button class="language-tab" data-lang="c">C</button>
+                        <button class="language-tab" data-lang="java">Java</button>
+                        <button class="language-tab" data-lang="python">Python</button>
+                        <button class="language-tab" data-lang="csharp">C#</button>
+                        <button class="language-tab" data-lang="javascript">JavaScript</button>
+                        <button class="language-tab" data-lang="php">PHP</button>
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-header">
+                            <div class="editor-buttons">
+                                <button title="Copy code"><i class="far fa-copy"></i></button>
+                                <button title="Run code"><i class="fas fa-play"></i></button>
+                                <button title="Full screen"><i class="fas fa-expand"></i></button>
+                            </div>
+                        </div>
+                        
+                        <!-- C++ implementation -->
+                        <div class="code-block active" data-lang="cpp">
+                            <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Merge two subarrays L and M into arr
+void merge(int arr[], int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    // Create temp arrays
+    int L[n1], M[n2];
+
+    // Copy data to temp arrays
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++)
+        M[j] = arr[mid + 1 + j];
+
+    // Merge the temp arrays back
+    // Initial indices of first and second subarrays
+    int i = 0, j = 0;
+    // Initial index of merged array
+    int k = left;
+
+    // Until we reach either end of either L or M, pick larger among
+    // elements L and M and place them in the correct position at A[p..r]
+    while (i < n1 && j < n2) {
+        if (L[i] <= M[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = M[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy the remaining elements of L[], if there are any
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of M[], if there are any
+    while (j < n2) {
+        arr[k] = M[j];
+        j++;
+        k++;
+    }
+}
+
+// Main function that sorts arr[left..right] using merge()
+void mergeSort(int arr[], int left, int right) {
+    if (left < right) {
+        // mid is the point where the array is divided into two subarrays
+        int mid = left + (right - left) / 2;
+
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+
+        // Merge the sorted subarrays
+        merge(arr, left, mid, right);
+    }
+}
+
+// Driver code
+int main() {
+    int arr[] = { 38, 27, 43, 3, 9, 82, 10 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    
+    mergeSort(arr, 0, n - 1);
+    
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+    
+    return 0;
+}</code></pre>
+                        </div>
+                        
+                        <!-- C implementation -->
+                        <div class="code-block" data-lang="c">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// Merge two subarrays L and M into arr
+void merge(int arr[], int p, int q, int r) {
+  // Create L ← A[p..q] and M ← A[q+1..r]
+  int n1 = q - p + 1;
+  int n2 = r - q;
+
+  int L[n1], M[n2];
+
+  for (int i = 0; i < n1; i++)
+    L[i] = arr[p + i];
+  for (int j = 0; j < n2; j++)
+    M[j] = arr[q + 1 + j];
+
+  // Maintain current index of sub-arrays and main array
+  int i, j, k;
+  i = 0;
+  j = 0;
+  k = p;
+
+  // Until we reach either end of either L or M, pick larger among
+  // elements L and M and place them in the correct position at A[p..r]
+  while (i < n1 && j < n2) {
+    if (L[i] <= M[j]) {
+      arr[k] = L[i];
+      i++;
+    } else {
+      arr[k] = M[j];
+      j++;
+    }
+    k++;
+  }
+
+  // When we run out of elements in either L or M,
+  // pick up the remaining elements and put in A[p..r]
+  while (i < n1) {
+    arr[k] = L[i];
+    i++;
+    k++;
+  }
+
+  while (j < n2) {
+    arr[k] = M[j];
+    j++;
+    k++;
+  }
+}
+
+// Divide the array into two subarrays, sort them and merge them
+void mergeSort(int arr[], int l, int r) {
+  if (l < r) {
+    // m is the point where the array is divided into two subarrays
+    int m = l + (r - l) / 2;
+
+    mergeSort(arr, l, m);
+    mergeSort(arr, m + 1, r);
+
+    // Merge the sorted subarrays
+    merge(arr, l, m, r);
+  }
+}
+
+// Print the array
+void printArray(int arr[], int size) {
+  for (int i = 0; i < size; i++)
+    printf("%d ", arr[i]);
+  printf("\n");
+}
+
+// Driver program
+int main() {
+  int arr[] = {38, 27, 43, 3, 9, 82, 10};
+  int size = sizeof(arr) / sizeof(arr[0]);
+
+  mergeSort(arr, 0, size - 1);
+
+  printf("Sorted array: \n");
+  printArray(arr, size);
+  return 0;
+}</code></pre>
+                        </div>
+                        
+                        <!-- Java implementation -->
+                        <div class="code-block" data-lang="java">
+                            <pre><code class="language-java">class MergeSort {
+    // Merges two subarrays of arr[].
+    // First subarray is arr[l..m]
+    // Second subarray is arr[m+1..r]
+    void merge(int arr[], int l, int m, int r)
+    {
+        // Find sizes of two subarrays to be merged
+        int n1 = m - l + 1;
+        int n2 = r - m;
+  
+        /* Create temp arrays */
+        int L[] = new int[n1];
+        int R[] = new int[n2];
+  
+        /*Copy data to temp arrays*/
+        for (int i = 0; i < n1; ++i)
+            L[i] = arr[l + i];
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[m + 1 + j];
+  
+        /* Merge the temp arrays */
+        // Initial indexes of first and second subarrays
+        int i = 0, j = 0;
+  
+        // Initial index of merged subarray array
+        int k = l;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            }
+            else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+  
+        /* Copy remaining elements of L[] if any */
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+  
+        /* Copy remaining elements of R[] if any */
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+  
+    // Main function that sorts arr[l..r] using merge()
+    void sort(int arr[], int l, int r)
+    {
+        if (l < r) {
+            // Find the middle point
+            int m = l + (r - l) / 2;
+  
+            // Sort first and second halves
+            sort(arr, l, m);
+            sort(arr, m + 1, r);
+  
+            // Merge the sorted halves
+            merge(arr, l, m, r);
+        }
+    }
+  
+    /* A utility function to print array of size n */
+    static void printArray(int arr[])
+    {
+        int n = arr.length;
+        for (int i = 0; i < n; ++i)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+  
+    // Driver code
+    public static void main(String args[])
+    {
+        int arr[] = { 38, 27, 43, 3, 9, 82, 10 };
+  
+        System.out.println("Given array:");
+        printArray(arr);
+  
+        MergeSort ob = new MergeSort();
+        ob.sort(arr, 0, arr.length - 1);
+  
+        System.out.println("Sorted array:");
+        printArray(arr);
+    }
+}</code></pre>
+                        </div>
+                        
+                        <!-- Python implementation -->
+                        <div class="code-block" data-lang="python">
+                            <pre><code class="language-python">def merge_sort(arr):
+    if len(arr) > 1:
+        # Finding the mid of the array
+        mid = len(arr) // 2
+        
+        # Dividing the array elements into 2 halves
+        L = arr[:mid]
+        R = arr[mid:]
+        
+        # Sorting the first half
+        merge_sort(L)
+        
+        # Sorting the second half
+        merge_sort(R)
+        
+        i = j = k = 0
+        
+        # Copy data to temp arrays L[] and R[]
+        while i < len(L) and j < len(R):
+            if L[i] <= R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+        
+        # Checking if any element was left
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+        
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+    
+    return arr
+
+# Driver code
+if __name__ == '__main__':
+    arr = [38, 27, 43, 3, 9, 82, 10]
+    print("Given array is:", arr)
+    sorted_arr = merge_sort(arr)
+    print("Sorted array is:", sorted_arr)</code></pre>
+                        </div>
+                        
+                        <!-- C# implementation -->
+                        <div class="code-block" data-lang="csharp">
+                            <pre><code class="language-csharp">using System;
+
+class MergeSort {
+    // Merges two subarrays of []arr.
+    // First subarray is arr[l..m]
+    // Second subarray is arr[m+1..r]
+    void Merge(int[] arr, int l, int m, int r)
+    {
+        // Find sizes of two subarrays to be merged
+        int n1 = m - l + 1;
+        int n2 = r - m;
+
+        // Create temp arrays
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+
+        // Copy data to temp arrays
+        for (int i = 0; i < n1; ++i)
+            L[i] = arr[l + i];
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[m + 1 + j];
+
+        // Merge the temp arrays
+
+        // Initial indexes of first and second subarrays
+        int i = 0, j = 0;
+
+        // Initial index of merged subarray array
+        int k = l;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            }
+            else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+
+        // Copy remaining elements of L[] if any
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        // Copy remaining elements of R[] if any
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+
+    // Main function that sorts arr[l..r] using merge()
+    void Sort(int[] arr, int l, int r)
+    {
+        if (l < r) {
+            // Find the middle point
+            int m = l + (r - l) / 2;
+
+            // Sort first and second halves
+            Sort(arr, l, m);
+            Sort(arr, m + 1, r);
+
+            // Merge the sorted halves
+            Merge(arr, l, m, r);
+        }
+    }
+
+    // Utility function to print array of size n
+    static void PrintArray(int[] arr)
+    {
+        int n = arr.Length;
+        for (int i = 0; i < n; ++i)
+            Console.Write(arr[i] + " ");
+        Console.WriteLine();
+    }
+
+    // Driver code
+    public static void Main(string[] args)
+    {
+        int[] arr = { 38, 27, 43, 3, 9, 82, 10 };
+        Console.WriteLine("Given Array");
+        PrintArray(arr);
+        
+        MergeSort ob = new MergeSort();
+        ob.Sort(arr, 0, arr.Length - 1);
+        
+        Console.WriteLine("\nSorted array");
+        PrintArray(arr);
+    }
+}</code></pre>
+                        </div>
+                        
+                        <!-- JavaScript implementation -->
+                        <div class="code-block" data-lang="javascript">
+                            <pre><code class="language-javascript">// JavaScript program for Merge Sort
+
+// Merges two subarrays of arr[]
+// First subarray is arr[l..m]
+// Second subarray is arr[m+1..r]
+function merge(arr, l, m, r) {
+    // Find sizes of two subarrays to be merged
+    const n1 = m - l + 1;
+    const n2 = r - m;
+
+    // Create temp arrays
+    const L = new Array(n1);
+    const R = new Array(n2);
+
+    // Copy data to temp arrays L[] and R[]
+    for (let i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (let j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+
+    // Merge the temp arrays back into arr[l..r]
+    let i = 0; // Initial index of first subarray
+    let j = 0; // Initial index of second subarray
+    let k = l; // Initial index of merged subarray
+
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy the remaining elements of L[], if there are any
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[], if there are any
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+// Main function that sorts arr[l..r] using merge()
+function mergeSort(arr, l, r) {
+    if (l < r) {
+        // Find the middle point
+        const m = Math.floor(l + (r - l) / 2);
+
+        // Sort first and second halves
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+
+        // Merge the sorted halves
+        merge(arr, l, m, r);
+    }
+    return arr;
+}
+
+// Driver code
+const arr = [38, 27, 43, 3, 9, 82, 10];
+console.log("Given array: " + arr.join(' '));
+
+mergeSort(arr, 0, arr.length - 1);
+
+console.log("Sorted array: " + arr.join(' '));</code></pre>
+                        </div>
+                        
+                        <!-- PHP implementation -->
+                        <div class="code-block" data-lang="php">
+                            <pre><code class="language-php">&lt;?php
+// PHP program for Merge Sort
+
+// Merges two subarrays of arr[]
+// First subarray is arr[l..m]
+// Second subarray is arr[m+1..r]
+function merge(&$arr, $l, $m, $r) {
+    $n1 = $m - $l + 1;
+    $n2 = $r - $m;
+
+    // Create temp arrays
+    $L = array();
+    $R = array();
+
+    // Copy data to temp arrays L[] and R[]
+    for ($i = 0; $i < $n1; $i++)
+        $L[$i] = $arr[$l + $i];
+    for ($j = 0; $j < $n2; $j++)
+        $R[$j] = $arr[$m + 1 + $j];
+
+    // Merge the temp arrays back into arr[l..r]
+    $i = 0; // Initial index of first subarray
+    $j = 0; // Initial index of second subarray
+    $k = $l; // Initial index of merged subarray
+
+    while ($i < $n1 && $j < $n2) {
+        if ($L[$i] <= $R[$j]) {
+            $arr[$k] = $L[$i];
+            $i++;
+        } else {
+            $arr[$k] = $R[$j];
+            $j++;
+        }
+        $k++;
+    }
+
+    // Copy the remaining elements of L[], if there are any
+    while ($i < $n1) {
+        $arr[$k] = $L[$i];
+        $i++;
+        $k++;
+    }
+
+    // Copy the remaining elements of R[], if there are any
+    while ($j < $n2) {
+        $arr[$k] = $R[$j];
+        $j++;
+        $k++;
+    }
+}
+
+// Main function that sorts arr[l..r] using merge()
+function mergeSort(&$arr, $l, $r) {
+    if ($l < $r) {
+        // Find the middle point
+        $m = $l + (int)(($r - $l) / 2);
+
+        // Sort first and second halves
+        mergeSort($arr, $l, $m);
+        mergeSort($arr, $m + 1, $r);
+
+        // Merge the sorted halves
+        merge($arr, $l, $m, $r);
+    }
+}
+
+// Function to print an array
+function printArray($A, $size) {
+    for ($i = 0; $i < $size; $i++)
+        echo $A[$i] . " ";
+    echo "\n";
+}
+
+// Driver code
+$arr = array(38, 27, 43, 3, 9, 82, 10);
+$arr_size = sizeof($arr);
+
+echo "Given array is \n";
+printArray($arr, $arr_size);
+
+mergeSort($arr, 0, $arr_size - 1);
+
+echo "\nSorted array is \n";
+printArray($arr, $arr_size);
+?&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="output-container">
+                    <div class="output-header">Output</div>
+                    <div class="output-content">
+                        3 9 10 27 38 43 82
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../sorting/function.js"></script>
+</body>
+</html>
