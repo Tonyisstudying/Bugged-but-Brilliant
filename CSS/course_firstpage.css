@@ -6,7 +6,13 @@
 body {
   margin: 0;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  background: linear-gradient(135deg, hsl(337, 100%, 89%), #d2bfdd, #ddedfb, #bde0fe);
+  background: linear-gradient(
+    135deg,
+    hsl(337, 100%, 89%),
+    #d2bfdd,
+    #ddedfb,
+    #bde0fe
+  );
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -90,13 +96,13 @@ body {
     flex-direction: column;
     gap: 30px;
   }
-  
+
   .course-item {
     width: 300px;
     height: 150px;
     font-size: 18px;
   }
-  
+
   .header h1 {
     font-size: 36px;
   }
