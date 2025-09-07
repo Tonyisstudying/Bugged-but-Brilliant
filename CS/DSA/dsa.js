@@ -1,53 +1,56 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Main title animation
-    const mainTitle = document.querySelector('.main-title');
+function showContent(contentType) {
+    // Hide choice section
+    document.querySelector('.choice-section').style.display = 'none';
     
-    // Show the title with animation
-    setTimeout(() => {
-        mainTitle.classList.add('active');
-    }, 500);
-    
-    // Variables to track scroll position
-    let lastScrollTop = 0;
-    let circlesVisible = false;
-    let learnVisible = false;
-    
-    // Elements to animate on scroll
-    const circlesSection = document.getElementById('circles-section');
-    const learnSection = document.getElementById('learn-section');
-    
-    // Handle scroll events
-    window.addEventListener('scroll', function() {
-        let scrollPosition = window.scrollY;
-        
-        // Title transformation
-        if (scrollPosition > 100) {
-            mainTitle.classList.add('scrolled');
-        } else {
-            mainTitle.classList.remove('scrolled');
-        }
-        
-        // Animate circles section when scrolled into view
-        if (scrollPosition > window.innerHeight * 0.5 && !circlesVisible) {
-            circlesSection.classList.add('visible');
-            circlesVisible = true;
-        }
-        
-        // Animate learn section when scrolled into view
-        if (scrollPosition > window.innerHeight * 1.2 && !learnVisible) {
-            learnSection.classList.add('visible');
-            learnVisible = true;
-        }
-        
-        lastScrollTop = scrollPosition;
+    // Hide all content sections
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.style.display = 'none';
     });
     
-    // Handle clicks on circles
-    document.getElementById('data-structure-circle').addEventListener('click', function() {
-        window.location.href = 'DSA/data-structures.html';
+    // Show selected content section
+    document.getElementById(contentType + '-content').style.display = 'block';
+    
+    // Scroll to the top of the content
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+function showChoiceSection() {
+    // Hide all content sections
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.style.display = 'none';
     });
     
-    document.getElementById('algorithm-circle').addEventListener('click', function() {
-        window.location.href = 'DSA/algorithms.html';
+    // Hide all detail contents
+    document.querySelectorAll('.detail-content').forEach(detail => {
+        detail.style.display = 'none';
     });
-});Z
+    
+    // Show choice section
+    document.querySelector('.choice-section').style.display = 'block';
+    
+    // Scroll to choice section
+    document.querySelector('.choice-section').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+
+function toggleDetail(detailId) {
+    // Hide all detail contents
+    document.querySelectorAll('.detail-content').forEach(detail => {
+        if (detail.id !== detailId) {
+            detail.style.display = 'none';
+        }
+    });
+    
+    // Toggle the selected detail content
+    const detailContent = document.getElementById(detailId);
+    if (detailContent.style.display === 'block') {
+        detailContent.style.display = 'none';
+    } else {
+        detailContent.style.display = 'block';
+        detailContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
