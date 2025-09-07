@@ -1,147 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lexio Settings</title>
-  <link rel="icon" type="image/x-icon" href="/Assets/images/team-logo.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../CSS/setting.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lexio Settings</title>
+<link rel="icon" type="image/x-icon" href="../Assets/images/team logo.png" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="../CSS/setting.css" />
 </head>
 <body>
-  <div class="settings-container">
-    <div class="sidebar">
-      <div>
-        <div class="logo"><i class="fas fa-language"></i> <span>Lexio Settings</span></div>
-        <ul class="nav-links">
-          <li><a href="#" class="active" data-section="profile"><i class="fas fa-user"></i> Profile</a></li>
-          <li><a href="#" data-section="notifications"><i class="fas fa-bell"></i> Notifications</a></li>
-          <li><a href="#" data-section="appearance"><i class="fas fa-sun"></i> Appearance</a></li>
-          <li><a href="#" data-section="learning"><i class="fas fa-book"></i> Learning</a></li>
-          <li><a href="#" data-section="subscription"><i class="fas fa-crown"></i> Subscription</a></li>
-          <li><a href="#" data-section="support"><i class="fas fa-question-circle"></i> Support</a></li>
-        </ul>
-      </div>
-      <div class="logout"><button><i class="fas fa-sign-out-alt"></i> Logout</button></div>
+<div class="settings-container">
+<div class="sidebar">
+    <div>
+    <div class="logo"><i class="fas fa-language"></i> <span>Lexio Settings</span></div>
+    <ul class="nav-links">
+        <li><a href="#" class="active" data-section="profile"><i class="fas fa-user"></i> Profile</a></li>
+        <li><a href="#" data-section="notifications"><i class="fas fa-bell"></i> Notifications</a></li>
+        <li><a href="#" data-section="appearance"><i class="fas fa-sun"></i> Appearance</a></li>
+        <li><a href="#" data-section="learning"><i class="fas fa-book"></i> Learning</a></li>
+        <li><a href="#" data-section="subscription"><i class="fas fa-crown"></i> Subscription</a></li>
+        <li><a href="#" data-section="support"><i class="fas fa-question-circle"></i> Support</a></li>
+    </ul>
+    </div>
+    <div class="logout"><button><i class="fas fa-sign-out-alt"></i> Logout</button></div>
+</div>
+
+<div class="main-content">
+    <div class="header"><h1>Account Settings</h1></div>
+
+    <!-- PROFILE PAGE -->
+    <div class="settings-page" id="profile">
+    <div class="settings-section">
+        <h2>Profile</h2>
+        <div class="profile-info">
+        <div class="username">
+            <p id="username-display">Username: Loading...</p>
+            <button>Edit Profile</button>
+        </div>
+        </div>
+
+        <!-- XP -->
+        <div class="setting-item xp-item">
+        <div class="setting-info">
+            <h3>Experience Points (XP)</h3>
+            <p>Earn XP by completing lessons and activities</p>
+        </div>
+        <div class="xp-bar-bg">
+            <div id="xp-bar"></div>
+        </div>
+        <p id="xp-text">650 / 1000 XP</p>
+        </div>
+
+        <!-- Streak -->
+        <div class="setting-item streak-item">
+            <div class="setting-info">
+                <h3>Daily Streak</h3>
+                <p>Keep your learning streak alive!</p>
+            </div>
+        <div id="streak-container">
+            <span class="streak-day" title="Day 1">🔥</span>
+            <span class="streak-day" title="Day 2">🔥</span>
+            <span class="streak-day" title="Day 3">🔥</span>
+            <span class="streak-day inactive" title="Day 4">❄️</span>
+            <span class="streak-day inactive" title="Day 5">❄️</span>
+        </div>
+        <p id="streak-text">3-day streak</p>
+        </div>
+    </div>
     </div>
 
-    <div class="main-content">
-      <div class="header"><h1>Account Settings</h1></div>
-
-      <!-- PROFILE PAGE -->
-      <div class="settings-page" id="profile">
-        <div class="settings-section">
-          <h2>Profile</h2>
-          <div class="profile-info">
-            <img src="/Assets/images/default-avatar.png" alt="Profile Picture" />
-            <div>
-              <h3>Tonyisstudying</h3>
-              <p>Username: @tony123</p>
-              <button>Edit Profile</button>
-            </div>
-          </div>
-
-          <!-- XP -->
-          <div class="setting-item xp-item">
-            <div class="setting-info">
-              <h3>Experience Points (XP)</h3>
-              <p>Earn XP by completing lessons and activities</p>
-            </div>
-            <div class="xp-bar-bg">
-              <div id="xp-bar"></div>
-            </div>
-            <p id="xp-text">650 / 1000 XP</p>
-          </div>
-
-          <!-- Streak -->
-          <div class="setting-item streak-item">
-            <div class="setting-info">
-              <h3>Daily Streak</h3>
-              <p>Keep your learning streak alive!</p>
-            </div>
-            <div id="streak-container">
-              <span class="streak-day" title="Day 1">🔥</span>
-              <span class="streak-day" title="Day 2">🔥</span>
-              <span class="streak-day" title="Day 3">🔥</span>
-              <span class="streak-day inactive" title="Day 4">❄️</span>
-              <span class="streak-day inactive" title="Day 5">❄️</span>
-            </div>
-            <p id="streak-text">3-day streak</p>
-          </div>
+    <!-- NOTIFICATIONS PAGE -->
+    <div class="settings-page" id="notifications" style="display:none;">
+    <div class="settings-section">
+        <h2>Notifications</h2>
+        <div class="setting-item">
+        <div class="setting-info"><h3>Email Updates</h3><p>Get progress reports and reminders</p></div>
+        <label class="toggle-switch"><input type="checkbox" checked /><span class="slider"></span></label>
         </div>
-      </div>
-
-      <!-- NOTIFICATIONS PAGE -->
-      <div class="settings-page" id="notifications" style="display:none;">
-        <div class="settings-section">
-          <h2>Notifications</h2>
-          <div class="setting-item">
-            <div class="setting-info"><h3>Email Updates</h3><p>Get progress reports and reminders</p></div>
-            <label class="toggle-switch"><input type="checkbox" checked /><span class="slider"></span></label>
-          </div>
-          <div class="setting-item">
-            <div class="setting-info"><h3>Push Notifications</h3><p>Daily streak reminders</p></div>
-            <label class="toggle-switch"><input type="checkbox" /><span class="slider"></span></label>
-          </div>
+        <div class="setting-item">
+        <div class="setting-info"><h3>Push Notifications</h3><p>Daily streak reminders</p></div>
+        <label class="toggle-switch"><input type="checkbox" /><span class="slider"></span></label>
         </div>
-      </div>
-
-      <!-- APPEARANCE PAGE -->
-      <div class="settings-page" id="appearance" style="display:none;">
-        <div class="settings-section">
-          <h2>Appearance</h2>
-          <div class="setting-item">
-            <div class="setting-info"><h3>Theme</h3><p>Light or dark mode</p></div>
-            <div class="theme-selector">
-              <div class="theme-option theme-light active" title="Light Mode"></div>
-              <div class="theme-option theme-dark" title="Dark Mode"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- LEARNING PAGE -->
-      <div class="settings-page" id="learning" style="display:none;">
-        <div class="settings-section">
-          <h2>Learning Preferences</h2>
-          <div class="setting-item">
-            <div class="setting-info"><h3>Target Language</h3><p>Select the language you’re learning</p></div>
-            <div class="custom-dropdown">
-              <button class="dropbtn">Chinese <i class="fas fa-caret-down"></i></button>
-              <ul class="dropdown-content"><li>Chinese</li><li>English</li></ul>
-            </div>
-          </div>
-          <div class="setting-item">
-            <div class="setting-info"><h3>Daily Goal</h3><p>How much time you want to practice per day</p></div>
-            <div class="custom-dropdown">
-              <button class="dropbtn">10 minutes <i class="fas fa-caret-down"></i></button>
-              <ul class="dropdown-content"><li>5 minutes</li><li>10 minutes</li><li>20 minutes</li><li>30 minutes</li></ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SUBSCRIPTION PAGE -->
-      <div class="settings-page" id="subscription" style="display:none;">
-        <div class="settings-section">
-          <h2>Subscription</h2>
-          <p>Current Plan: <strong>Free</strong></p>
-          <div style="margin-top: 20px;">
-            <button class="upgrade-btn">Upgrade to Lexio Plus</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- SUPPORT PAGE -->
-      <div class="settings-page" id="support" style="display:none;">
-        <div class="settings-section">
-          <h2>Support</h2>
-          <p>Need help? Contact our support team at <strong>lexio@gmail.com</strong>.</p>
-        </div>
-      </div>
     </div>
-  </div>
+    </div>
 
-  <script src="../JS/setting.js"></script>
+    <!-- APPEARANCE PAGE -->
+    <div class="settings-page" id="appearance" style="display:none;">
+    <div class="settings-section">
+        <h2>Appearance</h2>
+        <div class="setting-item">
+        <div class="setting-info"><h3>Theme</h3><p>Light or dark mode</p></div>
+        <div class="theme-selector">
+            <div class="theme-option theme-light active" title="Light Mode"></div>
+            <div class="theme-option theme-dark" title="Dark Mode"></div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- LEARNING PAGE -->
+    <div class="settings-page" id="learning" style="display:none;">
+    <div class="settings-section">
+        <h2>Learning Preferences</h2>
+        <div class="setting-item">
+        <div class="setting-info"><h3>Target Language</h3><p>Select the language you’re learning</p></div>
+        <div class="custom-dropdown">
+            <button class="dropbtn">Chinese <i class="fas fa-caret-down"></i></button>
+            <ul class="dropdown-content"><li>Chinese</li><li>English</li></ul>
+        </div>
+        </div>
+        <div class="setting-item">
+        <div class="setting-info"><h3>Daily Goal</h3><p>How much time you want to practice per day</p></div>
+        <div class="custom-dropdown">
+            <button class="dropbtn">10 minutes <i class="fas fa-caret-down"></i></button>
+            <ul class="dropdown-content"><li>5 minutes</li><li>10 minutes</li><li>20 minutes</li><li>30 minutes</li></ul>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- SUBSCRIPTION PAGE -->
+    <div class="settings-page" id="subscription" style="display:none;">
+        <div class="settings-section">
+                <h2>Subscription</h2>
+                <p>Current Plan: <strong>Free</strong></p>
+                <div style="margin-top: 20px;">
+                <button class="upgrade-btn">Upgrade to Lexio Plus</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUPPORT PAGE -->
+    <div class="settings-page" id="support" style="display:none;">
+        <div class="settings-section">
+            <h2>Support</h2>
+            <p>Need help? Contact our support team at <strong>lexio@gmail.com</strong>.</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="../JS/setting.js"></script>
+<script src="../JS/Main/login.js"></script>
 </body>
 </html>

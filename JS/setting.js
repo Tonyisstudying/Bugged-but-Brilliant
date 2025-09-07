@@ -1,3 +1,24 @@
+//Uhm this funtion is to display username on the settings page :>
+document.addEventListener('DOMContentLoaded', function() {
+    // Get username from localStorage
+    const username = localStorage.getItem('username');
+    
+    // Update the username display
+    const usernameDisplay = document.getElementById('username-display');
+    if (username) {
+        usernameDisplay.textContent = `Username: ${username}`;
+    } else {
+        usernameDisplay.textContent = 'Username: Not logged in';
+        // Redirect to login page if not logged in
+        window.location.href = 'login.html';
+    }
+    
+    // Connect logout button
+    document.querySelector('.logout button').addEventListener('click', function() {
+        localStorage.removeItem('username');
+        window.location.href = 'login.html';
+    });
+});
 // Sidebar navigation
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', function (e) {

@@ -117,7 +117,9 @@ body {
   display: inline-block;
   padding-bottom: 5px;
 }
-
+.username {
+  font-size: 2rem;
+}
 .setting-item {
   background: rgba(255,255,255,0.7);
   border: 1px solid #ddd;
