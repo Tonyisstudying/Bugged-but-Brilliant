@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion Sort - DSA</title>
+    <link rel="icon" type="image/x-icon" href="../../../Assets/images/team logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/csharp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/php.min.js"></script>
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .back-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+
+        /* Algorithm content */
+        .algorithm-container {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .algorithm-header h1 {
+            font-size: 2.5rem;
+            color: #0052cc;
+        }
+        
+        .last-updated {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        .algorithm-description {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .algorithm-steps {
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-steps h2 {
+            margin-bottom: 1rem;
+            color: #0052cc;
+        }
+        
+        .algorithm-steps ul {
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-steps li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Implementation section */
+        .implementation {
+            margin-top: 2.5rem;
+        }
+        
+        .implementation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .implementation-header h2 {
+            color: #0052cc;
+        }
+        
+        .implementation-description {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        /* Code editor */
+        .code-container {
+            position: relative;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .language-tabs {
+            display: flex;
+            background: #333;
+            padding: 0.5rem;
+            overflow-x: auto;
+        }
+        
+        .language-tabs button {
+            background: none;
+            border: none;
+            color: #ccc;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            margin-right: 0.3rem;
+        }
+        
+        .language-tabs button.active {
+            background: #0e639c;
+            color: white;
+        }
+        
+        .language-tabs button:hover:not(.active) {
+            background: #444;
+        }
+        
+        .code-editor {
+            background: #1e1e1e;
+            position: relative;
+        }
+        
+        .editor-header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0.5rem;
+            background: #252526;
+            border-bottom: 1px solid #333;
+        }
+        
+        .editor-buttons button {
+            background: none;
+            border: none;
+            color: #ccc;
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: 0.3rem;
+        }
+        
+        .editor-buttons button:hover {
+            background: #444;
+        }
+        
+        .code-block {
+            display: none;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        
+        .code-block.active {
+            display: block;
+        }
+        
+        /* Practice button */
+        .practice-btn {
+            display: block;
+            background-color: #008964;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 2rem 0;
+            transition: background-color 0.3s ease;
+        }
+        
+        .practice-btn:hover {
+            background-color: #006e50;
+        }
+        
+        .practice-btn i {
+            margin-left: 0.5rem;
+        }
+        
+        /* Output section */
+        .output-container {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .output-header {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .output-content {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* Share buttons */
+        .share-buttons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .share-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #0052cc;
+            margin-left: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .share-btn:hover {
+            transform: scale(1.15);
+        }
+        
+        @media (max-width: 768px) {
+            .algorithm-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .share-buttons {
+                margin-top: 1rem;
+            }
+            
+            .language-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .language-tabs button {
+                margin-bottom: 0.3rem;
+            }
+        }
+
+        .highlight {
+            color: #0052cc;
+            font-weight: 600;
+        }
+        
+        .card-analogy {
+            background: #f5f8ff;
+            border-left: 4px solid #0052cc;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../sorting.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Sorting Algorithms</a>
+        </div>
+        
+        <div class="algorithm-container">
+            <div class="algorithm-header">
+                <div>
+                    <h1>Insertion Sort Algorithm</h1>
+                    <p class="last-updated">Last Updated: 23 Jul, 2025</p>
+                </div>
+                <div class="share-buttons">
+                    <button class="share-btn" title="Share"><i class="fas fa-share-alt"></i></button>
+                    <button class="share-btn" title="Comment"><i class="far fa-comment-alt"></i></button>
+                    <button class="share-btn" title="Edit"><i class="far fa-edit"></i></button>
+                    <button class="share-btn" title="More"><i class="fas fa-ellipsis-v"></i></button>
+                </div>
+            </div>
+            
+            <div class="algorithm-description">
+                <p>Insertion sort is a simple sorting algorithm that works by iteratively inserting each element of an unsorted list into its correct position in a sorted portion of the list. It is like sorting playing cards in your hands. You split the cards into two groups: the sorted cards and the unsorted cards. Then, you pick a card from the unsorted group and put it in the right place in the sorted group.</p>
+            </div>
+            
+            <div class="algorithm-steps">
+                <ul>
+                    <li>We start with the second element of the array as the first element is assumed to be sorted.</li>
+                    <li>Compare the second element with the first element if the second element is smaller then swap them.</li>
+                    <li>Move to the third element, compare it with the first two elements, and put it in its correct position.</li>
+                    <li>Repeat until the entire array is sorted.</li>
+                </ul>
+            </div>
+            
+            <div class="implementation">
+                <div class="implementation-header">
+                    <h2>Implementation</h2>
+                </div>
+                
+                <a href="https://practice.geeksforgeeks.org/problems/insertion-sort/1" target="_blank" class="practice-btn">
+                    Try it on GFG Practice <i class="fas fa-external-link-alt"></i>
+                </a>
+                
+                <div class="code-container">
+                    <div class="language-tabs">
+                        <button class="language-tab active" data-lang="cpp">C++</button>
+                        <button class="language-tab" data-lang="c">C</button>
+                        <button class="language-tab" data-lang="java">Java</button>
+                        <button class="language-tab" data-lang="python">Python</button>
+                        <button class="language-tab" data-lang="csharp">C#</button>
+                        <button class="language-tab" data-lang="javascript">JavaScript</button>
+                        <button class="language-tab" data-lang="php">PHP</button>
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-header">
+                            <div class="editor-buttons">
+                                <button title="Copy code"><i class="far fa-copy"></i></button>
+                                <button title="Run code"><i class="fas fa-play"></i></button>
+                                <button title="Full screen"><i class="fas fa-expand"></i></button>
+                            </div>
+                        </div>
+                        
+                        <!-- C++ implementation -->
+                        <div class="code-block active" data-lang="cpp">
+                            <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+/* Function to sort array using insertion sort */
+void insertionSort(int arr[], int n)
+{
+    for (int i = 1; i < n; ++i) {
+        int key = arr[i];
+        int j = i - 1;
+        
+        /* Move elements of arr[0..i-1], that are
+           greater than key, to one position ahead
+           of their current position */
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+/* A utility function to print array of size n */
+void printArray(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+// Driver method
+int main()
+{
+    int arr[] = { 12, 11, 13, 5, 6 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    
+    insertionSort(arr, n);
+    printArray(arr, n);
+    
+    return 0;
+}</code></pre>
+                        </div>
+                        
+                        <!-- C implementation -->
+                        <div class="code-block" data-lang="c">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+/* Function to sort an array using insertion sort*/
+void insertionSort(int arr[], int n)
+{
+    int i, key, j;
+    for (i = 1; i < n; i++) {
+        key = arr[i];
+        j = i - 1;
+ 
+        /* Move elements of arr[0..i-1], that are
+           greater than key, to one position ahead
+           of their current position */
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+ 
+// A utility function to print an array of size n
+void printArray(int arr[], int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+ 
+/* Driver program to test insertion sort */
+int main()
+{
+    int arr[] = { 12, 11, 13, 5, 6 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+ 
+    insertionSort(arr, n);
+    printArray(arr, n);
+ 
+    return 0;
+}</code></pre>
+                        </div>
+                        
+                        <!-- Java implementation -->
+                        <div class="code-block" data-lang="java">
+                            <pre><code class="language-java">// Java program for implementation of Insertion Sort
+class InsertionSort {
+    /* Function to sort array using insertion sort */
+    void sort(int arr[])
+    {
+        int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            int key = arr[i];
+            int j = i - 1;
+ 
+            /* Move elements of arr[0..i-1], that are
+               greater than key, to one position ahead
+               of their current position */
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
+        }
+    }
+ 
+    /* A utility function to print array of size n*/
+    static void printArray(int arr[])
+    {
+        int n = arr.length;
+        for (int i = 0; i < n; ++i)
+            System.out.print(arr[i] + " ");
+ 
+        System.out.println();
+    }
+ 
+    // Driver method
+    public static void main(String args[])
+    {
+        int arr[] = { 12, 11, 13, 5, 6 };
+ 
+        InsertionSort ob = new InsertionSort();
+        ob.sort(arr);
+ 
+        printArray(arr);
+    }
+}</code></pre>
+                        </div>
+                        
+                        <!-- Python implementation -->
+                        <div class="code-block" data-lang="python">
+                            <pre><code class="language-python"># Python program for implementation of Insertion Sort
+
+def insertion_sort(arr):
+    # Traverse through 1 to len(arr)
+    for i in range(1, len(arr)):
+        key = arr[i]
+        
+        # Move elements of arr[0..i-1], that are
+        # greater than key, to one position ahead
+        # of their current position
+        j = i-1
+        while j >= 0 and key < arr[j]:
+            arr[j+1] = arr[j]
+            j -= 1
+        arr[j+1] = key
+    
+    return arr
+
+# Driver code
+if __name__ == "__main__":
+    arr = [12, 11, 13, 5, 6]
+    sorted_arr = insertion_sort(arr)
+    print(*sorted_arr)</code></pre>
+                        </div>
+                        
+                        <!-- C# implementation -->
+                        <div class="code-block" data-lang="csharp">
+                            <pre><code class="language-csharp">// C# program for implementation of Insertion Sort
+using System;
+
+class InsertionSort {
+    // Function to sort array using insertion sort
+    void Sort(int[] arr)
+    {
+        int n = arr.Length;
+        for (int i = 1; i < n; ++i) {
+            int key = arr[i];
+            int j = i - 1;
+ 
+            // Move elements of arr[0..i-1], that are
+            // greater than key, to one position ahead
+            // of their current position
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
+        }
+    }
+ 
+    // A utility function to print array of size n
+    static void PrintArray(int[] arr)
+    {
+        int n = arr.Length;
+        for (int i = 0; i < n; ++i)
+            Console.Write(arr[i] + " ");
+ 
+        Console.Write("\n");
+    }
+ 
+    // Driver Code
+    public static void Main()
+    {
+        int[] arr = { 12, 11, 13, 5, 6 };
+        InsertionSort ob = new InsertionSort();
+        ob.Sort(arr);
+        PrintArray(arr);
+    }
+}</code></pre>
+                        </div>
+                        
+                        <!-- JavaScript implementation -->
+                        <div class="code-block" data-lang="javascript">
+                            <pre><code class="language-javascript">// JavaScript program for implementation of Insertion Sort
+
+function insertionSort(arr) {
+    let n = arr.length;
+    
+    for (let i = 1; i < n; i++) {
+        // Choosing the first element of the unsorted part
+        let key = arr[i];
+        
+        // The last element of the sorted part
+        let j = i - 1;
+        
+        /* Move elements of arr[0..i-1], that are
+           greater than key, to one position ahead
+           of their current position */
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+    
+    return arr;
+}
+
+// Driver code
+const arr = [12, 11, 13, 5, 6];
+console.log(insertionSort(arr).join(' '));</code></pre>
+                        </div>
+                        
+                        <!-- PHP implementation -->
+                        <div class="code-block" data-lang="php">
+                            <pre><code class="language-php">&lt;?php
+// PHP program for implementation of Insertion Sort
+
+function insertionSort(&$arr, $n) {
+    for ($i = 1; $i < $n; $i++) {
+        $key = $arr[$i];
+        $j = $i - 1;
+        
+        // Move elements of arr[0..$i-1], that are
+        // greater than key, to one position ahead
+        // of their current position
+        while ($j >= 0 && $arr[$j] > $key) {
+            $arr[$j + 1] = $arr[$j];
+            $j = $j - 1;
+        }
+        $arr[$j + 1] = $key;
+    }
+}
+
+// A utility function to print an array of size n
+function printArray($arr, $n) {
+    for ($i = 0; $i < $n; $i++)
+        echo $arr[$i] . " ";
+    echo "\n";
+}
+
+// Driver code
+$arr = array(12, 11, 13, 5, 6);
+$n = sizeof($arr);
+insertionSort($arr, $n);
+printArray($arr, $n);
+?&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="output-container">
+                    <div class="output-header">Output</div>
+                    <div class="output-content">
+                        5 6 11 12 13
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize syntax highlighting
+            hljs.highlightAll();
+            
+            // Language switcher functionality
+            const languageTabs = document.querySelectorAll('.language-tab');
+            languageTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update active tab
+                    document.querySelectorAll('.language-tab').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Show corresponding code block
+                    document.querySelectorAll('.code-block').forEach(block => {
+                        block.classList.remove('active');
+                    });
+                    document.querySelector(`.code-block[data-lang="${lang}"]`).classList.add('active');
+                });
+            });
+            
+            // Copy button functionality
+            document.querySelector('.editor-buttons button[title="Copy code"]').addEventListener('click', function() {
+                const activeCode = document.querySelector('.code-block.active code');
+                const textToCopy = activeCode.textContent;
+                
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    const originalIcon = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check"></i>';
+                    setTimeout(() => {
+                        this.innerHTML = originalIcon;
+                    }, 2000);
+                });
+            });
+            
+            // Run button functionality (would typically connect to a backend)
+            document.querySelector('.editor-buttons button[title="Run code"]').addEventListener('click', function() {
+                alert('Code execution would be handled by a backend service.');
+            });
+            
+            // Full screen button functionality
+            document.querySelector('.editor-buttons button[title="Full screen"]').addEventListener('click', function() {
+                const codeEditor = document.querySelector('.code-editor');
+                if (!document.fullscreenElement) {
+                    codeEditor.requestFullscreen().catch(err => {
+                        alert(`Error attempting to enable full-screen mode: ${err.message}`);
+                    });
+                } else {
+                    document.exitFullscreen();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
