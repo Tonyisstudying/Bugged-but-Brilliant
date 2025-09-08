@@ -1,0 +1,52 @@
+{
+    "questions": [
+        {
+            "question": "What does '比如说' mean?",
+            "options": ["For example", "To express", "Must, have to", "To change"],
+            "correct": 0,
+            "explanation": "'比如说' (bǐrúshuō) means 'for example' in English."
+        },
+        {
+            "question": "Which word means 'notebook'?",
+            "options": ["笔", "笔记", "笔记本", "表"],
+            "correct": 2,
+            "explanation": "'笔记本' (bǐjìběn) means 'notebook' in English."
+        },
+        {
+            "question": "What is the correct translation for '必须'?",
+            "options": ["Side, edge", "Must, have to", "Not enough", "To change"],
+            "correct": 1,
+            "explanation": "'必须' (bìxū) means 'must' or 'have to' in English."
+        },
+        {
+            "question": "What does '变成' mean?",
+            "options": ["To express", "To change", "To become, turn into", "Not only"],
+            "correct": 2,
+            "explanation": "'变成' (biànchéng) means 'to become' or 'turn into' in English."
+        },
+        {
+            "question": "The character '遍' is used for:",
+            "options": ["Counting money", "Counting frequency", "Counting people", "Counting time"],
+            "correct": 1,
+            "explanation": "'遍' (biàn) is used as a counter for frequency of actions."
+        },
+        {
+            "question": "What is the meaning of '表示'?",
+            "options": ["To express, to show", "Watch, clock", "To change", "Not bad"],
+            "correct": 0,
+            "explanation": "'表示' (biǎoshì) means 'to express' or 'to show' in English."
+        },
+        {
+            "question": "Which character means 'not enough'?",
+            "options": ["不错", "不但", "不够", "不过"],
+            "correct": 2,
+            "explanation": "'不够' (bùgòu) means 'not enough' in English."
+        },
+        {
+            "question": "What does '不过' mean?",
+            "options": ["Not bad", "Not only", "Not enough", "However, but"],
+            "correct": 3,
+            "explanation": "'不过' (bùguò) means 'however' or 'but' in English."
+        }
+    ]
+}
