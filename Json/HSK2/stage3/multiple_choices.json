@@ -1,0 +1,82 @@
+{
+    "questions": [
+        {
+            "question": "What does '草地' mean?",
+            "options": ["lawn, meadow", "long", "common", "supermarket"],
+            "correct": 0,
+            "explanation": "'草地' (cǎodì) means 'lawn' or 'meadow' in English."
+        },
+        {
+            "question": "Which word means 'floor, level'?",
+            "options": ["查", "超过", "层", "常用"],
+            "correct": 2,
+            "explanation": "'层' (céng) means 'floor' or 'level' in English."
+        },
+        {
+            "question": "What does '查' mean?",
+            "options": ["long", "to search, to look up", "to exceed", "to become"],
+            "correct": 1,
+            "explanation": "'查' (chá) means 'to search' or 'to look up' in English."
+        },
+        {
+            "question": "What is the meaning of '差不多'?",
+            "options": ["common", "almost, approximately", "supermarket", "to redo"],
+            "correct": 1,
+            "explanation": "'差不多' (chàbùduō) means 'almost' or 'approximately' in English."
+        },
+        {
+            "question": "Which phrase means 'common, frequently seen'?",
+            "options": ["常见", "常用", "超过", "称"],
+            "correct": 0,
+            "explanation": "'常见' (chángjiàn) means 'common' or 'frequently seen' in English."
+        },
+        {
+            "question": "How would you say 'commonly used' in Chinese?",
+            "options": ["长", "常见", "常用", "场"],
+            "correct": 2,
+            "explanation": "'常用' (chángyòng) means 'commonly used' or 'in common use' in English."
+        },
+        {
+            "question": "What does '场' refer to?",
+            "options": ["common", "long", "field, site, event", "to exceed"],
+            "correct": 2,
+            "explanation": "'场' (chǎng) refers to 'field', 'site', or 'event' in English."
+        },
+        {
+            "question": "What is the meaning of '超过'?",
+            "options": ["supermarket", "to exceed, to surpass", "achievement", "to redo"],
+            "correct": 1,
+            "explanation": "'超过' (chāoguò) means 'to exceed' or 'to surpass' in English."
+        },
+        {
+            "question": "What does '超市' mean?",
+            "options": ["supermarket", "to call, to address", "to repeat", "to set off"],
+            "correct": 0,
+            "explanation": "'超市' (chāoshì) means 'supermarket' in English."
+        },
+        {
+            "question": "Which word means 'vehicle, vehicles'?",
+            "options": ["车辆", "成绩", "称", "重复"],
+            "correct": 0,
+            "explanation": "'车辆' (chēliàng) means 'vehicle' or 'vehicles' in English."
+        },
+        {
+            "question": "What is the meaning of '成为'?",
+            "options": ["to complete", "achievement, score", "to become, to turn into", "to repeat"],
+            "correct": 2,
+            "explanation": "'成为' (chéngwéi) means 'to become' or 'to turn into' in English."
+        },
+        {
+            "question": "Which word means 'to redo from the beginning'?",
+            "options": ["重复", "重新", "出发", "称"],
+            "correct": 1,
+            "explanation": "'重新' (chóngxīn) means 'to redo from the beginning' or 'to start again' in English."
+        },
+        {
+            "question": "What does '出发' refer to?",
+            "options": ["to repeat", "achievement", "to call", "to set off, to start a journey"],
+            "correct": 3,
+            "explanation": "'出发' (chūfā) refers to 'to set off' or 'to start on a journey' in English."
+        }
+    ]
+}

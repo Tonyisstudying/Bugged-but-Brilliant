@@ -1,0 +1,76 @@
+{
+    "questions": [
+        {
+            "question": "What does '不要' mean?",
+            "options": ["Not necessarily", "Don't, do not", "Not long", "Different"],
+            "correct": 1,
+            "explanation": "'不要' (bùyào) means 'don't' or 'do not' in English."
+        },
+        {
+            "question": "What is the meaning of '不好意思'?",
+            "options": ["Dissatisfied", "Not as good as", "I'm sorry, embarrassed", "Different"],
+            "correct": 2,
+            "explanation": "'不好意思' (bù hǎo yì si) means 'I'm sorry' or 'embarrassed' in English."
+        },
+        {
+            "question": "Which character means 'not long'?",
+            "options": ["不要", "不久", "不满", "不同"],
+            "correct": 1,
+            "explanation": "'不久' (bùjiǔ) means 'not long' in English."
+        },
+        {
+            "question": "What is the correct translation for '不满'?",
+            "options": ["Dissatisfied", "Shortly after", "Different", "Not necessarily"],
+            "correct": 0,
+            "explanation": "'不满' (bùmǎn) means 'dissatisfied' in English."
+        },
+        {
+            "question": "What does '不如' mean?",
+            "options": ["Not as good as, why not", "Different", "Not long", "Shortly after"],
+            "correct": 0,
+            "explanation": "'不如' (bùrú) can mean 'not as good as' or 'why not' in English."
+        },
+        {
+            "question": "Which phrase means 'quite a few, many'?",
+            "options": ["不一定", "不少", "不同", "不要"],
+            "correct": 1,
+            "explanation": "'不少' (bù shǎo) means 'quite a few' or 'many' in English."
+        },
+        {
+            "question": "What does '不同' mean?",
+            "options": ["Not necessarily", "Not OK", "Different", "Not long"],
+            "correct": 2,
+            "explanation": "'不同' (bùtóng) means 'different' in English."
+        },
+        {
+            "question": "What is the meaning of '不行'?",
+            "options": ["Not OK, won't work", "Shortly after", "Different", "Not necessarily"],
+            "correct": 0,
+            "explanation": "'不行' (bùxíng) means 'not OK' or 'won't work' in English."
+        },
+        {
+            "question": "What does '部分' mean?",
+            "options": ["Menu", "Grass", "Part, portion", "To visit"],
+            "correct": 2,
+            "explanation": "'部分' (bùfèn) means 'part' or 'portion' in English."
+        },
+        {
+            "question": "Which character means 'menu'?",
+            "options": ["参加", "菜单", "草", "才"],
+            "correct": 1,
+            "explanation": "'菜单' (càidān) means 'menu' in English."
+        },
+        {
+            "question": "What is the difference between '参观' and '参加'?",
+            "options": ["One means 'to visit' and the other means 'to participate'", "They have the same meaning", "One is for places and one is for events", "There is no difference"],
+            "correct": 0,
+            "explanation": "'参观' (cānguān) means 'to visit' while '参加' (cānjiā) means 'to participate'."
+        },
+        {
+            "question": "What is the correct usage of '才'?",
+            "options": ["To introduce a new topic", "To indicate something just happened or only then", "To show disagreement", "To ask questions"],
+            "correct": 1,
+            "explanation": "'才' (cái) is used to indicate something just happened or only then."
+        }
+    ]
+}
