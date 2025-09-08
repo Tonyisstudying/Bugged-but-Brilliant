@@ -12,16 +12,16 @@
 }
 
 .home-button {
-  background: #FF9EAA;
-  color: white;
-  padding: 0.2rem 1rem;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
+    background: #FF9EAA;
+    color: white;
+    padding: 0.2rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
 }
 
 .home-button:hover {
@@ -176,19 +176,6 @@
     font-size: 16px;
 }
 
-/* Mascot */
-.mascot {
-    position: absolute;
-    right: 5%;
-    bottom: 0;
-    width: 100px;
-}
-
-.mascot img {
-    width: 100%;
-    height: auto;
-}
-
 /* Stage preview modal */
 .stage-preview {
     position: fixed;
@@ -294,12 +281,6 @@
     .path-connector {
         width: 80px;
         height: 10px;
-    }
-    
-    .mascot {
-        right: 10%;
-        bottom: 10%;
-        width: 120px;
     }
 }
 
@@ -514,7 +495,11 @@
 .progress-indicator {
     color: #666;
 }
-
+.navigation {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .next-btn {
     background-color: #FF9EAA;
     color: white;
