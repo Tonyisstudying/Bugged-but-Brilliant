@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backtracking Algorithms</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+        
+        /* Hero section */
+        .hero-section {
+            background-color: #0052cc;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .content-section h2 {
+            color: #0052cc;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.8rem;
+            padding-right: 40px; /* Space for toggle icon */
+        }
+
+        .content-section h3 {
+            color: #0052cc;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Problem types section */
+        .problem-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .problem-type {
+            background-color: #f0f7ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .problem-type:hover {
+            transform: translateY(-5px);
+        }
+
+        .problem-type h3 {
+            color: #0052cc;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .problem-type p {
+            line-height: 1.6;
+        }
+
+        /* Lists */
+        .content-section ul, .content-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.7rem;
+            line-height: 1.6;
+        }
+
+        /* Code section */
+        .code-section {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-tabs {
+            display: flex;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+            overflow-x: auto;
+        }
+
+        .code-tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .code-tab.active {
+            background-color: #0078d7;
+            color: white;
+        }
+
+        .code-content {
+            padding: 0;
+            position: relative;
+        }
+
+        .code-block {
+            display: none;
+            position: relative;
+        }
+
+        .code-block.active {
+            display: block;
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 1.5rem;
+            overflow-x: auto;
+            border-radius: 0;
+        }
+
+        .pseudocode {
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+            font-family: 'Courier New', monospace;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 4px;
+            padding: 0.4rem 0.7rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Examples */
+        .example {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0078d7;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example h3, .example h4 {
+            margin-bottom: 0.8rem;
+            color: #0052cc;
+        }
+
+        /* Toggle functionality */
+        .toggle-icon {
+            position: absolute;
+            top: 2.1rem;
+            right: 2rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #0052cc;
+            transition: transform 0.3s ease;
+            z-index: 10;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(0, 82, 204, 0.1);
+        }
+
+        .toggle-icon:hover {
+            background-color: rgba(0, 82, 204, 0.2);
+        }
+
+        .toggle-icon.active {
+            transform: rotate(45deg);
+        }
+
+        .toggle-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .toggle-content.active {
+            max-height: 2000px;
+        }
+
+        /* Comparison table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #e0e0e0;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Problem example card */
+        .problem-example {
+            background-color: #222;
+            color: #f0f0f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .problem-example p {
+            margin-bottom: 0.8rem;
+        }
+
+        .problem-example p em {
+            font-style: italic;
+            color: #aaa;
+        }
+
+        .problem-example .code-italics {
+            font-style: italic;
+        }
+
+        .highlight-text {
+            color: #FF7F50;
+        }
+
+        /* Common applications */
+        .applications {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .application {
+            background-color: #0078d7;
+            color: white;
+            padding: 0.7rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .application:hover {
+            transform: translateY(-3px);
+            background-color: #0052cc;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.3rem;
+            }
+            
+            .content-section h2 {
+                font-size: 1.7rem;
+            }
+
+            .problem-types {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../algorithms.html" class="back-btn">← Back to Algorithms</a>
+        </div>
+        
+        <div class="hero-section">
+            <h1>Backtracking Algorithms</h1>
+            <p>A problem-solving algorithmic technique that involves finding a solution incrementally by trying different options and undoing them if they lead to a dead end.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>What is Backtracking?</h2>
+            <p>Backtracking is a problem-solving algorithmic technique that involves finding a solution incrementally by trying different options and undoing them if they lead to a dead end.</p>
+            
+            <p>It's an algorithmic paradigm based on a depth-first recursive search that systematically explores all possible solutions to find the ones that satisfy given constraints.</p>
+            
+            <ul>
+                <li>It is commonly used in situations where we need to explore multiple possibilities to solve a problem, like searching for a path in a maze or solving puzzles like Sudoku.</li>
+                <li>When a dead end is reached, the algorithm backtracks to the previous decision point and explores a different path until a solution is found or all possibilities have been exhausted.</li>
+                <li>We use backtracking when we need to explore all possible paths (or permutations). Instead of going through every path, we backtrack to avoid unnecessary work whenever we are sure that no path from here would lead to a valid solution.</li>
+            </ul>
+
+            <p>Backtracking builds solutions step by step and abandons a partial solution ("backtracks") as soon as it determines that the partial solution cannot be extended to a complete valid solution.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Types of Backtracking Problems</h2>
+            <p>Problems associated with backtracking can be categorized into 3 categories:</p>
+            
+            <div class="problem-types">
+                <div class="problem-type">
+                    <h3>Decision Problems</h3>
+                    <p>Here, we search for a feasible solution that satisfies a given set of constraints. The goal is to find any valid solution, not necessarily the best one.</p>
+                    <p>Examples: N-Queens problem, Sudoku puzzle, Maze solving.</p>
+                </div>
+                
+                <div class="problem-type">
+                    <h3>Optimization Problems</h3>
+                    <p>For this type, we search for the best solution according to some criteria. The goal is to find a solution that optimizes an objective function.</p>
+                    <p>Examples: Traveling Salesman Problem with backtracking.</p>
+                </div>
+                
+                <div class="problem-type">
+                    <h3>Enumeration Problems</h3>
+                    <p>We find set of all possible feasible solutions to the problems of this type. The goal is to enumerate all solutions that meet the constraints.</p>
+                    <p>Examples: Generating all permutations, combinations, or subsets.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>When to Use Backtracking?</h2>
+
+            <p>Generally every constraint satisfaction problem can be solved using backtracking but, is it optimal to use backtracking every time? Turns out <strong>NO</strong>, there are a vast number of problems that can be solved using <a href="greedy.html" style="color: #FF7F50; text-decoration: none;">Greedy</a> or <a href="dynamic.html" style="color: #FF7F50; text-decoration: none;">Dynamic programming</a> in logarithmic or polynomial time complexity which is far better than exponential complexity of Backtracking. However, many problems still exist that can only be solved using Backtracking.</p>
+
+            <div class="problem-example">
+                <p><em>To understand whether a problem is Backtracking based or not, let us take a simple problem:</em></p>
+                <p><strong>Problem:</strong> Imagine you have 3 closed boxes, among which 2 are empty and 1 has a gold coin. Your task is to get the gold coin.</p>
+                
+                <p><strong class="highlight-text">Why dynamic programming fails to solve this question:</strong> Does opening or closing one box has any effect on the other box? Turns out NO, and every box is independent of each other and opening/closing state of one box can not determine the transition for other boxes. Hence DP fails.</p>
+                
+                <p><strong class="highlight-text">Why greedy fails to solve this question:</strong> Greedy algorithm chooses a local maxima in order to get global maxima, but in this problem each and every box has equal probability of having a gold coin i.e 1/3 hence there is no criteria to make a greedy choice.</p>
+                
+                <p><strong class="highlight-text">Why Backtracking works:</strong> As discussed already, backtracking algorithm is simply brute forcing each and every choice, hence we can one by one choose every box to find the gold coin. If a box is found empty we can close it back which acts as a Backtracking step.</p>
+            </div>
+
+            <p>Technically, for backtracking problems:</p>
+
+            <ul>
+                <li>The algorithm builds a solution by exploring all possible paths created by the choices in the problem, this solution begins with an empty set S={}</li>
+                <li>Each choice creates a new sub-tree 's' which we add into are set.</li>
+                <li>Now there exist two cases:
+                    <ul>
+                        <li>S+s is valid set</li>
+                        <li>S+s is not valid set</li>
+                    </ul>
+                </li>
+                <li>In case the set is valid then we further make choices and repeat the process until a solution is found, otherwise we backtrack our decision of including 's' and explore other paths until a solution is found or all the possible paths are exhausted.</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Pseudocode for Backtracking</h2>
+
+            <p>The best way to implement backtracking is through recursion, and all backtracking code can be summarized as per the given Pseudocode:</p>
+
+            <div class="pseudocode">
+void FIND_SOLUTIONS(parameters):
+    if (valid solution):
+        store the solution
+    Return
+    
+    for (all choice):
+        if (valid choice):
+            APPLY (choice)
+            FIND_SOLUTIONS (parameters)
+            BACKTRACK (remove choice)
+    
+    Return
+            </div>
+
+            <p>This pseudocode represents the general framework for backtracking algorithms:</p>
+            <ol>
+                <li>Check if the current state represents a valid solution. If so, store it and return.</li>
+                <li>For each possible choice from the current state:
+                    <ul>
+                        <li>Check if the choice is valid</li>
+                        <li>If valid, make that choice</li>
+                        <li>Recursively try to solve the problem with this choice made</li>
+                        <li>Undo the choice (backtrack) to explore other possibilities</li>
+                    </ul>
+                </li>
+                <li>Return after exploring all choices</li>
+            </ol>
+        </div>
+
+        <div class="code-section">
+            <div class="code-tabs">
+                <div class="code-tab active" onclick="switchTab(this, 'cpp')">C++</div>
+                <div class="code-tab" onclick="switchTab(this, 'java')">Java</div>
+                <div class="code-tab" onclick="switchTab(this, 'python')">Python</div>
+                <div class="code-tab" onclick="switchTab(this, 'javascript')">JavaScript</div>
+            </div>
+            <div class="code-content">
+                <div class="code-block active" id="cpp">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-cpp">// N-Queens Problem - Backtracking implementation in C++
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class NQueenSolver {
+private:
+    int n;
+    vector&lt;vector&lt;string&gt;&gt; solutions;
+
+public:
+    NQueenSolver(int n) : n(n) {}
+    
+    vector&lt;vector&lt;string&gt;&gt; solveNQueens() {
+        vector&lt;string&gt; board(n, string(n, '.'));
+        backtrack(board, 0);
+        return solutions;
+    }
+
+private:
+    void backtrack(vector&lt;string&gt;& board, int row) {
+        // If we've placed queens in all rows, we have a solution
+        if (row == n) {
+            solutions.push_back(board);
+            return;
+        }
+        
+        // Try placing a queen in each column of the current row
+        for (int col = 0; col < n; col++) {
+            if (isValid(board, row, col)) {
+                // Make choice
+                board[row][col] = 'Q';
+                
+                // Explore further
+                backtrack(board, row + 1);
+                
+                // Backtrack (undo choice)
+                board[row][col] = '.';
+            }
+        }
+    }
+    
+    bool isValid(vector&lt;string&gt;& board, int row, int col) {
+        // Check column
+        for (int i = 0; i < row; i++) {
+            if (board[i][col] == 'Q') return false;
+        }
+        
+        // Check upper left diagonal
+        for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+            if (board[i][j] == 'Q') return false;
+        }
+        
+        // Check upper right diagonal
+        for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+            if (board[i][j] == 'Q') return false;
+        }
+        
+        return true;
+    }
+};
+
+void printSolution(const vector&lt;string&gt;& board) {
+    for (const string& row : board) {
+        cout << row << endl;
+    }
+    cout << endl;
+}
+
+int main() {
+    int n = 4; // 4x4 board
+    NQueenSolver solver(n);
+    
+    vector&lt;vector&lt;string&gt;&gt; solutions = solver.solveNQueens();
+    
+    cout << "Found " << solutions.size() << " solutions for " << n << "-Queens problem:" << endl;
+    
+    for (int i = 0; i < solutions.size(); i++) {
+        cout << "Solution " << (i + 1) << ":" << endl;
+        printSolution(solutions[i]);
+    }
+    
+    return 0;
+}</code></pre>
+                </div>
+                <div class="code-block" id="java">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-java">// Sudoku Solver - Backtracking implementation in Java
+public class SudokuSolver {
+    private static final int GRID_SIZE = 9;
+    
+    public static void main(String[] args) {
+        int[][] board = {
+            {7, 0, 2, 0, 5, 0, 6, 0, 0},
+            {0, 0, 0, 0, 0, 3, 0, 0, 0},
+            {1, 0, 0, 0, 0, 9, 5, 0, 0},
+            {8, 0, 0, 0, 0, 0, 0, 9, 0},
+            {0, 4, 3, 0, 0, 0, 7, 5, 0},
+            {0, 9, 0, 0, 0, 0, 0, 0, 8},
+            {0, 0, 9, 7, 0, 0, 0, 0, 5},
+            {0, 0, 0, 2, 0, 0, 0, 0, 0},
+            {0, 0, 7, 0, 4, 0, 2, 0, 3}
+        };
+        
+        System.out.println("Sudoku Problem:");
+        printBoard(board);
+        
+        if (solveBoard(board)) {
+            System.out.println("\nSudoku Solution:");
+            printBoard(board);
+        } else {
+            System.out.println("\nNo solution exists");
+        }
+    }
+    
+    private static void printBoard(int[][] board) {
+        for (int row = 0; row < GRID_SIZE; row++) {
+            if (row % 3 == 0 && row != 0) {
+                System.out.println("-".repeat(21));
+            }
+            for (int column = 0; column < GRID_SIZE; column++) {
+                if (column % 3 == 0 && column != 0) {
+                    System.out.print("| ");
+                }
+                System.out.print(board[row][column] == 0 ? ". " : board[row][column] + " ");
+            }
+            System.out.println();
+        }
+    }
+    
+    private static boolean isNumberInRow(int[][] board, int number, int row) {
+        for (int i = 0; i < GRID_SIZE; i++) {
+            if (board[row][i] == number) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private static boolean isNumberInColumn(int[][] board, int number, int column) {
+        for (int i = 0; i < GRID_SIZE; i++) {
+            if (board[i][column] == number) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private static boolean isNumberInBox(int[][] board, int number, int row, int column) {
+        int localBoxRow = row - row % 3;
+        int localBoxColumn = column - column % 3;
+        
+        for (int i = localBoxRow; i < localBoxRow + 3; i++) {
+            for (int j = localBoxColumn; j < localBoxColumn + 3; j++) {
+                if (board[i][j] == number) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    private static boolean isValidPlacement(int[][] board, int number, int row, int column) {
+        return !isNumberInRow(board, number, row) &&
+               !isNumberInColumn(board, number, column) &&
+               !isNumberInBox(board, number, row, column);
+    }
+    
+    private static boolean solveBoard(int[][] board) {
+        for (int row = 0; row < GRID_SIZE; row++) {
+            for (int column = 0; column < GRID_SIZE; column++) {
+                if (board[row][column] == 0) {
+                    for (int numberToTry = 1; numberToTry <= GRID_SIZE; numberToTry++) {
+                        if (isValidPlacement(board, numberToTry, row, column)) {
+                            board[row][column] = numberToTry;
+                            
+                            if (solveBoard(board)) {
+                                return true;
+                            } else {
+                                board[row][column] = 0; // Backtrack
+                            }
+                        }
+                    }
+                    return false;
+                }
+            }
+        }
+        return true; // Board is full
+    }
+}</code></pre>
+                </div>
+                <div class="code-block" id="python">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-python"># Permutations - Backtracking implementation in Python
+def generate_permutations(nums):
+    """
+    Generate all possible permutations of a list of numbers using backtracking
+    
+    Args:
+        nums: List of numbers to permute
+        
+    Returns:
+        List of all permutations
+    """
+    def backtrack(current, remaining):
+        # If no more elements left to arrange, we found a permutation
+        if len(remaining) == 0:
+            result.append(current.copy())
+            return
+        
+        # Try each remaining number as the next element
+        for i in range(len(remaining)):
+            # Make a choice
+            current.append(remaining[i])
+            
+            # Explore with this choice
+            # Create a new remaining list excluding the chosen element
+            new_remaining = remaining[:i] + remaining[i+1:]
+            backtrack(current, new_remaining)
+            
+            # Backtrack (remove the choice)
+            current.pop()
+    
+    result = []
+    backtrack([], nums)
+    return result
+
+# Example: Generate all permutations of [1, 2, 3]
+nums = [1, 2, 3]
+permutations = generate_permutations(nums)
+
+print(f"All permutations of {nums}:")
+for i, perm in enumerate(permutations, 1):
+    print(f"{i}. {perm}")
+
+# Subset Sum Problem - Backtracking implementation
+def subset_sum(nums, target):
+    """
+    Find if there exists a subset of nums that adds up to target using backtracking
+    
+    Args:
+        nums: List of numbers
+        target: Target sum
+        
+    Returns:
+        List of subsets that sum to target
+    """
+    def backtrack(start, target, current):
+        # If target becomes 0, we found a valid subset
+        if target == 0:
+            result.append(current.copy())
+            return
+        
+        # If target goes negative or no more elements to consider, stop
+        if target < 0 or start == len(nums):
+            return
+        
+        # Include the current number in the subset
+        current.append(nums[start])
+        backtrack(start + 1, target - nums[start], current)
+        
+        # Exclude the current number from the subset (backtrack)
+        current.pop()
+        backtrack(start + 1, target, current)
+    
+    result = []
+    backtrack(0, target, [])
+    return result
+
+# Example: Find subsets of [1, 2, 3, 4, 5] that sum to 7
+nums = [1, 2, 3, 4, 5]
+target = 7
+subsets = subset_sum(nums, target)
+
+print(f"\nSubsets of {nums} that sum to {target}:")
+for i, subset in enumerate(subsets, 1):
+    print(f"{i}. {subset}")
+
+# Maze solving using backtracking
+def solve_maze(maze):
+    """
+    Solve a maze using backtracking
+    
+    Args:
+        maze: 2D array where 1 represents a wall and 0 represents a path
+        
+    Returns:
+        2D array with the solution path marked as 2
+    """
+    rows = len(maze)
+    cols = len(maze[0]) if rows > 0 else 0
+    
+    # Create a solution maze initialized with the same walls
+    solution = [row[:] for row in maze]
+    
+    def backtrack(row, col):
+        # Check if we've reached the destination (bottom-right)
+        if row == rows - 1 and col == cols - 1:
+            solution[row][col] = 2  # Mark as part of the solution path
+            return True
+        
+        # Check if current position is valid
+        if (0 <= row < rows and 0 <= col < cols and maze[row][col] == 0 
+                and solution[row][col] == 0):
+            # Mark the current cell as part of the solution path
+            solution[row][col] = 2
+            
+            # Try moving in all four directions: down, right, up, left
+            directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+            for dr, dc in directions:
+                if backtrack(row + dr, col + dc):
+                    return True
+            
+            # If no direction leads to the solution, backtrack
+            solution[row][col] = 0
+            return False
+        
+        return False
+    
+    # Start from the top-left corner
+    if backtrack(0, 0):
+        return solution
+    else:
+        return None
+
+# Example maze
+maze = [
+    [0, 1, 0, 0, 0],
+    [0, 1, 0, 1, 0],
+    [0, 0, 0, 1, 0],
+    [1, 1, 0, 1, 0],
+    [0, 0, 0, 0, 0]
+]
+
+print("\nMaze:")
+for row in maze:
+    print(" ".join(["■" if cell == 1 else "□" for cell in row]))
+
+solution = solve_maze(maze)
+
+if solution:
+    print("\nMaze Solution:")
+    for row in solution:
+        print(" ".join(["■" if cell == 1 else "●" if cell == 2 else "□" for cell in row]))
+else:
+    print("\nNo solution exists for the maze.")</code></pre>
+                </div>
+                <div class="code-block" id="javascript">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-javascript">// Combination Sum - Backtracking implementation in JavaScript
+/**
+ * Find all unique combinations in candidates where the candidate numbers sum to target
+ * @param {number[]} candidates - List of distinct integers
+ * @param {number} target - Target sum
+ * @return {number[][]} - All possible combinations
+ */
+function combinationSum(candidates, target) {
+    const result = [];
+    
+    function backtrack(start, target, current) {
+        // Base case: target is 0, we found a valid combination
+        if (target === 0) {
+            result.push([...current]);
+            return;
+        }
+        
+        // If target is negative, stop exploring this path
+        if (target < 0) {
+            return;
+        }
+        
+        // Try each candidate from the start index
+        for (let i = start; i < candidates.length; i++) {
+            // Make a choice
+            current.push(candidates[i]);
+            
+            // Explore with this choice (we can reuse the same element)
+            backtrack(i, target - candidates[i], current);
+            
+            // Backtrack (undo the choice)
+            current.pop();
+        }
+    }
+    
+    backtrack(0, target, []);
+    return result;
+}
+
+// Example usage
+const candidates = [2, 3, 6, 7];
+const target = 7;
+const combinations = combinationSum(candidates, target);
+
+console.log(`All combinations of ${candidates} that sum to ${target}:`);
+combinations.forEach((combo, i) => {
+    console.log(`${i + 1}. ${combo}`);
+});
+
+// Word Search - Backtracking implementation
+/**
+ * Determine if a word exists in a grid of characters
+ * @param {character[][]} board - 2D board of characters
+ * @param {string} word - Word to search for
+ * @return {boolean} - True if word exists in the board
+ */
+function exist(board, word) {
+    const rows = board.length;
+    const cols = board[0].length;
+    
+    // Helper function to check if the word exists starting at position (row, col)
+    function backtrack(row, col, index) {
+        // If we've matched all characters, we found the word
+        if (index === word.length) {
+            return true;
+        }
+        
+        // Check if we're out of bounds or the current character doesn't match
+        if (row < 0 || row >= rows || col < 0 || col >= cols || 
+            board[row][col] !== word[index]) {
+            return false;
+        }
+        
+        // Mark the current cell as visited
+        const temp = board[row][col];
+        board[row][col] = '#';
+        
+        // Try all four directions: up, right, down, left
+        const found = 
+            backtrack(row - 1, col, index + 1) ||
+            backtrack(row, col + 1, index + 1) ||
+            backtrack(row + 1, col, index + 1) ||
+            backtrack(row, col - 1, index + 1);
+        
+        // Restore the cell (backtrack)
+        board[row][col] = temp;
+        
+        return found;
+    }
+    
+    // Try starting from each cell in the board
+    for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+            if (backtrack(row, col, 0)) {
+                return true;
+            }
+        }
+    }
+    
+    return false;
+}
+
+// Example usage
+const board = [
+    ['A', 'B', 'C', 'E'],
+    ['S', 'F', 'C', 'S'],
+    ['A', 'D', 'E', 'E']
+];
+
+const searchWord1 = "ABCCED";
+const searchWord2 = "SEE";
+const searchWord3 = "ABCB";
+
+console.log(`\nBoard:`);
+board.forEach(row => console.log(row.join(' ')));
+
+console.log(`\nWord "${searchWord1}" exists: ${exist([...board.map(row => [...row])], searchWord1)}`);
+console.log(`Word "${searchWord2}" exists: ${exist([...board.map(row => [...row])], searchWord2)}`);
+console.log(`Word "${searchWord3}" exists: ${exist([...board.map(row => [...row])], searchWord3)}`);
+
+// Generate all subsets (Power Set) - Backtracking implementation
+/**
+ * Generate all possible subsets of a set of numbers
+ * @param {number[]} nums - Set of distinct integers
+ * @return {number[][]} - All possible subsets
+ */
+function subsets(nums) {
+    const result = [];
+    
+    function backtrack(start, current) {
+        // Add the current subset to the result
+        result.push([...current]);
+        
+        // Try adding each remaining number to the subset
+        for (let i = start; i < nums.length; i++) {
+            // Make a choice
+            current.push(nums[i]);
+            
+            // Explore with this choice
+            backtrack(i + 1, current);
+            
+            // Backtrack (undo the choice)
+            current.pop();
+        }
+    }
+    
+    backtrack(0, []);
+    return result;
+}
+
+// Example usage
+const set = [1, 2, 3];
+const allSubsets = subsets(set);
+
+console.log(`\nAll subsets of [${set}]:`);
+allSubsets.forEach((subset, i) => {
+    console.log(`${i + 1}. [${subset}]`);
+});</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Comparison with Branch and Bound</h2>
+            <div class="toggle-icon" onclick="toggleContent('comparison')">
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="toggle-content" id="comparison">
+                <div class="comparison-table-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Backtracking</th>
+                                <th>Branch and Bound</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Approach</td>
+                                <td>Backtracking is used to find all possible solutions available to a problem. When it realizes that it has made a bad choice, it undoes the last choice by backing it up. It searches the state space tree until it has found a solution for the problem.</td>
+                                <td>Branch-and-Bound is used to solve optimization problems. When it realizes that it already has a better optimal solution that the pre-solution leads to, it abandons that pre-solution. It completely searches the state space tree to get optimal solution.</td>
+                            </tr>
+                            <tr>
+                                <td>Traversal</td>
+                                <td>Backtracking traverses the state space tree by DFS (Depth First Search) manner.</td>
+                                <td>Branch-and-Bound traverse the tree in any manner, DFS or BFS.</td>
+                            </tr>
+                            <tr>
+                                <td>Function</td>
+                                <td>Backtracking involves feasibility function.</td>
+                                <td>Branch-and-Bound involves a bounding function.</td>
+                            </tr>
+                            <tr>
+                                <td>Problems</td>
+                                <td>Backtracking is used for solving Decision Problem.</td>
+                                <td>Branch-and-Bound is used for solving Optimization Problem.</td>
+                            </tr>
+                            <tr>
+                                <td>Searching</td>
+                                <td>In backtracking, the state space tree is searched until the solution is obtained.</td>
+                                <td>In Branch-and-Bound as the optimum solution may be present anywhere in the state space tree, so the tree need to be searched completely.</td>
+                            </tr>
+                            <tr>
+                                <td>Efficiency</td>
+                                <td>Backtracking is more efficient.</td>
+                                <td>Branch-and-Bound is less efficient.</td>
+                            </tr>
+                            <tr>
+                                <td>Applications</td>
+                                <td>Useful in solving N-Queen Problem, Sum of subset, Hamilton cycle problem, graph coloring problem.</td>
+                                <td>Useful in solving Knapsack Problem, Traveling Salesman Problem.</td>
+                            </tr>
+                            <tr>
+                                <td>Solve</td>
+                                <td>Backtracking can solve almost any problem (chess, sudoku, etc.).</td>
+                                <td>Branch and bound can not solve almost any problem.</td>
+                            </tr>
+                            <tr>
+                                <td>Used for</td>
+                                <td>Typically backtracking is used to solve decision problems.</td>
+                                <td>Branch and bound is used to solve optimization problems.</td>
+                            </tr>
+                            <tr>
+                                <td>Nodes</td>
+                                <td>Nodes in state space tree are explored in depth first tree.</td>
+                                <td>Nodes in tree may be explored in depth-first or breadth-first order.</td>
+                            </tr>
+                            <tr>
+                                <td>Next move</td>
+                                <td>Next move from current state can lead to bad choice.</td>
+                                <td>Next move is always towards better solution.</td>
+                            </tr>
+                            <tr>
+                                <td>Solution</td>
+                                <td>On successful search of solution in state space tree, search stops.</td>
+                                <td>Entire state space tree is search in order to find optimal solution.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Similarities Between Backtracking and Branch and Bound</h3>
+                <ul>
+                    <li>Both are search algorithms that explore a state space tree to find solutions.</li>
+                    <li>Both use pruning techniques to avoid exploring paths that won't lead to valid solutions.</li>
+                    <li>Both can be implemented using recursive algorithms.</li>
+                </ul>
+
+                <h3>Key Differences</h3>
+                <ul>
+                    <li><strong>Goal:</strong> Backtracking focuses on finding all valid solutions (or one solution) to a constraint satisfaction problem. Branch and Bound focuses on finding the optimal solution to an optimization problem.</li>
+                    <li><strong>Pruning Strategy:</strong> Backtracking prunes paths that violate constraints. Branch and Bound prunes paths that cannot lead to a solution better than the best found so far.</li>
+                    <li><strong>Traversal:</strong> Backtracking typically uses depth-first search, while Branch and Bound can use various traversal strategies, often breadth-first or best-first search with a priority queue.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Common Backtracking Problems</h2>
+            <div class="applications">
+                <div class="application">N-Queens Problem</div>
+                <div class="application">Sudoku Solver</div>
+                <div class="application">Word Search</div>
+                <div class="application">Hamiltonian Cycle</div>
+                <div class="application">Graph Coloring</div>
+                <div class="application">Subset Sum</div>
+                <div class="application">Permutation Generation</div>
+                <div class="application">Combination Sum</div>
+                <div class="application">Maze Solving</div>
+                <div class="application">Cryptarithmetic Puzzles</div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Key Advantages of Backtracking</h3>
+            <ul>
+                <li><strong>Complete Exploration:</strong> Guarantees finding a solution if one exists by systematically exploring all possibilities.</li>
+                <li><strong>Memory Efficiency:</strong> Uses less memory than brute force approaches since it avoids exploring paths that are known to fail.</li>
+                <li><strong>Versatile:</strong> Can be applied to a wide range of problems where you need to make a series of decisions.</li>
+                <li><strong>Simple Implementation:</strong> The core concept is straightforward to implement through recursion.</li>
+            </ul>
+
+            <h3>Limitations of Backtracking</h3>
+            <ul>
+                <li><strong>Exponential Time Complexity:</strong> In the worst case, backtracking may have to explore an exponential number of possibilities, making it inefficient for large problem instances.</li>
+                <li><strong>Not Always Optimal:</strong> For optimization problems, it might find a solution but not necessarily the optimal one without additional techniques.</li>
+                <li><strong>Problem-Specific Constraints:</strong> Requires careful formulation of constraints for each specific problem.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+    <script>
+        hljs.highlightAll();
+        
+        function switchTab(element, language) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.code-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Add active class to selected tab
+            element.classList.add('active');
+            
+            // Hide all code blocks
+            document.querySelectorAll('.code-block').forEach(block => {
+                block.classList.remove('active');
+            });
+            
+            // Show selected code block
+            document.getElementById(language).classList.add('active');
+        }
+        
+        function copyCode(button) {
+            const pre = button.nextElementSibling;
+            const code = pre.textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                const originalIcon = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                }, 2000);
+            });
+        }
+        
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.classList.toggle('active');
+            
+            const icon = content.previousElementSibling;
+            icon.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
