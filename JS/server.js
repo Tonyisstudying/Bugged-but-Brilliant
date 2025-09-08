@@ -44,8 +44,8 @@ app.get('/course_firstpage', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'pages', 'course_firstpage.html'));
 });
 
-app.get('/DSA', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'DSA', 'DSA.html'));
+app.get('/course_page', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'CS', 'course_page.html'));
 });
 
 // Handle 404 - Keep this as the last route
