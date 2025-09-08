@@ -25,8 +25,8 @@
 }
 
 .home-button:hover {
-  background: #f85f7b;
-  transform: scale(1.05);
+    background: #f85f7b;
+    transform: scale(1.05);
 }   
 .course-container {
     padding: 20px;
@@ -106,7 +106,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-color: #5ECA5E;
+    background-color: linear-gradient(135deg, #f34688 0%, #45a3fb 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -124,11 +124,12 @@
 
 .stage-circle:hover {
     transform: scale(1.1);
+    background-color: linear-gradient(135deg, #fd67a1 100%, #52aafc 0%);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 .stage-circle.active {
-    background-color: #5ECA5E;
+    background-color: linear-gradient(135deg, #FFC8DD 0%, #A2D2FF 100%);
 }
 
 .stage-circle.locked {
@@ -255,7 +256,7 @@
 .start-btn {
     width: 100%;
     padding: 15px;
-    background-color: #5ECA5E;
+    background-color: linear-gradient(135deg, #FFC8DD 0%, #A2D2FF 100%);
     color: white;
     border: none;
     border-radius: 10px;
@@ -266,7 +267,7 @@
 }
 
 .start-btn:hover {
-    background-color: #4DB84D;
+    background-color: linear-gradient(135deg, #FFC8DD 100%, #A2D2FF 0%);
 }
 
 /* Lesson content styles moved to combined modal style below */
