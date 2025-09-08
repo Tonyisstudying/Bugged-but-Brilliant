@@ -19,6 +19,28 @@ body {
     padding: 20px;
 }
 
+.back-to-course {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.course-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #9370db, #ff1493);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+}
+
+.course-btn:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 8px 20px rgba(255, 20, 147, 0.5);
+}
+
 header {
     text-align: center;
     padding: 60px 20px;
@@ -110,7 +132,9 @@ h1 {
     border: 2px solid #9370db;
     transform: rotateY(180deg);
     overflow-y: auto;
+    text-decoration: none;
 }
+
 
 .choice-card i {
     font-size: 4rem;
