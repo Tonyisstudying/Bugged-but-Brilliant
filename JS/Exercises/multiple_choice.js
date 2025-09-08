@@ -99,12 +99,17 @@ export default class MultipleChoiceExercise {
     }
 
     close() {
-        const content = document.getElementById('lesson-content');
-        if (content) {
+    const content = document.getElementById('lesson-content');
+    if (content) {
+        // First remove visible class to trigger fade-out
+        content.classList.remove('visible');
+        
+        // After animation completes, hide the content
+        setTimeout(() => {
             content.classList.add('hidden');
-            const title = document.querySelector('.course-title');
-            if (title) title.classList.remove('minimized');
-        }
+            document.querySelector('.course-title').classList.remove('minimized');
+        }, 500); // Match this timing with your CSS transition
+    }
     }
 
     complete() {

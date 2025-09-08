@@ -67,9 +67,17 @@ export default class VocabularyExercise {
     }
 
     close() {
-        const content = document.getElementById('lesson-content');
-        content.classList.add('hidden');
-        document.querySelector('.course-title').classList.remove('minimized');
+    const content = document.getElementById('lesson-content');
+    if (content) {
+        // First remove visible class to trigger fade-out
+        content.classList.remove('visible');
+        
+        // After animation completes, hide the content
+        setTimeout(() => {
+            content.classList.add('hidden');
+            document.querySelector('.course-title').classList.remove('minimized');
+        }, 500); // Match this timing with your CSS transition
+    }
     }
 
     complete() {

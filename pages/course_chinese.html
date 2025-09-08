@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chinese Courses</title>
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_right_alt" />
     <link rel="stylesheet" href="../CSS/course_chinese/course_chinese.css">
     <script type="module" src="../JS/Main/courses_display.js" defer></script>
@@ -18,15 +17,163 @@
             </a>
         </div>
         <h1 class="course-title">Chinese</h1>
-        <div class="level-container">
-            <div class="level-path">
-                <div class="level" data-level="1">1</div>
-                <div class="level" data-level="2">2</div>
-                <div class="level" data-level="3">3</div>
-            </div>
-            <div class="start-text">Click here to start</div>
+        
+        <div class="level-selector">
+            <div class="level-tab active" data-level="1">HSK 1</div>
+            <div class="level-tab" data-level="2">HSK 2</div>
+            <div class="level-tab" data-level="3">HSK 3</div>
         </div>
-        <div id="lesson-content" class="lesson-content hidden"></div>
+
+        <div class="learning-path-container">
+            <div class="learning-path">
+                <!-- Level 1 stages -->
+                <div class="path-section" id="level-1-path">
+                    <div class="path-connector"></div>
+                    <div class="stage-circle active" data-level="1" data-stage="1">
+                        <div class="star-icon">★</div>
+                        <span class="stage-number">1</span>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="stage-circle" data-level="1" data-stage="2">
+                        <div class="star-icon">★</div>
+                        <span class="stage-number">2</span>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="stage-circle locked" data-level="1" data-stage="3">
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                        <span class="stage-number">3</span>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="stage-circle locked" data-level="1" data-stage="4">
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                        <span class="stage-number">4</span>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="stage-circle locked" data-level="1" data-stage="5">
+                        <div class="trophy-icon"><i class="fas fa-trophy"></i></div>
+                    </div>
+                </div>
+
+                <!-- Level 2 stages (hidden initially) -->
+                <div class="path-section hidden" id="level-2-path">
+                    <div class="path-connector"></div>
+                    <div class="stage-circle locked" data-level="2" data-stage="1">
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                        <span class="stage-number">1</span>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="stage-circle locked" data-level="2" data-stage="2">
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                        <span class="stage-number">2</span>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="stage-circle locked" data-level="2" data-stage="3">
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                        <span class="stage-number">3</span>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="stage-circle locked" data-level="2" data-stage="4">
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                        <span class="stage-number">4</span>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="stage-circle locked" data-level="2" data-stage="5">
+                        <div class="trophy-icon"><i class="fas fa-trophy"></i></div>
+                    </div>
+                </div>
+
+                <!-- Level 3 stages (hidden initially) -->
+                <div class="path-section hidden" id="level-3-path">
+                    <div class="path-connector"></div>
+                    <div class="stage-circle locked" data-level="3" data-stage="1">
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                        <span class="stage-number">1</span>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="stage-circle locked" data-level="3" data-stage="2">
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                        <span class="stage-number">2</span>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="stage-circle locked" data-level="3" data-stage="3">
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                        <span class="stage-number">3</span>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="stage-circle locked" data-level="3" data-stage="4">
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                        <span class="stage-number">4</span>
+                    </div>
+                    <div class="path-connector"></div>
+                    <div class="stage-circle locked" data-level="3" data-stage="5">
+                        <div class="trophy-icon"><i class="fas fa-trophy"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage preview modal -->
+        <div id="stage-preview" class="stage-preview hidden">
+            <div class="preview-content">
+                <div class="preview-header">
+                    <h2>Stage <span id="preview-stage-number">1</span></h2>
+                    <button class="close-preview"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="preview-body">
+                    <p class="preview-description">Learn basic Chinese greetings and introductions.</p>
+                    <div class="preview-skills">
+                        <div class="skill"><i class="fas fa-comment"></i> Greetings</div>
+                        <div class="skill"><i class="fas fa-user"></i> Introductions</div>
+                        <div class="skill"><i class="fas fa-handshake"></i> Basic Phrases</div>
+                    </div>
+                </div>
+                <button id="start-lesson-btn" class="start-btn">Start Lesson</button>
+            </div>
+        </div>
     </div>
+
+    <script>
+        // Level tab switching functionality
+        document.querySelectorAll('.level-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const level = this.getAttribute('data-level');
+                
+                // Update active tab
+                document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding path
+                document.querySelectorAll('.path-section').forEach(section => section.classList.add('hidden'));
+                document.getElementById(`level-${level}-path`).classList.remove('hidden');
+            });
+        });
+
+        // Stage circle click functionality 
+        document.querySelectorAll('.stage-circle:not(.locked)').forEach(circle => {
+            circle.addEventListener('click', function() {
+                const level = this.getAttribute('data-level');
+                const stage = this.getAttribute('data-stage');
+                
+                // Remove current class from all stages
+                document.querySelectorAll('.stage-circle').forEach(c => {
+                    c.classList.remove('current');
+                });
+                
+                // Add current class to this stage
+                this.classList.add('current');  
+
+                // Start the lesson immediately without showing preview
+                if (window.courseDisplay) {
+                    window.courseDisplay.startStage(parseInt(level), parseInt(stage));
+                }
+            });
+        });
+
+        // Close preview
+        document.querySelector('.close-preview').addEventListener('click', function() {
+            document.getElementById('overlay').classList.add('hidden');
+            document.getElementById('stage-preview').classList.add('hidden');
+        });
+    </script>
 </body>
 </html>

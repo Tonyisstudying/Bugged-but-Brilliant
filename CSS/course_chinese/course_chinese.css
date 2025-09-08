@@ -46,81 +46,278 @@
     margin-bottom: 20px;
 }
 
-.level-container {
+/* Level selector tabs */
+.level-selector {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.level-path {
-    display: flex;
-    gap: 50px;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.level {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #FF9EAA;
-    display: flex;
-    align-items: center;
     justify-content: center;
+    margin-bottom: 30px;
+    gap: 10px;
+}
+
+.level-tab {
+    padding: 10px 25px;
+    background-color: #FFB6C1;
     color: white;
-    font-size: 24px;
+    border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.level:hover {
-    transform: scale(1.1);
-    background: #FF7F96;
+.level-tab:hover {
+    background-color: #FF9EAA;
+    transform: scale(1.05);
 }
 
-.lesson-content {
-    background: white;
-    border-radius: 15px;
-    padding: 20px;
-    margin-top: 20px;
-    transform-origin: top;
-    transition: all 0.5s ease;
-    max-height: 80vh; /* Limit height to viewport */
-    overflow: hidden; /* Prevent overflow */
+.level-tab.active {
+    background-color: #FF7F96;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.lesson-content.hidden {
-    transform: scaleY(0);
-    height: 0;
-    padding: 0;
-    opacity: 0;
+/* Learning path container */
+.learning-path-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    position: relative;
 }
 
-.vocab-card {
-    background: #FFF0F3;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 15px;
+.learning-path {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
 }
 
-.close-btn {
-    float: right;
+/* Path sections */
+.path-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    transition: opacity 0.5s ease;
+}
+
+.path-section.hidden {
+    display: none;
+}
+
+/* Stage circles and connectors */
+.stage-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #5ECA5E;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    position: relative;
     cursor: pointer;
-    padding: 5px 10px;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+}
+
+.stage-circle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.stage-circle.active {
+    background-color: #5ECA5E;
+}
+
+.stage-circle.locked {
+    background-color: #757575;
+    cursor: not-allowed;
+}
+
+.stage-circle.current {
+    box-shadow: 0 0 0 4px #FFC8DD, 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.path-connector {
+    width: 10px;
+    height: 50px;
+    background-color: #BBBBBB;
+    position: relative;
+    z-index: 0;
+}
+
+/* Icons inside stage circles */
+.star-icon {
+    font-size: 24px;
+    color: yellow;
+    margin-bottom: 5px;
+}
+
+.lock-icon {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.trophy-icon {
+    font-size: 24px;
+    color: gold;
+}
+
+.stage-number {
+    font-size: 16px;
+}
+
+/* Mascot */
+.mascot {
+    position: absolute;
+    right: 5%;
+    bottom: 0;
+    width: 100px;
+}
+
+.mascot img {
+    width: 100%;
+    height: auto;
+}
+
+/* Stage preview modal */
+.stage-preview {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.stage-preview.hidden {
+    display: none;
+}
+
+.preview-content {
+    padding: 20px;
+}
+
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.preview-header h2 {
+    color: #FF7F96;
+    font-size: 24px;
+}
+
+.close-preview {
     background: none;
     border: none;
     font-size: 20px;
+    cursor: pointer;
+    color: #888;
 }
 
-.navigation-btn {
-    background: #FF9EAA;
+.close-preview:hover {
+    color: #555;
+}
+
+.preview-body {
+    margin-bottom: 20px;
+}
+
+.preview-description {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.preview-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.skill {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skill i {
+    color: #FF7F96;
+}
+
+.start-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #5ECA5E;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
-    float: right;
-    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.start-btn:hover {
+    background-color: #4DB84D;
+}
+
+.lesson-content {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.lesson-content.visible {
+    opacity: 1;
+}
+/* Responsive styles */
+@media (min-width: 768px) {
+    .path-section {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .path-connector {
+        width: 80px;
+        height: 10px;
+    }
+    
+    .mascot {
+        right: 10%;
+        bottom: 10%;
+        width: 120px;
+    }
+}
+
+/* Animate the path for better visual appeal */
+@keyframes pathFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.path-section {
+    animation: pathFadeIn 0.5s ease forwards;
 }
 
 
