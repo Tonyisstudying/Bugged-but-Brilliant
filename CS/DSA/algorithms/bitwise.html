@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitwise Algorithms</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+        
+        /* Hero section */
+        .hero-section {
+            background-color: #0052cc;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .content-section h2 {
+            color: #0052cc;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.8rem;
+            padding-right: 40px; /* Space for toggle icon */
+        }
+
+        .content-section h3 {
+            color: #0052cc;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Problem types section */
+        .problem-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .problem-type {
+            background-color: #f0f7ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .problem-type:hover {
+            transform: translateY(-5px);
+        }
+
+        .problem-type h3 {
+            color: #0052cc;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .problem-type p {
+            line-height: 1.6;
+        }
+
+        /* Lists */
+        .content-section ul, .content-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.7rem;
+            line-height: 1.6;
+        }
+
+        /* Code section */
+        .code-section {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-tabs {
+            display: flex;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+            overflow-x: auto;
+        }
+
+        .code-tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .code-tab.active {
+            background-color: #0078d7;
+            color: white;
+        }
+
+        .code-content {
+            padding: 0;
+            position: relative;
+        }
+
+        .code-block {
+            display: none;
+            position: relative;
+        }
+
+        .code-block.active {
+            display: block;
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 1.5rem;
+            overflow-x: auto;
+            border-radius: 0;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 4px;
+            padding: 0.4rem 0.7rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Examples */
+        .example {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0078d7;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example h3, .example h4 {
+            margin-bottom: 0.8rem;
+            color: #0052cc;
+        }
+
+        /* Toggle functionality */
+        .toggle-icon {
+            position: absolute;
+            top: 2.1rem;
+            right: 2rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #0052cc;
+            transition: transform 0.3s ease;
+            z-index: 10;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(0, 82, 204, 0.1);
+        }
+
+        .toggle-icon:hover {
+            background-color: rgba(0, 82, 204, 0.2);
+        }
+
+        .toggle-icon.active {
+            transform: rotate(45deg);
+        }
+
+        .toggle-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .toggle-content.active {
+            max-height: 2000px;
+        }
+
+        /* Truth table */
+        .truth-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background-color: #111;
+            color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .truth-table th, .truth-table td {
+            border: 1px solid #333;
+            padding: 0.8rem;
+            text-align: center;
+        }
+
+        .truth-table th {
+            background-color: #222;
+            font-weight: 600;
+        }
+
+        .truth-table tr:nth-child(even) {
+            background-color: #222;
+        }
+
+        /* Common applications */
+        .applications {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .application {
+            background-color: #0078d7;
+            color: white;
+            padding: 0.7rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .application:hover {
+            transform: translateY(-3px);
+            background-color: #0052cc;
+        }
+
+        /* Output section */
+        .output-section {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Bitwise operators visualization */
+        .operator-card {
+            background-color: #f0f7ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .operator-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .operator-card h3 {
+            color: #0052cc;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .operator-symbol {
+            background-color: #0052cc;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 5px;
+            margin-left: 0.8rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.3rem;
+            }
+            
+            .content-section h2 {
+                font-size: 1.7rem;
+            }
+
+            .problem-types {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../algorithms.html" class="back-btn">← Back to Algorithms</a>
+        </div>
+        
+        <div class="hero-section">
+            <h1>Bitwise Algorithms</h1>
+            <p>Efficient algorithms that perform operations on individual bits or bit patterns within computer data for faster execution and reduced memory usage.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>What is Bitwise Algorithms?</h2>
+            <p>Bit stands for binary digit. A bit is the basic unit of information and can only have one of two possible values that is 0 or 1. In our world, we usually with numbers using the decimal base. In other words, we use the digit 0 to 9. However, there are other number representations that can be quite useful such as the binary number systems.</p>
+
+            <p><strong>Bitwise algorithms</strong> refer to algorithms that perform operations on individual bits or bit patterns within computer data. These algorithms use the binary representation of data and use the fundamental bitwise operations such as AND, OR, XOR, NOT, and bit shifting to manipulate and extract information from the data.</p>
+
+            <p>Bitwise algorithms are usually faster and use less memory than regular arithmetic operations because they work directly with the binary representation of data. This often leads to faster execution times and reduced memory usage.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Bitwise Operators / Basics of Bit manipulation</h2>
+            <p>An algorithmic operation known as <strong>bit manipulation</strong> involves the manipulation of bits at the bit level (bitwise). Bit manipulation is all about these bitwise operations. They improve the efficiency of programs by being primitive, fast actions.</p>
+
+            <p>The computer uses this bit manipulation to perform operations like addition, subtraction, multiplication, and division are all done at the bit level. This operation is performed in the arithmetic logic unit (ALU) which is a part of a computer's CPU. Inside the ALU, all such mathematical operations are performed.</p>
+
+            <p>There are different bitwise operations used in bit manipulation. These bit operations operate on the individual bits of the bit patterns. Bit operations are fast and can be used in optimizing time complexity.</p>
+
+            <h3>The main bitwise operators are:</h3>
+            <ul>
+                <li><strong>AND</strong> (&amp;) - Returns 1 if both operands are 1, otherwise 0</li>
+                <li><strong>OR</strong> (|) - Returns 1 if at least one operand is 1, otherwise 0</li>
+                <li><strong>XOR</strong> (^) - Returns 1 if exactly one operand is 1, otherwise 0</li>
+                <li><strong>NOT</strong> (~) - Inverts all bits (0 becomes 1, 1 becomes 0)</li>
+                <li><strong>Left Shift</strong> (<<) - Shifts bits to the left by specified positions</li>
+                <li><strong>Right Shift</strong> (>>) - Shifts bits to the right by specified positions</li>
+            </ul>
+
+            <div class="operator-cards">
+                <div class="operator-card">
+                    <h3>AND <span class="operator-symbol">&amp;</span></h3>
+                    <p>The AND operator compares each bit of the first operand to the corresponding bit of the second operand. If both bits are 1, the corresponding result bit is set to 1. Otherwise, the corresponding result bit is set to 0.</p>
+                    <p><strong>Example:</strong> 5 &amp; 3 = 1</p>
+                    <p>Binary: 101 &amp; 011 = 001</p>
+                    <p><strong>Common Uses:</strong> Masking bits, checking if a bit is set</p>
+                </div>
+                
+                <div class="operator-card">
+                    <h3>OR <span class="operator-symbol">|</span></h3>
+                    <p>The OR operator compares each bit of the first operand to the corresponding bit of the second operand. If either bit is 1, the corresponding result bit is set to 1. Otherwise, the corresponding result bit is set to 0.</p>
+                    <p><strong>Example:</strong> 5 | 3 = 7</p>
+                    <p>Binary: 101 | 011 = 111</p>
+                    <p><strong>Common Uses:</strong> Setting specific bits</p>
+                </div>
+                
+                <div class="operator-card">
+                    <h3>XOR <span class="operator-symbol">^</span></h3>
+                    <p>The XOR (exclusive OR) operator compares each bit of the first operand to the corresponding bit of the second operand. If exactly one bit is 1, the corresponding result bit is set to 1. Otherwise, the corresponding result bit is set to 0.</p>
+                    <p><strong>Example:</strong> 5 ^ 3 = 6</p>
+                    <p>Binary: 101 ^ 011 = 110</p>
+                    <p><strong>Common Uses:</strong> Finding unique elements, toggling bits, simple encryption</p>
+                </div>
+                
+                <div class="operator-card">
+                    <h3>NOT <span class="operator-symbol">~</span></h3>
+                    <p>The NOT operator inverts each bit of the operand. If a bit is 0, it becomes 1. If a bit is 1, it becomes 0.</p>
+                    <p><strong>Example:</strong> ~5 = -6 (depends on system's representation)</p>
+                    <p>Binary: ~00000101 = 11111010 (in 8-bit representation)</p>
+                    <p><strong>Common Uses:</strong> Inverting bits, finding the one's complement</p>
+                </div>
+                
+                <div class="operator-card">
+                    <h3>Left Shift <span class="operator-symbol"><<</span></h3>
+                    <p>The left shift operator shifts the bits of the first operand to the left by the number of positions specified by the second operand. New bits are set to 0.</p>
+                    <p><strong>Example:</strong> 5 << 1 = 10</p>
+                    <p>Binary: 101 << 1 = 1010</p>
+                    <p><strong>Common Uses:</strong> Multiplication by powers of 2, fast power calculation</p>
+                </div>
+                
+                <div class="operator-card">
+                    <h3>Right Shift <span class="operator-symbol">>></span></h3>
+                    <p>The right shift operator shifts the bits of the first operand to the right by the number of positions specified by the second operand. For unsigned numbers, new bits are set to 0.</p>
+                    <p><strong>Example:</strong> 5 >> 1 = 2</p>
+                    <p>Binary: 101 >> 1 = 10</p>
+                    <p><strong>Common Uses:</strong> Division by powers of 2, extracting specific bits</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Truth Table of Bitwise Operators</h2>
+            <p>Let's look at the truth table of the bitwise operators:</p>
+            
+            <table class="truth-table">
+                <thead>
+                    <tr>
+                        <th>X</th>
+                        <th>Y</th>
+                        <th>X & Y</th>
+                        <th>X | Y</th>
+                        <th>X ^ Y</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h2>Common Bitwise Operations and Techniques</h2>
+            <div class="toggle-icon" onclick="toggleContent('bitwise-techniques')">
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="toggle-content" id="bitwise-techniques">
+                <h3>1. Check if a number is even or odd</h3>
+                <p>We can check if a number is even or odd using the bitwise AND operation with 1.</p>
+                <ul>
+                    <li>If (n & 1) == 0, then n is even</li>
+                    <li>If (n & 1) == 1, then n is odd</li>
+                </ul>
+
+                <h3>2. Check if the ith bit is set</h3>
+                <p>To check if the ith bit is set (1) in a number n, we can use the bitwise AND operation with a mask.</p>
+                <p>Mask = 1 << i</p>
+                <p>If (n & mask) != 0, then the ith bit is set</p>
+
+                <h3>3. Set the ith bit</h3>
+                <p>To set the ith bit in a number n, we can use the bitwise OR operation with a mask.</p>
+                <p>Mask = 1 << i</p>
+                <p>n = n | mask</p>
+
+                <h3>4. Clear the ith bit</h3>
+                <p>To clear (set to 0) the ith bit in a number n, we can use the bitwise AND operation with a mask.</p>
+                <p>Mask = ~(1 << i)</p>
+                <p>n = n & mask</p>
+
+                <h3>5. Toggle the ith bit</h3>
+                <p>To toggle (flip) the ith bit in a number n, we can use the bitwise XOR operation with a mask.</p>
+                <p>Mask = 1 << i</p>
+                <p>n = n ^ mask</p>
+
+                <h3>6. Count the number of set bits (Population Count)</h3>
+                <p>To count the number of bits that are set to 1 in a number n, we can use the Brian Kernighan's Algorithm.</p>
+                <pre><code class="language-cpp">
+int countSetBits(int n) {
+    int count = 0;
+    while (n > 0) {
+        n = n & (n - 1); // Clear the rightmost set bit
+        count++;
+    }
+    return count;
+}
+                </code></pre>
+
+                <h3>7. Multiply by 2<sup>n</sup></h3>
+                <p>To multiply a number by 2<sup>n</sup>, we can use the left shift operation.</p>
+                <p>m = n << k (This gives m = n * 2<sup>k</sup>)</p>
+
+                <h3>8. Divide by 2<sup>n</sup></h3>
+                <p>To divide a number by 2<sup>n</sup>, we can use the right shift operation.</p>
+                <p>m = n >> k (This gives m = n / 2<sup>k</sup>)</p>
+
+                <h3>9. Check if a number is a power of 2</h3>
+                <p>A number is a power of 2 if it has only one bit set. We can check this using a bitwise trick.</p>
+                <p>If (n & (n - 1)) == 0 and n != 0, then n is a power of 2</p>
+
+                <h3>10. Swap two numbers without using a temporary variable</h3>
+                <p>We can swap two numbers using XOR without using a temporary variable.</p>
+                <pre><code class="language-cpp">
+// Swap two numbers using XOR
+a = a ^ b;
+b = a ^ b; // Now b has the original value of a
+a = a ^ b; // Now a has the original value of b
+                </code></pre>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <div class="code-tabs">
+                <div class="code-tab active" onclick="switchTab(this, 'cpp')">C++</div>
+                <div class="code-tab" onclick="switchTab(this, 'java')">Java</div>
+                <div class="code-tab" onclick="switchTab(this, 'python')">Python</div>
+                <div class="code-tab" onclick="switchTab(this, 'javascript')">JavaScript</div>
+            </div>
+            <div class="code-content">
+                <div class="code-block active" id="cpp">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Function to check if a number is even or odd
+bool isEven(int n) {
+    return ((n & 1) == 0);
+}
+
+// Function to check if the ith bit is set
+bool isBitSet(int n, int i) {
+    return ((n & (1 << i)) != 0);
+}
+
+// Function to set the ith bit
+int setBit(int n, int i) {
+    return (n | (1 << i));
+}
+
+// Function to clear the ith bit
+int clearBit(int n, int i) {
+    return (n & ~(1 << i));
+}
+
+// Function to toggle the ith bit
+int toggleBit(int n, int i) {
+    return (n ^ (1 << i));
+}
+
+// Function to count the number of set bits
+int countSetBits(int n) {
+    int count = 0;
+    while (n > 0) {
+        n = n & (n - 1); // Clear the rightmost set bit
+        count++;
+    }
+    return count;
+}
+
+// Function to check if a number is a power of 2
+bool isPowerOfTwo(int n) {
+    return (n > 0) && ((n & (n - 1)) == 0);
+}
+
+// Function to swap two numbers without using a temporary variable
+void swapNumbers(int& a, int& b) {
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
+}
+
+// Function to find the rightmost set bit
+int rightmostSetBit(int n) {
+    return n & -n;
+}
+
+// Function to find the position of the rightmost set bit
+int positionOfRightmostSetBit(int n) {
+    if (n == 0) return 0;
+    
+    int position = 1;
+    int m = 1;
+    
+    while ((n & m) == 0) {
+        m = m << 1;
+        position++;
+    }
+    
+    return position;
+}
+
+int main() {
+    // Example usage of bitwise operators
+    int a = 5;  // Binary: 0101
+    int b = 9;  // Binary: 1001
+    
+    cout << "a = " << a << " (Binary: 0101)" << endl;
+    cout << "b = " << b << " (Binary: 1001)" << endl;
+    
+    // Bitwise AND
+    cout << "a & b = " << (a & b) << " (Binary: 0001)" << endl;
+    
+    // Bitwise OR
+    cout << "a | b = " << (a | b) << " (Binary: 1101)" << endl;
+    
+    // Bitwise XOR
+    cout << "a ^ b = " << (a ^ b) << " (Binary: 1100)" << endl;
+    
+    // Bitwise NOT (depends on the size of int and its binary representation)
+    cout << "~a = " << (~a) << endl;
+    
+    // Left Shift
+    cout << "a << 1 = " << (a << 1) << " (Binary: 1010)" << endl;
+    
+    // Right Shift
+    cout << "a >> 1 = " << (a >> 1) << " (Binary: 0010)" << endl;
+    
+    // Using our defined functions
+    cout << "\nIs 6 even? " << (isEven(6) ? "Yes" : "No") << endl;
+    cout << "Is 7 even? " << (isEven(7) ? "Yes" : "No") << endl;
+    
+    cout << "Is the 2nd bit set in 5? " << (isBitSet(5, 2) ? "Yes" : "No") << endl;
+    
+    cout << "Setting the 1st bit in 5: " << setBit(5, 1) << " (Binary: 0111)" << endl;
+    cout << "Clearing the 2nd bit in 5: " << clearBit(5, 2) << " (Binary: 0001)" << endl;
+    cout << "Toggling the 0th bit in 5: " << toggleBit(5, 0) << " (Binary: 0100)" << endl;
+    
+    cout << "Number of set bits in 15: " << countSetBits(15) << endl;
+    
+    cout << "Is 16 a power of 2? " << (isPowerOfTwo(16) ? "Yes" : "No") << endl;
+    cout << "Is 15 a power of 2? " << (isPowerOfTwo(15) ? "Yes" : "No") << endl;
+    
+    int x = 10, y = 20;
+    cout << "Before swap: x = " << x << ", y = " << y << endl;
+    swapNumbers(x, y);
+    cout << "After swap: x = " << x << ", y = " << y << endl;
+    
+    cout << "Rightmost set bit of 12: " << rightmostSetBit(12) << endl;
+    cout << "Position of rightmost set bit in 12: " << positionOfRightmostSetBit(12) << endl;
+    
+    return 0;
+}</code></pre>
+                </div>
+                <div class="code-block" id="java">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-java">public class BitwiseOperations {
+    
+    // Check if a number is even or odd
+    public static boolean isEven(int n) {
+        return (n & 1) == 0;
+    }
+    
+    // Check if the ith bit is set
+    public static boolean isBitSet(int n, int i) {
+        return (n & (1 << i)) != 0;
+    }
+    
+    // Set the ith bit
+    public static int setBit(int n, int i) {
+        return n | (1 << i);
+    }
+    
+    // Clear the ith bit
+    public static int clearBit(int n, int i) {
+        return n & ~(1 << i);
+    }
+    
+    // Toggle the ith bit
+    public static int toggleBit(int n, int i) {
+        return n ^ (1 << i);
+    }
+    
+    // Count the number of set bits (Brian Kernighan's algorithm)
+    public static int countSetBits(int n) {
+        int count = 0;
+        while (n > 0) {
+            n &= (n - 1);  // Clear the rightmost set bit
+            count++;
+        }
+        return count;
+    }
+    
+    // Check if a number is a power of 2
+    public static boolean isPowerOfTwo(int n) {
+        return n > 0 && (n & (n - 1)) == 0;
+    }
+    
+    // Find the rightmost set bit
+    public static int rightmostSetBit(int n) {
+        return n & -n;
+    }
+    
+    // Find the position of the rightmost set bit (1-indexed)
+    public static int positionOfRightmostSetBit(int n) {
+        if (n == 0) return 0;
+        
+        int position = 1;
+        int m = 1;
+        
+        while ((n & m) == 0) {
+            m = m << 1;
+            position++;
+        }
+        
+        return position;
+    }
+    
+    // Find the most significant bit (MSB) position (1-indexed)
+    public static int positionOfMSB(int n) {
+        int position = 0;
+        while (n > 0) {
+            n >>= 1;
+            position++;
+        }
+        return position;
+    }
+    
+    // Isolate the rightmost 0 bit
+    public static int isolateRightmostZeroBit(int n) {
+        return ~n & (n + 1);
+    }
+    
+    public static void main(String[] args) {
+        // Example usage
+        int a = 5;  // Binary: 0101
+        int b = 9;  // Binary: 1001
+        
+        System.out.println("a = " + a + " (Binary: 0101)");
+        System.out.println("b = " + b + " (Binary: 1001)");
+        
+        // Bitwise AND
+        System.out.println("a & b = " + (a & b) + " (Binary: 0001)");
+        
+        // Bitwise OR
+        System.out.println("a | b = " + (a | b) + " (Binary: 1101)");
+        
+        // Bitwise XOR
+        System.out.println("a ^ b = " + (a ^ b) + " (Binary: 1100)");
+        
+        // Bitwise NOT (depends on the size of int and its binary representation)
+        System.out.println("~a = " + (~a));
+        
+        // Left Shift
+        System.out.println("a << 1 = " + (a << 1) + " (Binary: 1010)");
+        
+        // Right Shift
+        System.out.println("a >> 1 = " + (a >> 1) + " (Binary: 0010)");
+        
+        // Using our defined methods
+        System.out.println("\nIs 6 even? " + (isEven(6) ? "Yes" : "No"));
+        System.out.println("Is 7 even? " + (isEven(7) ? "Yes" : "No"));
+        
+        System.out.println("Is the 2nd bit set in 5? " + (isBitSet(5, 2) ? "Yes" : "No"));
+        
+        System.out.println("Setting the 1st bit in 5: " + setBit(5, 1) + " (Binary: 0111)");
+        System.out.println("Clearing the 2nd bit in 5: " + clearBit(5, 2) + " (Binary: 0001)");
+        System.out.println("Toggling the 0th bit in 5: " + toggleBit(5, 0) + " (Binary: 0100)");
+        
+        System.out.println("Number of set bits in 15: " + countSetBits(15));
+        
+        System.out.println("Is 16 a power of 2? " + (isPowerOfTwo(16) ? "Yes" : "No"));
+        System.out.println("Is 15 a power of 2? " + (isPowerOfTwo(15) ? "Yes" : "No"));
+        
+        int x = 10, y = 20;
+        System.out.println("Before swap: x = " + x + ", y = " + y);
+        // Swap using XOR
+        x = x ^ y;
+        y = x ^ y;
+        x = x ^ y;
+        System.out.println("After swap: x = " + x + ", y = " + y);
+        
+        System.out.println("Rightmost set bit of 12: " + rightmostSetBit(12));
+        System.out.println("Position of rightmost set bit in 12: " + positionOfRightmostSetBit(12));
+        System.out.println("Position of MSB in 12: " + positionOfMSB(12));
+    }
+}</code></pre>
+                </div>
+                <div class="code-block" id="python">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-python"># Bitwise Operations in Python
+
+def is_even(n):
+    """Check if a number is even."""
+    return (n & 1) == 0
+
+def is_bit_set(n, i):
+    """Check if the ith bit is set."""
+    return (n & (1 << i)) != 0
+
+def set_bit(n, i):
+    """Set the ith bit."""
+    return n | (1 << i)
+
+def clear_bit(n, i):
+    """Clear the ith bit."""
+    return n & ~(1 << i)
+
+def toggle_bit(n, i):
+    """Toggle the ith bit."""
+    return n ^ (1 << i)
+
+def count_set_bits(n):
+    """Count the number of set bits (Brian Kernighan's algorithm)."""
+    count = 0
+    while n:
+        n &= (n - 1)  # Clear the rightmost set bit
+        count += 1
+    return count
+
+def is_power_of_two(n):
+    """Check if a number is a power of 2."""
+    return n > 0 and (n & (n - 1)) == 0
+
+def rightmost_set_bit(n):
+    """Find the rightmost set bit."""
+    return n & -n
+
+def position_of_rightmost_set_bit(n):
+    """Find the position of the rightmost set bit (1-indexed)."""
+    if n == 0:
+        return 0
+    
+    position = 0
+    while n:
+        position += 1
+        if n & 1:
+            break
+        n >>= 1
+    
+    return position
+
+def position_of_msb(n):
+    """Find the position of the most significant bit (1-indexed)."""
+    position = 0
+    while n:
+        position += 1
+        n >>= 1
+    return position
+
+def swap_numbers(a, b):
+    """Swap two numbers using XOR."""
+    a ^= b
+    b ^= a
+    a ^= b
+    return a, b
+
+def find_unique_number(arr):
+    """Find the only number that appears once in an array where all other numbers appear twice."""
+    result = 0
+    for num in arr:
+        result ^= num
+    return result
+
+def find_missing_number(arr, n):
+    """Find the missing number in an array of size n-1 containing numbers from 1 to n."""
+    expected_sum = n * (n + 1) // 2
+    actual_sum = sum(arr)
+    return expected_sum - actual_sum
+
+def get_bit_representation(n):
+    """Get the binary representation of a number as a string."""
+    if n == 0:
+        return "0"
+    
+    binary = ""
+    while n:
+        binary = str(n & 1) + binary
+        n >>= 1
+    
+    return binary
+
+# Example usage
+if __name__ == "__main__":
+    # Basic bitwise operations
+    a = 5  # Binary: 0101
+    b = 9  # Binary: 1001
+    
+    print(f"a = {a} (Binary: {get_bit_representation(a).zfill(4)})")
+    print(f"b = {b} (Binary: {get_bit_representation(b).zfill(4)})")
+    
+    # Bitwise AND
+    print(f"a & b = {a & b} (Binary: {get_bit_representation(a & b).zfill(4)})")
+    
+    # Bitwise OR
+    print(f"a | b = {a | b} (Binary: {get_bit_representation(a | b).zfill(4)})")
+    
+    # Bitwise XOR
+    print(f"a ^ b = {a ^ b} (Binary: {get_bit_representation(a ^ b).zfill(4)})")
+    
+    # Bitwise NOT (depends on the size of int and its binary representation)
+    print(f"~a = {~a}")
+    
+    # Left Shift
+    print(f"a << 1 = {a << 1} (Binary: {get_bit_representation(a << 1).zfill(4)})")
+    
+    # Right Shift
+    print(f"a >> 1 = {a >> 1} (Binary: {get_bit_representation(a >> 1).zfill(4)})")
+    
+    # Using our defined functions
+    print(f"\nIs 6 even? {'Yes' if is_even(6) else 'No'}")
+    print(f"Is 7 even? {'Yes' if is_even(7) else 'No'}")
+    
+    print(f"Is the 2nd bit set in 5? {'Yes' if is_bit_set(5, 2) else 'No'}")
+    
+    print(f"Setting the 1st bit in 5: {set_bit(5, 1)} (Binary: {get_bit_representation(set_bit(5, 1)).zfill(4)})")
+    print(f"Clearing the 2nd bit in 5: {clear_bit(5, 2)} (Binary: {get_bit_representation(clear_bit(5, 2)).zfill(4)})")
+    print(f"Toggling the 0th bit in 5: {toggle_bit(5, 0)} (Binary: {get_bit_representation(toggle_bit(5, 0)).zfill(4)})")
+    
+    print(f"Number of set bits in 15: {count_set_bits(15)}")
+    
+    print(f"Is 16 a power of 2? {'Yes' if is_power_of_two(16) else 'No'}")
+    print(f"Is 15 a power of 2? {'Yes' if is_power_of_two(15) else 'No'}")
+    
+    x, y = 10, 20
+    print(f"Before swap: x = {x}, y = {y}")
+    x, y = swap_numbers(x, y)
+    print(f"After swap: x = {x}, y = {y}")
+    
+    arr = [1, 2, 3, 1, 2, 4, 3]
+    print(f"The unique number in {arr} is: {find_unique_number(arr)}")
+    
+    missing_arr = [1, 2, 4, 5, 6]
+    print(f"The missing number in {missing_arr} (from 1 to 6) is: {find_missing_number(missing_arr, 6)}")
+    
+    print(f"Rightmost set bit of 12: {rightmost_set_bit(12)}")
+    print(f"Position of rightmost set bit in 12: {position_of_rightmost_set_bit(12)}")
+    print(f"Position of MSB in 12: {position_of_msb(12)}")</code></pre>
+                </div>
+                <div class="code-block" id="javascript">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-javascript">// Bitwise Operations in JavaScript
+
+// Check if a number is even or odd
+function isEven(n) {
+    return (n & 1) === 0;
+}
+
+// Check if the ith bit is set
+function isBitSet(n, i) {
+    return (n & (1 << i)) !== 0;
+}
+
+// Set the ith bit
+function setBit(n, i) {
+    return n | (1 << i);
+}
+
+// Clear the ith bit
+function clearBit(n, i) {
+    return n & ~(1 << i);
+}
+
+// Toggle the ith bit
+function toggleBit(n, i) {
+    return n ^ (1 << i);
+}
+
+// Count the number of set bits (Brian Kernighan's algorithm)
+function countSetBits(n) {
+    let count = 0;
+    while (n > 0) {
+        n &= (n - 1); // Clear the rightmost set bit
+        count++;
+    }
+    return count;
+}
+
+// Check if a number is a power of 2
+function isPowerOfTwo(n) {
+    return n > 0 && (n & (n - 1)) === 0;
+}
+
+// Find the rightmost set bit
+function rightmostSetBit(n) {
+    return n & -n;
+}
+
+// Find the position of the rightmost set bit (1-indexed)
+function positionOfRightmostSetBit(n) {
+    if (n === 0) return 0;
+    
+    let position = 1;
+    let m = 1;
+    
+    while ((n & m) === 0) {
+        m = m << 1;
+        position++;
+    }
+    
+    return position;
+}
+
+// Find the position of the most significant bit (1-indexed)
+function positionOfMSB(n) {
+    let position = 0;
+    while (n > 0) {
+        n >>= 1;
+        position++;
+    }
+    return position;
+}
+
+// Swap two numbers using XOR (in JavaScript, we return the swapped values)
+function swapNumbers(a, b) {
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
+    return [a, b];
+}
+
+// Find the only number that appears once in an array where all other numbers appear twice
+function findUniqueNumber(arr) {
+    let result = 0;
+    for (let num of arr) {
+        result ^= num;
+    }
+    return result;
+}
+
+// Find the missing number in an array of size n-1 containing numbers from 1 to n
+function findMissingNumber(arr, n) {
+    let expectedSum = (n * (n + 1)) / 2;
+    let actualSum = arr.reduce((sum, num) => sum + num, 0);
+    return expectedSum - actualSum;
+}
+
+// Get the binary representation of a number
+function getBitRepresentation(n) {
+    if (n === 0) return "0";
+    
+    let binary = "";
+    let temp = n;
+    
+    while (temp > 0) {
+        binary = (temp & 1) + binary;
+        temp >>= 1;
+    }
+    
+    return binary;
+}
+
+// Example usage
+function main() {
+    // Basic bitwise operations
+    const a = 5;  // Binary: 0101
+    const b = 9;  // Binary: 1001
+    
+    console.log(`a = ${a} (Binary: ${getBitRepresentation(a).padStart(4, '0')})`);
+    console.log(`b = ${b} (Binary: ${getBitRepresentation(b).padStart(4, '0')})`);
+    
+    // Bitwise AND
+    console.log(`a & b = ${a & b} (Binary: ${getBitRepresentation(a & b).padStart(4, '0')})`);
+    
+    // Bitwise OR
+    console.log(`a | b = ${a | b} (Binary: ${getBitRepresentation(a | b).padStart(4, '0')})`);
+    
+    // Bitwise XOR
+    console.log(`a ^ b = ${a ^ b} (Binary: ${getBitRepresentation(a ^ b).padStart(4, '0')})`);
+    
+    // Bitwise NOT (depends on the size of int and its binary representation)
+    console.log(`~a = ${~a}`);
+    
+    // Left Shift
+    console.log(`a << 1 = ${a << 1} (Binary: ${getBitRepresentation(a << 1).padStart(4, '0')})`);
+    
+    // Right Shift
+    console.log(`a >> 1 = ${a >> 1} (Binary: ${getBitRepresentation(a >> 1).padStart(4, '0')})`);
+    
+    // Using our defined functions
+    console.log(`\nIs 6 even? ${isEven(6) ? 'Yes' : 'No'}`);
+    console.log(`Is 7 even? ${isEven(7) ? 'Yes' : 'No'}`);
+    
+    console.log(`Is the 2nd bit set in 5? ${isBitSet(5, 2) ? 'Yes' : 'No'}`);
+    
+    console.log(`Setting the 1st bit in 5: ${setBit(5, 1)} (Binary: ${getBitRepresentation(setBit(5, 1)).padStart(4, '0')})`);
+    console.log(`Clearing the 2nd bit in 5: ${clearBit(5, 2)} (Binary: ${getBitRepresentation(clearBit(5, 2)).padStart(4, '0')})`);
+    console.log(`Toggling the 0th bit in 5: ${toggleBit(5, 0)} (Binary: ${getBitRepresentation(toggleBit(5, 0)).padStart(4, '0')})`);
+    
+    console.log(`Number of set bits in 15: ${countSetBits(15)}`);
+    
+    console.log(`Is 16 a power of 2? ${isPowerOfTwo(16) ? 'Yes' : 'No'}`);
+    console.log(`Is 15 a power of 2? ${isPowerOfTwo(15) ? 'Yes' : 'No'}`);
+    
+    let x = 10, y = 20;
+    console.log(`Before swap: x = ${x}, y = ${y}`);
+    [x, y] = swapNumbers(x, y);
+    console.log(`After swap: x = ${x}, y = ${y}`);
+    
+    const arr = [1, 2, 3, 1, 2, 4, 3];
+    console.log(`The unique number in [${arr}] is: ${findUniqueNumber(arr)}`);
+    
+    const missingArr = [1, 2, 4, 5, 6];
+    console.log(`The missing number in [${missingArr}] (from 1 to 6) is: ${findMissingNumber(missingArr, 6)}`);
+    
+    console.log(`Rightmost set bit of 12: ${rightmostSetBit(12)}`);
+    console.log(`Position of rightmost set bit in 12: ${positionOfRightmostSetBit(12)}`);
+    console.log(`Position of MSB in 12: ${positionOfMSB(12)}`);
+}
+
+// Execute the main function
+main();</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Example of Bitwise Operators in C</h2>
+            <p>The following program uses bitwise operators to perform bit operations in C:</p>
+            
+            <div class="code-block">
+                <pre><code class="language-cpp">#include &lt;stdio.h&gt;
+
+int main() {
+    // a = 5 (00000101 in 8-bit binary)
+    // b = 9 (00001001 in 8-bit binary)
+    unsigned int a = 5, b = 9;
+    
+    // The result is 00000001
+    printf("a&b = %u\n", a & b);
+    
+    // The result is 00001101
+    printf("a|b = %u\n", a | b);
+    
+    // The result is 00001100
+    printf("a^b = %u\n", a ^ b);
+    
+    // The result is 11111111111111111111111111111010
+    // (assuming 32-bit unsigned int)
+    printf("~a = %u\n", ~a);
+    
+    // The result is 00001010
+    printf("b<<1 = %u\n", b << 1);
+    
+    // The result is 00000100
+    printf("b>>1 = %u\n", b >> 1);
+    
+    return 0;
+}</code></pre>
+            </div>
+            
+            <div class="output-section">
+                <strong>Output:</strong>
+                <pre>
+a&b = 1
+a|b = 13
+a^b = 12
+~a = 4294967290
+b<<1 = 18
+b>>1 = 4
+                </pre>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Common Applications of Bitwise Algorithms</h2>
+            <div class="applications">
+                <div class="application">Data Compression</div>
+                <div class="application">Cryptography</div>
+                <div class="application">Network Protocols</div>
+                <div class="application">Graphics Processing</div>
+                <div class="application">Memory Management</div>
+                <div class="application">Digital Signal Processing</div>
+                <div class="application">File Format Handling</div>
+                <div class="application">Hardware Control</div>
+                <div class="application">Hash Functions</div>
+                <div class="application">Competitive Programming</div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Popular Bitwise Algorithm Problems</h3>
+            <ul>
+                <li><strong>Find the single number:</strong> In an array where all elements appear twice except one, find the element that appears only once.</li>
+                <li><strong>Count set bits:</strong> Count the number of 1's in the binary representation of a number.</li>
+                <li><strong>Generate power set:</strong> Generate all possible subsets of a set using bitwise operations.</li>
+                <li><strong>Find missing number:</strong> Find the missing number in an array containing n-1 numbers from 1 to n.</li>
+                <li><strong>Swap two numbers:</strong> Swap two numbers without using a temporary variable.</li>
+                <li><strong>Reverse bits:</strong> Reverse the bits of a 32-bit unsigned integer.</li>
+                <li><strong>Check if power of two:</strong> Determine if a number is a power of two.</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Advantages of Bitwise Algorithms</h2>
+            <div class="toggle-icon" onclick="toggleContent('advantages')">
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="toggle-content" id="advantages">
+                <h3>1. Speed and Efficiency</h3>
+                <p>Bitwise operations are directly executed by the CPU and are typically faster than higher-level operations. For example, multiplying or dividing by powers of 2 using bit shifting is faster than using multiplication or division operators.</p>
+
+                <h3>2. Memory Optimization</h3>
+                <p>Bitwise algorithms can be used to compress data, reducing the memory footprint of applications. For instance, using bits to represent boolean flags (like permissions or settings) can save considerable memory compared to using an array of booleans.</p>
+
+                <h3>3. Low-Level Hardware Control</h3>
+                <p>Bitwise operations provide direct control over hardware at the bit level, essential for device drivers, embedded systems, and operating system development.</p>
+
+                <h3>4. Compact Code</h3>
+                <p>In many cases, bitwise operations can replace longer code segments with more concise and readable alternatives. For example, checking if a number is even can be done with a simple bitwise operation (n & 1 == 0).</p>
+
+                <h3>5. Mathematical Applications</h3>
+                <p>Many mathematical operations, particularly in fields like cryptography, require bitwise manipulations for efficiency and correctness.</p>
+
+                <h3>Limitations of Bitwise Algorithms</h3>
+                <ol>
+                    <li><strong>Readability:</strong> Bitwise operations can make code less readable and more difficult to maintain, especially for developers who are not familiar with them.</li>
+                    <li><strong>Portability:</strong> Some bitwise operations may behave differently across different platforms or languages, particularly those involving sign extension.</li>
+                    <li><strong>Debugging Difficulty:</strong> Debugging code with extensive use of bitwise operations can be challenging as the operations are not as intuitive as higher-level constructs.</li>
+                    <li><strong>Type Safety:</strong> Bitwise operations may lead to unexpected results when used with certain data types, particularly with signed integers.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+    <script>
+        hljs.highlightAll();
+        
+        function switchTab(element, language) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.code-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Add active class to selected tab
+            element.classList.add('active');
+            
+            // Hide all code blocks
+            document.querySelectorAll('.code-block').forEach(block => {
+                block.classList.remove('active');
+            });
+            
+            // Show selected code block
+            document.getElementById(language).classList.add('active');
+        }
+        
+        function copyCode(button) {
+            const pre = button.nextElementSibling;
+            const code = pre.textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                const originalIcon = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                }, 2000);
+            });
+        }
+        
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.classList.toggle('active');
+            
+            const icon = content.previousElementSibling;
+            icon.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
