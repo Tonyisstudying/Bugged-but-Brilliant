@@ -16,7 +16,7 @@
                 <i class="fas fa-home"></i> Home
             </a>
         </div>
-        <h1 class="course-title">Chinese</h1>
+        <h1 class="course-title">Chinese Course</h1>
         
         <div class="level-selector">
             <div class="level-tab active" data-level="1">HSK 1</div>
@@ -130,49 +130,33 @@
                 <button id="start-lesson-btn" class="start-btn">Start Lesson</button>
             </div>
         </div>
+        
+        <!-- This div will contain the lesson content -->
+        <div id="lesson-content" class="lesson-content hidden"></div>
+        
+        <!-- Add overlay for modals -->
+        <div id="overlay" class="overlay hidden"></div>
     </div>
 
     <script>
-        // Level tab switching functionality
-        document.querySelectorAll('.level-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                const level = this.getAttribute('data-level');
-                
-                // Update active tab
-                document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Show corresponding path
-                document.querySelectorAll('.path-section').forEach(section => section.classList.add('hidden'));
-                document.getElementById(`level-${level}-path`).classList.remove('hidden');
-            });
-        });
-
-        // Stage circle click functionality 
-        document.querySelectorAll('.stage-circle:not(.locked)').forEach(circle => {
-            circle.addEventListener('click', function() {
-                const level = this.getAttribute('data-level');
-                const stage = this.getAttribute('data-stage');
-                
-                // Remove current class from all stages
-                document.querySelectorAll('.stage-circle').forEach(c => {
-                    c.classList.remove('current');
+        // The main functionality is now handled by the courses_display.js file
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Chinese course page loaded');
+            
+            // Initialize courseDisplay is handled in the JS file
+            
+            // Stage click events are now handled in courseDisplay.initializeEventListeners()
+            
+            // For backward compatibility, still handle the close preview button
+            const closePreviewBtn = document.querySelector('.close-preview');
+            if (closePreviewBtn) {
+                closePreviewBtn.addEventListener('click', function() {
+                    const overlay = document.getElementById('overlay');
+                    const preview = document.getElementById('stage-preview');
+                    if (overlay) overlay.classList.add('hidden');
+                    if (preview) preview.classList.add('hidden');
                 });
-                
-                // Add current class to this stage
-                this.classList.add('current');  
-
-                // Start the lesson immediately without showing preview
-                if (window.courseDisplay) {
-                    window.courseDisplay.startStage(parseInt(level), parseInt(stage));
-                }
-            });
-        });
-
-        // Close preview
-        document.querySelector('.close-preview').addEventListener('click', function() {
-            document.getElementById('overlay').classList.add('hidden');
-            document.getElementById('stage-preview').classList.add('hidden');
+            }
         });
     </script>
 </body>

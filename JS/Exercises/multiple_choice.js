@@ -100,13 +100,21 @@ export default class MultipleChoiceExercise {
 
     close() {
     const content = document.getElementById('lesson-content');
+    const overlay = document.getElementById('overlay');
+    
     if (content) {
         // First remove visible class to trigger fade-out
         content.classList.remove('visible');
         
+        // Also fade out the overlay
+        if (overlay) {
+            overlay.classList.remove('visible');
+        }
+        
         // After animation completes, hide the content
         setTimeout(() => {
             content.classList.add('hidden');
+            if (overlay) overlay.classList.add('hidden');
             document.querySelector('.course-title').classList.remove('minimized');
         }, 500); // Match this timing with your CSS transition
     }
