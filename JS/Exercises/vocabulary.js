@@ -22,16 +22,17 @@ export default class VocabularyExercise {
     }
 
     async loadData(level, stage) {
-        try {
-            const response = await fetch(`../Json/courses/chinese/level${level}/stages/stage${stage}/vocab.json`);
-            if (!response.ok) throw new Error('Failed to load vocabulary data');
-            const data = await response.json();
-            this.words = data.words;
-        } catch (error) {
-            console.error('Error loading vocabulary:', error);
-            this.words = [];
-            throw error; //re-throw to hanle ni display
-        }
+    try {
+        // Update path to use HSK folders instead of level/stages
+        const response = await fetch(`../Json/HSK${level}/stage${stage}/vocab.json`);
+        if (!response.ok) throw new Error('Failed to load vocabulary data');
+        const data = await response.json();
+        this.words = data.words;
+    } catch (error) {
+        console.error('Error loading vocabulary:', error);
+        this.words = [];
+        throw error; // re-throw to handle in display
+    }
     }
 
     displayWords() {
