@@ -43,6 +43,17 @@ class CourseDisplay {
                 this.startStage(level, stage);
             });
         });
+        
+        // Add click handler to the overlay to close the content when clicked outside
+        const overlay = document.getElementById('overlay');
+        if (overlay) {
+            overlay.addEventListener('click', (e) => {
+                // Only close if the click was directly on the overlay (not its children)
+                if (e.target === overlay) {
+                    this.closeContent();
+                }
+            });
+        }
     }
 
     switchLevel(level) {
@@ -101,14 +112,13 @@ class CourseDisplay {
         }
     }
 
-    completeStage() {
-        console.log(`Stage ${this.currentStage} of Level ${this.currentLevel} completed`);
-        
-        // Hide lesson content
+    // Method to close the content modal
+    closeContent() {
         const content = document.getElementById('lesson-content');
         const overlay = document.getElementById('overlay');
         
         if (content) {
+            // First remove visible class to trigger fade-out
             content.classList.remove('visible');
             
             // Also fade out the overlay
@@ -120,8 +130,16 @@ class CourseDisplay {
             setTimeout(() => {
                 content.classList.add('hidden');
                 if (overlay) overlay.classList.add('hidden');
-            }, 500);
+                document.querySelector('.course-title').classList.remove('minimized');
+            }, 500); // Match this timing with your CSS transition
         }
+    }
+    
+    completeStage() {
+        console.log(`Stage ${this.currentStage} of Level ${this.currentLevel} completed`);
+        
+        // Hide lesson content using the closeContent method
+        this.closeContent();
         
         // Restore title
         const title = document.querySelector('.course-title');
