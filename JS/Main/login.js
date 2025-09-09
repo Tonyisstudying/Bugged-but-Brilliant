@@ -5,6 +5,8 @@ function handleLogin(event) {
     if (username) {
         localStorage.setItem('username', username);
         window.location.href = 'home.html';
+    } else {
+        showError('Please enter a username');
     }
     return false;
 }
