@@ -1,0 +1,52 @@
+{
+"questions": [
+{
+    "question": "What does \"出去\" mean?",
+    "options": ["to come in", "to go out", "to stay", "to sleep"],
+    "correct": 1,
+    "explanation": "\"出去\" (chūqù) means \"to go out\"."
+},
+{
+    "question": "How do you pronounce \"穿\"?",
+    "options": ["chuān", "chuáng", "cì", "cóng"],
+    "correct": 0,
+    "explanation": "\"穿\" is pronounced \"chuān\" and means \"to wear\"."
+},
+{
+    "question": "Which character means \"bed\"?",
+    "options": ["穿", "床", "次", "从"],
+    "correct": 1,
+    "explanation": "\"床\" (chuáng) means \"bed\"."
+},
+{
+    "question": "What does \"从\" mean?",
+    "options": ["to", "with", "from", "at"],
+    "correct": 2,
+    "explanation": "\"从\" (cóng) means \"from\"."
+},
+{
+    "question": "How do you say \"to make a phone call\" in Chinese?",
+    "options": ["打车", "打开", "打电话", "打球"],
+    "correct": 2,
+    "explanation": "\"打电话\" (dǎ diànhuà) means \"to make a phone call\"."
+},
+{
+    "question": "What does \"错\" mean?",
+    "options": ["right", "wrong", "maybe", "sure"],
+    "correct": 1,
+    "explanation": "\"错\" (cuò) means \"wrong\"."
+},
+{
+    "question": "Which word means \"big\"?",
+    "options": ["小", "大", "中", "少"],
+    "correct": 1,
+    "explanation": "\"大\" (dà) means \"big\"."
+},
+{
+    "question": "How do you say \"to open\" in Chinese?",
+    "options": ["打开", "打车", "打球", "打电话"],
+    "correct": 0,
+    "explanation": "\"打开\" (dǎkāi) means \"to open\"."
+}
+]
+}
