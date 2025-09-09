@@ -146,20 +146,26 @@ if (window.location.pathname.includes('login.html')) {
     }
 }
 
+// Add event listener for form submission
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('loginForm');
+    if (form) {
+        form.addEventListener('submit', handleLogin);
+    }
+    
+    // Test API connection
+    console.log('🔄 Testing API connection...');
+    apiClient.testConnection().then(isOnline => {
+        if (isOnline) {
+            console.log('🟢 Backend is available - enhanced features enabled');
+        } else {
+            console.log('🟡 Backend not available - running in offline mode');
+        }
+    });
+});
+
 // Make functions globally available
 window.handleLogin = handleLogin;
 window.logout = logout;
 window.checkAuth = checkAuth;
-window.apiClient = apiClient; // For debugging
-
-// Initialize API client test on page load
-document.addEventListener('DOMContentLoaded', async () => {
-    console.log('🔄 Testing API connection...');
-    const isOnline = await apiClient.testConnection();
-    
-    if (isOnline) {
-        console.log('🟢 Backend is available - enhanced features enabled');
-    } else {
-        console.log('🟡 Backend not available - running in offline mode');
-    }
-});
+window.apiClient = apiClient;

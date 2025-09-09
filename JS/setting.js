@@ -53,9 +53,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
     
     // Connect logout button
-    document.querySelector('.logout button').addEventListener('click', function() {
-        logout();
-    });
+    const logoutButton = document.querySelector('.logout button');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', function() {
+            logout();
+        });
+    }
 });
 
 // Sidebar navigation (keep existing functionality)
@@ -66,7 +69,10 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         this.classList.add('active');
         const target = this.getAttribute('data-section');
         document.querySelectorAll('.settings-page').forEach(page => (page.style.display = 'none'));
-        document.getElementById(target).style.display = 'block';
+        const targetElement = document.getElementById(target);
+        if (targetElement) {
+            targetElement.style.display = 'block';
+        }
     });
 });
 
@@ -126,11 +132,17 @@ function applyTheme(isDark) {
     if (isDark) {
         document.body.style.background = '#1a1a1a';
         const container = document.querySelector('.settings-container');
-        container.style.background = 'transparent';
-        container.style.borderRadius = '0';
-        container.style.boxShadow = 'none';
+        if (container) {
+            container.style.background = 'transparent';
+            container.style.borderRadius = '0';
+            container.style.boxShadow = 'none';
+        }
         
-        document.querySelector('.main-content').style.color = '#f5f5f5';
+        const mainContent = document.querySelector('.main-content');
+        if (mainContent) {
+            mainContent.style.color = '#f5f5f5';
+        }
+        
         document.querySelectorAll('.settings-section h2').forEach(h2 => (h2.style.color = '#FFAFCC'));
         document.querySelectorAll('.setting-info h3').forEach(h3 => (h3.style.color = '#f5f5f5'));
         document.querySelectorAll('.setting-info p').forEach(p => (p.style.color = '#ccc'));
@@ -138,11 +150,17 @@ function applyTheme(isDark) {
         document.body.style.background = 'linear-gradient(135deg, #FFC8DD 0%, #A2D2FF 100%)';
         
         const container = document.querySelector('.settings-container');
-        container.style.background = 'rgba(255,255,255,0.9)';
-        container.style.borderRadius = '20px';
-        container.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
+        if (container) {
+            container.style.background = 'rgba(255,255,255,0.9)';
+            container.style.borderRadius = '20px';
+            container.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
+        }
         
-        document.querySelector('.main-content').style.color = '#333';
+        const mainContent = document.querySelector('.main-content');
+        if (mainContent) {
+            mainContent.style.color = '#333';
+        }
+        
         document.querySelectorAll('.settings-section h2').forEach(h2 => (h2.style.color = '#FFAFCC'));
         document.querySelectorAll('.setting-info h3').forEach(h3 => (h3.style.color = '#444'));
         document.querySelectorAll('.setting-info p').forEach(p => (p.style.color = '#777'));
@@ -229,24 +247,46 @@ function updateStreak(days) {
 }
 
 // Enhanced XP click with server sync
-document.querySelector('.profile-info img')?.addEventListener('click', async () => {
-    let xp = parseInt(localStorage.getItem('xp')) || 0;
-    xp += 50;
-    if (xp > 1000) xp = 1000;
-    
-    localStorage.setItem('xp', xp);
-    updateXpDisplay(xp);
-    
-    // Sync to server
+const profileImg = document.querySelector('.profile-info img');
+if (profileImg) {
+    profileImg.addEventListener('click', async () => {
+        let xp = parseInt(localStorage.getItem('xp')) || 0;
+        xp += 50;
+        if (xp > 1000) xp = 1000;
+        
+        localStorage.setItem('xp', xp);
+        updateXpDisplay(xp);
+        
+        // Sync to server
+        const sessionId = localStorage.getItem('sessionId');
+        if (sessionId) {
+            try {
+                await apiClient.post('/settings', {
+                    settings: { xp }
+                });
+                console.log('🟢 XP updated on server');
+            } catch (error) {
+                console.log('🔴 Failed to sync XP to server');
+            }
+        }
+    });
+}
+
+// Make logout function available globally
+window.logout = async function() {
     const sessionId = localStorage.getItem('sessionId');
+    
     if (sessionId) {
         try {
-            await apiClient.post('/settings', {
-                settings: { xp }
-            });
-            console.log('🟢 XP updated on server');
+            await apiClient.post('/logout', { sessionId });
+            console.log('🟢 Logged out via API');
         } catch (error) {
-            console.log('🔴 Failed to sync XP to server');
+            console.log('🔴 API logout failed:', error.message);
         }
     }
-});
+    
+    // Always clear localStorage
+    localStorage.clear();
+    apiClient.updateSessionId(null);
+    window.location.href = 'login.html';
+};
