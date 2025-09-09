@@ -7,8 +7,10 @@ export default class VocabularyExercise {
         this.template = new VocabularyTemplate();
         this.currentLevel = 1;
         this.currentStage = 1;
+        this.sessionId = localStorage.getItem('sessionId');
     }
 
+    // Display the levels and stages
     async display(level = 1, stage = 1) {
         this.currentLevel = level;
         this.currentStage = stage;

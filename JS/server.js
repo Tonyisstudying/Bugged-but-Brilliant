@@ -1,59 +1,195 @@
-//start Express and mount routes
 const express = require('express');
 const path = require('path');
+const fs = require('fs').promises;
 const app = express();
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
-// Middleware
+// Middleware for JSON parsing
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from root directory
+// Serve static files
 app.use(express.static(path.join(__dirname, '..')));
 
-// Route for the root path
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'index.html'));
+// Simple in-memory user storage (replace with database in production)
+const users = {};
+
+// Simple session management (replace with proper sessions in production)
+const sessions = {};
+
+// API endpoint for user registration
+app.post('/api/register', (req, res) => {
+const { username, password } = req.body;
+
+if (!username || !password) {
+    return res.status(400).json({ error: 'Username and password are required' });
+}
+
+if (users[username]) {
+    return res.status(409).json({ error: 'Username already exists' });
+}
+
+// Create a new user (in production, password should be hashed)
+users[username] = { 
+    password,
+    progress: {},
+    xp: 0,
+    streak: 0,
+    lastLogin: Date.now()
+};
+
+// Create a session
+const sessionId = Math.random().toString(36).substring(2, 15);
+sessions[sessionId] = username;
+
+res.json({ 
+    success: true, 
+    sessionId,
+    user: {
+    username,
+    xp: users[username].xp,
+    streak: users[username].streak
+    }
+});
 });
 
-// Handle login page
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'pages', 'login.html'));
+// API endpoint for user login
+app.post('/api/login', (req, res) => {
+const { username, password } = req.body;
+
+if (!users[username] || users[username].password !== password) {
+    return res.status(401).json({ error: 'Invalid username or password' });
+}
+
+// Update streak if last login was not today
+const today = new Date().setHours(0, 0, 0, 0);
+const lastLogin = new Date(users[username].lastLogin).setHours(0, 0, 0, 0);
+
+if (lastLogin < today) {
+    if (lastLogin === today - 86400000) { // 24 hours in ms
+    users[username].streak += 1;
+    } else {
+    users[username].streak = 1;
+    }
+}
+
+users[username].lastLogin = Date.now();
+
+// Create a session
+const sessionId = Math.random().toString(36).substring(2, 15);
+sessions[sessionId] = username;
+
+res.json({ 
+    success: true, 
+    sessionId,
+    user: {
+    username,
+    xp: users[username].xp,
+    streak: users[username].streak
+    }
+});
 });
 
-// Handle home page
-app.get('/home', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'pages', 'home.html'));
+// API endpoint for user logout
+app.post('/api/logout', (req, res) => {
+const { sessionId } = req.body;
+
+if (sessions[sessionId]) {
+    delete sessions[sessionId];
+}
+
+res.json({ success: true });
 });
 
-// Handle about page
-app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'About us', 'about.html'));
+// API endpoint for course data
+app.get('/api/courses/chinese/HSK:level/stage:stage/:type', async (req, res) => {
+const { level, stage, type } = req.params;
+
+try {
+    // Read the JSON file
+    const filePath = path.join(__dirname, '..', 'Json', `HSK${level}`, `stage${stage}`, `${type}.json`);
+    const data = await fs.readFile(filePath, 'utf8');
+    res.json(JSON.parse(data));
+} catch (error) {
+    console.error('Error reading course data:', error);
+    res.status(404).json({ error: `Failed to load ${type} data for HSK${level} stage${stage}` });
+}
 });
 
-// Handle settings page
-app.get('/settings', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'pages', 'setting.html'));
+// API endpoint for saving user progress
+app.post('/api/progress', (req, res) => {
+const { sessionId, course, level, stage, exerciseId, score } = req.body;
+
+// Check if user is authenticated
+const username = sessions[sessionId];
+if (!username || !users[username]) {
+    return res.status(401).json({ error: 'User not authenticated' });
+}
+
+// Initialize progress structure if it doesn't exist
+if (!users[username].progress[course]) {
+    users[username].progress[course] = {};
+}
+if (!users[username].progress[course][`HSK${level}`]) {
+    users[username].progress[course][`HSK${level}`] = {};
+}
+if (!users[username].progress[course][`HSK${level}`][`stage${stage}`]) {
+    users[username].progress[course][`HSK${level}`][`stage${stage}`] = {};
+}
+
+// Save the progress
+users[username].progress[course][`HSK${level}`][`stage${stage}`][exerciseId] = score;
+
+// Award XP
+users[username].xp += 10;
+
+res.json({ 
+    success: true,
+    xp: users[username].xp,
+    streak: users[username].streak
+});
 });
 
-// Handle course pages
-app.get('/course_chinese', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'pages', 'course_chinese.html'));
+// API endpoint for getting user progress
+app.get('/api/progress', (req, res) => {
+const { sessionId, course, level, stage } = req.query;
+
+// Check if user is authenticated
+const username = sessions[sessionId];
+if (!username || !users[username]) {
+    return res.status(401).json({ error: 'User not authenticated' });
+}
+
+// Get the requested progress
+const progress = users[username].progress[course]?.[`HSK${level}`]?.[`stage${stage}`] || {};
+
+res.json({ progress });
 });
 
-app.get('/course_firstpage', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'pages', 'course_firstpage.html'));
+// API endpoint for getting user profile
+app.get('/api/profile', (req, res) => {
+const { sessionId } = req.query;
+
+// Check if user is authenticated
+const username = sessions[sessionId];
+if (!username || !users[username]) {
+    return res.status(401).json({ error: 'User not authenticated' });
+}
+
+res.json({
+    username,
+    xp: users[username].xp,
+    streak: users[username].streak,
+    lastLogin: users[username].lastLogin
+});
 });
 
-app.get('/course_page', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'CS', 'course_page.html'));
+// Fallback route for SPA
+app.get('*', (req, res) => {
+res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
-// Handle 404 - Keep this as the last route
-app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, '..', 'index.html'));
-});
-
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-    console.log(`Open your browser and go to: http://localhost:${port}`);
+// Start the server
+app.listen(PORT, () => {
+console.log(`Server running on http://localhost:${PORT}`);
 });
