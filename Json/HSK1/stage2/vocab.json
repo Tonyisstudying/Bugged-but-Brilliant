@@ -1,0 +1,31 @@
+{
+    "words": [
+        {"hanzi": "本子", "pinyin": "běnzi", "translation": "notebook", "example": "我需要一个本子。(I need a notebook.)"},
+        {"hanzi": "比", "pinyin": "bǐ", "translation": "to compare, than", "example": "他比我高。(He is taller than me.)"},
+        {"hanzi": "别", "pinyin": "bié", "translation": "don't, not", "example": "别动！(Don't move!)"},
+        {"hanzi": "别的", "pinyin": "biéde", "translation": "other, else", "example": "有别的颜色吗？(Are there other colors?)"},
+        {"hanzi": "别人", "pinyin": "bié-rén", "translation": "other people, others", "example": "她不像别人。(She is not like other people.)"},
+        {"hanzi": "病", "pinyin": "bìng", "translation": "illness, disease", "example": "他的皮肤病好了。(His skin disease is cured.)"},
+        {"hanzi": "病人", "pinyin": "bìngrén", "translation": "patient", "example": "病人需要休息。(Patients need rest.)"},
+        {"hanzi": "不大", "pinyin": "bú dà", "translation": "not big, small", "example": "我的房子不大。(My house is not big.)"},
+        {"hanzi": "不对", "pinyin": "búduì", "translation": "incorrect, not right", "example": "你的答案不对。(Your answer is not correct.)"},
+        {"hanzi": "不客气", "pinyin": "bú kè qì", "translation": "you're welcome", "example": "不客气！(You're welcome!)"},
+        {"hanzi": "不用", "pinyin": "bùyòng", "translation": "no need, don't need", "example": "不用着急。(No need to worry.)"},
+        {"hanzi": "不", "pinyin": "bù", "translation": "no, not", "example": "他不紧张。(He is not nervous.)"},
+        {"hanzi": "菜", "pinyin": "cài", "translation": "dish, food", "example": "他喜欢这道菜。(He likes this dish.)"},
+        {"hanzi": "差", "pinyin": "chà", "translation": "bad, poor, lacking", "example": "我每天喝茶，成绩不差。(I drink tea every day, my grades are not bad.)"},
+        {"hanzi": "茶", "pinyin": "chá", "translation": "tea", "example": "他的态度很茶。(His attitude is like tea.)"},
+        {"hanzi": "常", "pinyin": "cháng", "translation": "often", "example": "我常点外卖。(I often order takeout.)"},
+        {"hanzi": "常常", "pinyin": "chángcháng", "translation": "often, frequently", "example": "我常常做饭。(I often cook.)"},
+        {"hanzi": "唱", "pinyin": "chàng", "translation": "to sing", "example": "他喜欢唱中文歌。(He likes to sing Chinese songs.)"},
+        {"hanzi": "唱歌", "pinyin": "chànggē", "translation": "to sing a song", "example": "他喜欢唱歌。(He likes singing.)"},
+        {"hanzi": "车", "pinyin": "chē", "translation": "car, vehicle", "example": "我的车坏了。(My car is broken.)"},
+        {"hanzi": "车票", "pinyin": "chēpiào", "translation": "ticket (for bus/train)", "example": "我要买一张车票。(I want to buy a ticket.)"},
+        {"hanzi": "车上", "pinyin": "chē shàng", "translation": "on the vehicle", "example": "我的手机在车上。(My phone is on the bus.)"},
+        {"hanzi": "车站", "pinyin": "chēzhàn", "translation": "station", "example": "我在车站。(I'm at the station.)"},
+        {"hanzi": "吃", "pinyin": "chī", "translation": "to eat", "example": "我要吃肉。(I want to eat meat.)"},
+        {"hanzi": "吃饭", "pinyin": "chīfàn", "translation": "to eat a meal", "example": "我要和朋友吃饭。(I want to eat with my friends.)"},
+        {"hanzi": "出", "pinyin": "chū", "translation": "to go out, to come out", "example": "她拿出钱包。(She took out her wallet.)"},
+        {"hanzi": "出来", "pinyin": "chūlái", "translation": "to appear, to come out", "example": "太阳出来了。(The sun has come out.)"}
+    ]
+}
