@@ -1,7 +1,7 @@
 {
-  "name": "bugged-but-brilliant",
+  "name": "lexio",
   "version": "1.0.0",
-  "description": "Personal Page",
+  "description": "A web flaform for learning cs and chinese ",
   "main": "index.js",
   "scripts": {
     "start": "node JS/server.js",
