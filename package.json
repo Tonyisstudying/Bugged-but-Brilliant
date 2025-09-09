@@ -1,29 +1,29 @@
 {
   "name": "lexio",
   "version": "1.0.0",
-  "description": "A web flaform for learning cs and chinese ",
-  "main": "index.js",
+  "description": "A web platform for learning cs and chinese",
+  "main": "JS/server.js",
   "scripts": {
     "start": "node JS/server.js",
     "dev": "nodemon JS/server.js",
+    "setup": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Tonyisstudying/Bugged-but-Brilliant.git"
   },
-  "keywords": [],
+  "keywords": ["education", "language-learning", "chinese", "computer-science"],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Tonyisstudying/Bugged-but-Brilliant/issues"
   },
-  "homepage": "https://github.com/Tonyisstudying/Bugged-but-Brilliant#readme",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.0"
   }
 }

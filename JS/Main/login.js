@@ -13,11 +13,14 @@ async function handleLogin(event) {
     }
 
     try {
+        // Show loading state
+        showLoading(true);
+        
         // Test if API is available first
         const apiAvailable = await apiClient.testConnection();
         
         if (apiAvailable) {
-            console.log('Using API for login');
+            console.log('🟢 Using API for login');
             const response = await apiClient.post('/login', { username });
             
             if (response.success) {
@@ -30,7 +33,10 @@ async function handleLogin(event) {
                     localStorage.setItem('streak', response.user.streak || 0);
                 }
                 
-                window.location.href = 'home.html';
+                showSuccess('Login successful! Redirecting...');
+                setTimeout(() => {
+                    window.location.href = 'home.html';
+                }, 1000);
                 return false;
             }
         } else {
@@ -38,10 +44,15 @@ async function handleLogin(event) {
         }
         
     } catch (error) {
-        console.log('API login failed, using localStorage fallback:', error.message);
+        console.log('🔴 API login failed, using localStorage fallback:', error.message);
         // Fallback to original localStorage method
         localStorage.setItem('username', username);
-        window.location.href = 'home.html';
+        showSuccess('Login successful (offline mode)! Redirecting...');
+        setTimeout(() => {
+            window.location.href = 'home.html';
+        }, 1000);
+    } finally {
+        showLoading(false);
     }
     
     return false;
@@ -53,9 +64,9 @@ async function logout() {
     if (sessionId) {
         try {
             await apiClient.post('/logout', { sessionId });
-            console.log('Logged out via API');
+            console.log('🟢 Logged out via API');
         } catch (error) {
-            console.log('API logout failed:', error.message);
+            console.log('🔴 API logout failed:', error.message);
         }
     }
     
@@ -66,15 +77,57 @@ async function logout() {
 }
 
 function showError(message) {
-    let errorDiv = document.getElementById('error-message');
-    if (!errorDiv) {
-        errorDiv = document.createElement('div');
-        errorDiv.id = 'error-message';
-        errorDiv.style.color = 'red';
-        errorDiv.style.marginTop = '10px';
-        document.querySelector('form').appendChild(errorDiv);
+    showMessage(message, 'error');
+}
+
+function showSuccess(message) {
+    showMessage(message, 'success');
+}
+
+function showLoading(isLoading) {
+    const button = document.querySelector('.start-button');
+    if (button) {
+        if (isLoading) {
+            button.textContent = 'Connecting...';
+            button.disabled = true;
+        } else {
+            button.textContent = 'Start';
+            button.disabled = false;
+        }
     }
-    errorDiv.textContent = message;
+}
+
+function showMessage(message, type) {
+    let messageDiv = document.getElementById('login-message');
+    if (!messageDiv) {
+        messageDiv = document.createElement('div');
+        messageDiv.id = 'login-message';
+        messageDiv.style.marginTop = '10px';
+        messageDiv.style.padding = '10px';
+        messageDiv.style.borderRadius = '5px';
+        messageDiv.style.textAlign = 'center';
+        document.querySelector('form').appendChild(messageDiv);
+    }
+    
+    messageDiv.textContent = message;
+    messageDiv.className = type;
+    
+    if (type === 'error') {
+        messageDiv.style.backgroundColor = '#ffebee';
+        messageDiv.style.color = '#c62828';
+        messageDiv.style.border = '1px solid #ef5350';
+    } else if (type === 'success') {
+        messageDiv.style.backgroundColor = '#e8f5e8';
+        messageDiv.style.color = '#2e7d32';
+        messageDiv.style.border = '1px solid #4caf50';
+    }
+    
+    // Clear message after 5 seconds
+    setTimeout(() => {
+        if (messageDiv.parentNode) {
+            messageDiv.remove();
+        }
+    }, 5000);
 }
 
 function checkAuth() {
@@ -92,3 +145,21 @@ if (window.location.pathname.includes('login.html')) {
         window.location.href = 'home.html';
     }
 }
+
+// Make functions globally available
+window.handleLogin = handleLogin;
+window.logout = logout;
+window.checkAuth = checkAuth;
+window.apiClient = apiClient; // For debugging
+
+// Initialize API client test on page load
+document.addEventListener('DOMContentLoaded', async () => {
+    console.log('🔄 Testing API connection...');
+    const isOnline = await apiClient.testConnection();
+    
+    if (isOnline) {
+        console.log('🟢 Backend is available - enhanced features enabled');
+    } else {
+        console.log('🟡 Backend not available - running in offline mode');
+    }
+});

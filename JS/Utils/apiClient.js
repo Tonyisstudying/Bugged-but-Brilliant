@@ -1,47 +1,58 @@
-//Frontend API communication helper
-
-
 export default class ApiClient {
     constructor() {
         this.baseURL = window.location.origin;
         this.sessionId = localStorage.getItem('sessionId');
+        this.isOnline = navigator.onLine;
+        
+        // Listen for online/offline events
+        window.addEventListener('online', () => {
+            this.isOnline = true;
+            console.log('🟢 API Client: Back online');
+        });
+        
+        window.addEventListener('offline', () => {
+            this.isOnline = false;
+            console.log('🔴 API Client: Offline mode');
+        });
     }
 
-    // Generic GET request with fallback
+    // Enhanced GET request with automatic fallback
     async get(endpoint, fallbackPath = null) {
         try {
             const url = `${this.baseURL}/api${endpoint}`;
-            console.log('API Request:', url);
+            console.log('📡 API Request:', url);
             
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json'
                 },
-                signal: AbortSignal.timeout(5000) // 5 second timeout
+                signal: AbortSignal.timeout(5000)
             });
 
             if (!response.ok) {
-                throw new Error(`API responded with ${response.status}`);
+                throw new Error(`API responded with ${response.status}: ${response.statusText}`);
             }
 
             const data = await response.json();
-            console.log('API Response:', data);
+            console.log('✅ API Response received');
             return data;
 
         } catch (error) {
-            console.warn('API request failed:', error.message);
+            console.warn('⚠️ API request failed:', error.message);
             
             // Try fallback if provided
             if (fallbackPath) {
-                console.log('Trying fallback:', fallbackPath);
+                console.log('🔄 Trying fallback:', fallbackPath);
                 try {
                     const fallbackResponse = await fetch(fallbackPath);
                     if (fallbackResponse.ok) {
-                        return await fallbackResponse.json();
+                        const data = await fallbackResponse.json();
+                        console.log('✅ Fallback successful');
+                        return data;
                     }
                 } catch (fallbackError) {
-                    console.error('Fallback also failed:', fallbackError.message);
+                    console.error('❌ Fallback also failed:', fallbackError.message);
                 }
             }
             
@@ -49,7 +60,7 @@ export default class ApiClient {
         }
     }
 
-    // Generic POST request
+    // Enhanced POST request
     async post(endpoint, data = {}) {
         try {
             // Add session ID if available
@@ -58,7 +69,7 @@ export default class ApiClient {
             }
 
             const url = `${this.baseURL}/api${endpoint}`;
-            console.log('API POST Request:', url, data);
+            console.log('📡 API POST Request:', url);
 
             const response = await fetch(url, {
                 method: 'POST',
@@ -70,15 +81,15 @@ export default class ApiClient {
             });
 
             if (!response.ok) {
-                throw new Error(`API responded with ${response.status}`);
+                throw new Error(`API responded with ${response.status}: ${response.statusText}`);
             }
 
             const result = await response.json();
-            console.log('API POST Response:', result);
+            console.log('✅ API POST Response received');
             return result;
 
         } catch (error) {
-            console.error('API POST failed:', error.message);
+            console.error('❌ API POST failed:', error.message);
             throw error;
         }
     }
@@ -87,10 +98,10 @@ export default class ApiClient {
     async testConnection() {
         try {
             const response = await this.get('/test');
-            console.log('API Connection Test:', response);
+            console.log('🟢 API Connection Test: SUCCESS');
             return true;
         } catch (error) {
-            console.warn('API is not available:', error.message);
+            console.warn('🔴 API Connection Test: FAILED -', error.message);
             return false;
         }
     }
@@ -100,8 +111,50 @@ export default class ApiClient {
         this.sessionId = sessionId;
         if (sessionId) {
             localStorage.setItem('sessionId', sessionId);
+            console.log('✅ Session ID updated');
         } else {
             localStorage.removeItem('sessionId');
+            console.log('🗑️ Session ID removed');
+        }
+    }
+
+    // Get course data with automatic fallback to JSON files
+    async getCourseData(level, stage, type) {
+        const apiEndpoint = `/courses/chinese/HSK${level}/stage${stage}/${type}`;
+        const fallbackPath = `../Json/HSK${level}/stage${stage}/${type}.json`;
+        
+        return this.get(apiEndpoint, fallbackPath);
+    }
+
+    // Save progress
+    async saveProgress(course, level, stage, exerciseId, score) {
+        if (!this.sessionId) {
+            console.warn('⚠️ No session ID, cannot save to server');
+            return null;
+        }
+
+        return this.post('/progress', {
+            course,
+            level,
+            stage,
+            exerciseId,
+            score
+        });
+    }
+
+    // Get user progress
+    async getProgress(course, level, stage) {
+        if (!this.sessionId) {
+            console.warn('⚠️ No session ID, cannot fetch from server');
+            return {};
+        }
+
+        try {
+            const response = await this.get(`/progress?course=${course}&level=${level}&stage=${stage}`);
+            return response.progress || {};
+        } catch (error) {
+            console.warn('⚠️ Could not fetch progress from server');
+            return {};
         }
     }
 }

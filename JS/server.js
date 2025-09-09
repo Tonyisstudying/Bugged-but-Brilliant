@@ -23,18 +23,30 @@ app.use('/api', apiRoutes);
 // Apply error handling middleware
 app.use(errorHandler);
 
+// Serve your existing static files
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
+
 // Fallback route for SPA
 app.get('*', (req, res) => {
+    // Check if it's an API route
+    if (req.path.startsWith('/api')) {
+        return res.status(404).json({ error: 'API endpoint not found' });
+    }
+    
+    // Serve the main HTML file
     res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 // Start the server
 app.listen(PORT, () => {
-    console.log('='.repeat(50));
-    console.log('🚀 Lexio Server Started Successfully!');
-    console.log('='.repeat(50));
+    console.log('🚀'.repeat(20));
+    console.log('🎉 Lexio Server Started Successfully!');
+    console.log('🚀'.repeat(20));
     console.log(`📍 Server URL: http://localhost:${PORT}`);
     console.log(`🔗 API Base URL: http://localhost:${PORT}/api`);
-    console.log(`📝 API Test: http://localhost:${PORT}/api/test`);
-    console.log('='.repeat(50));
+    console.log(`🧪 API Test: http://localhost:${PORT}/api/test`);
+    console.log(`📊 API Stats: http://localhost:${PORT}/api/stats`);
+    console.log('🚀'.repeat(20));
 });
