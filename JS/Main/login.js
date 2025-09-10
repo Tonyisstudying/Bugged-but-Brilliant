@@ -121,7 +121,6 @@ function showMessage(message, type) {
         messageDiv.style.color = '#2e7d32';
         messageDiv.style.border = '1px solid #4caf50';
     }
-    
     // Clear message after 5 seconds
     setTimeout(() => {
         if (messageDiv.parentNode) {
