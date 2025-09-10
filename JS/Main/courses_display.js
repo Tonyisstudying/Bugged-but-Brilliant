@@ -120,12 +120,10 @@ class CourseDisplay {
         if (content) {
             // First remove visible class to trigger fade-out
             content.classList.remove('visible');
-            
             // Also fade out the overlay
             if (overlay) {
                 overlay.classList.remove('visible');
             }
-            
             // After animation completes, hide the content
             setTimeout(() => {
                 content.classList.add('hidden');
@@ -137,17 +135,13 @@ class CourseDisplay {
     
     completeStage() {
         console.log(`Stage ${this.currentStage} of Level ${this.currentLevel} completed`);
-        
         // Hide lesson content using the closeContent method
         this.closeContent();
-        
         // Restore title
         const title = document.querySelector('.course-title');
         if (title) title.classList.remove('minimized');
-        
         // Update UI to reflect completion
         this.updateStageCompletion();
-        
         // Show completion message
         alert(`Congratulations! You've completed HSK ${this.currentLevel} - Stage ${this.currentStage}`);
     }
@@ -157,24 +151,20 @@ class CourseDisplay {
         const completedStage = document.querySelector(`.stage-circle[data-level="${this.currentLevel}"][data-stage="${this.currentStage}"]`);
         if (completedStage) {
             completedStage.classList.add('completed');
-            
             // Unlock the next stage if it exists
             const nextStage = document.querySelector(`.stage-circle[data-level="${this.currentLevel}"][data-stage="${this.currentStage + 1}"]`);
             if (nextStage) {
                 nextStage.classList.remove('locked');
-                
                 // Remove lock icon if present
                 const lockIcon = nextStage.querySelector('.lock-icon');
                 if (lockIcon) {
                     lockIcon.parentNode.removeChild(lockIcon);
-                    
                     // Add star icon
                     const starIcon = document.createElement('div');
                     starIcon.className = 'star-icon';
                     starIcon.innerHTML = '★';
                     nextStage.insertBefore(starIcon, nextStage.firstChild);
                 }
-                
                 // Add click event for the newly unlocked stage
                 const courseDisplay = this;
                 nextStage.addEventListener('click', function() {
