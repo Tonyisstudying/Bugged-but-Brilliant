@@ -19,68 +19,41 @@
         </div>
 
         <div class="level-selector">
-            <div class="level-tab active" data-level="1">HSK 1</div>
-            <div class="level-tab" data-level="2">HSK 2</div>
-            <div class="level-tab" data-level="3">HSK 3</div>
-        </div>
-
-        <div class="learning-path-container">
-            <div class="learning-path">
-                <!-- Level 1 stages -->
-                <div class="path-section" id="level-1-path">
-                    <div class="stage-circle active" data-level="1" data-stage="1">
-                        <div class="star-icon">★</div>
-                        <span class="stage-number">1</span>
-                    </div>
-                    <div class="path-connector"></div>
-                    <div class="stage-circle active" data-level="1" data-stage="2">
-                        <div class="star-icon">★</div>
-                        <span class="stage-number">2</span>
-                    </div>
-                    <div class="path-connector"></div>
-                    <div class="stage-circle active" data-level="1" data-stage="3">
-                        <div class="star-icon">★</div>
-                        <span class="stage-number">3</span>
-                    </div>
-                    <div class="path-connector"></div>
-                    <div class="stage-circle active" data-level="1" data-stage="4">
-                        <div class="star-icon">★</div>
-                        <span class="stage-number">4</span>
-                    </div>
-                </div>
-
-                <!-- Level 2 stages (hidden initially) -->
-                <div class="path-section hidden" id="level-2-path">
-                    <div class="stage-circle active" data-level="2" data-stage="1">
-                        <div class="star-icon">★</div>
-                        <span class="stage-number">1</span>
-                    </div>
-                    <div class="path-connector"></div>
-                    <div class="stage-circle active" data-level="2" data-stage="2">
-                        <div class="star-icon">★</div>
-                        <span class="stage-number">2</span>
-                    </div>
-                </div>
-
-                <!-- Level 3 stages (hidden initially) -->
-                <div class="path-section hidden" id="level-3-path">
-                    <div class="stage-circle locked" data-level="3" data-stage="1">
-                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
-                        <span class="stage-number">1</span>
-                    </div>
-                </div>
+            <div class="level-card" data-level="1">
+                <div class="level-icon">📚</div>
+                <div class="level-title">HSK 1</div>
+                <div class="level-description">Basic Level</div>
+            </div>
+            <div class="level-card" data-level="2">
+                <div class="level-icon">📖</div>
+                <div class="level-title">HSK 2</div>
+                <div class="level-description">Elementary Level</div>
+            </div>
+            <div class="level-card" data-level="3">
+                <div class="level-icon">📘</div>
+                <div class="level-title">HSK 3</div>
+                <div class="level-description">Intermediate Level</div>
             </div>
         </div>
-        
+
         <!-- Category Selection Modal -->
         <div id="category-modal" class="category-modal hidden">
             <div class="category-content">
                 <div class="category-header">
-                    <h2>Choose Learning Mode</h2>
+                    <h2 id="category-title">Choose Learning Mode - HSK 1</h2>
                     <button class="close-btn" id="close-category">×</button>
                 </div>
-                <div class="category-grid" id="category-grid">
-                    <!-- Categories will be dynamically loaded here -->
+                <div class="category-grid">
+                    <div class="category-card" data-category="words">
+                        <span class="category-icon">📚</span>
+                        <div class="category-name">New Words</div>
+                        <div class="category-description">Learn vocabulary from all stages</div>
+                    </div>
+                    <div class="category-card" data-category="quiz">
+                        <span class="category-icon">🧠</span>
+                        <div class="category-name">Quiz</div>
+                        <div class="category-description">Practice with stage-based quizzes</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -89,11 +62,24 @@
         <div id="words-modal" class="words-modal hidden">
             <div class="words-content">
                 <div class="words-header">
-                    <h2>Vocabulary Learning</h2>
+                    <h2 id="words-title">HSK 1 - Vocabulary</h2>
                     <button class="close-btn" id="close-words">×</button>
                 </div>
                 <div class="words-grid" id="words-grid">
                     <!-- Word cards will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Stages Modal -->
+        <div id="stages-modal" class="stages-modal hidden">
+            <div class="stages-content">
+                <div class="stages-header">
+                    <h2 id="stages-title">HSK 1 - Quiz Stages</h2>
+                    <button class="close-btn" id="close-stages">×</button>
+                </div>
+                <div class="stages-grid" id="stages-grid">
+                    <!-- Stage cards will be dynamically loaded here -->
                 </div>
             </div>
         </div>

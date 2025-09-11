@@ -12,20 +12,11 @@ class CourseDisplay {
     }
 
     initializeEventListeners() {
-        // Level tab listeners
-        document.querySelectorAll('.level-tab').forEach(tab => {
-            tab.addEventListener('click', (e) => {
-                const levelNum = parseInt(e.target.dataset.level);
-                this.switchLevel(levelNum);
-            });
-        });
-
-        // Stage circle listeners
-        document.querySelectorAll('.stage-circle:not(.locked)').forEach(circle => {
-            circle.addEventListener('click', (e) => {
-                const level = parseInt(circle.getAttribute('data-level'));
-                const stage = parseInt(circle.getAttribute('data-stage'));
-                this.showCategorySelection(level, stage);
+        // Level card listeners (replacing level tabs)
+        document.querySelectorAll('.level-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                const levelNum = parseInt(e.currentTarget.dataset.level);
+                this.showCategorySelection(levelNum);
             });
         });
 
@@ -44,6 +35,11 @@ class CourseDisplay {
             this.hideModal('words-modal');
         });
 
+        // Close stages modal
+        document.getElementById('close-stages')?.addEventListener('click', () => {
+            this.hideModal('stages-modal');
+        });
+
         // Close word detail modal
         document.getElementById('close-word-detail')?.addEventListener('click', () => {
             this.hideModal('word-detail-modal');
@@ -57,53 +53,29 @@ class CourseDisplay {
         });
     }
 
-    switchLevel(level) {
-        document.querySelectorAll('.level-tab').forEach(tab => {
-            tab.classList.remove('active');
-        });
-        document.querySelector(`.level-tab[data-level="${level}"]`).classList.add('active');
-        
-        document.querySelectorAll('.path-section').forEach(section => {
-            section.classList.add('hidden');
-        });
-        document.getElementById(`level-${level}-path`)?.classList.remove('hidden');
-    }
-
-    async showCategorySelection(level, stage) {
+    async showCategorySelection(level) {
         this.currentLevel = level;
-        this.currentStage = stage;
-
-        try {
-            const response = await fetch(`../Json/HSK${level}/stage${stage}/categories.json`);
-            const data = await response.json();
-            
-            this.renderCategories(data.categories);
-            this.showModal('category-modal');
-        } catch (error) {
-            console.error('Error loading categories:', error);
-            // Fallback with default categories
-            this.renderCategories([
-                { id: 'words', name: 'Words', description: 'Learn new vocabulary', icon: '📚' },
-                { id: 'quiz', name: 'Quiz', description: 'Test your knowledge', icon: '🧠' }
-            ]);
-            this.showModal('category-modal');
+        
+        // Update title
+        const categoryTitle = document.getElementById('category-title');
+        if (categoryTitle) {
+            categoryTitle.textContent = `Choose Learning Mode - HSK ${level}`;
         }
-    }
-
-    renderCategories(categories) {
-        const grid = document.getElementById('category-grid');
-        if (!grid) return;
-
-        grid.innerHTML = categories.map(category => `
-            <div class="category-card" data-category="${category.id}">
-                <span class="category-icon">${category.icon}</span>
-                <div class="category-name">${category.name}</div>
-                <div class="category-description">${category.description}</div>
-            </div>
-        `).join('');
 
         // Add click listeners to category cards
-        grid.querySelectorAll('.category-card').forEach(card => {
+        this.setupCategoryListeners();
+        
+        this.showModal('category-modal');
+    }
+
+    setupCategoryListeners() {
+        document.querySelectorAll('.category-card').forEach(card => {
+            // Remove existing listeners
+            card.replaceWith(card.cloneNode(true));
+        });
+
+        // Re-attach listeners to fresh elements
+        document.querySelectorAll('.category-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 const categoryId = card.dataset.category;
                 this.openCategory(categoryId);
@@ -116,23 +88,94 @@ class CourseDisplay {
         this.hideModal('category-modal');
 
         if (categoryId === 'words') {
-            await this.showWordsMode();
+            await this.showAllWords();
         } else if (categoryId === 'quiz') {
-            await this.showQuizMode();
+            await this.showQuizStages();
         }
     }
 
-    async showWordsMode() {
+    async showAllWords() {
         try {
-            const response = await fetch(`../Json/HSK${this.currentLevel}/stage${this.currentStage}/words.json`);
-            const data = await response.json();
-            
-            this.renderWordCards(data.words);
+            // Load words from all stages for the current level
+            const allWords = [];
+            const stages = [1, 2, 3, 4]; // Adjust based on available stages
+
+            for (const stage of stages) {
+                try {
+                    const response = await fetch(`../Json/HSK${this.currentLevel}/stage${stage}/words.json`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.words) {
+                            allWords.push(...data.words);
+                        }
+                    }
+                } catch (error) {
+                    console.log(`Stage ${stage} not available for HSK${this.currentLevel}`);
+                }
+            }
+
+            // Update title
+            const wordsTitle = document.getElementById('words-title');
+            if (wordsTitle) {
+                wordsTitle.textContent = `HSK ${this.currentLevel} - Vocabulary (${allWords.length} words)`;
+            }
+
+            this.renderWordCards(allWords);
             this.showModal('words-modal');
         } catch (error) {
             console.error('Error loading words:', error);
             alert('Failed to load vocabulary data');
         }
+    }
+
+    async showQuizStages() {
+        // Update title
+        const stagesTitle = document.getElementById('stages-title');
+        if (stagesTitle) {
+            stagesTitle.textContent = `HSK ${this.currentLevel} - Quiz Stages`;
+        }
+
+        this.renderStageCards();
+        this.showModal('stages-modal');
+    }
+
+    renderStageCards() {
+        const grid = document.getElementById('stages-grid');
+        if (!grid) return;
+
+        const stages = [
+            { stage: 1, title: 'Stage 1', description: 'Basic greetings and introductions', progress: 100 },
+            { stage: 2, title: 'Stage 2', description: 'Numbers and time', progress: 75 },
+            { stage: 3, title: 'Stage 3', description: 'Family and daily activities', progress: 50 },
+            { stage: 4, title: 'Stage 4', description: 'Food and shopping', progress: 0 }
+        ];
+
+        grid.innerHTML = stages.map(stageData => `
+            <div class="stage-card${stageData.progress === 0 ? ' locked' : ''}" data-stage="${stageData.stage}">
+                <div class="stage-icon">${stageData.progress === 100 ? '🏆' : stageData.progress > 0 ? '⭐' : '🔒'}</div>
+                <div class="stage-title">${stageData.title}</div>
+                <div class="stage-description">${stageData.description}</div>
+                <div class="stage-progress">
+                    <div class="stage-progress-bar" style="width: ${stageData.progress}%"></div>
+                </div>
+            </div>
+        `).join('');
+
+        // Add click listeners to stage cards
+        grid.querySelectorAll('.stage-card:not(.locked)').forEach(card => {
+            card.addEventListener('click', (e) => {
+                const stage = parseInt(card.dataset.stage);
+                this.startQuiz(stage);
+            });
+        });
+    }
+
+    async startQuiz(stage) {
+        this.currentStage = stage;
+        this.hideModal('stages-modal');
+        
+        // Start the quiz using the existing system
+        await this.multipleChoiceExercise.display(this.currentLevel, this.currentStage);
     }
 
     renderWordCards(words) {
@@ -172,12 +215,6 @@ class CourseDisplay {
         this.showModal('word-detail-modal');
     }
 
-    async showQuizMode() {
-        this.hideAllModals();
-        // Legacy support - use old lesson content system for quiz
-        await this.multipleChoiceExercise.display(this.currentLevel, this.currentStage);
-    }
-
     showModal(modalId) {
         const modal = document.getElementById(modalId);
         const overlay = document.getElementById('overlay');
@@ -204,7 +241,7 @@ class CourseDisplay {
             setTimeout(() => {
                 modal.classList.add('hidden');
                 // Only hide overlay if no other modals are visible
-                if (!document.querySelector('.words-modal.visible, .category-modal.visible, .word-detail-modal.visible')) {
+                if (!document.querySelector('.words-modal.visible, .category-modal.visible, .word-detail-modal.visible, .stages-modal.visible')) {
                     overlay?.classList.remove('visible');
                     setTimeout(() => overlay?.classList.add('hidden'), 300);
                 }
@@ -213,7 +250,7 @@ class CourseDisplay {
     }
 
     hideAllModals() {
-        const modals = ['category-modal', 'words-modal', 'word-detail-modal'];
+        const modals = ['category-modal', 'words-modal', 'word-detail-modal', 'stages-modal'];
         const overlay = document.getElementById('overlay');
         
         modals.forEach(modalId => {
@@ -230,7 +267,7 @@ class CourseDisplay {
         }
     }
 
-    // Legacy methods for old exercise system
+    // Legacy methods for quiz system
     async startStage(levelNum, stageNum) {
         console.log(`Starting stage ${stageNum} of level ${levelNum}`);
         this.currentLevel = levelNum;
@@ -254,10 +291,6 @@ class CourseDisplay {
             }, 50);
         }
         
-        await this.vocabularyExercise.display(this.currentLevel, this.currentStage);
-    }
-
-    async nextExercise() {
         await this.multipleChoiceExercise.display(this.currentLevel, this.currentStage);
     }
 
