@@ -25,6 +25,7 @@ export default class MultipleChoiceExercise {
         }
     }
 
+
     async loadData(level, stage) {
         try {
             const response = await fetch(`../Json/HSK${level}/stage${stage}/multiple_choices.json`);
@@ -45,16 +46,11 @@ export default class MultipleChoiceExercise {
         const content = document.getElementById('lesson-content');
         const overlay = document.getElementById('overlay');
         
-        // Show overlay
         if (overlay) {
             overlay.classList.remove('hidden');
             overlay.classList.add('visible');
         }
-        
-        // Minimize title
         if (title) title.classList.add('minimized');
-        
-        // Show lesson content
         if (content) {
             content.classList.remove('hidden');
             setTimeout(() => {
@@ -78,6 +74,8 @@ export default class MultipleChoiceExercise {
     }
 
     attachEventListeners() {
+        console.log('Attaching event listeners...');
+        
         // Option buttons
         document.querySelectorAll('.option-btn').forEach(btn => {
             btn.addEventListener('click', (e) => this.selectAnswer(e));
@@ -90,9 +88,18 @@ export default class MultipleChoiceExercise {
         }
 
         // Close button
+        const closeBtnStages = document.querySelector('.close-btn-stages');
         const closeBtn = document.querySelector('.close-btn');
+        console.log('Close button found:', closeBtn);
         if (closeBtn) {
-            closeBtn.addEventListener('click', () => this.backToStages());
+            closeBtn.addEventListener('click', (e) => {
+                this.backToStages();
+            });
+        }
+        if (closeBtnStages){
+            closeBtnStages.addEventListener('click', (e) => {
+                this.backToStages();
+            })
         }
 
         // Back to stages button (on results page)
@@ -156,7 +163,7 @@ export default class MultipleChoiceExercise {
         content.innerHTML = `
             <div class="course-header">
                 <div class="section-title">Quiz Results</div>
-                <button class="close-btn">×</button>
+                <button class="close-btn-stages">×</button>
             </div>
             
             <div class="mc-content">
@@ -187,6 +194,10 @@ export default class MultipleChoiceExercise {
     }
 
     backToStages() {
+        console.log('backToStages called, hskLevel:', this.hskLevel);
+        console.log('courseDisplay available:', window.courseDisplay);
+        console.log('showQuizStages method:', window.courseDisplay ? window.courseDisplay.showQuizStages : 'N/A');
+        
         // Close the current lesson content first
         const content = document.getElementById('lesson-content');
         const overlay = document.getElementById('overlay');
@@ -203,13 +214,19 @@ export default class MultipleChoiceExercise {
                 
                 // Now show the quiz stages modal
                 if (window.courseDisplay && window.courseDisplay.showQuizStages && this.hskLevel) {
+                    console.log('Calling showQuizStages with level:', this.hskLevel);
                     window.courseDisplay.showQuizStages(this.hskLevel);
+                } else {
+                    console.error('Cannot show quiz stages - missing dependencies');
                 }
             }, 300);
         } else {
             // Fallback if content element not found
             if (window.courseDisplay && window.courseDisplay.showQuizStages && this.hskLevel) {
+                console.log('Fallback: Calling showQuizStages with level:', this.hskLevel);
                 window.courseDisplay.showQuizStages(this.hskLevel);
+            } else {
+                console.error('Fallback failed - missing dependencies');
             }
         }
     }
