@@ -1,0 +1,134 @@
+{
+  "level": 1,
+  "title": "HSK 1 - Quiz Collection",
+  "stages": {
+    "stage1": [
+      {
+        "question": "What does '你好' mean?",
+        "options": ["goodbye", "hello", "thank you", "sorry"],
+        "correct": 1,
+        "explanation": "'你好' (nǐ hǎo) means 'hello' in Chinese."
+      },
+      {
+        "question": "How do you say 'thank you' in Chinese?",
+        "options": ["你好", "谢谢", "再见", "对不起"],
+        "correct": 1,
+        "explanation": "'谢谢' (xiè xiè) means 'thank you' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '我'?",
+        "options": ["you", "he", "I/me", "we"],
+        "correct": 2,
+        "explanation": "'我' (wǒ) is the first person pronoun meaning 'I' or 'me'."
+      },
+      {
+        "question": "Which word means 'you'?",
+        "options": ["我", "你", "他", "她"],
+        "correct": 1,
+        "explanation": "'你' (nǐ) means 'you' in Chinese."
+      },
+      {
+        "question": "How do you say 'goodbye' in Chinese?",
+        "options": ["你好", "谢谢", "再见", "对不起"],
+        "correct": 2,
+        "explanation": "'再见' (zài jiàn) means 'goodbye' in Chinese."
+      }
+    ],
+    "stage2": [
+      {
+        "question": "How do you say 'one' in Chinese?",
+        "options": ["二", "三", "一", "四"],
+        "correct": 2,
+        "explanation": "'一' (yī) means 'one' in Chinese."
+      },
+      {
+        "question": "What does '时间' mean?",
+        "options": ["time", "money", "food", "book"],
+        "correct": 0,
+        "explanation": "'时间' (shí jiān) means 'time' in Chinese."
+      },
+      {
+        "question": "How do you say 'today' in Chinese?",
+        "options": ["昨天", "明天", "今天", "现在"],
+        "correct": 2,
+        "explanation": "'今天' (jīn tiān) means 'today' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '年'?",
+        "options": ["month", "day", "year", "hour"],
+        "correct": 2,
+        "explanation": "'年' (nián) means 'year' in Chinese."
+      },
+      {
+        "question": "How do you say 'morning' in Chinese?",
+        "options": ["下午", "晚上", "上午", "中午"],
+        "correct": 2,
+        "explanation": "'上午' (shàng wǔ) means 'morning' in Chinese."
+      }
+    ],
+    "stage3": [
+      {
+        "question": "How do you say 'father' in Chinese?",
+        "options": ["妈妈", "爸爸", "哥哥", "弟弟"],
+        "correct": 1,
+        "explanation": "'爸爸' (bà ba) means 'father' in Chinese."
+      },
+      {
+        "question": "What does '家' mean?",
+        "options": ["school", "home/family", "work", "hospital"],
+        "correct": 1,
+        "explanation": "'家' (jiā) means 'home' or 'family' in Chinese."
+      },
+      {
+        "question": "How do you say 'to eat' in Chinese?",
+        "options": ["喝", "吃", "睡", "看"],
+        "correct": 1,
+        "explanation": "'吃' (chī) means 'to eat' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '工作'?",
+        "options": ["play", "study", "work", "sleep"],
+        "correct": 2,
+        "explanation": "'工作' (gōng zuò) means 'work' in Chinese."
+      },
+      {
+        "question": "How do you say 'to go' in Chinese?",
+        "options": ["来", "去", "回", "走"],
+        "correct": 1,
+        "explanation": "'去' (qù) means 'to go' in Chinese."
+      }
+    ],
+    "stage4": [
+      {
+        "question": "How do you say 'rice' in Chinese?",
+        "options": ["面条", "米饭", "包子", "饺子"],
+        "correct": 1,
+        "explanation": "'米饭' (mǐ fàn) means 'rice' in Chinese."
+      },
+      {
+        "question": "What does '买' mean?",
+        "options": ["sell", "buy", "eat", "drink"],
+        "correct": 1,
+        "explanation": "'买' (mǎi) means 'to buy' in Chinese."
+      },
+      {
+        "question": "How do you say 'money' in Chinese?",
+        "options": ["钱", "书", "水", "茶"],
+        "correct": 0,
+        "explanation": "'钱' (qián) means 'money' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '商店'?",
+        "options": ["restaurant", "school", "shop", "hospital"],
+        "correct": 2,
+        "explanation": "'商店' (shāng diàn) means 'shop' or 'store' in Chinese."
+      },
+      {
+        "question": "How do you say 'expensive' in Chinese?",
+        "options": ["便宜", "贵", "好", "坏"],
+        "correct": 1,
+        "explanation": "'贵' (guì) means 'expensive' in Chinese."
+      }
+    ]
+  }
+}

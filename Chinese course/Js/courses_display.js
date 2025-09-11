@@ -96,23 +96,17 @@ class CourseDisplay {
 
     async showAllWords() {
         try {
-            // Load words from all stages for the current level
+            // Load words from consolidated file
+            const response = await fetch(`../Json/HSK${this.currentLevel}/words.json`);
+            if (!response.ok) throw new Error('Failed to load words data');
+            
+            const data = await response.json();
             const allWords = [];
-            const stages = [1, 2, 3, 4]; // Adjust based on available stages
-
-            for (const stage of stages) {
-                try {
-                    const response = await fetch(`../Json/HSK${this.currentLevel}/stage${stage}/words.json`);
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data.words) {
-                            allWords.push(...data.words);
-                        }
-                    }
-                } catch (error) {
-                    console.log(`Stage ${stage} not available for HSK${this.currentLevel}`);
-                }
-            }
+            
+            // Combine words from all stages
+            Object.values(data.stages).forEach(stageWords => {
+                allWords.push(...stageWords);
+            });
 
             // Update title
             const wordsTitle = document.getElementById('words-title');

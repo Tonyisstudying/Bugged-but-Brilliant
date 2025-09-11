@@ -28,10 +28,10 @@ export default class MultipleChoiceExercise {
 
     async loadData(level, stage) {
         try {
-            const response = await fetch(`../Json/HSK${level}/stage${stage}/multiple_choices.json`);
+            const response = await fetch(`../Json/HSK${level}/multiple_choices.json`);
             if (!response.ok) throw new Error('Failed to load quiz data');
             const data = await response.json();
-            this.questions = data.questions || [];
+            this.questions = data.stages[`stage${stage}`] || [];
             this.currentQuestionIndex = 0;
             this.score = 0;
         } catch (error) {

@@ -1,0 +1,174 @@
+{
+  "level": 1,
+  "title": "HSK 1 - Vocabulary Collection", 
+  "stages": {
+    "stage1": [
+      {
+        "id": "ni-hao",
+        "hanzi": "你好",
+        "pinyin": "nǐ hǎo",
+        "translation": "hello",
+        "definition": "A common greeting used to say hello",
+        "example": "你好，我是李明。(Hello, I am Li Ming.)"
+      },
+      {
+        "id": "xie-xie",
+        "hanzi": "谢谢",
+        "pinyin": "xiè xiè", 
+        "translation": "thank you",
+        "definition": "Expression of gratitude",
+        "example": "谢谢你的帮助。(Thank you for your help.)"
+      },
+      {
+        "id": "wo",
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "translation": "I/me",
+        "definition": "First person singular pronoun",
+        "example": "我是学生。(I am a student.)"
+      },
+      {
+        "id": "ni",
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "translation": "you",
+        "definition": "Second person singular pronoun",
+        "example": "你叫什么名字？(What is your name?)"
+      },
+      {
+        "id": "shi",
+        "hanzi": "是",
+        "pinyin": "shì",
+        "translation": "to be",
+        "definition": "Linking verb meaning 'to be'",
+        "example": "我是老师。(I am a teacher.)"
+      }
+    ],
+    "stage2": [
+      {
+        "id": "yi",
+        "hanzi": "一",
+        "pinyin": "yī",
+        "translation": "one",
+        "definition": "The number one",
+        "example": "一个人 (one person)"
+      },
+      {
+        "id": "er",
+        "hanzi": "二",
+        "pinyin": "èr",
+        "translation": "two",
+        "definition": "The number two",
+        "example": "二十 (twenty)"
+      },
+      {
+        "id": "san",
+        "hanzi": "三",
+        "pinyin": "sān",
+        "translation": "three",
+        "definition": "The number three",
+        "example": "三个月 (three months)"
+      },
+      {
+        "id": "jin-tian",
+        "hanzi": "今天",
+        "pinyin": "jīn tiān",
+        "translation": "today",
+        "definition": "The current day",
+        "example": "今天是星期一。(Today is Monday.)"
+      },
+      {
+        "id": "shi-jian",
+        "hanzi": "时间",
+        "pinyin": "shí jiān",
+        "translation": "time",
+        "definition": "Time, duration",
+        "example": "我没有时间。(I don't have time.)"
+      }
+    ],
+    "stage3": [
+      {
+        "id": "ba-ba",
+        "hanzi": "爸爸",
+        "pinyin": "bà ba",
+        "translation": "father",
+        "definition": "Father, dad",
+        "example": "我的爸爸是医生。(My father is a doctor.)"
+      },
+      {
+        "id": "ma-ma",
+        "hanzi": "妈妈",
+        "pinyin": "mā ma",
+        "translation": "mother",
+        "definition": "Mother, mom",
+        "example": "妈妈在家。(Mom is at home.)"
+      },
+      {
+        "id": "jia",
+        "hanzi": "家",
+        "pinyin": "jiā",
+        "translation": "home/family",
+        "definition": "Home, family",
+        "example": "我回家了。(I went home.)"
+      },
+      {
+        "id": "chi",
+        "hanzi": "吃",
+        "pinyin": "chī",
+        "translation": "to eat",
+        "definition": "To eat, to consume food",
+        "example": "我吃饭。(I eat/am eating.)"
+      },
+      {
+        "id": "qu",
+        "hanzi": "去",
+        "pinyin": "qù",
+        "translation": "to go",
+        "definition": "To go, to move toward",
+        "example": "我去学校。(I go to school.)"
+      }
+    ],
+    "stage4": [
+      {
+        "id": "mi-fan",
+        "hanzi": "米饭",
+        "pinyin": "mǐ fàn",
+        "translation": "rice",
+        "definition": "Cooked rice",
+        "example": "我喜欢吃米饭。(I like to eat rice.)"
+      },
+      {
+        "id": "mai",
+        "hanzi": "买",
+        "pinyin": "mǎi",
+        "translation": "to buy",
+        "definition": "To buy, to purchase",
+        "example": "我买书。(I buy books.)"
+      },
+      {
+        "id": "qian",
+        "hanzi": "钱",
+        "pinyin": "qián",
+        "translation": "money",
+        "definition": "Money, currency",
+        "example": "我没有钱。(I don't have money.)"
+      },
+      {
+        "id": "shang-dian",
+        "hanzi": "商店",
+        "pinyin": "shāng diàn",
+        "translation": "shop",
+        "definition": "Shop, store",
+        "example": "商店很大。(The shop is big.)"
+      },
+      {
+        "id": "gui",
+        "hanzi": "贵",
+        "pinyin": "guì",
+        "translation": "expensive",
+        "definition": "Expensive, costly",
+        "example": "这个很贵。(This is expensive.)"
+      }
+    ]
+  }
+}
