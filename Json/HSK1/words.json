@@ -4,171 +4,567 @@
   "stages": {
     "stage1": [
       {
-        "id": "ni-hao",
-        "hanzi": "你好",
-        "pinyin": "nǐ hǎo",
-        "translation": "hello",
-        "definition": "A common greeting used to say hello",
-        "example": "你好，我是李明。(Hello, I am Li Ming.)"
+        "id": "ai",
+        "hanzi": "爱",
+        "pinyin": "ài",
+        "translation": "love",
+        "definition": "To love, affection",
+        "example": "我爱你 (wǒ ài nǐ) - I love you"
       },
       {
-        "id": "xie-xie",
-        "hanzi": "谢谢",
-        "pinyin": "xiè xiè", 
-        "translation": "thank you",
-        "definition": "Expression of gratitude",
-        "example": "谢谢你的帮助。(Thank you for your help.)"
+        "id": "aihao",
+        "hanzi": "爱好",
+        "pinyin": "àihào",
+        "translation": "hobby",
+        "definition": "Interest, hobby",
+        "example": "你的爱好是什么 (nǐ de ài hào shì shén me) - What is your hobby?"
       },
       {
-        "id": "wo",
-        "hanzi": "我",
-        "pinyin": "wǒ",
-        "translation": "I/me",
-        "definition": "First person singular pronoun",
-        "example": "我是学生。(I am a student.)"
+        "id": "ba",
+        "hanzi": "八",
+        "pinyin": "bā",
+        "translation": "eight",
+        "definition": "The number 8",
+        "example": "他八岁了 (tā bā suì le) - He is eight years old"
       },
       {
-        "id": "ni",
-        "hanzi": "你",
-        "pinyin": "nǐ",
-        "translation": "you",
-        "definition": "Second person singular pronoun",
-        "example": "你叫什么名字？(What is your name?)"
+        "id": "baba",
+        "hanzi": "爸爸",
+        "pinyin": "bàba",
+        "translation": "father",
+        "definition": "Father, dad",
+        "example": "这是我爸爸 (zhè shì wǒ bà ba) - This is my father"
       },
       {
-        "id": "shi",
-        "hanzi": "是",
-        "pinyin": "shì",
-        "translation": "to be",
-        "definition": "Linking verb meaning 'to be'",
-        "example": "我是老师。(I am a teacher.)"
+        "id": "ba-particle",
+        "hanzi": "吧",
+        "pinyin": "ba",
+        "translation": "particle",
+        "definition": "Modal particle expressing suggestion",
+        "example": "走吧！(zǒu ba!) - Let's go!"
+      },
+      {
+        "id": "bai",
+        "hanzi": "白",
+        "pinyin": "bái",
+        "translation": "white",
+        "definition": "White color",
+        "example": "他喜欢白衬衫 (tā xǐ huan bái chèn shān) - He likes white shirts"
+      },
+      {
+        "id": "baitian",
+        "hanzi": "白天",
+        "pinyin": "báitiān",
+        "translation": "daytime",
+        "definition": "Daytime, during the day",
+        "example": "这里白天很热 (zhè lǐ bái tiān hěn rè) - It's very hot here during the day"
+      },
+      {
+        "id": "bai-num",
+        "hanzi": "百",
+        "pinyin": "bǎi",
+        "translation": "hundred",
+        "definition": "One hundred",
+        "example": "这里有八百个学生 (zhè lǐ yǒu bā bǎi gè xué sheng) - There are 800 students here"
+      },
+      {
+        "id": "ban",
+        "hanzi": "班",
+        "pinyin": "bān",
+        "translation": "class",
+        "definition": "Class, group",
+        "example": "他在四班 (tā zài sì bān) - He is in class four"
+      },
+      {
+        "id": "ban-half",
+        "hanzi": "半",
+        "pinyin": "bàn",
+        "translation": "half",
+        "definition": "Half, middle",
+        "example": "我吃了半个蛋糕 (wǒ chī le bàn gè dàn gāo) - I ate half a cake"
       }
     ],
     "stage2": [
       {
-        "id": "yi",
-        "hanzi": "一",
-        "pinyin": "yī",
-        "translation": "one",
-        "definition": "The number one",
-        "example": "一个人 (one person)"
+        "id": "bannian",
+        "hanzi": "半年",
+        "pinyin": "bànnián",
+        "translation": "half year",
+        "definition": "Six months",
+        "example": "我学中文半年了 (wǒ xué zhōng wén bàn nián le) - I have been studying Chinese for half a year"
       },
       {
-        "id": "er",
-        "hanzi": "二",
-        "pinyin": "èr",
-        "translation": "two",
-        "definition": "The number two",
-        "example": "二十 (twenty)"
+        "id": "bantian",
+        "hanzi": "半天",
+        "pinyin": "bàntiān",
+        "translation": "half day",
+        "definition": "Half a day",
+        "example": "我工作了半天 (wǒ gōng zuò le bàn tiān) - I worked for half a day"
       },
       {
-        "id": "san",
-        "hanzi": "三",
-        "pinyin": "sān",
-        "translation": "three",
-        "definition": "The number three",
-        "example": "三个月 (three months)"
+        "id": "bang",
+        "hanzi": "帮",
+        "pinyin": "bāng",
+        "translation": "help",
+        "definition": "To help, assist",
+        "example": "你可以帮我吗？(nǐ kě yǐ bāng wǒ ma?) - Can you help me?"
       },
       {
-        "id": "jin-tian",
-        "hanzi": "今天",
-        "pinyin": "jīn tiān",
-        "translation": "today",
-        "definition": "The current day",
-        "example": "今天是星期一。(Today is Monday.)"
+        "id": "bangmang",
+        "hanzi": "帮忙",
+        "pinyin": "bāng/máng",
+        "translation": "help",
+        "definition": "To help, give assistance",
+        "example": "谢谢你的帮忙！(xiè xiè nǐ de bāng máng!) - Thank you for your help!"
       },
       {
-        "id": "shi-jian",
-        "hanzi": "时间",
-        "pinyin": "shí jiān",
-        "translation": "time",
-        "definition": "Time, duration",
-        "example": "我没有时间。(I don't have time.)"
+        "id": "bao",
+        "hanzi": "包",
+        "pinyin": "bāo",
+        "translation": "bag",
+        "definition": "Bag, package",
+        "example": "这是我的包 (zhè shì wǒ de bāo) - This is my bag"
+      },
+      {
+        "id": "baozi",
+        "hanzi": "包子",
+        "pinyin": "bāozi",
+        "translation": "steamed bun",
+        "definition": "Steamed stuffed bun",
+        "example": "他喜欢吃包子 (tā xǐ huan chī bāo zi) - He likes to eat steamed buns"
+      },
+      {
+        "id": "bei",
+        "hanzi": "杯",
+        "pinyin": "bēi",
+        "translation": "cup",
+        "definition": "Cup, glass",
+        "example": "我要一杯咖啡 (wǒ yào yī bēi kā fēi) - I want a cup of coffee"
+      },
+      {
+        "id": "beizi",
+        "hanzi": "杯子",
+        "pinyin": "bēizi",
+        "translation": "cup",
+        "definition": "Cup, glass",
+        "example": "我要买这个杯子 (wǒ yào mǎi zhè gè bēi zi) - I want to buy this cup"
+      },
+      {
+        "id": "bei-north",
+        "hanzi": "北",
+        "pinyin": "běi",
+        "translation": "north",
+        "definition": "North direction",
+        "example": "这房子朝北 (zhè fáng zi cháo běi) - This house faces north"
+      },
+      {
+        "id": "beibian",
+        "hanzi": "北边",
+        "pinyin": "běibian",
+        "translation": "north side",
+        "definition": "Northern side",
+        "example": "图书馆在学校的北边 (tú shū guǎn zài xué xiào de běi biān) - The library is on the north side of the school"
       }
     ],
     "stage3": [
       {
-        "id": "ba-ba",
-        "hanzi": "爸爸",
-        "pinyin": "bà ba",
-        "translation": "father",
-        "definition": "Father, dad",
-        "example": "我的爸爸是医生。(My father is a doctor.)"
+        "id": "beijing",
+        "hanzi": "北京",
+        "pinyin": "Běijīng",
+        "translation": "Beijing",
+        "definition": "Beijing, capital of China",
+        "example": "你去过北京吗？(nǐ qù guò běi jīng ma?) - Have you been to Beijing?"
       },
       {
-        "id": "ma-ma",
-        "hanzi": "妈妈",
-        "pinyin": "mā ma",
-        "translation": "mother",
-        "definition": "Mother, mom",
-        "example": "妈妈在家。(Mom is at home.)"
+        "id": "ben",
+        "hanzi": "本",
+        "pinyin": "běn",
+        "translation": "book",
+        "definition": "Book, volume",
+        "example": "这本书很有意思 (zhè běn shū hěn yǒu yì si) - This book is very interesting"
       },
       {
-        "id": "jia",
-        "hanzi": "家",
-        "pinyin": "jiā",
-        "translation": "home/family",
-        "definition": "Home, family",
-        "example": "我回家了。(I went home.)"
+        "id": "benzi",
+        "hanzi": "本子",
+        "pinyin": "běn",
+        "translation": "notebook",
+        "definition": "Notebook, exercise book",
+        "example": "我需要一个本子 (wǒ xū yào yī gè běn zi) - I need a notebook"
+      },
+      {
+        "id": "bi",
+        "hanzi": "比",
+        "pinyin": "bǐ",
+        "translation": "compare",
+        "definition": "To compare with",
+        "example": "他比我高 (tā bǐ wǒ gāo) - He is taller than me"
+      },
+      {
+        "id": "bie",
+        "hanzi": "别",
+        "pinyin": "bié",
+        "translation": "don't",
+        "definition": "Don't, do not",
+        "example": "别动！(bié dòng!) - Don't move!"
+      },
+      {
+        "id": "biede",
+        "hanzi": "别的",
+        "pinyin": "biéde",
+        "translation": "other",
+        "definition": "Other, different",
+        "example": "有别的颜色吗？(yǒu bié de yán sè ma?) - Are there other colors?"
+      },
+      {
+        "id": "bieren",
+        "hanzi": "别人",
+        "pinyin": "bié rén",
+        "translation": "others",
+        "definition": "Other people",
+        "example": "她不像别人 (tā bù xiàng bié rén) - She is not like other people"
+      },
+      {
+        "id": "bing",
+        "hanzi": "病",
+        "pinyin": "bìng",
+        "translation": "illness",
+        "definition": "Illness, disease",
+        "example": "他的皮肤病好了 (tā de pí fū bìng hǎo le) - His skin condition has healed"
+      },
+      {
+        "id": "bingren",
+        "hanzi": "病人",
+        "pinyin": "bìngrén",
+        "translation": "patient",
+        "definition": "Patient, sick person",
+        "example": "病人需要多休息 (bìng rén xū yào duō xiū xi) - The patient needs more rest"
+      },
+      {
+        "id": "buda",
+        "hanzi": "不大",
+        "pinyin": "bù",
+        "translation": "not big",
+        "definition": "Not big, small",
+        "example": "我的房子不大 (wǒ de fáng zi bù dà) - My house is not big"
+      }
+    ],
+    "stage4": [
+      {
+        "id": "budui",
+        "hanzi": "不对",
+        "pinyin": "bùduì",
+        "translation": "incorrect",
+        "definition": "Not correct, wrong",
+        "example": "你的答案不对 (nǐ de dá àn bù duì) - Your answer is incorrect"
+      },
+      {
+        "id": "bukeqi",
+        "hanzi": "不客气",
+        "pinyin": "bù",
+        "translation": "you're welcome",
+        "definition": "You're welcome, don't mention it",
+        "example": "不客气！(bù kè qi!) - You're welcome!"
+      },
+      {
+        "id": "buyong",
+        "hanzi": "不用",
+        "pinyin": "bùyòng",
+        "translation": "no need",
+        "definition": "No need, don't have to",
+        "example": "不用着急 (bù yòng zháo jí) - No need to rush"
+      },
+      {
+        "id": "bu-no",
+        "hanzi": "不",
+        "pinyin": "bù",
+        "translation": "no",
+        "definition": "No, not",
+        "example": "他不紧张 (tā bù jǐn zhāng) - He is not nervous"
+      },
+      {
+        "id": "cai",
+        "hanzi": "菜",
+        "pinyin": "cài",
+        "translation": "dish",
+        "definition": "Dish, vegetable",
+        "example": "他喜欢这道菜 (tā xǐ huan zhè dào cài) - He likes this dish"
+      },
+      {
+        "id": "cha",
+        "hanzi": "差",
+        "pinyin": "chà",
+        "translation": "lacking",
+        "definition": "Lacking, poor",
+        "example": "我每天喝茶 (wǒ měi tiān hē chá) - I drink tea every day"
+      },
+      {
+        "id": "cha-tea",
+        "hanzi": "茶",
+        "pinyin": "chá",
+        "translation": "tea",
+        "definition": "Tea",
+        "example": "他的态度很差 (tā de tài dù hěn chà) - His attitude is very poor"
+      },
+      {
+        "id": "chang",
+        "hanzi": "常",
+        "pinyin": "cháng",
+        "translation": "often",
+        "definition": "Often, frequently",
+        "example": "我常点外卖 (wǒ cháng diǎn wài mài) - I often order takeout"
+      },
+      {
+        "id": "changchang",
+        "hanzi": "常常",
+        "pinyin": "chángcháng",
+        "translation": "often",
+        "definition": "Often, frequently",
+        "example": "我常常做饭 (wǒ cháng cháng zuò fàn) - I often cook"
+      },
+      {
+        "id": "changge",
+        "hanzi": "唱歌",
+        "pinyin": "chànggē",
+        "translation": "sing songs",
+        "definition": "To sing songs",
+        "example": "她喜欢唱歌 (tā xǐ huan chàng gē) - She likes to sing songs"
+      },
+      {
+        "id": "che",
+        "hanzi": "车",
+        "pinyin": "chē",
+        "translation": "vehicle",
+        "definition": "Vehicle, car",
+        "example": "我的车坏了 (wǒ de chē huài le) - My car is broken"
+      },
+      {
+        "id": "chepiao",
+        "hanzi": "车票",
+        "pinyin": "chēpiào",
+        "translation": "ticket",
+        "definition": "Vehicle ticket",
+        "example": "我要买一张车票 (wǒ yào mǎi yī zhāng chē piào) - I want to buy a ticket"
+      },
+      {
+        "id": "che-on",
+        "hanzi": "车上",
+        "pinyin": "chē",
+        "translation": "on vehicle",
+        "definition": "On the vehicle",
+        "example": "我的手机在车上 (wǒ de shǒu jī zài chē shàng) - My phone is in the car"
+      },
+      {
+        "id": "chezhan",
+        "hanzi": "车站",
+        "pinyin": "chēzhàn",
+        "translation": "station",
+        "definition": "Vehicle station",
+        "example": "我在车站 (wǒ zài chē zhàn) - I am at the station"
       },
       {
         "id": "chi",
         "hanzi": "吃",
         "pinyin": "chī",
-        "translation": "to eat",
-        "definition": "To eat, to consume food",
-        "example": "我吃饭。(I eat/am eating.)"
+        "translation": "eat",
+        "definition": "To eat",
+        "example": "我要吃肉 (wǒ yào chī ròu) - I want to eat meat"
       },
       {
-        "id": "qu",
-        "hanzi": "去",
-        "pinyin": "qù",
-        "translation": "to go",
-        "definition": "To go, to move toward",
-        "example": "我去学校。(I go to school.)"
+        "id": "chifan",
+        "hanzi": "吃饭",
+        "pinyin": "chī/fàn",
+        "translation": "eat meal",
+        "definition": "To eat a meal",
+        "example": "我要和朋友吃饭 (wǒ yào hé péng you chī fàn) - I want to eat with friends"
+      },
+      {
+        "id": "chu",
+        "hanzi": "出",
+        "pinyin": "chū",
+        "translation": "go out",
+        "definition": "To go out, exit",
+        "example": "她拿出了包 (tā ná chū le qián bāo) - She took out her wallet"
+      },
+      {
+        "id": "chulai",
+        "hanzi": "出来",
+        "pinyin": "chūlái",
+        "translation": "come out",
+        "definition": "To come out, appear",
+        "example": "太阳出来了 (tài yáng chū lái le) - The sun came out"
+      },
+      {
+        "id": "chuqu",
+        "hanzi": "出去",
+        "pinyin": "chūqù",
+        "translation": "go out",
+        "definition": "To go out",
+        "example": "我每天出去散步 (wǒ měi tiān chū qù sàn bù) - I go out for walks every day"
       }
     ],
-    "stage4": [
+    "stage5": [
       {
-        "id": "mi-fan",
-        "hanzi": "米饭",
-        "pinyin": "mǐ fàn",
-        "translation": "rice",
-        "definition": "Cooked rice",
-        "example": "我喜欢吃米饭。(I like to eat rice.)"
+        "id": "ci",
+        "hanzi": "次",
+        "pinyin": "cì",
+        "translation": "time",
+        "definition": "Time, occasion",
+        "example": "我每周健身四次 (wǒ měi zhōu jiàn shēn sì cì) - I exercise four times a week"
       },
       {
-        "id": "mai",
-        "hanzi": "买",
-        "pinyin": "mǎi",
-        "translation": "to buy",
-        "definition": "To buy, to purchase",
-        "example": "我买书。(I buy books.)"
+        "id": "cong",
+        "hanzi": "从",
+        "pinyin": "cóng",
+        "translation": "from",
+        "definition": "From, since",
+        "example": "从这里到车站要十分钟 (cóng zhè lǐ dào chē zhàn yào shí fēn zhōng) - It takes ten minutes from here to the station"
       },
       {
-        "id": "qian",
-        "hanzi": "钱",
-        "pinyin": "qián",
-        "translation": "money",
-        "definition": "Money, currency",
-        "example": "我没有钱。(I don't have money.)"
+        "id": "cuo",
+        "hanzi": "错",
+        "pinyin": "cuò",
+        "translation": "wrong",
+        "definition": "Wrong, mistake",
+        "example": "我错了 (wǒ cuò le) - I was wrong"
       },
       {
-        "id": "shang-dian",
-        "hanzi": "商店",
-        "pinyin": "shāng diàn",
-        "translation": "shop",
-        "definition": "Shop, store",
-        "example": "商店很大。(The shop is big.)"
+        "id": "da",
+        "hanzi": "打",
+        "pinyin": "dǎ",
+        "translation": "hit",
+        "definition": "To hit, beat",
+        "example": "他不打女人 (tā bù dǎ nǚ rén) - He doesn't hit women"
       },
       {
-        "id": "gui",
-        "hanzi": "贵",
-        "pinyin": "guì",
-        "translation": "expensive",
-        "definition": "Expensive, costly",
-        "example": "这个很贵。(This is expensive.)"
+        "id": "dache",
+        "hanzi": "打车",
+        "pinyin": "dǎchē",
+        "translation": "take taxi",
+        "definition": "To take a taxi",
+        "example": "我要打车去飞机场 (wǒ yào dǎ chē qù fēi jī chǎng) - I want to take a taxi to the airport"
+      },
+      {
+        "id": "dadianhua",
+        "hanzi": "打电话",
+        "pinyin": "dǎ diànhuà",
+        "translation": "make call",
+        "definition": "To make a phone call",
+        "example": "我需要打电话给顾客 (wǒ xū yào dǎ diàn huà gěi gù kè) - I need to call the customer"
+      },
+      {
+        "id": "dakai",
+        "hanzi": "打开",
+        "pinyin": "dǎkāi",
+        "translation": "open",
+        "definition": "To open",
+        "example": "请打开空调 (qǐng dǎ kāi kōng tiáo) - Please turn on the air conditioner"
+      },
+      {
+        "id": "daqiu",
+        "hanzi": "打球",
+        "pinyin": "dǎ qiú",
+        "translation": "play ball",
+        "definition": "To play ball sports",
+        "example": "我喜欢和朋友打球 (wǒ xǐ huan hé péng you dǎ qiú) - I like to play ball with friends"
+      },
+      {
+        "id": "da-big",
+        "hanzi": "大",
+        "pinyin": "dà",
+        "translation": "big",
+        "definition": "Big, large",
+        "example": "他的房子很大 (tā de fáng zi hěn dà) - His house is very big"
+      },
+      {
+        "id": "daxue",
+        "hanzi": "大学",
+        "pinyin": "dàxué",
+        "translation": "university",
+        "definition": "University, college",
+        "example": "我明年要申请大学 (wǒ míng nián yào shēn qǐng dà xué) - I will apply to university next year"
+      }
+    ],
+    "stage6": [
+      {
+        "id": "daxuesheng",
+        "hanzi": "大学生",
+        "pinyin": "dàxuéshēng",
+        "translation": "university student",
+        "definition": "University student",
+        "example": "现在的大学生压力很大 (xiàn zài de dà xué shēng yā lì hěn dà) - Current university students have a lot of pressure"
+      },
+      {
+        "id": "dao",
+        "hanzi": "到",
+        "pinyin": "dào",
+        "translation": "arrive",
+        "definition": "To arrive, reach",
+        "example": "我五点钟后到 (wǒ wǔ diǎn zhōng hòu dào) - I arrive after five o'clock"
+      },
+      {
+        "id": "dedao",
+        "hanzi": "得到",
+        "pinyin": "dédào",
+        "translation": "get",
+        "definition": "To get, obtain",
+        "example": "他想得到奖学金 (tā xiǎng dé dào jiǎng xué jīn) - He wants to get a scholarship"
+      },
+      {
+        "id": "de",
+        "hanzi": "地",
+        "pinyin": "de",
+        "translation": "ground",
+        "definition": "Ground, earth",
+        "example": "他伤心地哭了 (tā shāng xīn de kū le) - He cried sadly"
+      },
+      {
+        "id": "de-possessive",
+        "hanzi": "的",
+        "pinyin": "de",
+        "translation": "possessive particle",
+        "definition": "Possessive particle",
+        "example": "这是奥利的手机 (zhè shì ào lì de shǒu jī) - This is Oli's phone"
+      },
+      {
+        "id": "deng",
+        "hanzi": "等",
+        "pinyin": "děng",
+        "translation": "wait",
+        "definition": "To wait",
+        "example": "我会等你的 (wǒ huì děng nǐ de) - I will wait for you"
+      },
+      {
+        "id": "di",
+        "hanzi": "地",
+        "pinyin": "dì",
+        "translation": "ground",
+        "definition": "Ground, earth",
+        "example": "药石在地上 (yào shí zài dì shàng) - The medicine is on the ground"
+      },
+      {
+        "id": "didian",
+        "hanzi": "地点",
+        "pinyin": "dìdiǎn",
+        "translation": "location",
+        "definition": "Location, place",
+        "example": "会议地点在哪里？(huì yì dì diǎn zài nǎ lǐ?) - Where is the meeting location?"
+      },
+      {
+        "id": "difang",
+        "hanzi": "地方",
+        "pinyin": "dìfāng",
+        "translation": "place",
+        "definition": "Place, location",
+        "example": "这个地方真漂亮 (zhè gè dì fāng zhēn piào liang) - This place is really beautiful"
+      },
+      {
+        "id": "dishang",
+        "hanzi": "地上",
+        "pinyin": "dìshang",
+        "translation": "on ground",
+        "definition": "On the ground",
+        "example": "地上有很多水 (dì shàng yǒu hěn duō shuǐ) - There is a lot of water on the ground"
       }
     ]
-  }
+}
 }
