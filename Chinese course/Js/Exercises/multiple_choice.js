@@ -7,6 +7,8 @@ export default class MultipleChoiceExercise {
         this.score = 0;
         this.selectedAnswer = null;
         this.template = new MultipleChoiceTemplate();
+        this.progress = {};
+        this.loadProgress();
     }
 
     async display(level = 1, stage = 1) {
@@ -34,11 +36,21 @@ export default class MultipleChoiceExercise {
             
             // Extract stage number if it's a string like "stage1"
             const stageNum = typeof stage === 'string' ? stage.replace('stage', '') : stage;
-            this.questions = data.stages[`stage${stageNum}`] || [];
+            this.stageKey = `stage${stageNum}`;
+            this.questions = data.stages[this.stageKey] || [];
             
             console.log(`Loaded ${this.questions.length} questions for HSK${level} Stage ${stageNum}`);
-            this.currentQuestionIndex = 0;
-            this.score = 0;
+            
+            // Check if we have saved progress for this quiz
+            const savedProgress = this.getSavedProgress(level, this.stageKey);
+            if (savedProgress) {
+                this.currentQuestionIndex = savedProgress.currentQuestion || 0;
+                this.score = savedProgress.score || 0;
+                console.log(`Loaded saved progress: Question ${this.currentQuestionIndex + 1}, Score: ${this.score}`);
+            } else {
+                this.currentQuestionIndex = 0;
+                this.score = 0;
+            }
             
             if (this.questions.length === 0) {
                 throw new Error(`No questions found for stage${stageNum}`);
@@ -185,6 +197,8 @@ export default class MultipleChoiceExercise {
         if (this.currentQuestionIndex < this.questions.length - 1) {
             this.currentQuestionIndex++;
             this.selectedAnswer = null;
+            // Save progress after each question
+            this.saveProgress();
             this.displayCurrentQuestion();
         } else {
             this.showResults();
@@ -192,6 +206,10 @@ export default class MultipleChoiceExercise {
     }
 
     showResults() {
+        // Save progress with completed flag before showing results
+        if (this.hskLevel && this.stageKey) {
+            this.saveProgress();
+        }
         const content = document.getElementById('lesson-content');
         const percentage = Math.round((this.score / this.questions.length) * 100);
         
@@ -232,6 +250,11 @@ export default class MultipleChoiceExercise {
         console.log('backToStages called, hskLevel:', this.hskLevel);
         console.log('courseDisplay available:', window.courseDisplay);
         console.log('showQuizStages method:', window.courseDisplay ? window.courseDisplay.showQuizStages : 'N/A');
+        
+        // Save current progress before closing
+        if (this.hskLevel && this.stageKey) {
+            this.saveProgress();
+        }
         
         // Close the current lesson content first
         const content = document.getElementById('lesson-content');
@@ -308,5 +331,60 @@ export default class MultipleChoiceExercise {
             `;
             this.attachEventListeners();
         }
+    }
+
+    // Save the current progress to localStorage
+    saveProgress() {
+        if (!this.hskLevel || !this.stageKey) {
+            console.log('Cannot save progress: HSK level or stage not set');
+            return;
+        }
+        
+        const progressKey = `quiz_progress_hsk${this.hskLevel}_${this.stageKey}`;
+        const progressData = {
+            currentQuestion: this.currentQuestionIndex,
+            score: this.score,
+            timestamp: Date.now(),
+            completed: this.currentQuestionIndex >= this.questions.length - 1
+        };
+        
+        localStorage.setItem(progressKey, JSON.stringify(progressData));
+        console.log(`Progress saved for HSK${this.hskLevel} ${this.stageKey}:`, progressData);
+        
+        // Update the progress object
+        if (!this.progress) this.progress = {};
+        this.progress[`hsk${this.hskLevel}_${this.stageKey}`] = progressData;
+    }
+    
+    // Load all saved progress from localStorage
+    loadProgress() {
+        try {
+            this.progress = {};
+            
+            // Iterate through all localStorage items
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && key.startsWith('quiz_progress_')) {
+                    try {
+                        const data = JSON.parse(localStorage.getItem(key));
+                        const keyParts = key.replace('quiz_progress_', '');
+                        this.progress[keyParts] = data;
+                    } catch (error) {
+                        console.warn(`Could not parse progress data for key ${key}:`, error);
+                    }
+                }
+            }
+            
+            console.log('Loaded progress data:', this.progress);
+        } catch (error) {
+            console.error('Error loading progress:', error);
+            this.progress = {};
+        }
+    }
+    
+    // Get saved progress for a specific HSK level and stage
+    getSavedProgress(level, stage) {
+        const progressKey = `hsk${level}_${stage}`;
+        return this.progress ? this.progress[progressKey] : null;
     }
 }
