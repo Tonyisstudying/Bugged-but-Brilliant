@@ -9,7 +9,7 @@ export default class MultipleChoiceTemplate {
         return `
             <div class="course-header">
                 <div class="section-title">Quiz - Question ${progress.current} of ${progress.total}</div>
-                <button class="close-btn">×</button>
+                <button class="close-btn-stages">×</button>
             </div>
 
             <div class="mc-content">

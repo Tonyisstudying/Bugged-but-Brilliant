@@ -277,7 +277,7 @@ export default class MultipleChoiceExercise {
                 } else {
                     console.error('Cannot show quiz stages - missing dependencies');
                 }
-            }, 300);
+            }, 500);
         } else {
             // Fallback if content element not found
             if (window.courseDisplay && window.courseDisplay.showQuizStages && this.hskLevel) {
@@ -356,12 +356,10 @@ export default class MultipleChoiceExercise {
         this.progress[`hsk${this.hskLevel}_${this.stageKey}`] = progressData;
     }
     
-    // Load all saved progress from localStorage
+    // load saved progress from localStorage
     loadProgress() {
         try {
             this.progress = {};
-            
-            // Iterate through all localStorage items
             for (let i = 0; i < localStorage.length; i++) {
                 const key = localStorage.key(i);
                 if (key && key.startsWith('quiz_progress_')) {
@@ -374,7 +372,6 @@ export default class MultipleChoiceExercise {
                     }
                 }
             }
-            
             console.log('Loaded progress data:', this.progress);
         } catch (error) {
             console.error('Error loading progress:', error);
@@ -382,7 +379,7 @@ export default class MultipleChoiceExercise {
         }
     }
     
-    // Get saved progress for a specific HSK level and stage
+    // Get saved progress 
     getSavedProgress(level, stage) {
         const progressKey = `hsk${level}_${stage}`;
         return this.progress ? this.progress[progressKey] : null;

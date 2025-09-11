@@ -67,11 +67,9 @@ export default class VocabularyExercise {
     }
 
     close() {
-        // Use the courseDisplay's closeContent method if available
         if (window.courseDisplay && window.courseDisplay.closeContent) {
             window.courseDisplay.closeContent();
         } else {
-            // Fallback if courseDisplay is not available
             const content = document.getElementById('lesson-content');
             const overlay = document.getElementById('overlay');
             
@@ -84,7 +82,7 @@ export default class VocabularyExercise {
                     content.classList.add('hidden');
                     if (overlay) overlay.classList.add('hidden');
                     document.querySelector('.course-title')?.classList.remove('minimized');
-                }, 500); // Match this timing with your CSS transition
+                }, 500);
             }
         }
     }
