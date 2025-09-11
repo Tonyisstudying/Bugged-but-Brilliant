@@ -1,0 +1,326 @@
+{
+  "level": 2,
+  "title": "HSK 2 - Multiple Choice Quiz",
+  "stages": {
+    "stage1": [
+      {
+        "question": "What does '啊' mean?",
+        "options": ["oh", "ah", "um", "hey"],
+        "correct": 1,
+        "explanation": "'啊' (ā) is an exclamation similar to 'ah' in English."
+      },
+      {
+        "question": "How do you say 'love' (romantic) in Chinese?",
+        "options": ["爱", "喜欢", "爱情", "爱心"],
+        "correct": 2,
+        "explanation": "'爱情' (àiqíng) means romantic love in Chinese."
+      },
+      {
+        "question": "What is the meaning of '安静'?",
+        "options": ["peaceful", "quiet", "comfortable", "safe"],
+        "correct": 1,
+        "explanation": "'安静' (ānjìng) means 'quiet' or 'peaceful' in Chinese."
+      },
+      {
+        "question": "Which word means 'spouse'?",
+        "options": ["丈夫", "妻子", "爱人", "朋友"],
+        "correct": 2,
+        "explanation": "'爱人' (àirén) means 'spouse' (husband or wife) in Chinese."
+      },
+      {
+        "question": "What does '安全' mean?",
+        "options": ["comfortable", "clean", "safe", "peaceful"],
+        "correct": 2,
+        "explanation": "'安全' (ānquán) means 'safe' or 'secure' in Chinese."
+      }
+    ],
+    "stage2": [
+      {
+        "question": "What does '白色' mean?",
+        "options": ["black color", "white color", "red color", "blue color"],
+        "correct": 1,
+        "explanation": "'白色' (báisè) means 'white color' in Chinese."
+      },
+      {
+        "question": "How do you say 'class monitor' in Chinese?",
+        "options": ["班长", "老师", "同学", "学生"],
+        "correct": 0,
+        "explanation": "'班长' (bānzhǎng) means 'class monitor' or 'class leader' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '办'?",
+        "options": ["to work", "to do", "to study", "to buy"],
+        "correct": 1,
+        "explanation": "'办' (bàn) means 'to do' or 'to handle' in Chinese."
+      },
+      {
+        "question": "Which word means 'method'?",
+        "options": ["办公室", "办理", "办法", "办事"],
+        "correct": 2,
+        "explanation": "'办法' (bànfǎ) means 'way' or 'method' in Chinese."
+      },
+      {
+        "question": "What does '办公室' mean?",
+        "options": ["classroom", "office", "living room", "bedroom"],
+        "correct": 1,
+        "explanation": "'办公室' (bàngōngshì) means 'office' in Chinese."
+      }
+    ],
+    "stage3": [
+      {
+        "question": "What does '半夜' mean?",
+        "options": ["afternoon", "evening", "midnight", "morning"],
+        "correct": 2,
+        "explanation": "'半夜' (bànyè) means 'midnight' or 'in the middle of the night' in Chinese."
+      },
+      {
+        "question": "How do you say 'help' in Chinese?",
+        "options": ["帮助", "帮忙", "支持", "协助"],
+        "correct": 0,
+        "explanation": "'帮助' (bāngzhù) means 'to help' or 'assistance' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '饱'?",
+        "options": ["hungry", "full", "thirsty", "tired"],
+        "correct": 1,
+        "explanation": "'饱' (bǎo) means 'full (from eating)' in Chinese."
+      },
+      {
+        "question": "Which word means 'to register'?",
+        "options": ["注册", "登记", "报名", "申请"],
+        "correct": 2,
+        "explanation": "'报名' (bàomíng) means 'to register' or 'to sign up' in Chinese."
+      },
+      {
+        "question": "What does '报纸' mean?",
+        "options": ["magazine", "newspaper", "book", "letter"],
+        "correct": 1,
+        "explanation": "'报纸' (bàozhǐ) means 'newspaper' in Chinese."
+      }
+    ],
+    "stage4": [
+      {
+        "question": "What does '北方' mean?",
+        "options": ["south", "north", "east", "west"],
+        "correct": 1,
+        "explanation": "'北方' (běifāng) means 'north' or 'northern part' in Chinese."
+      },
+      {
+        "question": "How do you say 'to memorize' in Chinese?",
+        "options": ["学习", "背", "记得", "复习"],
+        "correct": 1,
+        "explanation": "'背' (bèi) means 'to memorize' or 'to recite' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '比如'?",
+        "options": ["instead", "for example", "because", "therefore"],
+        "correct": 1,
+        "explanation": "'比如' (bǐrú) means 'for example' or 'such as' in Chinese."
+      },
+      {
+        "question": "Which phrase means 'for instance'?",
+        "options": ["比如说", "因为", "所以", "虽然"],
+        "correct": 0,
+        "explanation": "'比如说' (bǐrúshuō) means 'for instance' or 'such as' in Chinese."
+      },
+      {
+        "question": "What does '笔' mean?",
+        "options": ["pencil", "pen", "brush", "marker"],
+        "correct": 1,
+        "explanation": "'笔' (bǐ) means 'pen' or 'writing instrument' in Chinese."
+      }
+    ],
+    "stage5": [
+      {
+        "question": "What does '笔记' mean?",
+        "options": ["diary", "notes", "letter", "book"],
+        "correct": 1,
+        "explanation": "'笔记' (bǐjì) means 'notes' or 'written record' in Chinese."
+      },
+      {
+        "question": "How do you say 'notebook' in Chinese?",
+        "options": ["笔记本", "本子", "书", "字典"],
+        "correct": 0,
+        "explanation": "'笔记本' (bǐjìběn) means 'notebook' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '必须'?",
+        "options": ["can", "should", "must", "may"],
+        "correct": 2,
+        "explanation": "'必须' (bìxū) means 'must' or 'have to' in Chinese."
+      },
+      {
+        "question": "Which word means 'side'?",
+        "options": ["旁边", "边", "角", "中间"],
+        "correct": 1,
+        "explanation": "'边' (biān) means 'side' or 'edge' in Chinese."
+      },
+      {
+        "question": "What does '变' mean?",
+        "options": ["move", "change", "grow", "shrink"],
+        "correct": 1,
+        "explanation": "'变' (biàn) means 'to change' or 'to become different' in Chinese."
+      }
+    ],
+    "stage6": [
+      {
+        "question": "What does '变成' mean?",
+        "options": ["develop", "become", "transform", "grow"],
+        "correct": 1,
+        "explanation": "'变成' (biànchéng) means 'to become' or 'to turn into' in Chinese."
+      },
+      {
+        "question": "How do you use '遍' in Chinese?",
+        "options": ["to count objects", "to count time or repetition", "to count distance", "to count weight"],
+        "correct": 1,
+        "explanation": "'遍' (biàn) is a measure word for actions, indicating the number of times something is done."
+      },
+      {
+        "question": "What is the meaning of '表'?",
+        "options": ["ring", "bracelet", "watch", "necklace"],
+        "correct": 2,
+        "explanation": "'表' (biǎo) means 'watch' or 'clock' in Chinese."
+      },
+      {
+        "question": "Which word means 'to express'?",
+        "options": ["说明", "表达", "表示", "解释"],
+        "correct": 2,
+        "explanation": "'表示' (biǎoshì) means 'to express' or 'to show' in Chinese."
+      },
+      {
+        "question": "What does '不错' mean?",
+        "options": ["wrong", "incorrect", "not bad", "bad"],
+        "correct": 2,
+        "explanation": "'不错' (bùcuò) means 'not bad' or 'pretty good' in Chinese."
+      }
+    ],
+    "stage7": [
+      {
+        "question": "What does '不但' mean?",
+        "options": ["but", "not only", "however", "also"],
+        "correct": 1,
+        "explanation": "'不但' (bùdàn) means 'not only' in Chinese."
+      },
+      {
+        "question": "How do you say 'not enough' in Chinese?",
+        "options": ["不要", "不多", "不够", "不少"],
+        "correct": 2,
+        "explanation": "'不够' (bùgòu) means 'not enough' or 'insufficient' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '不过'?",
+        "options": ["not passing", "however", "not going", "not over"],
+        "correct": 1,
+        "explanation": "'不过' (bùguò) means 'but' or 'however' in Chinese."
+      },
+      {
+        "question": "Which phrase means 'not very'?",
+        "options": ["不很", "不太", "不十分", "不非常"],
+        "correct": 1,
+        "explanation": "'不太' (bùtài) means 'not very' or 'not too' in Chinese."
+      },
+      {
+        "question": "What does '不要' mean?",
+        "options": ["need", "don't", "want", "require"],
+        "correct": 1,
+        "explanation": "'不要' (bùyào) means 'don't' or 'do not' in Chinese."
+      }
+    ],
+    "stage8": [
+      {
+        "question": "What does '不' mean?",
+        "options": ["yes", "no", "maybe", "please"],
+        "correct": 1,
+        "explanation": "'不' (bù) means 'no' or 'not' in Chinese."
+      },
+      {
+        "question": "How do you say 'not long ago' in Chinese?",
+        "options": ["不久", "不短", "不长", "不多"],
+        "correct": 0,
+        "explanation": "'不久' (bùjiǔ) means 'not long ago' or 'soon' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '不满'?",
+        "options": ["satisfied", "dissatisfied", "happy", "content"],
+        "correct": 1,
+        "explanation": "'不满' (bùmǎn) means 'dissatisfied' or 'discontented' in Chinese."
+      },
+      {
+        "question": "Which phrase means 'not as good as'?",
+        "options": ["不比", "不如", "不及", "不像"],
+        "correct": 1,
+        "explanation": "'不如' (bùrú) means 'not as good as' or 'inferior to' in Chinese."
+      },
+      {
+        "question": "What does '不少' mean?",
+        "options": ["few", "little", "many", "much"],
+        "correct": 2,
+        "explanation": "'不少' (bùshǎo) means 'many' or 'quite a few' in Chinese."
+      }
+    ],
+    "stage9": [
+      {
+        "question": "What does '不同' mean?",
+        "options": ["same", "similar", "different", "alike"],
+        "correct": 2,
+        "explanation": "'不同' (bùtóng) means 'different' or 'distinctive' in Chinese."
+      },
+      {
+        "question": "How do you say 'not okay' in Chinese?",
+        "options": ["不好", "不行", "不可以", "不能"],
+        "correct": 1,
+        "explanation": "'不行' (bùxíng) means 'not okay' or 'not acceptable' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '不一定'?",
+        "options": ["definitely", "certainly", "not necessarily", "surely"],
+        "correct": 2,
+        "explanation": "'不一定' (bùyīdìng) means 'not necessarily' or 'not for certain' in Chinese."
+      },
+      {
+        "question": "Which phrase means 'soon after'?",
+        "options": ["不久", "不一会儿", "马上", "立刻"],
+        "correct": 1,
+        "explanation": "'不一会儿' (bùyīhuìr) means 'soon after' or 'in a short while' in Chinese."
+      },
+      {
+        "question": "What does '部分' mean?",
+        "options": ["whole", "half", "part", "section"],
+        "correct": 2,
+        "explanation": "'部分' (bùfèn) means 'part' or 'section' in Chinese."
+      }
+    ],
+    "stage10": [
+      {
+        "question": "What does '才' mean in '你怎么现在才来？'",
+        "options": ["early", "late", "just now", "already"],
+        "correct": 2,
+        "explanation": "'才' (cái) in this context means 'just now' or 'only then' in Chinese."
+      },
+      {
+        "question": "How do you say 'menu' in Chinese?",
+        "options": ["食单", "餐单", "菜单", "点菜单"],
+        "correct": 2,
+        "explanation": "'菜单' (càidān) means 'menu' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '参观'?",
+        "options": ["participate", "observe", "visit", "attend"],
+        "correct": 2,
+        "explanation": "'参观' (cānguān) means 'to visit' or 'to tour' in Chinese."
+      },
+      {
+        "question": "Which word means 'to participate'?",
+        "options": ["加入", "参加", "出席", "加入"],
+        "correct": 1,
+        "explanation": "'参加' (cānjiā) means 'to participate' or 'to join' in Chinese."
+      },
+      {
+        "question": "What does '草' mean?",
+        "options": ["tree", "flower", "grass", "plant"],
+        "correct": 2,
+        "explanation": "'草' (cǎo) means 'grass' in Chinese."
+      }
+    ]
+  }
+}

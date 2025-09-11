@@ -600,6 +600,30 @@
         "options": ["已经", "还", "刚", "就"],
         "correct": 1,
         "explanation": "'还' (hái) means 'still' in Chinese."
+      },
+      {
+        "question": "What does '能' mean?",
+        "options": ["want", "need", "can", "must"],
+        "correct": 2,
+        "explanation": "'能' (néng) means 'can' or 'to be able to' in Chinese."
+      },
+      {
+        "question": "How do you say 'you' in Chinese?",
+        "options": ["我", "你", "他", "她"],
+        "correct": 1,
+        "explanation": "'你' (nǐ) means 'you' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '呢'?",
+        "options": ["question particle", "past tense marker", "plural marker", "possessive marker"],
+        "correct": 0,
+        "explanation": "'呢' (ne) is a question particle in Chinese."
+      },
+      {
+        "question": "Which word means 'woman'?",
+        "options": ["男人", "女人", "男孩", "女孩"],
+        "correct": 1,
+        "explanation": "'女人' (nǚ rén) means 'woman' in Chinese."
       }
     ],
     "stage13": [
@@ -658,6 +682,30 @@
         "options": ["eat", "drink", "sleep", "walk"],
         "correct": 1,
         "explanation": "'喝' (hē) means 'drink' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '和'?",
+        "options": ["but", "or", "and", "so"],
+        "correct": 2,
+        "explanation": "'和' (hé) means 'and' in Chinese."
+      },
+      {
+        "question": "How do you say 'very' in Chinese?",
+        "options": ["太", "非常", "真", "很"],
+        "correct": 3,
+        "explanation": "'很' (hěn) means 'very' in Chinese."
+      },
+      {
+        "question": "What does '黑' mean?",
+        "options": ["white", "red", "black", "yellow"],
+        "correct": 2,
+        "explanation": "'黑' (hēi) means 'black' in Chinese."
+      },
+      {
+        "question": "Which word means 'red'?",
+        "options": ["黄", "蓝", "绿", "红"],
+        "correct": 3,
+        "explanation": "'红' (hóng) means 'red' in Chinese."
       }
     ]
   }

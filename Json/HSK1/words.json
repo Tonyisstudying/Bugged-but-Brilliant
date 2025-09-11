@@ -1076,6 +1076,14 @@
         "example": "她有五个孩子 (tā yǒu wǔ gè hái zi) - She has five children"
       },
       {
+        "id": "hen",
+        "hanzi": "恨",
+        "pinyin": "hèn",
+        "translation": "hate",
+        "definition": "To hate, detest",
+        "example": "我恨这种天气 (wǒ hèn zhè zhǒng tiān qì) - I hate this kind of weather"
+      },
+      {
         "id": "hanyu",
         "hanzi": "汉语",
         "pinyin": "Hànyǔ",
@@ -1116,6 +1124,14 @@
         "example": "这个好看吗？(zhè gè hǎo kàn ma?) - Does this look good?"
       },
       {
+        "id": "houtian",
+        "hanzi": "后天",
+        "pinyin": "hòutiān",
+        "translation": "day after tomorrow",
+        "definition": "The day after tomorrow",
+        "example": "我后天要去北京 (wǒ hòu tiān yào qù běi jīng) - I'm going to Beijing the day after tomorrow"
+      },
+      {
         "id": "haoting",
         "hanzi": "好听",
         "pinyin": "hǎotīng",
@@ -1124,12 +1140,28 @@
         "example": "这首歌好听吗？(zhè shǒu gē hǎo tīng ma?) - Does this song sound good?"
       },
       {
+        "id": "hui",
+        "hanzi": "会",
+        "pinyin": "huì",
+        "translation": "can",
+        "definition": "Can, able to",
+        "example": "我会说中文 (wǒ huì shuō zhōng wén) - I can speak Chinese"
+      },
+      {
         "id": "haowan",
         "hanzi": "好玩儿",
         "pinyin": "hǎowánr",
         "translation": "fun",
         "definition": "Fun, interesting to play",
         "example": "这个游戏真好玩儿 (zhè gè yóu xì zhēn hǎo wánr) - This game is really fun"
+      },
+      {
+        "id": "huoche",
+        "hanzi": "火车",
+        "pinyin": "huǒchē",
+        "translation": "train",
+        "definition": "Train",
+        "example": "火车站在哪里？(huǒ chē zhàn zài nǎ lǐ?) - Where is the train station?"
       },
       {
         "id": "hao-number",
@@ -1148,6 +1180,46 @@
         "translation": "drink",
         "definition": "To drink",
         "example": "你喝咖啡吗？(nǐ hē kā fēi ma?) - Do you drink coffee?"
+      },
+      {
+        "id": "he-and",
+        "hanzi": "和",
+        "pinyin": "hé",
+        "translation": "and",
+        "definition": "And, with",
+        "example": "我和我的朋友 (wǒ hé wǒ de péng you) - Me and my friend"
+      },
+      {
+        "id": "hen",
+        "hanzi": "很",
+        "pinyin": "hěn",
+        "translation": "very",
+        "definition": "Very, quite",
+        "example": "她很漂亮 (tā hěn piào liang) - She is very pretty"
+      },
+      {
+        "id": "hei",
+        "hanzi": "黑",
+        "pinyin": "hēi",
+        "translation": "black",
+        "definition": "Black (color)",
+        "example": "我喜欢黑色的衣服 (wǒ xǐ huan hēi sè de yī fu) - I like black clothes"
+      },
+      {
+        "id": "hong",
+        "hanzi": "红",
+        "pinyin": "hóng",
+        "translation": "red",
+        "definition": "Red (color)",
+        "example": "这是一朵红花 (zhè shì yī duǒ hóng huā) - This is a red flower"
+      },
+      {
+        "id": "hou",
+        "hanzi": "后",
+        "pinyin": "hòu",
+        "translation": "behind",
+        "definition": "After, behind, later",
+        "example": "我会在后面等你 (wǒ huì zài hòu miàn děng nǐ) - I'll wait for you behind"
       }
     ]
   }
