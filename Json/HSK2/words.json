@@ -420,6 +420,364 @@
         "translation": "grass",
         "definition": "Grass",
         "example": "院子里有很多花草 (yuàn zi lǐ yǒu hěn duō huā cǎo) - There are many flowers and grass in the yard"
+      },
+      {
+        "id": "caodi",
+        "hanzi": "草地",
+        "pinyin": "cǎodì",
+        "translation": "lawn",
+        "definition": "Lawn, grassy area",
+        "example": "他坐在草地上 (tā zuò zài cǎo dì shàng) - He sits on the lawn"
+      },
+      {
+        "id": "ceng",
+        "hanzi": "层",
+        "pinyin": "céng",
+        "translation": "floor",
+        "definition": "Floor, story (of a building)",
+        "example": "我家在十二层 (wǒ jiā zài shí èr céng) - My home is on the twelfth floor"
+      },
+      {
+        "id": "cha",
+        "hanzi": "查",
+        "pinyin": "chá",
+        "translation": "check",
+        "definition": "To check, to investigate",
+        "example": "我上网查明天的火车票 (wǒ shàng wǎng chá míng tiān de huǒ chē piào) - I'm checking online for tomorrow's train tickets"
+      },
+      {
+        "id": "chabuduo",
+        "hanzi": "差不多",
+        "pinyin": "chàbuduō",
+        "translation": "almost",
+        "definition": "Almost, nearly, more or less",
+        "example": "他和我差不多高 (tā hé wǒ chà bù duō gāo) - He is almost as tall as me"
+      },
+      {
+        "id": "chang",
+        "hanzi": "长",
+        "pinyin": "cháng",
+        "translation": "long",
+        "definition": "Long (length)",
+        "example": "我想买一条长裙 (wǒ xiǎng mǎi yī tiáo cháng qún) - I want to buy a long skirt"
+      }
+    ],
+    "stage11": [
+      {
+        "id": "changjian",
+        "hanzi": "常见",
+        "pinyin": "chángjiàn",
+        "translation": "common",
+        "definition": "Common, frequently seen",
+        "example": "这种水果很常见 (zhè zhǒng shuǐ guǒ hěn cháng jiàn) - This kind of fruit is very common"
+      },
+      {
+        "id": "changyong",
+        "hanzi": "常用",
+        "pinyin": "chángyòng",
+        "translation": "commonly used",
+        "definition": "Commonly used, in common usage",
+        "example": "你的常用密码是什么？(nǐ de cháng yòng mì mǎ shì shén me?) - What is your commonly used password?"
+      },
+      {
+        "id": "chang-site",
+        "hanzi": "场",
+        "pinyin": "chǎng",
+        "translation": "site",
+        "definition": "Site, venue, field",
+        "example": "我明天有一场考试 (wǒ míng tiān yǒu yī chǎng kǎo shì) - I have an exam tomorrow"
+      },
+      {
+        "id": "chaoguo",
+        "hanzi": "超过",
+        "pinyin": "chāoguò",
+        "translation": "exceed",
+        "definition": "To exceed, to surpass",
+        "example": "我的成绩超过了他 (wǒ de chéng jì chāo guò le tā) - My achievement has surpassed his"
+      },
+      {
+        "id": "chaoshi",
+        "hanzi": "超市",
+        "pinyin": "chāoshì",
+        "translation": "supermarket",
+        "definition": "Supermarket",
+        "example": "我现在去超市买东西 (wǒ xiàn zài qù chāo shì mǎi dōng xi) - I'm going to the supermarket to buy things now"
+      },
+      {
+        "id": "cheliang",
+        "hanzi": "车辆",
+        "pinyin": "chēliàng",
+        "translation": "vehicle",
+        "definition": "Vehicle(s)",
+        "example": "这条路上的车辆很多 (zhè tiáo lù shàng de chē liàng hěn duō) - There are many vehicles on this road"
+      },
+      {
+        "id": "cheng-call",
+        "hanzi": "称",
+        "pinyin": "chēng",
+        "translation": "to call",
+        "definition": "To call, to address as",
+        "example": "你可以称我为王老师 (nǐ kě yǐ chēng wǒ wéi wáng lǎo shī) - You can call me Teacher Wang"
+      },
+      {
+        "id": "cheng",
+        "hanzi": "成",
+        "pinyin": "chéng",
+        "translation": "to become",
+        "definition": "To become, to succeed",
+        "example": "我已经完成我的作业了 (wǒ yǐ jīng wán chéng wǒ de zuò yè le) - I have already completed my homework"
+      },
+      {
+        "id": "chengji",
+        "hanzi": "成绩",
+        "pinyin": "chéngjì",
+        "translation": "achievement",
+        "definition": "Achievement, result, grade",
+        "example": "他这次考试的成绩很好 (tā zhè cì kǎo shì de chéng jì hěn hǎo) - His exam results this time are very good"
+      },
+      {
+        "id": "chengwei",
+        "hanzi": "成为",
+        "pinyin": "chéngwéi",
+        "translation": "become",
+        "definition": "To become, to turn into",
+        "example": "我们成为了好朋友 (wǒ men chéng wéi le hǎo péng you) - We became good friends"
+      }
+    ],
+    "stage12": [
+      {
+        "id": "chongfu",
+        "hanzi": "重复",
+        "pinyin": "chóngfù",
+        "translation": "repeat",
+        "definition": "To repeat, to duplicate",
+        "example": "我重复听一首歌 (wǒ chóng fù tīng yī shǒu gē) - I listen to a song repeatedly"
+      },
+      {
+        "id": "chongxin",
+        "hanzi": "重新",
+        "pinyin": "chóngxīn",
+        "translation": "again",
+        "definition": "Again, anew, afresh",
+        "example": "他重新做了一遍作业 (tā chóng xīn zuò le yī biàn zuò yè) - He did the homework again from the beginning"
+      },
+      {
+        "id": "chufa",
+        "hanzi": "出发",
+        "pinyin": "chūfā",
+        "translation": "set off",
+        "definition": "To set off, to start out",
+        "example": "我现在出发去河内 (wǒ xiàn zài chū fā qù hé nèi) - I'm setting off for Hanoi now"
+      },
+      {
+        "id": "chuguo",
+        "hanzi": "出国",
+        "pinyin": "chūguó",
+        "translation": "go abroad",
+        "definition": "To go abroad, to leave the country",
+        "example": "出国留学是我的目标 (chū guó liú xué shì wǒ de mù biāo) - Studying abroad is my goal"
+      },
+      {
+        "id": "chukou",
+        "hanzi": "出口",
+        "pinyin": "chūkǒu",
+        "translation": "exit",
+        "definition": "Exit, way out",
+        "example": "请问，出口在哪儿？(qǐng wèn, chū kǒu zài nǎr?) - Excuse me, where is the exit?"
+      },
+      {
+        "id": "chumen",
+        "hanzi": "出门",
+        "pinyin": "chūmén",
+        "translation": "go out",
+        "definition": "To go out, to leave home",
+        "example": "她出门了，不在家里 (tā chū mén le, bú zài jiā lǐ) - She went out, she's not at home"
+      },
+      {
+        "id": "chusheng",
+        "hanzi": "出生",
+        "pinyin": "chūshēng",
+        "translation": "be born",
+        "definition": "To be born, to come into the world",
+        "example": "他是1994年出生的 (tā shì 1994 nián chū shēng de) - He was born in 1994"
+      },
+      {
+        "id": "chuxian",
+        "hanzi": "出现",
+        "pinyin": "chūxiàn",
+        "translation": "appear",
+        "definition": "To appear, to emerge",
+        "example": "她出现在我们学校 (tā chū xiàn zài wǒ men xué xiào) - She appeared at our school"
+      },
+      {
+        "id": "chuyuan",
+        "hanzi": "出院",
+        "pinyin": "chūyuàn",
+        "translation": "leave hospital",
+        "definition": "To be discharged from hospital",
+        "example": "我可以出院了 (wǒ kě yǐ chū yuàn le) - I can leave the hospital now"
+      },
+      {
+        "id": "chuzu",
+        "hanzi": "出租",
+        "pinyin": "chūzū",
+        "translation": "rent out",
+        "definition": "To rent out, to lease",
+        "example": "他要出租这块地 (tā yào chū zū zhè kuài dì) - He wants to rent out this piece of land"
+      },
+      {
+        "id": "chuzuche",
+        "hanzi": "出租车",
+        "pinyin": "chūzūchē",
+        "translation": "taxi",
+        "definition": "Taxi, cab",
+        "example": "我想打出租车回家 (wǒ xiǎng dǎ chū zū chē huí jiā) - I want to take a taxi home"
+      },
+      {
+        "id": "chuan",
+        "hanzi": "船",
+        "pinyin": "chuán",
+        "translation": "boat",
+        "definition": "Boat, ship",
+        "example": "我没有坐过船 (wǒ méi yǒu zuò guò chuán) - I have never been on a boat"
+      },
+      {
+        "id": "chui",
+        "hanzi": "吹",
+        "pinyin": "chuī",
+        "translation": "blow",
+        "definition": "To blow",
+        "example": "我的头发吹干了 (wǒ de tóu fa chuī gān le) - My hair is blown dry"
+      },
+      {
+        "id": "chunjie",
+        "hanzi": "春节",
+        "pinyin": "Chūnjié",
+        "translation": "Spring Festival",
+        "definition": "Spring Festival, Chinese New Year",
+        "example": "过春节快到了 (guò chūn jié kuài dào le) - Spring Festival is coming soon"
+      },
+      {
+        "id": "chuntian",
+        "hanzi": "春天",
+        "pinyin": "chūntiān",
+        "translation": "spring",
+        "definition": "Spring, springtime",
+        "example": "明年春天我再来找你玩 (míng nián chūn tiān wǒ zài lái zhǎo nǐ wán) - I'll come to play with you again next spring"
+      },
+      {
+        "id": "ci",
+        "hanzi": "词",
+        "pinyin": "cí",
+        "translation": "word",
+        "definition": "Word, term, expression",
+        "example": "这个词我还没学过 (zhè gè cí wǒ hái méi xué guò) - I haven't learned this word yet"
+      },
+      {
+        "id": "cidian",
+        "hanzi": "词典",
+        "pinyin": "cídiǎn",
+        "translation": "dictionary",
+        "definition": "Dictionary",
+        "example": "我买了一本汉语词典 (wǒ mǎi le yī běn hàn yǔ cí diǎn) - I bought a Chinese dictionary"
+      },
+      {
+        "id": "ciyu",
+        "hanzi": "词语",
+        "pinyin": "cíyǔ",
+        "translation": "phrase",
+        "definition": "Phrase, word",
+        "example": "他一边放录音，一边读出这些词语 (tā yī biān fàng lù yīn, yī biān dú chū zhè xiē cí yǔ) - He plays the recording while reading these phrases"
+      },
+      {
+        "id": "congxiao",
+        "hanzi": "从小",
+        "pinyin": "cóngxiǎo",
+        "translation": "since childhood",
+        "definition": "Since childhood, from a young age",
+        "example": "他从小就喜欢打球 (tā cóng xiǎo jiù xǐ huān dǎ qiú) - He has liked playing ball since he was little"
+      }
+    ],
+    "stage13": [
+      {
+        "id": "daying",
+        "hanzi": "答应",
+        "pinyin": "dāying",
+        "translation": "agree",
+        "definition": "To promise, to agree",
+        "example": "她答应明天和我们一起去 (tā dā ying míng tiān hé wǒ men yī qǐ qù) - She agreed to go with us tomorrow"
+      },
+      {
+        "id": "dagong",
+        "hanzi": "打工",
+        "pinyin": "dǎgōng",
+        "translation": "work",
+        "definition": "To work, to do a part-time job",
+        "example": "我在超市打工 (wǒ zài chāo shì dǎ gōng) - I work at a supermarket"
+      },
+      {
+        "id": "dasuan",
+        "hanzi": "打算",
+        "pinyin": "dǎsuàn",
+        "translation": "plan",
+        "definition": "To plan, to intend",
+        "example": "周末你打算去哪里玩？(zhōu mò nǐ dǎ suàn qù nǎ lǐ wán?) - Where do you plan to go play on the weekend?"
+      },
+      {
+        "id": "dayin",
+        "hanzi": "打印",
+        "pinyin": "dǎyìn",
+        "translation": "print",
+        "definition": "To print",
+        "example": "我要打印这本书 (wǒ yào dǎ yìn zhè běn shū) - I want to print this book"
+      },
+      {
+        "id": "dabufen",
+        "hanzi": "大部分",
+        "pinyin": "dàbùfen",
+        "translation": "most",
+        "definition": "Most, the majority",
+        "example": "我大部分时间都在学校上课 (wǒ dà bù fèn shí jiān dōu zài xué xiào shàng kè) - Most of my time is spent in school attending classes"
+      },
+      {
+        "id": "dada",
+        "hanzi": "大大",
+        "pinyin": "dàdà",
+        "translation": "greatly",
+        "definition": "Greatly, enormously",
+        "example": "他的汉语水平大大地进步了 (tā de hàn yǔ shuǐ píng dà dà de jìn bù le) - His Chinese level has improved greatly"
+      },
+      {
+        "id": "daduoshu",
+        "hanzi": "大多数",
+        "pinyin": "dàduōshù",
+        "translation": "majority",
+        "definition": "Majority, most",
+        "example": "这个标准大多数学生都可以达到 (zhè gè biāo zhǔn dà duō shù xué shēng dōu kě yǐ dá dào) - Most students can meet this standard"
+      },
+      {
+        "id": "dahai",
+        "hanzi": "大海",
+        "pinyin": "dàhǎi",
+        "translation": "sea",
+        "definition": "Sea, ocean",
+        "example": "大海是蓝色的 (dà hǎi shì lán sè de) - The sea is blue"
+      },
+      {
+        "id": "dajia",
+        "hanzi": "大家",
+        "pinyin": "dàjiā",
+        "translation": "everyone",
+        "definition": "Everyone, everybody",
+        "example": "大家跟我一起读 (dà jiā gēn wǒ yī qǐ dú) - Everyone read with me"
+      },
+      {
+        "id": "daliang",
+        "hanzi": "大量",
+        "pinyin": "dàliàng",
+        "translation": "large quantity",
+        "definition": "Large amount, great quantity",
+        "example": "越南出口了大量的水果 (yuè nán chū kǒu le dà liàng de shuǐ guǒ) - Vietnam exports a large quantity of fruits"
       }
     ]
   }
