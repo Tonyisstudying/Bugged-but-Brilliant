@@ -101,19 +101,207 @@ h2 {
 }
 
 button {
-  margin-top: 6px;
-  padding: 5px 12px;
+  margin-top: 10px;
+  padding: 8px 16px;
   border: none;
-  border-radius: 6px;
-  background: #70e1f5;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #70e1f5, #4ac29a);
+  color: white;
   cursor: pointer;
   font-weight: bold;
-  transition: background 0.3s ease;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
 }
 
 button:hover {
-  background: #4ac29a;
-  color: #fff;
+  background: linear-gradient(135deg, #4ac29a, #70e1f5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced styling for fill-in-the-blank inputs */
+input[type="text"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border: 2px solid #e0e7ff;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 248, 255, 0.9));
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2), 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #ffffff, #f8faff);
+}
+
+/* Typing effect */
+input[type="text"]:not(:placeholder-shown) {
+  border-color: #8b5cf6;
+  background: linear-gradient(135deg, #faf5ff, #f3e8ff);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.1);
+}
+
+input[type="text"]::placeholder {
+  color: #9ca3af;
+  font-style: italic;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+input[type="text"]:focus::placeholder {
+  opacity: 0.5;
+  transform: translateY(-2px);
+}
+
+/* Special styling for correct answers */
+input[type="text"].correct {
+  border-color: #10b981;
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* Special styling for incorrect answers */
+input[type="text"].incorrect {
+  border-color: #ef4444;
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Shake animation for incorrect answers */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Pulse animation for correct answers */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Enhanced underline effect for blanks */
+input[type="text"]:not(:focus)::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 1px;
+}
+
+/* Styling for the blank placeholder in questions */
+.question p {
+  line-height: 1.6;
+  font-size: 16px;
+  position: relative;
+}
+
+/* Style the underscores in the question text to look like blanks */
+.question p {
+  /* Replace underscores with styled blanks */
+}
+
+/* Create visual blank lines in questions */
+.blank-line {
+  display: inline-block;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  margin: 0 4px;
+  vertical-align: middle;
+  border-radius: 1px;
+  position: relative;
+}
+
+.blank-line::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -2px;
+  right: -2px;
+  bottom: -1px;
+  background: linear-gradient(90deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+  border-radius: 2px;
+  z-index: -1;
+}
+
+/* Enhanced input field with floating label effect */
+.input-container {
+  position: relative;
+  margin: 15px 0;
+}
+
+.input-container input[type="text"] {
+  width: 100%;
+  padding: 16px 12px 8px 12px;
+  border: 2px solid #e0e7ff;
+  border-radius: 12px;
+  font-size: 16px;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.input-container label {
+  position: absolute;
+  left: 12px;
+  top: 16px;
+  font-size: 16px;
+  color: #9ca3af;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  background: white;
+  padding: 0 4px;
+}
+
+.input-container input[type="text"]:focus + label,
+.input-container input[type="text"]:not(:placeholder-shown) + label {
+  top: -8px;
+  font-size: 12px;
+  color: #667eea;
+  font-weight: bold;
+}
+
+/* Make the blanks more visible in the question text */
+.question p::selection {
+  background: #667eea;
+  color: white;
 }
 
 .feedback {

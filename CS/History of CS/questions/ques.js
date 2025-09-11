@@ -106,6 +106,13 @@ function checkFillInAnswer(input) {
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
   setupFillInBlanks();
+  
+  // Style the blank lines in question text
+  const questions = document.querySelectorAll('.question p');
+  questions.forEach(question => {
+    // Replace multiple underscores with styled blank elements
+    question.innerHTML = question.innerHTML.replace(/_{4,}/g, '<span class="blank-line"></span>');
+  });
 });
 
 function checkAnswer(button) {
@@ -138,13 +145,33 @@ function checkAnswer(button) {
   if (input) {
     let userAnswer = input.value.trim();
 
+    // Remove previous styling classes
+    input.classList.remove('correct', 'incorrect');
+
     // Cho phép ignore phân biệt hoa thường
     if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-      feedback.textContent = "Correct!";
-      feedback.style.color = "green";
+      feedback.textContent = "✓ Correct!";
+      feedback.style.color = "#10b981";
+      feedback.style.backgroundColor = "#ecfdf5";
+      feedback.style.border = "1px solid #10b981";
+      
+      // Add correct styling to input
+      input.classList.add('correct');
+      
+      // Add success animation
+      input.style.animation = "none";
+      setTimeout(() => {
+        input.style.animation = "pulse 0.6s ease-in-out";
+      }, 10);
+      
     } else {
-      feedback.textContent = "Wrong! Correct answer: " + correctAnswer;
-      feedback.style.color = "red";
+      feedback.textContent = "✗ Wrong! Correct answer: " + correctAnswer;
+      feedback.style.color = "#ef4444";
+      feedback.style.backgroundColor = "#fef2f2";
+      feedback.style.border = "1px solid #ef4444";
+      
+      // Add incorrect styling to input
+      input.classList.add('incorrect');
     }
   }
 }
