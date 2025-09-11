@@ -28,16 +28,51 @@ export default class MultipleChoiceExercise {
 
     async loadData(level, stage) {
         try {
-            const response = await fetch(`../Json/HSK${level}/multiple_choices.json`);
+            const response = await fetch(`Json/HSK${level}/stage${level}/multiple_choices.json`);
             if (!response.ok) throw new Error('Failed to load quiz data');
             const data = await response.json();
-            this.questions = data.stages[`stage${stage}`] || [];
+            
+            // Extract stage number if it's a string like "stage1"
+            const stageNum = typeof stage === 'string' ? stage.replace('stage', '') : stage;
+            this.questions = data.stages[`stage${stageNum}`] || [];
+            
+            console.log(`Loaded ${this.questions.length} questions for HSK${level} Stage ${stageNum}`);
             this.currentQuestionIndex = 0;
             this.score = 0;
+            
+            if (this.questions.length === 0) {
+                throw new Error(`No questions found for stage${stageNum}`);
+            }
         } catch (error) {
             console.error('Error loading quiz:', error);
             this.questions = [];
             throw error;
+        }
+    }
+
+        async displayWithData(exerciseData, hskLevel = 1) {
+        try {
+            console.log(`Loading exercise: ${exerciseData.title}`);
+            console.log('Exercise data:', exerciseData);
+            
+            this.questions = exerciseData.questions || [];
+            this.exerciseTitle = exerciseData.title;
+            this.hskLevel = hskLevel;
+            this.currentQuestionIndex = 0;
+            this.score = 0;
+            
+            console.log('Questions loaded:', this.questions.length);
+            
+            if (this.questions.length === 0) {
+                throw new Error('No questions found in exercise data');
+            }
+            
+            // Show the lesson content container
+            this.showLessonContent();
+            this.displayCurrentQuestion();
+        } catch (error) {
+            console.error('Error displaying exercise:', error);
+            this.showError('Failed to load exercise data: ' + error.message);
         }
     }
 

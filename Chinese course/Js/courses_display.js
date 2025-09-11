@@ -121,6 +121,31 @@ class CourseDisplay {
             alert('Failed to load vocabulary data');
         }
     }
+        async loadLevelData(level) {
+        try {
+            // Updated paths - remove the leading "../" since we're already in the correct directory structure
+            // Load words data
+            const wordsResponse = await fetch(`Json/HSK${level}/words.json`);
+            if (wordsResponse.ok) {
+                this.levelWordsData = await wordsResponse.json();
+                console.log('Words data loaded:', this.levelWordsData);
+            }
+
+            // Load quiz data
+            const quizResponse = await fetch(`Json/HSK${level}/multiple_choices.json`);
+            if (quizResponse.ok) {
+                this.levelQuizData = await quizResponse.json();
+                console.log('Quiz data loaded:', this.levelQuizData);
+            }
+
+            if (!this.levelWordsData && !this.levelQuizData) {
+                throw new Error('No data files found');
+            }
+        } catch (error) {
+            console.error('Error loading level data:', error);
+            throw error;
+        }
+    }
 
     async showQuizStages() {
         // Update title
@@ -135,44 +160,67 @@ class CourseDisplay {
 
     renderStageCards() {
         const grid = document.getElementById('stages-grid');
-        if (!grid) return;
+        if (!grid || !this.levelQuizData) {
+            console.error('Grid not found or quiz data missing');
+            return;
+        }
 
-        const stages = [
-            { stage: 1, title: 'Stage 1', description: 'Basic greetings and introductions', progress: 100 },
-            { stage: 2, title: 'Stage 2', description: 'Numbers and time', progress: 75 },
-            { stage: 3, title: 'Stage 3', description: 'Family and daily activities', progress: 50 },
-            { stage: 4, title: 'Stage 4', description: 'Food and shopping', progress: 0 }
-        ];
+        // Get exercises from the consolidated data
+        const exercises = this.levelQuizData.exercises;
+        const exerciseKeys = Object.keys(exercises);
+        console.log('Rendering exercises:', exerciseKeys);
 
-        grid.innerHTML = stages.map(stageData => `
-            <div class="stage-card${stageData.progress === 0 ? ' locked' : ''}" data-stage="${stageData.stage}">
-                <div class="stage-icon">${stageData.progress === 100 ? '🏆' : stageData.progress > 0 ? '⭐' : '🔒'}</div>
-                <div class="stage-title">${stageData.title}</div>
-                <div class="stage-description">${stageData.description}</div>
-                <div class="stage-progress">
-                    <div class="stage-progress-bar" style="width: ${stageData.progress}%"></div>
+        if (exerciseKeys.length === 0) {
+            grid.innerHTML = '<p style="color: white; text-align: center;">No exercises available</p>';
+            return;
+        }
+
+        grid.innerHTML = exerciseKeys.map((exerciseKey, index) => {
+            const exerciseData = exercises[exerciseKey];
+            const exerciseNum = index + 1;
+            const progress = Math.random() * 100; // You can implement real progress tracking
+
+            return `
+                <div class="stage-card${progress === 0 ? ' locked' : ''}" data-exercise="${exerciseNum}" data-exercise-key="${exerciseKey}">
+                    <div class="stage-icon">${progress === 100 ? '🏆' : progress > 0 ? '⭐' : '📝'}</div>
+                    <div class="stage-title">Exercise ${exerciseNum}</div>
+                    <div class="stage-description">${exerciseData.description}</div>
+                    <div class="questions-info" style="margin: 10px 0;">
+                        <span style="background-color: #667eea; color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.8em;">
+                            ${exerciseData.questions.length} Questions
+                        </span>
+                    </div>
+                    <div class="stage-progress">
+                        <div class="stage-progress-bar" style="width: ${progress}%"></div>
+                    </div>
                 </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
 
         // Add click listeners to stage cards
         grid.querySelectorAll('.stage-card:not(.locked)').forEach(card => {
             card.addEventListener('click', (e) => {
-                const stage = parseInt(card.dataset.stage);
-                this.startQuiz(stage);
+                const exerciseKey = card.dataset.exerciseKey;
+                console.log('Starting exercise:', exerciseKey);
+                this.startQuiz(exerciseKey);
             });
         });
     }
 
-    async startQuiz(stage) {
-        this.currentStage = stage;
-        console.log(`Starting quiz for HSK${this.currentLevel} Stage ${stage}`);
+
+
+    async startQuiz(exerciseKey) {
+        console.log(`Starting quiz for HSK${this.currentLevel} Exercise: ${exerciseKey}`);
+        
+        // Extract stage number from exerciseKey (e.g., "stage1" -> 1)
+        const stageNum = exerciseKey.replace('stage', '');
+        this.currentStage = stageNum;
         
         // Hide the stages modal first
         this.hideModal('stages-modal');
         
         // Start the quiz using the multiple choice exercise
-        await this.multipleChoiceExercise.display(this.currentLevel, this.currentStage);
+        await this.multipleChoiceExercise.display(this.currentLevel, stageNum);
     }
 
     renderWordCards(words) {
