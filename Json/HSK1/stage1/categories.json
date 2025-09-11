@@ -1,0 +1,16 @@
+{
+"categories": [
+    {
+    "id": "words",
+    "name": "Words",
+    "description": "Learn new vocabulary",
+    "icon": "📚"
+    },
+    {
+    "id": "quiz",
+    "name": "Quiz",
+    "description": "Test your knowledge",
+    "icon": "🧠"
+    }
+]
+}

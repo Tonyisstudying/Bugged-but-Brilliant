@@ -1,5 +1,5 @@
 //handling the logic for vocab page and importing logic from vocabulary.template.js
-import VocabularyTemplate from '../Templates/multiple_choice.template.js';
+import VocabularyTemplate from '../Templates/vocabulary.template.js';
 
 export default class VocabularyExercise {
     constructor() {
@@ -24,17 +24,17 @@ export default class VocabularyExercise {
     }
 
     async loadData(level, stage) {
-    try {
-        // Update path to use HSK folders instead of level/stages
-        const response = await fetch(`../Json/HSK${level}/stage${stage}/vocab.json`);
-        if (!response.ok) throw new Error('Failed to load vocabulary data');
-        const data = await response.json();
-        this.words = data.words;
-    } catch (error) {
-        console.error('Error loading vocabulary:', error);
-        this.words = [];
-        throw error; // re-throw to handle in display
-    }
+        try {
+            // Update path to use HSK folders instead of level/stages
+            const response = await fetch(`../Json/HSK${level}/stage${stage}/vocab.json`);
+            if (!response.ok) throw new Error('Failed to load vocabulary data');
+            const data = await response.json();
+            this.words = data.words;
+        } catch (error) {
+            console.error('Error loading vocabulary:', error);
+            this.words = [];
+            throw error; // re-throw to handle in display
+        }
     }
 
     displayWords() {
@@ -91,7 +91,7 @@ export default class VocabularyExercise {
                 setTimeout(() => {
                     content.classList.add('hidden');
                     if (overlay) overlay.classList.add('hidden');
-                    document.querySelector('.course-title').classList.remove('minimized');
+                    document.querySelector('.course-title')?.classList.remove('minimized');
                 }, 500); // Match this timing with your CSS transition
             }
         }
