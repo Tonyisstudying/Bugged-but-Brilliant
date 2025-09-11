@@ -12,6 +12,8 @@ export default class MultipleChoiceExercise {
     async display(level = 1, stage = 1) {
         try {
             console.log(`Loading quiz for HSK${level} Stage ${stage}`);
+            this.hskLevel = level; // Store the HSK level for later use
+            this.stage = stage; // Store the stage for later use
             await this.loadData(level, stage);
             
             // Show the lesson content container
@@ -90,7 +92,13 @@ export default class MultipleChoiceExercise {
         // Close button
         const closeBtn = document.querySelector('.close-btn');
         if (closeBtn) {
-            closeBtn.addEventListener('click', () => this.close());
+            closeBtn.addEventListener('click', () => this.backToStages());
+        }
+
+        // Back to stages button (on results page)
+        const backBtn = document.querySelector('.back-to-stages-btn');
+        if (backBtn) {
+            backBtn.addEventListener('click', () => this.backToStages());
         }
     }
 
@@ -163,16 +171,47 @@ export default class MultipleChoiceExercise {
                     <p style="font-size: 1.2em; margin-bottom: 20px;">
                         ${percentage}%
                     </p>
-                    <p style="color: #666;">
+                    <p style="color: #666; margin-bottom: 30px;">
                         ${percentage >= 80 ? 'Excellent work!' : 
                           percentage >= 60 ? 'Good job! Keep practicing.' : 
                           'Keep studying and try again!'}
                     </p>
+                    <button class="back-to-stages-btn" style="background-color: #667eea; color: white; border: none; padding: 12px 24px; border-radius: 20px; cursor: pointer; font-size: 16px; margin: 10px;">
+                        Back to Quiz Stages
+                    </button>
                 </div>
             </div>
         `;
 
         this.attachEventListeners();
+    }
+
+    backToStages() {
+        // Close the current lesson content first
+        const content = document.getElementById('lesson-content');
+        const overlay = document.getElementById('overlay');
+        
+        if (content) {
+            content.classList.remove('visible');
+            if (overlay) {
+                overlay.classList.remove('visible');
+            }
+            setTimeout(() => {
+                content.classList.add('hidden');
+                if (overlay) overlay.classList.add('hidden');
+                document.querySelector('.course-title')?.classList.remove('minimized');
+                
+                // Now show the quiz stages modal
+                if (window.courseDisplay && window.courseDisplay.showQuizStages && this.hskLevel) {
+                    window.courseDisplay.showQuizStages(this.hskLevel);
+                }
+            }, 300);
+        } else {
+            // Fallback if content element not found
+            if (window.courseDisplay && window.courseDisplay.showQuizStages && this.hskLevel) {
+                window.courseDisplay.showQuizStages(this.hskLevel);
+            }
+        }
     }
 
     close() {
