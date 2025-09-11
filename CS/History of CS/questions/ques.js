@@ -113,6 +113,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Replace multiple underscores with styled blank elements
     question.innerHTML = question.innerHTML.replace(/_{4,}/g, '<span class="blank-line"></span>');
   });
+  
+  // Add scroll effect for sticky navigation
+  const navContainer = document.querySelector('.nav-container');
+  
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+      navContainer.classList.add('scrolled');
+    } else {
+      navContainer.classList.remove('scrolled');
+    }
+  });
 });
 
 function checkAnswer(button) {
