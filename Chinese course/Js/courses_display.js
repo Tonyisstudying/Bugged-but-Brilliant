@@ -12,7 +12,6 @@ class CourseDisplay {
     }
 
     initializeEventListeners() {
-        // Level card listeners
         document.querySelectorAll('.level-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 const levelNum = parseInt(e.currentTarget.dataset.level);
@@ -25,27 +24,22 @@ class CourseDisplay {
     }
 
     setupModalListeners() {
-        // Close category modal
         document.getElementById('close-category')?.addEventListener('click', () => {
             this.hideModal('category-modal');
         });
 
-        // Close words modal
         document.getElementById('close-words')?.addEventListener('click', () => {
             this.hideModal('words-modal');
         });
 
-        // Close stages modal
         document.getElementById('close-stages')?.addEventListener('click', () => {
             this.hideModal('stages-modal');
         });
 
-        // Close word detail modal
         document.getElementById('close-word-detail')?.addEventListener('click', () => {
             this.hideModal('word-detail-modal');
         });
 
-        // Close on overlay click
         document.getElementById('overlay')?.addEventListener('click', (e) => {
             if (e.target === e.currentTarget) {
                 this.hideAllModals();
@@ -120,12 +114,12 @@ class CourseDisplay {
     }
         async loadLevelData(level) {
         try {
-            const wordsResponse = await fetch(`../../../Json/HSK${level}/words.json`);
+            const wordsResponse = await fetch(`../Json/HSK${level}/words.json`);
             if (wordsResponse.ok) {
                 this.levelWordsData = await wordsResponse.json();
                 console.log('Words data loaded:', this.levelWordsData);
             }
-            const quizResponse = await fetch(`../../../Json/HSK${level}/multiple_choices.json`);
+            const quizResponse = await fetch(`../Json/HSK${level}/multiple_choices.json`);
             if (quizResponse.ok) {
                 this.levelQuizData = await quizResponse.json();
                 console.log('Quiz data loaded:', this.levelQuizData);
@@ -141,7 +135,7 @@ class CourseDisplay {
 
     async showQuizStages() {
         try {
-            const response = await fetch(`../../../Json/HSK${this.currentLevel}/multiple_choices.json`);
+            const response = await fetch(`../Json/HSK${this.currentLevel}/multiple_choices.json`);
             if (!response.ok) throw new Error('Failed to load quiz data');
             this.levelQuizData = await response.json();
             console.log("Quiz data loaded:", this.levelQuizData);
@@ -176,7 +170,7 @@ class CourseDisplay {
         grid.innerHTML = stageKeys.map((stageKey, index) => {
             const stageData = stages[stageKey];
             const stageNum = index + 1;
-            const progress = Math.random() * 100; // You can implement real progress tracking
+            const progress = Math.random() * 100; 
 
             return `
                 <div class="stage-card${progress === 0 ? ' locked' : ''}" data-exercise="${stageNum}" data-exercise-key="${stageKey}">
@@ -195,7 +189,6 @@ class CourseDisplay {
             `;
         }).join('');
 
-        // Add click listeners to stage cards
         grid.querySelectorAll('.stage-card:not(.locked)').forEach(card => {
             card.addEventListener('click', (e) => {
                 const exerciseKey = card.dataset.exerciseKey;
@@ -259,7 +252,6 @@ class CourseDisplay {
             overlay.classList.remove('hidden');
             modal.classList.remove('hidden');
             
-            // Trigger animation
             requestAnimationFrame(() => {
                 overlay.classList.add('visible');
                 modal.classList.add('visible');

@@ -23,7 +23,7 @@ export default class VocabularyExercise {
 
     async loadData(level, stage) {
         try {
-            const response = await fetch(`../Json/HSK${level}/stage${stage}/vocab.json`);
+            const response = await fetch(`../Json/HSK${level}/words.json`);
             if (!response.ok) throw new Error('Failed to load vocabulary data');
             const data = await response.json();
             this.words = data.words;
@@ -58,7 +58,6 @@ export default class VocabularyExercise {
     }
 
     nextExercise() {
-        // Move to multiple choice exercise via CourseDisplay
         if (window.courseDisplay) {
             window.courseDisplay.nextExercise();
         } else {
