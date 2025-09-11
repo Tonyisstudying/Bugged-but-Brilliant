@@ -30,7 +30,7 @@ export default class MultipleChoiceExercise {
 
     async loadData(level, stage) {
         try {
-            const response = await fetch(`../../../../Json/HSK${level}/multiple_choices.json`);
+            const response = await fetch(`../Json/HSK${level}/multiple_choices.json`);
             if (!response.ok) throw new Error('Failed to load quiz data');
             const data = await response.json();
             
@@ -157,13 +157,12 @@ export default class MultipleChoiceExercise {
     }
 
     selectAnswer(event) {
-        if (this.selectedAnswer !== null) return; // Already answered
+        if (this.selectedAnswer !== null) return;
 
         this.selectedAnswer = parseInt(event.target.dataset.index);
         const question = this.questions[this.currentQuestionIndex];
         const isCorrect = this.selectedAnswer === question.correct;
 
-        // Disable all buttons and show correct/incorrect styling
         document.querySelectorAll('.option-btn').forEach((btn, index) => {
             btn.disabled = true;
             if (index === question.correct) {
@@ -189,7 +188,6 @@ export default class MultipleChoiceExercise {
             this.score++;
         }
 
-        // Show next button
         document.getElementById('next-question').style.display = 'block';
     }
 
@@ -197,7 +195,6 @@ export default class MultipleChoiceExercise {
         if (this.currentQuestionIndex < this.questions.length - 1) {
             this.currentQuestionIndex++;
             this.selectedAnswer = null;
-            // Save progress after each question
             this.saveProgress();
             this.displayCurrentQuestion();
         } else {
@@ -206,7 +203,6 @@ export default class MultipleChoiceExercise {
     }
 
     showResults() {
-        // Save progress with completed flag before showing results
         if (this.hskLevel && this.stageKey) {
             this.saveProgress();
         }
@@ -251,12 +247,10 @@ export default class MultipleChoiceExercise {
         console.log('courseDisplay available:', window.courseDisplay);
         console.log('showQuizStages method:', window.courseDisplay ? window.courseDisplay.showQuizStages : 'N/A');
         
-        // Save current progress before closing
         if (this.hskLevel && this.stageKey) {
             this.saveProgress();
         }
         
-        // Close the current lesson content first
         const content = document.getElementById('lesson-content');
         const overlay = document.getElementById('overlay');
         
@@ -270,7 +264,6 @@ export default class MultipleChoiceExercise {
                 if (overlay) overlay.classList.add('hidden');
                 document.querySelector('.course-title')?.classList.remove('minimized');
                 
-                // Now show the quiz stages modal
                 if (window.courseDisplay && window.courseDisplay.showQuizStages && this.hskLevel) {
                     console.log('Calling showQuizStages with level:', this.hskLevel);
                     window.courseDisplay.showQuizStages(this.hskLevel);
@@ -279,7 +272,6 @@ export default class MultipleChoiceExercise {
                 }
             }, 500);
         } else {
-            // Fallback if content element not found
             if (window.courseDisplay && window.courseDisplay.showQuizStages && this.hskLevel) {
                 console.log('Fallback: Calling showQuizStages with level:', this.hskLevel);
                 window.courseDisplay.showQuizStages(this.hskLevel);
