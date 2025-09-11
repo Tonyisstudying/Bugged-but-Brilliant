@@ -315,24 +315,47 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     width: 95%;
     max-width: 800px;
+    height: 85vh; /* Fixed height */
     max-height: 85vh;
     z-index: 1100;
     opacity: 0;
     transition: all 0.4s ease;
     pointer-events: none;
-    overflow: hidden;
+    overflow: hidden; /* This will be overridden when visible */
 }
 
 .stages-modal.visible {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
     pointer-events: all;
+    overflow: visible; /* Allow overflow when visible */
 }
 
 .stages-content {
     padding: 20px;
-    height: 100%;
+    height: 85vh; /* Set a maximum height to ensure scrolling */
+    max-height: 85vh;
     overflow-y: auto;
+}
+
+/* Custom webkit scrollbar for stages */
+.stages-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.stages-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.stages-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.stages-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #764ba2, #667eea);
 }
 
 .stages-header {
@@ -355,6 +378,7 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
     padding: 10px 0;
+    overflow-y: visible; /* Allow content to overflow for scrolling */
 }
 
 .stage-card {

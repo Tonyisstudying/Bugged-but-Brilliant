@@ -28,7 +28,7 @@ export default class MultipleChoiceExercise {
 
     async loadData(level, stage) {
         try {
-            const response = await fetch(`Json/HSK${level}/stage${level}/multiple_choices.json`);
+            const response = await fetch(`../../../../Json/HSK${level}/multiple_choices.json`);
             if (!response.ok) throw new Error('Failed to load quiz data');
             const data = await response.json();
             

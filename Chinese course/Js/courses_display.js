@@ -97,13 +97,10 @@ class CourseDisplay {
     async showAllWords() {
         try {
             // Load words from consolidated file
-            const response = await fetch(`../Json/HSK${this.currentLevel}/words.json`);
+            const response = await fetch(`../../../Json/HSK${this.currentLevel}/words.json`);
             if (!response.ok) throw new Error('Failed to load words data');
-            
             const data = await response.json();
             const allWords = [];
-            
-            // Combine words from all stages
             Object.values(data.stages).forEach(stageWords => {
                 allWords.push(...stageWords);
             });
@@ -118,26 +115,21 @@ class CourseDisplay {
             this.showModal('words-modal');
         } catch (error) {
             console.error('Error loading words:', error);
-            alert('Failed to load vocabulary data');
+            alert('Failed to load vocabulary data: ' + error.message);
         }
     }
         async loadLevelData(level) {
         try {
-            // Updated paths - remove the leading "../" since we're already in the correct directory structure
-            // Load words data
-            const wordsResponse = await fetch(`Json/HSK${level}/words.json`);
+            const wordsResponse = await fetch(`../../../Json/HSK${level}/words.json`);
             if (wordsResponse.ok) {
                 this.levelWordsData = await wordsResponse.json();
                 console.log('Words data loaded:', this.levelWordsData);
             }
-
-            // Load quiz data
-            const quizResponse = await fetch(`Json/HSK${level}/multiple_choices.json`);
+            const quizResponse = await fetch(`../../../Json/HSK${level}/multiple_choices.json`);
             if (quizResponse.ok) {
                 this.levelQuizData = await quizResponse.json();
                 console.log('Quiz data loaded:', this.levelQuizData);
             }
-
             if (!this.levelWordsData && !this.levelQuizData) {
                 throw new Error('No data files found');
             }
@@ -148,14 +140,22 @@ class CourseDisplay {
     }
 
     async showQuizStages() {
-        // Update title
-        const stagesTitle = document.getElementById('stages-title');
-        if (stagesTitle) {
-            stagesTitle.textContent = `HSK ${this.currentLevel} - Quiz Stages`;
-        }
+        try {
+            const response = await fetch(`../../../Json/HSK${this.currentLevel}/multiple_choices.json`);
+            if (!response.ok) throw new Error('Failed to load quiz data');
+            this.levelQuizData = await response.json();
+            console.log("Quiz data loaded:", this.levelQuizData);
+            const stagesTitle = document.getElementById('stages-title');
+            if (stagesTitle) {
+                stagesTitle.textContent = `HSK ${this.currentLevel} - Quiz Stages`;
+            }
 
-        this.renderStageCards();
-        this.showModal('stages-modal');
+            this.renderStageCards();
+            this.showModal('stages-modal');
+        } catch (error) {
+            console.error('Error loading quiz stages:', error);
+            alert('Failed to load quiz data: ' + error.message);
+        }
     }
 
     renderStageCards() {
@@ -164,30 +164,28 @@ class CourseDisplay {
             console.error('Grid not found or quiz data missing');
             return;
         }
+        const stages = this.levelQuizData.stages;
+        const stageKeys = Object.keys(stages);
+        console.log('Rendering stages:', stageKeys);
 
-        // Get exercises from the consolidated data
-        const exercises = this.levelQuizData.exercises;
-        const exerciseKeys = Object.keys(exercises);
-        console.log('Rendering exercises:', exerciseKeys);
-
-        if (exerciseKeys.length === 0) {
+        if (stageKeys.length === 0) {
             grid.innerHTML = '<p style="color: white; text-align: center;">No exercises available</p>';
             return;
         }
 
-        grid.innerHTML = exerciseKeys.map((exerciseKey, index) => {
-            const exerciseData = exercises[exerciseKey];
-            const exerciseNum = index + 1;
+        grid.innerHTML = stageKeys.map((stageKey, index) => {
+            const stageData = stages[stageKey];
+            const stageNum = index + 1;
             const progress = Math.random() * 100; // You can implement real progress tracking
 
             return `
-                <div class="stage-card${progress === 0 ? ' locked' : ''}" data-exercise="${exerciseNum}" data-exercise-key="${exerciseKey}">
+                <div class="stage-card${progress === 0 ? ' locked' : ''}" data-exercise="${stageNum}" data-exercise-key="${stageKey}">
                     <div class="stage-icon">${progress === 100 ? '🏆' : progress > 0 ? '⭐' : '📝'}</div>
-                    <div class="stage-title">Exercise ${exerciseNum}</div>
-                    <div class="stage-description">${exerciseData.description}</div>
+                    <div class="stage-title">Stage ${stageNum}</div>
+                    <div class="stage-description">Quiz Stage ${stageNum}</div>
                     <div class="questions-info" style="margin: 10px 0;">
                         <span style="background-color: #667eea; color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.8em;">
-                            ${exerciseData.questions.length} Questions
+                            ${stageData.length} Questions
                         </span>
                     </div>
                     <div class="stage-progress">
@@ -211,15 +209,9 @@ class CourseDisplay {
 
     async startQuiz(exerciseKey) {
         console.log(`Starting quiz for HSK${this.currentLevel} Exercise: ${exerciseKey}`);
-        
-        // Extract stage number from exerciseKey (e.g., "stage1" -> 1)
         const stageNum = exerciseKey.replace('stage', '');
         this.currentStage = stageNum;
-        
-        // Hide the stages modal first
         this.hideModal('stages-modal');
-        
-        // Start the quiz using the multiple choice exercise
         await this.multipleChoiceExercise.display(this.currentLevel, stageNum);
     }
 
@@ -235,7 +227,6 @@ class CourseDisplay {
             </div>
         `).join('');
 
-        // Add click listeners to word cards
         grid.querySelectorAll('.word-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 const wordId = card.dataset.wordId;
@@ -284,7 +275,6 @@ class CourseDisplay {
             
             setTimeout(() => {
                 modal.classList.add('hidden');
-                // Only hide overlay if no other modals are visible
                 const overlay = document.getElementById('overlay');
                 if (!document.querySelector('.words-modal.visible, .category-modal.visible, .word-detail-modal.visible, .stages-modal.visible')) {
                     overlay?.classList.remove('visible');

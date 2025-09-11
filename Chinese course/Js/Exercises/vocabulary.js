@@ -9,8 +9,6 @@ export default class VocabularyExercise {
         this.currentStage = 1;
         this.sessionId = localStorage.getItem('sessionId');
     }
-
-    // Display the levels and stages
     async display(level = 1, stage = 1) {
         this.currentLevel = level;
         this.currentStage = stage;
@@ -25,7 +23,6 @@ export default class VocabularyExercise {
 
     async loadData(level, stage) {
         try {
-            // Update path to use HSK folders instead of level/stages
             const response = await fetch(`../Json/HSK${level}/stage${stage}/vocab.json`);
             if (!response.ok) throw new Error('Failed to load vocabulary data');
             const data = await response.json();
@@ -79,15 +76,10 @@ export default class VocabularyExercise {
             const overlay = document.getElementById('overlay');
             
             if (content) {
-                // First remove visible class to trigger fade-out
                 content.classList.remove('visible');
-                
-                // Also fade out the overlay
                 if (overlay) {
                     overlay.classList.remove('visible');
                 }
-                
-                // After animation completes, hide the content
                 setTimeout(() => {
                     content.classList.add('hidden');
                     if (overlay) overlay.classList.add('hidden');
@@ -98,7 +90,6 @@ export default class VocabularyExercise {
     }
 
     complete() {
-        // Handle completion - can be customized based on needs
         console.log('Vocabulary section completed');
     }
 
