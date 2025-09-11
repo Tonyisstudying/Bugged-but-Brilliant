@@ -50,8 +50,8 @@
 
 /* Level Selector Cards */
 .level-selector {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
     gap: 30px;
     margin: 50px auto;
     max-width: 1000px;
@@ -739,7 +739,7 @@
 /* Responsive design */
 @media (max-width: 768px) {
     .level-selector {
-        flex-direction: column;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 20px;
         align-items: center;
     }
