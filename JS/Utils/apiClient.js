@@ -4,7 +4,6 @@ export default class ApiClient {
         this.sessionId = localStorage.getItem('sessionId');
         this.isOnline = navigator.onLine;
         
-        // Listen for online/offline events
         window.addEventListener('online', () => {
             this.isOnline = true;
             console.log('🟢 API Client: Back online');
@@ -16,7 +15,6 @@ export default class ApiClient {
         });
     }
 
-    // Enhanced GET request with automatic fallback
     async get(endpoint, fallbackPath = null) {
         try {
             const url = `${this.baseURL}/api${endpoint}`;
@@ -40,8 +38,6 @@ export default class ApiClient {
 
         } catch (error) {
             console.warn('⚠️ API request failed:', error.message);
-            
-            // Try fallback if provided
             if (fallbackPath) {
                 console.log('🔄 Trying fallback:', fallbackPath);
                 try {
@@ -63,7 +59,6 @@ export default class ApiClient {
     // Enhanced POST request
     async post(endpoint, data = {}) {
         try {
-            // Add session ID if available
             if (this.sessionId) {
                 data.sessionId = this.sessionId;
             }

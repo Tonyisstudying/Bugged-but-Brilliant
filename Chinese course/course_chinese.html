@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Courses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_right_alt" />
+    <link rel="stylesheet" href="course_chinese.css">
+    <script type="module" src="Js/courses_display.js" defer></script>
+</head>
+<body>
+    <div class="course-container">
+        <div class="navigation-bar">
+            <a href="../pages/home.html" class="home-button">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <h1 class="course-title">Chinese Course</h1>
+        </div>
+
+        <div class="level-selector">
+            <div class="level-card" data-level="1">
+                <div class="level-icon">📚</div>
+                <div class="level-title">HSK 1</div>
+                <div class="level-description">Basic Level</div>
+            </div>
+            <div class="level-card" data-level="2">
+                <div class="level-icon">📖</div>
+                <div class="level-title">HSK 2</div>
+                <div class="level-description">Elementary Level</div>
+            </div>
+            <div class="level-card" data-level="3">
+                <div class="level-icon">📘</div>
+                <div class="level-title">HSK 3</div>
+                <div class="level-description">Intermediate Level</div>
+            </div>
+            <div class="level-card" data-level="4">
+                <div class="level-icon">📘</div>
+                <div class="level-title">HSK 4</div>
+                <div class="level-description">Intermediate Level</div>
+            </div>
+            <div class="level-card" data-level="5">
+                <div class="level-icon">📘</div>
+                <div class="level-title">HSK 5</div>
+                <div class="level-description">Higher Level</div>
+            </div>
+            <div class="level-card" data-level="6">
+                <div class="level-icon">📘</div>
+                <div class="level-title">HSK 6</div>
+                <div class="level-description">Higher Level</div>
+            </div>
+        </div>  
+
+        <!-- Category Selection Modal -->
+        <div id="category-modal" class="category-modal hidden">
+            <div class="category-content">
+                <div class="category-header">
+                    <h2 id="category-title">Choose Learning Mode - HSK 1</h2>
+                    <button class="close-btn" id="close-category">×</button>
+                </div>
+                <div class="category-grid">
+                    <div class="category-card" data-category="words">
+                        <span class="category-icon">📚</span>
+                        <div class="category-name">New Words</div>
+                        <div class="category-description">Learn vocabulary from all stages</div>
+                    </div>
+                    <div class="category-card" data-category="quiz">
+                        <span class="category-icon">🧠</span>
+                        <div class="category-name">Quiz</div>
+                        <div class="category-description">Practice with stage-based quizzes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Words Learning Modal -->
+        <div id="words-modal" class="words-modal hidden">
+            <div class="words-header">
+                <h2 id="words-title">HSK 1 - Vocabulary</h2>
+                <button class="close-btn" id="close-words">×</button>
+            </div>
+            <div class="words-content">
+                <div class="words-grid" id="words-grid">
+                    <!-- Word cards will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Stages Modal -->
+        <div id="stages-modal" class="stages-modal hidden">
+            <div class="stages-content">
+                <div class="stages-header">
+                    <h2 id="stages-title">HSK 1 - Quiz Stages</h2>
+                    <button class="close-btn" id="close-stages">×</button>
+                </div>
+                <div class="stages-grid" id="stages-grid">
+                    <!-- Stage cards will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Word Detail Modal -->
+        <div id="word-detail-modal" class="word-detail-modal hidden">
+            <div class="word-detail-content">
+                <div class="word-detail-header">
+                    <button class="close-btn" id="close-word-detail">×</button>
+                </div>
+                <div class="word-detail-body" id="word-detail-body">
+                    <!-- Word details will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Legacy lesson content for old system -->
+        <div id="lesson-content" class="lesson-content hidden"></div>
+        
+        <!-- Overlay for modals -->
+        <div id="overlay" class="overlay hidden"></div>
+    </div>
+</body>
+</html>
