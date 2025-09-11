@@ -4,36 +4,68 @@ export default class MultipleChoiceExercise {
     constructor() {
         this.questions = [];
         this.currentQuestionIndex = 0;
-        this.template = new MultipleChoiceTemplate();
+        this.score = 0;
         this.selectedAnswer = null;
+        this.template = new MultipleChoiceTemplate();
     }
 
     async display(level = 1, stage = 1) {
         try {
+            console.log(`Loading quiz for HSK${level} Stage ${stage}`);
             await this.loadData(level, stage);
+            
+            // Show the lesson content container
+            this.showLessonContent();
             this.displayCurrentQuestion();
         } catch (error) {
             console.error('Error displaying multiple choice:', error);
-            this.showError('Failed to display multiple choice questions');
+            this.showError('Failed to load quiz data');
         }
     }
 
     async loadData(level, stage) {
-    try {
-        // Update path to use HSK folders instead of level/stages
-        const response = await fetch(`../Json/HSK${level}/stage${stage}/multiple_choices.json`);
-        if (!response.ok) throw new Error('Failed to load multiple choice data');
-        const data = await response.json();
-        this.questions = data.questions || [];
-    } catch (error) {
-        console.error('Error loading multiple choice:', error);
-        this.questions = [];
-        throw error;
+        try {
+            const response = await fetch(`../Json/HSK${level}/stage${stage}/multiple_choices.json`);
+            if (!response.ok) throw new Error('Failed to load quiz data');
+            const data = await response.json();
+            this.questions = data.questions || [];
+            this.currentQuestionIndex = 0;
+            this.score = 0;
+        } catch (error) {
+            console.error('Error loading quiz:', error);
+            this.questions = [];
+            throw error;
+        }
     }
+
+    showLessonContent() {
+        const title = document.querySelector('.course-title');
+        const content = document.getElementById('lesson-content');
+        const overlay = document.getElementById('overlay');
+        
+        // Show overlay
+        if (overlay) {
+            overlay.classList.remove('hidden');
+            overlay.classList.add('visible');
+        }
+        
+        // Minimize title
+        if (title) title.classList.add('minimized');
+        
+        // Show lesson content
+        if (content) {
+            content.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.add('visible');
+            }, 50);
+        }
     }
 
     displayCurrentQuestion() {
-        if (!this.questions.length) return;
+        if (this.currentQuestionIndex >= this.questions.length) {
+            this.showResults();
+            return;
+        }
 
         const content = document.getElementById('lesson-content');
         if (!content) return;
@@ -44,49 +76,59 @@ export default class MultipleChoiceExercise {
     }
 
     attachEventListeners() {
-        const optionBtns = document.querySelectorAll('.option-btn');
-        const nextBtn = document.getElementById('nextBtn');
-        const closeBtn = document.querySelector('.close-btn');
-
-        optionBtns.forEach(btn => {
+        // Option buttons
+        document.querySelectorAll('.option-btn').forEach(btn => {
             btn.addEventListener('click', (e) => this.selectAnswer(e));
         });
 
+        // Next button
+        const nextBtn = document.getElementById('next-question');
         if (nextBtn) {
             nextBtn.addEventListener('click', () => this.nextQuestion());
         }
 
+        // Close button
+        const closeBtn = document.querySelector('.close-btn');
         if (closeBtn) {
             closeBtn.addEventListener('click', () => this.close());
         }
     }
 
     selectAnswer(event) {
-        const selectedIndex = parseInt(event.target.dataset.index);
-        this.selectedAnswer = selectedIndex;
+        if (this.selectedAnswer !== null) return; // Already answered
 
-        const currentQuestion = this.questions[this.currentQuestionIndex];
-        const isCorrect = selectedIndex === currentQuestion.correct;
+        this.selectedAnswer = parseInt(event.target.dataset.index);
+        const question = this.questions[this.currentQuestionIndex];
+        const isCorrect = this.selectedAnswer === question.correct;
 
-        // Disable all options and show correct/incorrect
-        document.querySelectorAll('.option-btn').forEach(btn => {
+        // Disable all buttons and show correct/incorrect styling
+        document.querySelectorAll('.option-btn').forEach((btn, index) => {
             btn.disabled = true;
-            const btnIndex = parseInt(btn.dataset.index);
-            if (btnIndex === currentQuestion.correct) {
+            if (index === question.correct) {
                 btn.classList.add('correct');
-            } else if (btnIndex === selectedIndex && !isCorrect) {
+            } else if (index === this.selectedAnswer && !isCorrect) {
                 btn.classList.add('incorrect');
             }
         });
 
         // Show feedback
-        this.template.showFeedback(isCorrect, currentQuestion.explanation);
+        const feedback = document.getElementById('feedback');
+        if (feedback) {
+            feedback.innerHTML = `
+                <div class="feedback-content ${isCorrect ? 'correct' : 'incorrect'}">
+                    ${isCorrect ? '✓ Correct!' : '✗ Incorrect'}
+                    <br>
+                    ${question.explanation || ''}
+                </div>
+            `;
+        }
+
+        if (isCorrect) {
+            this.score++;
+        }
 
         // Show next button
-        const nextBtn = document.getElementById('nextBtn');
-        if (nextBtn) {
-            nextBtn.style.display = 'block';
-        }
+        document.getElementById('next-question').style.display = 'block';
     }
 
     nextQuestion() {
@@ -95,8 +137,42 @@ export default class MultipleChoiceExercise {
             this.selectedAnswer = null;
             this.displayCurrentQuestion();
         } else {
-            this.complete();
+            this.showResults();
         }
+    }
+
+    showResults() {
+        const content = document.getElementById('lesson-content');
+        const percentage = Math.round((this.score / this.questions.length) * 100);
+        
+        content.innerHTML = `
+            <div class="course-header">
+                <div class="section-title">Quiz Results</div>
+                <button class="close-btn">×</button>
+            </div>
+            
+            <div class="mc-content">
+                <div class="question-container" style="text-align: center;">
+                    <h2>Quiz Complete!</h2>
+                    <div style="font-size: 3em; margin: 20px 0;">
+                        ${percentage >= 80 ? '🎉' : percentage >= 60 ? '😊' : '😅'}
+                    </div>
+                    <p style="font-size: 1.5em; margin-bottom: 10px;">
+                        Score: ${this.score} / ${this.questions.length}
+                    </p>
+                    <p style="font-size: 1.2em; margin-bottom: 20px;">
+                        ${percentage}%
+                    </p>
+                    <p style="color: #666;">
+                        ${percentage >= 80 ? 'Excellent work!' : 
+                          percentage >= 60 ? 'Good job! Keep practicing.' : 
+                          'Keep studying and try again!'}
+                    </p>
+                </div>
+            </div>
+        `;
+
+        this.attachEventListeners();
     }
 
     close() {
@@ -104,39 +180,42 @@ export default class MultipleChoiceExercise {
         if (window.courseDisplay && window.courseDisplay.closeContent) {
             window.courseDisplay.closeContent();
         } else {
-            // Fallback if courseDisplay is not available
+            // Fallback
             const content = document.getElementById('lesson-content');
             const overlay = document.getElementById('overlay');
             
             if (content) {
-                // First remove visible class to trigger fade-out
                 content.classList.remove('visible');
-                
-                // Also fade out the overlay
                 if (overlay) {
                     overlay.classList.remove('visible');
                 }
-                
-                // After animation completes, hide the content
                 setTimeout(() => {
                     content.classList.add('hidden');
                     if (overlay) overlay.classList.add('hidden');
-                    document.querySelector('.course-title').classList.remove('minimized');
-                }, 500); // Match this timing with your CSS transition
+                    document.querySelector('.course-title')?.classList.remove('minimized');
+                }, 500);
             }
         }
-    }
-
-    complete() {
-        console.log('Multiple choice section completed');
-        // You can add logic here to move to the next exercise type
     }
 
     showError(message) {
         const content = document.getElementById('lesson-content');
         if (content) {
-            content.innerHTML = `<div style="color: red; padding: 20px;">${message}</div>`;
-            content.classList.remove('hidden');
+            this.showLessonContent();
+            content.innerHTML = `
+                <div class="course-header">
+                    <div class="section-title">Error</div>
+                    <button class="close-btn">×</button>
+                </div>
+                <div class="mc-content">
+                    <div class="question-container" style="text-align: center;">
+                        <h2>Error Loading Quiz</h2>
+                        <p style="color: #666; margin: 20px 0;">${message}</p>
+                        <p style="color: #999;">Please try again later.</p>
+                    </div>
+                </div>
+            `;
+            this.attachEventListeners();
         }
     }
 }

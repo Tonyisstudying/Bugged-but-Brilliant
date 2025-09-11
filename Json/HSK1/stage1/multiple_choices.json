@@ -1,26 +1,28 @@
 {
-    "type": "multipleChoice",
     "questions": [
         {
-            "id": "mc1",
-            "question": "What does '白' mean?",
-            "options": ["White", "Black", "Red", "Blue"],
-            "correct": 0,
-            "explanation": "'白' means white in English."
-        },
-        {
-            "id": "mc2",
-            "question": "Which character means 'black'?",
-            "options": ["白", "黑", "红", "蓝"],
+            "question": "What does '你好' mean?",
+            "options": ["goodbye", "hello", "thank you", "sorry"],
             "correct": 1,
-            "explanation": "'黑' means black in English."
+            "explanation": "'你好' (nǐ hǎo) means 'hello' in Chinese."
         },
         {
-            "id": "mc3",
-            "question": "What is the pinyin for '白'?",
-            "options": ["bái", "hēi", "hóng", "lán"],
-            "correct": 0,
-            "explanation": "The pinyin for '白' is 'bái'."
+            "question": "How do you say 'thank you' in Chinese?",
+            "options": ["你好", "谢谢", "再见", "对不起"],
+            "correct": 1,
+            "explanation": "'谢谢' (xiè xiè) means 'thank you' in Chinese."
+        },
+        {
+            "question": "What is the meaning of '我'?",
+            "options": ["you", "he", "I/me", "we"],
+            "correct": 2,
+            "explanation": "'我' (wǒ) is the first person pronoun meaning 'I' or 'me'."
+        },
+        {
+            "question": "Which word means 'you'?",
+            "options": ["我", "你", "他", "她"],
+            "correct": 1,
+            "explanation": "'你' (nǐ) means 'you' in Chinese."
         }
     ]
 }

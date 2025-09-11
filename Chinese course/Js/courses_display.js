@@ -12,7 +12,7 @@ class CourseDisplay {
     }
 
     initializeEventListeners() {
-        // Level card listeners (replacing level tabs)
+        // Level card listeners
         document.querySelectorAll('.level-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 const levelNum = parseInt(e.currentTarget.dataset.level);
@@ -172,9 +172,12 @@ class CourseDisplay {
 
     async startQuiz(stage) {
         this.currentStage = stage;
+        console.log(`Starting quiz for HSK${this.currentLevel} Stage ${stage}`);
+        
+        // Hide the stages modal first
         this.hideModal('stages-modal');
         
-        // Start the quiz using the existing system
+        // Start the quiz using the multiple choice exercise
         await this.multipleChoiceExercise.display(this.currentLevel, this.currentStage);
     }
 
@@ -233,7 +236,6 @@ class CourseDisplay {
 
     hideModal(modalId) {
         const modal = document.getElementById(modalId);
-        const overlay = document.getElementById('overlay');
         
         if (modal) {
             modal.classList.remove('visible');
@@ -241,6 +243,7 @@ class CourseDisplay {
             setTimeout(() => {
                 modal.classList.add('hidden');
                 // Only hide overlay if no other modals are visible
+                const overlay = document.getElementById('overlay');
                 if (!document.querySelector('.words-modal.visible, .category-modal.visible, .word-detail-modal.visible, .stages-modal.visible')) {
                     overlay?.classList.remove('visible');
                     setTimeout(() => overlay?.classList.add('hidden'), 300);
@@ -265,33 +268,6 @@ class CourseDisplay {
             overlay.classList.remove('visible');
             setTimeout(() => overlay.classList.add('hidden'), 300);
         }
-    }
-
-    // Legacy methods for quiz system
-    async startStage(levelNum, stageNum) {
-        console.log(`Starting stage ${stageNum} of level ${levelNum}`);
-        this.currentLevel = levelNum;
-        this.currentStage = stageNum;
-
-        const title = document.querySelector('.course-title');
-        const content = document.getElementById('lesson-content');
-        const overlay = document.getElementById('overlay');
-        
-        if (overlay) {
-            overlay.classList.remove('hidden');
-            void overlay.offsetWidth;
-            overlay.classList.add('visible');
-        }
-        
-        if (title) title.classList.add('minimized');
-        if (content) {
-            content.classList.remove('hidden');
-            setTimeout(() => {
-                content.classList.add('visible');
-            }, 50);
-        }
-        
-        await this.multipleChoiceExercise.display(this.currentLevel, this.currentStage);
     }
 
     closeContent() {

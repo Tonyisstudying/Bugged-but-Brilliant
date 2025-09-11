@@ -8,27 +8,27 @@ export default class MultipleChoiceTemplate {
 
         return `
             <div class="course-header">
-                <div class="section-title">Multiple Choice</div>
-                <button class="close-btn">X</button>
+                <div class="section-title">Quiz - Question ${progress.current} of ${progress.total}</div>
+                <button class="close-btn">×</button>
             </div>
 
             <div class="mc-content">
                 <div class="question-container">
-                    <h3 class="question-text">${question.question}</h3>
+                    <div class="question-text">${question.question}</div>
                     <div class="options-container">
                         ${this.generateOptions(question.options)}
                     </div>
-                    <div class="feedback" id="feedback" style="display: none;"></div>
+                    <div class="feedback" id="feedback"></div>
                 </div>
-            </div>
-
-            <div class="navigation">
-                <div class="progress-dots">
-                    ${this.generateProgressDots(progress)}
+                
+                <div class="navigation">
+                    <div class="progress-indicator">
+                        Question ${progress.current} of ${progress.total}
+                    </div>
+                    <button class="next-btn" id="next-question" style="display: none;">
+                        ${currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'See Results'}
+                    </button>
                 </div>
-                <button class="next-btn" id="nextBtn" style="display: none;">
-                    <span class="material-symbols-outlined">arrow_right_alt</span>
-                </button>
             </div>
         `;
     }
@@ -37,26 +37,5 @@ export default class MultipleChoiceTemplate {
         return options.map((option, index) => `
             <button class="option-btn" data-index="${index}">${option}</button>
         `).join('');
-    }
-
-    generateProgressDots(progress) {
-        return Array(progress.total)
-            .fill()
-            .map((_, index) => `
-                <span class="dot${index < progress.current ? ' active' : ''}"></span>
-            `).join('');
-    }
-
-    showFeedback(isCorrect, explanation) {
-        const feedback = document.getElementById('feedback');
-        if (feedback) {
-            feedback.style.display = 'block';
-            feedback.innerHTML = `
-                <div class="feedback-content ${isCorrect ? 'correct' : 'incorrect'}">
-                    <p>${isCorrect ? 'Correct!' : 'Incorrect!'}</p>
-                    <p>${explanation}</p>
-                </div>
-            `;
-        }
     }
 }
