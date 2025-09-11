@@ -1,10 +1,11 @@
-import VocabularyExercise from '../../Chinese course/Js/Exercises/vocabulary.js';
-import MultipleChoiceExercise from '../../Chinese course/Js/Exercises/multiple_choice.js';
+import VocabularyExercise from '../Exercises/vocabulary.js';
+import MultipleChoiceExercise from '../Exercises/multiple_choice.js';
 
 class CourseDisplay {
     constructor() {
         this.currentLevel = 1;
         this.currentStage = 1;
+        this.currentMode = null;
         this.currentExercise = 'vocabulary'; //track
         this.vocabularyExercise = new VocabularyExercise();
         this.multipleChoiceExercise = new MultipleChoiceExercise();

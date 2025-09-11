@@ -567,3 +567,325 @@
 #overlay.hidden {
     display: none;
 }
+
+/* Category Modal Styles */
+.category-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: #2a3441;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 600px;
+    z-index: 1100;
+    opacity: 0;
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.category-modal.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: all;
+}
+
+.category-content {
+    padding: 30px;
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.category-header h2 {
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.category-card {
+    background-color: #3a4551;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    border: 2px solid transparent;
+}
+
+.category-card:hover {
+    background-color: #4a5561;
+    transform: translateY(-5px);
+    border-color: #5a9fd8;
+}
+
+.category-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.category-name {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.category-description {
+    font-size: 0.9em;
+    color: #bbb;
+}
+
+/* Words Modal Styles */
+.words-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: #1e2832;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 95%;
+    max-width: 1200px;
+    max-height: 85vh;
+    z-index: 1100;
+    opacity: 0;
+    transition: all 0.4s ease;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.words-modal.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: all;
+}
+
+.words-content {
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.words-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    color: white;
+    border-bottom: 1px solid #3a4551;
+    padding-bottom: 15px;
+}
+
+.words-header h2 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.words-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.word-card {
+    background-color: #3a4551;
+    border-radius: 10px;
+    padding: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    border: 2px solid transparent;
+    text-align: center;
+}
+
+.word-card:hover {
+    background-color: #4a5561;
+    transform: translateY(-3px);
+    border-color: #5a9fd8;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.word-hanzi {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffd700;
+}
+
+.word-pinyin {
+    font-size: 1.1em;
+    color: #a8b4c4;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+.word-translation {
+    font-size: 1em;
+    color: #e8e8e8;
+    font-weight: 500;
+}
+
+/* Word Detail Modal Styles */
+.word-detail-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: #2a3441;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    z-index: 1200;
+    opacity: 0;
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.word-detail-modal.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: all;
+}
+
+.word-detail-content {
+    padding: 30px;
+    color: white;
+}
+
+.word-detail-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.word-detail-body {
+    text-align: center;
+}
+
+.detail-hanzi {
+    font-size: 4em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ffd700;
+}
+
+.detail-pinyin {
+    font-size: 1.5em;
+    color: #a8b4c4;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.detail-translation {
+    font-size: 1.3em;
+    color: #e8e8e8;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.detail-definition {
+    font-size: 1em;
+    color: #bbb;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    padding: 15px;
+    background-color: #3a4551;
+    border-radius: 8px;
+}
+
+.detail-example {
+    font-size: 0.95em;
+    color: #ccc;
+    font-style: italic;
+    line-height: 1.4;
+    padding: 15px;
+    background-color: #1e2832;
+    border-radius: 8px;
+    border-left: 4px solid #5a9fd8;
+}
+
+/* Close button styles */
+.close-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Overlay styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .words-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 15px;
+    }
+    
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .word-card {
+        padding: 20px;
+    }
+    
+    .word-hanzi {
+        font-size: 2em;
+    }
+    
+    .detail-hanzi {
+        font-size: 3em;
+    }
+}

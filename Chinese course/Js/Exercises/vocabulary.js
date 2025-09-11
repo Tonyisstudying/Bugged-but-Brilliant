@@ -1,5 +1,5 @@
 //handling the logic for vocab page and importing logic from vocabulary.template.js
-import VocabularyTemplate from '../Templates/vocabulary.template.js';
+import VocabularyTemplate from '../Templates/multiple_choice.template.js';
 
 export default class VocabularyExercise {
     constructor() {
