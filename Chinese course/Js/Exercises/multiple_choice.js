@@ -180,8 +180,8 @@ export default class MultipleChoiceExercise {
                     </p>
                     <p style="color: #666; margin-bottom: 30px;">
                         ${percentage >= 80 ? 'Excellent work!' : 
-                          percentage >= 60 ? 'Good job! Keep practicing.' : 
-                          'Keep studying and try again!'}
+                        percentage >= 60 ? 'Good job! Keep practicing.' : 
+                        'Keep studying and try again!'}
                     </p>
                     <button class="back-to-stages-btn" style="background-color: #667eea; color: white; border: none; padding: 12px 24px; border-radius: 20px; cursor: pointer; font-size: 16px; margin: 10px;">
                         Back to Quiz Stages
