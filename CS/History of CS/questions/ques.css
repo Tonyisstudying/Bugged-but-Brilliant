@@ -30,16 +30,74 @@ h2 {
   color: #1e3a8a;
 }
 
+.question-group {
+  margin: 20px 0;
+  padding: 15px;
+  border: 2px solid #e0e7ff;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
 .question {
   margin: 15px 0;
   padding: 12px;
   border-left: 4px solid #f8939b;
   background: #fff8;
   border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
 .options {
   margin-left: 20px;
+}
+
+.group-check-button {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 2px dashed #d1d5db;
+}
+
+.group-check-button button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.group-check-button button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.answer-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.answer-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.answer-input::placeholder {
+  color: #9ca3af;
+  font-style: italic;
 }
 
 button {
@@ -61,4 +119,9 @@ button:hover {
 .feedback {
   margin-left: 10px;
   font-weight: bold;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 5px;
 }
