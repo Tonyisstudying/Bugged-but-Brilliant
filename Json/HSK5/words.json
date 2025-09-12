@@ -1,0 +1,872 @@
+{
+  "level": 5,
+  "title": "HSK 5 - Vocabulary Collection",
+  "stages": {
+    "stage1": [
+      {
+        "id": "anwei",
+        "hanzi": "安慰",
+        "pinyin": "ānwèi",
+        "translation": "comfort",
+        "definition": "To comfort, to console, to reassure",
+        "example": "她的话安慰了我。(tā de huà ān wèi le wǒ) - Her words comforted me."
+      },
+      {
+        "id": "an",
+        "hanzi": "岸",
+        "pinyin": "àn",
+        "translation": "bank",
+        "definition": "Shore, bank, coast",
+        "example": "船停在河岸边。(chuán tíng zài hé àn biān) - The boat is docked by the riverbank."
+      },
+      {
+        "id": "anshang",
+        "hanzi": "岸上",
+        "pinyin": "àn shàng",
+        "translation": "ashore",
+        "definition": "Ashore, on the shore, on the bank",
+        "example": "渔民把船拉到岸上。(yú mín bǎ chuán lā dào àn shàng) - The fishermen pulled the boat ashore."
+      },
+      {
+        "id": "anmo",
+        "hanzi": "按摩",
+        "pinyin": "ànmó",
+        "translation": "massage",
+        "definition": "Massage, to massage",
+        "example": "按摩可以缓解肌肉疼痛。(àn mó kě yǐ huǎn jiě jī ròu téng tòng) - Massage can relieve muscle pain."
+      },
+      {
+        "id": "ba",
+        "hanzi": "拔",
+        "pinyin": "bá",
+        "translation": "pluck",
+        "definition": "To pull out, to draw, to select, to extract",
+        "example": "医生拔了他的智齿。(yī shēng bá le tā de zhì chǐ) - The doctor extracted his wisdom tooth."
+      }
+    ],
+    "stage2": [
+      {
+        "id": "baijiu",
+        "hanzi": "白酒",
+        "pinyin": "bái jiǔ",
+        "translation": "Chinese Baijiu",
+        "definition": "Chinese white liquor, spirits",
+        "example": "在中国，白酒是一种传统酒。(zài zhōng guó, bái jiǔ shì yī zhǒng chuán tǒng jiǔ) - In China, baijiu is a traditional liquor."
+      },
+      {
+        "id": "baifang",
+        "hanzi": "拜访",
+        "pinyin": "bàifǎng",
+        "translation": "visit",
+        "definition": "To visit, to call on",
+        "example": "明天我要去拜访我的老师。(míng tiān wǒ yào qù bài fǎng wǒ de lǎo shī) - Tomorrow I'm going to visit my teacher."
+      },
+      {
+        "id": "ban",
+        "hanzi": "版",
+        "pinyin": "bǎn",
+        "translation": "edition",
+        "definition": "Edition, version, printing plate",
+        "example": "这是这本书的最新版。(zhè shì zhè běn shū de zuì xīn bǎn) - This is the latest edition of this book."
+      },
+      {
+        "id": "banyan",
+        "hanzi": "扮演",
+        "pinyin": "bànyǎn",
+        "translation": "play the role",
+        "definition": "To play a role, to act",
+        "example": "她在电影中扮演一个老师。(tā zài diàn yǐng zhōng bàn yǎn yī gè lǎo shī) - She plays the role of a teacher in the movie."
+      },
+      {
+        "id": "bang",
+        "hanzi": "棒",
+        "pinyin": "bàng",
+        "translation": "stick",
+        "definition": "Stick, club, excellent",
+        "example": "他的表现很棒！(tā de biǎo xiàn hěn bàng) - His performance was excellent!"
+      }
+    ],
+    "stage3": [
+      {
+        "id": "baowei",
+        "hanzi": "包围",
+        "pinyin": "bāowéi",
+        "translation": "surround",
+        "definition": "To surround, to encircle",
+        "example": "警察包围了那栋建筑。(jǐng chá bāo wéi le nà dòng jiàn zhù) - The police surrounded that building."
+      },
+      {
+        "id": "baozhuang",
+        "hanzi": "包装",
+        "pinyin": "bāozhuāng",
+        "translation": "pack",
+        "definition": "To pack, to package, packaging",
+        "example": "这个产品的包装很精美。(zhè gè chǎn pǐn de bāo zhuāng hěn jīng měi) - The packaging of this product is very elegant."
+      },
+      {
+        "id": "baowei",
+        "hanzi": "保卫",
+        "pinyin": "bǎowèi",
+        "translation": "defend",
+        "definition": "To defend, to protect, to safeguard",
+        "example": "我们必须保卫祖国。(wǒ men bì xū bǎo wèi zǔ guó) - We must defend our motherland."
+      },
+      {
+        "id": "baoyang",
+        "hanzi": "保养",
+        "pinyin": "bǎoyǎng",
+        "translation": "maintain",
+        "definition": "To maintain, to care for, maintenance",
+        "example": "定期保养可以延长汽车的使用寿命。(dìng qī bǎo yǎng kě yǐ yán cháng qì chē de shǐ yòng shòu mìng) - Regular maintenance can extend the service life of a car."
+      },
+      {
+        "id": "baoda",
+        "hanzi": "报答",
+        "pinyin": "bàodá",
+        "translation": "reciprocate",
+        "definition": "To repay, to reciprocate, to return a favor",
+        "example": "我想报答他对我的帮助。(wǒ xiǎng bào dá tā duì wǒ de bāng zhù) - I want to reciprocate his help to me."
+      }
+    ],
+    "stage4": [
+      {
+        "id": "baojing",
+        "hanzi": "报警",
+        "pinyin": "bàojǐng",
+        "translation": "call the police",
+        "definition": "To call the police, to report to the police, to sound an alarm",
+        "example": "如果你发现可疑情况，请立即报警。(rú guǒ nǐ fā xiàn kě yí qíng kuàng, qǐng lì jí bào jǐng) - If you notice anything suspicious, please call the police immediately."
+      },
+      {
+        "id": "baoyuan",
+        "hanzi": "抱怨",
+        "pinyin": "bàoyuàn",
+        "translation": "complain",
+        "definition": "To complain, to grumble",
+        "example": "他总是抱怨工作太辛苦。(tā zǒng shì bào yuàn gōng zuò tài xīn kǔ) - He always complains that work is too hard."
+      },
+      {
+        "id": "beibao",
+        "hanzi": "背包",
+        "pinyin": "bēi bāo",
+        "translation": "backpack",
+        "definition": "Backpack, knapsack, rucksack",
+        "example": "学生们通常背着背包去上学。(xué shēng men tōng cháng bèi zhe bēi bāo qù shàng xué) - Students usually carry backpacks to school."
+      },
+      {
+        "id": "beiju",
+        "hanzi": "悲剧",
+        "pinyin": "bēi jù",
+        "translation": "tragedy",
+        "definition": "Tragedy, tragic",
+        "example": "这部电影讲述了一个悲剧故事。(zhè bù diàn yǐng jiǎng shù le yī gè bēi jù gù shì) - This movie tells a tragic story."
+      },
+      {
+        "id": "beishang",
+        "hanzi": "悲伤",
+        "pinyin": "bēi shāng",
+        "translation": "sad",
+        "definition": "Sad, sorrowful, grief",
+        "example": "听到这个消息，她感到非常悲伤。(tīng dào zhè gè xiāo xī, tā gǎn dào fēi cháng bēi shāng) - Upon hearing the news, she felt very sad."
+      }
+    ],
+    "stage5": [
+      {
+        "id": "beiji",
+        "hanzi": "北极",
+        "pinyin": "běijí",
+        "translation": "arctic",
+        "definition": "North Pole, Arctic",
+        "example": "北极是地球最北端的地区。(běi jí shì dì qiú zuì běi duān de dì qū) - The Arctic is the northernmost region of the Earth."
+      },
+      {
+        "id": "beidong",
+        "hanzi": "被动",
+        "pinyin": "bèidòng",
+        "translation": "passive",
+        "definition": "Passive, passivity",
+        "example": "我们应该主动解决问题，而不是被动等待。(wǒ men yīng gāi zhǔ dòng jiě jué wèn tí, ér bú shì bèi dòng děng dài) - We should take initiative to solve problems instead of waiting passively."
+      },
+      {
+        "id": "bei",
+        "hanzi": "辈",
+        "pinyin": "bèi",
+        "translation": "generation",
+        "definition": "Generation, lifetime",
+        "example": "年轻一辈应该尊重老一辈。(nián qīng yī bèi yīng gāi zūn zhòng lǎo yī bèi) - The younger generation should respect the older generation."
+      },
+      {
+        "id": "benren",
+        "hanzi": "本人",
+        "pinyin": "běnrén",
+        "translation": "oneself",
+        "definition": "Oneself, the person himself/herself",
+        "example": "请本人到场签字。(qǐng běn rén dào chǎng qiān zì) - Please come in person to sign."
+      },
+      {
+        "id": "bizi",
+        "hanzi": "鼻子",
+        "pinyin": "bízi",
+        "translation": "nose",
+        "definition": "Nose",
+        "example": "他的鼻子很高。(tā de bí zi hěn gāo) - He has a high nose."
+      }
+    ],
+    "stage6": [
+      {
+        "id": "bifang",
+        "hanzi": "比方",
+        "pinyin": "bǐfāng",
+        "translation": "example",
+        "definition": "Example, for instance",
+        "example": "比方说，如果下雨，我们就不去了。(bǐ fāng shuō, rú guǒ xià yǔ, wǒ men jiù bú qù le) - For example, if it rains, we won't go."
+      },
+      {
+        "id": "bizhong",
+        "hanzi": "比重",
+        "pinyin": "bǐzhòng",
+        "translation": "proportion",
+        "definition": "Specific gravity, proportion",
+        "example": "这个行业在经济中的比重越来越大。(zhè gè háng yè zài jīng jì zhōng de bǐ zhòng yuè lái yuè dà) - The proportion of this industry in the economy is getting bigger and bigger."
+      },
+      {
+        "id": "bici",
+        "hanzi": "彼此",
+        "pinyin": "bǐcǐ",
+        "translation": "each other",
+        "definition": "Each other, one another",
+        "example": "我们应该彼此尊重。(wǒ men yīng gāi bǐ cǐ zūn zhòng) - We should respect each other."
+      },
+      {
+        "id": "bi",
+        "hanzi": "必",
+        "pinyin": "bì",
+        "translation": "must",
+        "definition": "Certainly, must, will surely",
+        "example": "他必会来的。(tā bì huì lái de) - He will certainly come."
+      },
+      {
+        "id": "bixu",
+        "hanzi": "必须",
+        "pinyin": "bìxū",
+        "translation": "essential",
+        "definition": "Must, essential, indispensable",
+        "example": "你必须完成这项工作。(nǐ bì xū wán chéng zhè xiàng gōng zuò) - You must complete this task."
+      }
+    ],
+    "stage7": [
+      {
+        "id": "bijing",
+        "hanzi": "毕竟",
+        "pinyin": "bìjìng",
+        "translation": "after all",
+        "definition": "After all, when all is said and done",
+        "example": "他毕竟是个孩子，不懂这些事。(tā bì jìng shì gè hái zi, bù dǒng zhè xiē shì) - After all, he's just a child and doesn't understand these things."
+      },
+      {
+        "id": "bimu",
+        "hanzi": "闭幕",
+        "pinyin": "bìmù",
+        "translation": "close",
+        "definition": "To close, to conclude, to lower the curtain",
+        "example": "会议已经闭幕了。(huì yì yǐ jīng bì mù le) - The conference has concluded."
+      },
+      {
+        "id": "bimuishi",
+        "hanzi": "闭幕式",
+        "pinyin": "bì mù shì",
+        "translation": "closing ceremony",
+        "definition": "Closing ceremony",
+        "example": "奥运会闭幕式非常精彩。(ào yùn huì bì mù shì fēi cháng jīng cǎi) - The closing ceremony of the Olympic Games was very spectacular."
+      },
+      {
+        "id": "bianjing",
+        "hanzi": "边境",
+        "pinyin": "biānjìng",
+        "translation": "border",
+        "definition": "Border, frontier",
+        "example": "两国边境地区很和平。(liǎng guó biān jìng dì qū hěn hé píng) - The border areas between the two countries are very peaceful."
+      },
+      {
+        "id": "bianji",
+        "hanzi": "编辑",
+        "pinyin": "biānjí",
+        "translation": "edit",
+        "definition": "To edit, to compile",
+        "example": "他正在编辑一本新书。(tā zhèng zài biān jí yì běn xīn shū) - He is editing a new book."
+      }
+    ],
+    "stage8": [
+      {
+        "id": "bianji",
+        "hanzi": "编辑",
+        "pinyin": "biānjí",
+        "translation": "editor",
+        "definition": "Editor",
+        "example": "她是一位经验丰富的编辑。(tā shì yī wèi jīng yàn fēng fù de biān jí) - She is an experienced editor."
+      },
+      {
+        "id": "biandong",
+        "hanzi": "变动",
+        "pinyin": "biàn dòng",
+        "translation": "change",
+        "definition": "Change, alteration, variation",
+        "example": "最近工作时间有变动。(zuì jìn gōng zuò shí jiān yǒu biàn dòng) - There have been changes in working hours recently."
+      },
+      {
+        "id": "bianli",
+        "hanzi": "便利",
+        "pinyin": "biànlì",
+        "translation": "facilitate",
+        "definition": "Convenient, to facilitate",
+        "example": "这个新设施为居民提供了很多便利。(zhè gè xīn shè shī wéi jū mín tí gōng le hěn duō biàn lì) - This new facility provides many conveniences for residents."
+      },
+      {
+        "id": "biantiao",
+        "hanzi": "便条",
+        "pinyin": "biàntiáo",
+        "translation": "note",
+        "definition": "Note, memo",
+        "example": "他给我留了一张便条。(tā gěi wǒ liú le yī zhāng biàn tiáo) - He left me a note."
+      },
+      {
+        "id": "bianyu",
+        "hanzi": "便于",
+        "pinyin": "biànyú",
+        "translation": "easy to",
+        "definition": "Easy to, convenient for",
+        "example": "这个设计便于使用。(zhè gè shè jì biàn yú shǐ yòng) - This design is easy to use."
+      }
+    ],
+    "stage9": [
+      {
+        "id": "binguan",
+        "hanzi": "宾馆",
+        "pinyin": "bīnguǎn",
+        "translation": "hotel",
+        "definition": "Hotel, guesthouse",
+        "example": "这家宾馆服务很好。(zhè jiā bīn guǎn fú wù hěn hǎo) - The service at this hotel is very good."
+      },
+      {
+        "id": "bing",
+        "hanzi": "饼",
+        "pinyin": "bǐng",
+        "translation": "cake",
+        "definition": "Cake, cookie, pastry, flat round cake",
+        "example": "这种饼很甜。(zhè zhǒng bǐng hěn tián) - This kind of cake is very sweet."
+      },
+      {
+        "id": "binggan",
+        "hanzi": "饼干",
+        "pinyin": "bǐnggān",
+        "translation": "biscuits",
+        "definition": "Biscuits, cookies",
+        "example": "孩子们都喜欢吃饼干。(hái zi men dōu xǐ huān chī bǐng gān) - Children all like to eat cookies."
+      },
+      {
+        "id": "bingdu",
+        "hanzi": "病毒",
+        "pinyin": "bìngdú",
+        "translation": "virus",
+        "definition": "Virus",
+        "example": "这种病毒很容易传播。(zhè zhǒng bìng dú hěn róng yì chuán bō) - This virus is easily transmitted."
+      },
+      {
+        "id": "boli",
+        "hanzi": "玻璃",
+        "pinyin": "bōli",
+        "translation": "glass",
+        "definition": "Glass",
+        "example": "小心，别打破玻璃。(xiǎo xīn, bié dǎ pò bō li) - Be careful, don't break the glass."
+      }
+    ],
+    "stage10": [
+      {
+        "id": "boke",
+        "hanzi": "博客",
+        "pinyin": "bó kè",
+        "translation": "blog",
+        "definition": "Blog (loanword)",
+        "example": "他每天都更新他的博客。(tā měi tiān dōu gèng xīn tā de bó kè) - He updates his blog every day."
+      },
+      {
+        "id": "bolanhui",
+        "hanzi": "博览会",
+        "pinyin": "bólǎnhuì",
+        "translation": "exposition",
+        "definition": "Exposition, fair, exhibition",
+        "example": "世界博览会将在上海举行。(shì jiè bó lǎn huì jiāng zài shàng hǎi jǔ xíng) - The World Exposition will be held in Shanghai."
+      },
+      {
+        "id": "boshi",
+        "hanzi": "博士",
+        "pinyin": "bóshì",
+        "translation": "doctor",
+        "definition": "Doctor, Ph.D.",
+        "example": "他是物理学博士。(tā shì wù lǐ xué bó shì) - He has a Ph.D. in Physics."
+      },
+      {
+        "id": "bowuguan",
+        "hanzi": "博物馆",
+        "pinyin": "bówùguǎn",
+        "translation": "museum",
+        "definition": "Museum",
+        "example": "这个博物馆收藏了很多古代艺术品。(zhè gè bó wù guǎn shōu cáng le hěn duō gǔ dài yì shù pǐn) - This museum has collected many ancient art pieces."
+      },
+      {
+        "id": "boruo",
+        "hanzi": "薄弱",
+        "pinyin": "bóruò",
+        "translation": "weak",
+        "definition": "Weak, frail",
+        "example": "这个团队的防守很薄弱。(zhè gè tuán duì de fáng shǒu hěn bó ruò) - The defense of this team is very weak."
+      }
+    ],
+    "stage11": [
+      {
+        "id": "bugu",
+        "hanzi": "不顾",
+        "pinyin": "bùgù",
+        "translation": "disregard",
+        "definition": "To disregard, to ignore, regardless of",
+        "example": "他不顾一切地追求自己的梦想。(tā bú gù yī qiè de zhuī qiú zì jǐ de mèng xiǎng) - He pursued his dream regardless of everything."
+      },
+      {
+        "id": "buli",
+        "hanzi": "不利",
+        "pinyin": "bùlì",
+        "translation": "unfavorable",
+        "definition": "Unfavorable, disadvantageous, harmful",
+        "example": "这种天气对比赛很不利。(zhè zhǒng tiān qì duì bǐ sài hěn bú lì) - This weather is very unfavorable for the competition."
+      },
+      {
+        "id": "bunafan",
+        "hanzi": "不耐烦",
+        "pinyin": "bùnàifán",
+        "translation": "impatient",
+        "definition": "Impatient, intolerant",
+        "example": "他等得不耐烦了。(tā děng dé bú nài fán le) - He became impatient with waiting."
+      },
+      {
+        "id": "buxing",
+        "hanzi": "不幸",
+        "pinyin": "bùxìng",
+        "translation": "misfortune",
+        "definition": "Unfortunate, misfortune",
+        "example": "不幸的是，他们的房子在火灾中被烧毁了。(bú xìng de shì, tā men de fáng zi zài huǒ zāi zhōng bèi shāo huǐ le) - Unfortunately, their house was burned down in the fire."
+      },
+      {
+        "id": "buyi",
+        "hanzi": "不易",
+        "pinyin": "bùyì",
+        "translation": "not easy",
+        "definition": "Not easy, difficult, hard",
+        "example": "学好一门外语不易。(xué hǎo yī mén wài yǔ bú yì) - It's not easy to learn a foreign language well."
+      }
+    ],
+    "stage12": [
+      {
+        "id": "buchang",
+        "hanzi": "补偿",
+        "pinyin": "bǔcháng",
+        "translation": "compensate",
+        "definition": "To compensate, to make up for",
+        "example": "公司会补偿你的损失。(gōng sī huì bǔ cháng nǐ de sǔn shī) - The company will compensate for your loss."
+      },
+      {
+        "id": "butie",
+        "hanzi": "补贴",
+        "pinyin": "bǔtiē",
+        "translation": "subsidy",
+        "definition": "Subsidy, allowance, to subsidize",
+        "example": "政府给农民提供补贴。(zhèng fǔ gěi nóng mín tí gōng bǔ tiē) - The government provides subsidies to farmers."
+      },
+      {
+        "id": "buceng",
+        "hanzi": "不曾",
+        "pinyin": "bùcéng",
+        "translation": "never",
+        "definition": "Never (in the past), not ever",
+        "example": "我不曾去过北京。(wǒ bú céng qù guò běi jīng) - I have never been to Beijing."
+      },
+      {
+        "id": "budeliao",
+        "hanzi": "不得了",
+        "pinyin": "bùdéliǎo",
+        "translation": "very",
+        "definition": "Very, extremely, desperately",
+        "example": "这件事情不得了！(zhè jiàn shì qíng bù dé liǎo) - This matter is extremely serious!"
+      },
+      {
+        "id": "bugandang",
+        "hanzi": "不敢当",
+        "pinyin": "bùgǎndāng",
+        "translation": "I don't deserve this",
+        "definition": "I don't deserve this (humble expression when praised)",
+        "example": "您过奖了，我不敢当。(nín guò jiǎng le, wǒ bú gǎn dāng) - You're too kind, I don't deserve such praise."
+      }
+    ],
+    "stage13": [
+      {
+        "id": "buliang",
+        "hanzi": "不良",
+        "pinyin": "bùliáng",
+        "translation": "bad",
+        "definition": "Bad, harmful, unhealthy",
+        "example": "不良习惯会影响健康。(bù liáng xí guàn huì yǐng xiǎng jiàn kāng) - Bad habits will affect health."
+      },
+      {
+        "id": "bumian",
+        "hanzi": "不免",
+        "pinyin": "bùmiǎn",
+        "translation": "unavoidable",
+        "definition": "Unavoidable, inevitably",
+        "example": "在这种情况下，意外是不免的。(zài zhè zhǒng qíng kuàng xià, yì wài shì bú miǎn de) - In this situation, accidents are unavoidable."
+      },
+      {
+        "id": "bunengbu",
+        "hanzi": "不能不",
+        "pinyin": "bù néng bù",
+        "translation": "have to",
+        "definition": "Have to, cannot but, must",
+        "example": "我不能不承认我错了。(wǒ bú néng bù chéng rèn wǒ cuò le) - I cannot but admit that I was wrong."
+      },
+      {
+        "id": "bushi",
+        "hanzi": "不时",
+        "pinyin": "bùshí",
+        "translation": "now and then",
+        "definition": "From time to time, now and then",
+        "example": "他不时看看手表。(tā bú shí kàn kàn shǒu biǎo) - He looked at his watch from time to time."
+      },
+      {
+        "id": "buting",
+        "hanzi": "不停",
+        "pinyin": "bù tíng",
+        "translation": "without stop",
+        "definition": "Non-stop, continuously",
+        "example": "雨不停地下了三天。(yǔ bù tíng de xià le sān tiān) - It rained continuously for three days."
+      }
+    ],
+    "stage14": [
+      {
+        "id": "buxu",
+        "hanzi": "不许",
+        "pinyin": "bù xǔ",
+        "translation": "not allow",
+        "definition": "Not allow, must not, can't",
+        "example": "这里不许吸烟。(zhè lǐ bú xǔ xī yān) - Smoking is not allowed here."
+      },
+      {
+        "id": "buzhi",
+        "hanzi": "不止",
+        "pinyin": "bùzhǐ",
+        "translation": "more than",
+        "definition": "More than, not only",
+        "example": "他的收入不止一万。(tā de shōu rù bú zhǐ yī wàn) - His income is more than ten thousand."
+      },
+      {
+        "id": "buzu",
+        "hanzi": "不足",
+        "pinyin": "bùzú",
+        "translation": "insufficient",
+        "definition": "Insufficient, inadequate",
+        "example": "证据不足，无法做出判断。(zhèng jù bú zú, wú fǎ zuò chū pàn duàn) - The evidence is insufficient to make a judgment."
+      },
+      {
+        "id": "buwei",
+        "hanzi": "部位",
+        "pinyin": "bùwèi",
+        "translation": "part",
+        "definition": "Part, section, position",
+        "example": "这个部位的肌肉很发达。(zhè gè bù wèi de jī ròu hěn fā dá) - The muscles in this part are well-developed."
+      },
+      {
+        "id": "cai",
+        "hanzi": "猜",
+        "pinyin": "cāi",
+        "translation": "guess",
+        "definition": "To guess, to suspect",
+        "example": "你猜我今天看见谁了？(nǐ cāi wǒ jīn tiān kàn jiàn shéi le) - Guess who I saw today?"
+      }
+    ],
+    "stage15": [
+      {
+        "id": "caice",
+        "hanzi": "猜测",
+        "pinyin": "cāi cè",
+        "translation": "guess",
+        "definition": "To guess, to conjecture, to surmise",
+        "example": "我只能猜测他为什么没来。(wǒ zhǐ néng cāi cè tā wèi shén me méi lái) - I can only guess why he didn't come."
+      },
+      {
+        "id": "caipan",
+        "hanzi": "裁判",
+        "pinyin": "cáipàn",
+        "translation": "referee",
+        "definition": "Referee, judge, judgment",
+        "example": "裁判宣布比赛结束。(cái pàn xuān bù bǐ sài jié shù) - The referee announced the end of the match."
+      },
+      {
+        "id": "caigou",
+        "hanzi": "采购",
+        "pinyin": "cǎigòu",
+        "translation": "purchase",
+        "definition": "To purchase, to procure",
+        "example": "公司每月采购一次办公用品。(gōng sī měi yuè cǎi gòu yí cì bàn gōng yòng pǐn) - The company purchases office supplies once a month."
+      },
+      {
+        "id": "caipiao",
+        "hanzi": "彩票",
+        "pinyin": "cǎipiào",
+        "translation": "lottery",
+        "definition": "Lottery ticket",
+        "example": "他买彩票中了一等奖。(tā mǎi cǎi piào zhòng le yī děng jiǎng) - He won first prize in the lottery."
+      },
+      {
+        "id": "canguan",
+        "hanzi": "餐馆",
+        "pinyin": "cānguǎn",
+        "translation": "restaurant",
+        "definition": "Restaurant, dining hall",
+        "example": "这家餐馆的菜很好吃。(zhè jiā cān guǎn de cài hěn hǎo chī) - The food in this restaurant is delicious."
+      }
+    ],
+    "stage16": [
+      {
+        "id": "canting",
+        "hanzi": "餐厅",
+        "pinyin": "cāntīng",
+        "translation": "restaurant",
+        "definition": "Restaurant, dining room",
+        "example": "学校的餐厅很大。(xué xiào de cān tīng hěn dà) - The school's dining hall is very large."
+      },
+      {
+        "id": "canyin",
+        "hanzi": "餐饮",
+        "pinyin": "cānyǐn",
+        "translation": "catering",
+        "definition": "Catering, food and drink, repast",
+        "example": "餐饮行业在中国发展很快。(cān yǐn háng yè zài zhōng guó fā zhǎn hěn kuài) - The catering industry is developing rapidly in China."
+      },
+      {
+        "id": "caoyuan",
+        "hanzi": "草原",
+        "pinyin": "cǎoyuán",
+        "translation": "grasslands",
+        "definition": "Grassland, prairie, steppe",
+        "example": "内蒙古有广阔的草原。(nèi měng gǔ yǒu guǎng kuò de cǎo yuán) - Inner Mongolia has vast grasslands."
+      },
+      {
+        "id": "ce",
+        "hanzi": "册",
+        "pinyin": "cè",
+        "translation": "book",
+        "definition": "Book, booklet, volume (measure word)",
+        "example": "我买了一册字典。(wǒ mǎi le yí cè zì diǎn) - I bought a dictionary."
+      },
+      {
+        "id": "cengci",
+        "hanzi": "层次",
+        "pinyin": "céngcì",
+        "translation": "gradation",
+        "definition": "Gradation, arrangement, level",
+        "example": "这篇文章结构有层次。(zhè piān wén zhāng jié gòu yǒu céng cì) - This article has a well-structured gradation."
+      }
+    ],
+    "stage17": [
+      {
+        "id": "cha",
+        "hanzi": "叉",
+        "pinyin": "chā",
+        "translation": "fork",
+        "definition": "Fork, cross",
+        "example": "请把叉子给我。(qǐng bǎ chā zi gěi wǒ) - Please give me the fork."
+      },
+      {
+        "id": "chazi",
+        "hanzi": "叉子",
+        "pinyin": "chāzi",
+        "translation": "fork",
+        "definition": "Fork (utensil)",
+        "example": "西餐通常用刀和叉子。(xī cān tōng cháng yòng dāo hé chā zi) - Western meals typically use knives and forks."
+      },
+      {
+        "id": "chabie",
+        "hanzi": "差别",
+        "pinyin": "chābié",
+        "translation": "difference",
+        "definition": "Difference, discrepancy",
+        "example": "这两种产品之间有很大差别。(zhè liǎng zhǒng chǎn pǐn zhī jiān yǒu hěn dà chā bié) - There is a big difference between these two products."
+      },
+      {
+        "id": "chaju",
+        "hanzi": "差距",
+        "pinyin": "chājù",
+        "translation": "disparity",
+        "definition": "Disparity, gap, difference",
+        "example": "贫富差距在扩大。(pín fù chā jù zài kuò dà) - The gap between rich and poor is widening."
+      },
+      {
+        "id": "cha",
+        "hanzi": "插",
+        "pinyin": "chā",
+        "translation": "insert",
+        "definition": "To insert, to stick in, to plug",
+        "example": "他插了一朵花在花瓶里。(tā chā le yī duǒ huā zài huā píng lǐ) - He inserted a flower into the vase."
+      }
+    ],
+    "stage18": [
+      {
+        "id": "chaxun",
+        "hanzi": "查询",
+        "pinyin": "cháxún",
+        "translation": "inquire",
+        "definition": "To inquire, to check, to search",
+        "example": "你可以在网上查询航班信息。(nǐ kě yǐ zài wǎng shàng chá xún háng bān xìn xī) - You can check flight information online."
+      },
+      {
+        "id": "chadianer",
+        "hanzi": "差（一）点儿",
+        "pinyin": "chà (yī) diǎnr",
+        "translation": "almost",
+        "definition": "Almost, nearly",
+        "example": "我差点儿迟到了。(wǒ chà diǎnr chí dào le) - I almost arrived late."
+      },
+      {
+        "id": "chai",
+        "hanzi": "拆",
+        "pinyin": "chāi",
+        "translation": "remove",
+        "definition": "To take apart, to dismantle, to tear down",
+        "example": "拆这个盒子时要小心。(chāi zhè gè hé zi shí yào xiǎo xīn) - Be careful when taking apart this box."
+      },
+      {
+        "id": "chaichu",
+        "hanzi": "拆除",
+        "pinyin": "chāi chú",
+        "translation": "tear down",
+        "definition": "To tear down, to demolish, to dismantle, to remove",
+        "example": "这座旧楼将被拆除。(zhè zuò jiù lóu jiāng bèi chāi chú) - This old building will be demolished."
+      },
+      {
+        "id": "chanye",
+        "hanzi": "产业",
+        "pinyin": "chǎnyè",
+        "translation": "industry",
+        "definition": "Industry, sector of the economy",
+        "example": "旅游是这个地区的重要产业。(lǚ yóu shì zhè gè dì qū de zhòng yào chǎn yè) - Tourism is an important industry in this region."
+      }
+    ],
+    "stage19": [
+      {
+        "id": "changdu",
+        "hanzi": "长度",
+        "pinyin": "chángdù",
+        "translation": "length",
+        "definition": "Length, extent",
+        "example": "这条河的长度约为100公里。(zhè tiáo hé de cháng dù yuē wéi yì bǎi gōng lǐ) - The length of this river is about 100 kilometers."
+      },
+      {
+        "id": "changshou",
+        "hanzi": "长寿",
+        "pinyin": "chángshòu",
+        "translation": "longevity",
+        "definition": "Long life, longevity",
+        "example": "这个地区的人以长寿闻名。(zhè gè dì qū de rén yǐ cháng shòu wén míng) - People in this region are known for their longevity."
+      },
+      {
+        "id": "chang",
+        "hanzi": "肠",
+        "pinyin": "cháng",
+        "translation": "intestine",
+        "definition": "Intestine, bowel, gut",
+        "example": "肠道健康对整体健康很重要。(cháng dào jiàn kāng duì zhěng tǐ jiàn kāng hěn zhòng yào) - Intestinal health is important for overall health."
+      },
+      {
+        "id": "chang",
+        "hanzi": "尝",
+        "pinyin": "cháng",
+        "translation": "taste",
+        "definition": "To taste, to try",
+        "example": "请尝一尝这个新菜。(qǐng cháng yī cháng zhè gè xīn cài) - Please taste this new dish."
+      },
+      {
+        "id": "changshi",
+        "hanzi": "尝试",
+        "pinyin": "chángshì",
+        "translation": "attempt",
+        "definition": "To try, to attempt",
+        "example": "我会尝试解决这个问题。(wǒ huì cháng shì jiě jué zhè gè wèn tí) - I will attempt to solve this problem."
+      }
+    ],
+    "stage20": [
+      {
+        "id": "changzhang",
+        "hanzi": "厂长",
+        "pinyin": "chǎngzhǎng",
+        "translation": "factory director",
+        "definition": "Factory director, factory manager",
+        "example": "厂长正在开会。(chǎng zhǎng zhèng zài kāi huì) - The factory director is having a meeting."
+      },
+      {
+        "id": "changmian",
+        "hanzi": "场面",
+        "pinyin": "chǎngmiàn",
+        "translation": "scene",
+        "definition": "Scene, situation, occasion",
+        "example": "婚礼的场面很感人。(hūn lǐ de chǎng miàn hěn gǎn rén) - The scene at the wedding was very moving."
+      },
+      {
+        "id": "changdao",
+        "hanzi": "倡导",
+        "pinyin": "chàngdào",
+        "translation": "advocate",
+        "definition": "To advocate, to initiate, to propose",
+        "example": "政府倡导环保意识。(zhèng fǔ chàng dào huán bǎo yì shí) - The government advocates environmental awareness."
+      },
+      {
+        "id": "chaoyue",
+        "hanzi": "超越",
+        "pinyin": "chāoyuè",
+        "translation": "transcend",
+        "definition": "To surpass, to exceed, to transcend",
+        "example": "她的成绩超越了所有人的期望。(tā de chéng jì chāo yuè le suǒ yǒu rén de qī wàng) - Her results transcended everyone's expectations."
+      },
+      {
+        "id": "chezhu",
+        "hanzi": "车主",
+        "pinyin": "chēzhǔ",
+        "translation": "car owner",
+        "definition": "Car owner, vehicle owner",
+        "example": "车主需要缴纳停车费。(chē zhǔ xū yào jiǎo nà tíng chē fèi) - Car owners need to pay parking fees."
+      }
+    ],
+    "stage21": [
+      {
+        "id": "cheng",
+        "hanzi": "称",
+        "pinyin": "chēng",
+        "translation": "call",
+        "definition": "To call, to address as, to weigh",
+        "example": "人们称他为英雄。(rén men chēng tā wéi yīng xióng) - People call him a hero."
+      },
+      {
+        "id": "chenghao",
+        "hanzi": "称号",
+        "pinyin": "chēnghào",
+        "translation": "title",
+        "definition": "Title, designation, name",
+        "example": "他获得了'最佳教师'的称号。(tā huò dé le 'zuì jiā jiào shī' de chēng hào) - He received the title of 'Best Teacher'."
+      },
+      {
+        "id": "chengben",
+        "hanzi": "成本",
+        "pinyin": "chéngběn",
+        "translation": "cost",
+        "definition": "Cost, expense",
+        "example": "我们需要控制生产成本。(wǒ men xū yào kòng zhì shēng chǎn chéng běn) - We need to control production costs."
+      }
+    ]
+  }
+}

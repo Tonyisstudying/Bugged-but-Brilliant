@@ -1,0 +1,302 @@
+{
+  "level": 6,
+  "title": "HSK 6 - Quiz Collection",
+  "stages": {
+    "stage1": [
+      {
+        "question": "What does '挨着' mean?",
+        "options": ["far away", "next to", "behind", "above"],
+        "correct": 1,
+        "explanation": "'挨着' (āi zhé) means 'next to' or 'close to' in Chinese."
+      },
+      {
+        "question": "What does '挨' mean?",
+        "options": ["away from", "next to", "above", "below"],
+        "correct": 1,
+        "explanation": "'挨' (ái) means 'next to' or 'in order' in Chinese."
+      },
+      {
+        "question": "What does '挨打' refer to?",
+        "options": ["to win a fight", "to take a beating", "to attack", "to defend"],
+        "correct": 1,
+        "explanation": "'挨打' (ái dǎ) means 'to take a beating' or 'to get thrashed' in Chinese."
+      },
+      {
+        "question": "What is an '安检'?",
+        "options": ["safety drill", "security check", "alarm system", "emergency exit"],
+        "correct": 1,
+        "explanation": "'安检' (ān jiǎn) means 'security check' or 'security inspection' in Chinese."
+      },
+      {
+        "question": "What does '罢工' mean?",
+        "options": ["to quit a job", "to go on strike", "to work overtime", "to finish work"],
+        "correct": 1,
+        "explanation": "'罢工' (bàgōng) means 'to go on strike' in Chinese."
+      }
+    ],
+    "stage2": [
+      {
+        "question": "What does '罢了' indicate at the end of a sentence?",
+        "options": ["a question", "that's all", "a command", "a surprise"],
+        "correct": 1,
+        "explanation": "'罢了' (bà le) means 'that's all' or 'nothing more' and is used as an auxiliary word in Chinese."
+      },
+      {
+        "question": "Who is a '白领'?",
+        "options": ["factory worker", "white-collar worker", "farmer", "student"],
+        "correct": 1,
+        "explanation": "'白领' (bái lǐng) refers to a 'white-collar worker' or office worker in Chinese."
+      },
+      {
+        "question": "What is a '百分点'?",
+        "options": ["decimal point", "percentage point", "fraction", "ratio"],
+        "correct": 1,
+        "explanation": "'百分点' (bǎi fēn diǎn) means 'percentage point' in Chinese."
+      },
+      {
+        "question": "What does '办公' mean?",
+        "options": ["to study", "to work in an office", "to teach", "to manage"],
+        "correct": 1,
+        "explanation": "'办公' (bàn gōng) means 'to work in an office' or 'to handle official business' in Chinese."
+      },
+      {
+        "question": "What is a '办事处'?",
+        "options": ["meeting room", "office or agency", "business center", "information desk"],
+        "correct": 1,
+        "explanation": "'办事处' (bàn shì chù) refers to an 'office' or 'agency' in Chinese."
+      }
+    ],
+    "stage3": [
+      {
+        "question": "What does '办学' mean?",
+        "options": ["to study", "to run a school", "to teach", "to learn"],
+        "correct": 1,
+        "explanation": "'办学' (bàn xué) means 'to run a school' or 'to establish a school' in Chinese."
+      },
+      {
+        "question": "What is a '半决赛'?",
+        "options": ["quarter-final", "semifinal", "final", "preliminary round"],
+        "correct": 1,
+        "explanation": "'半决赛' (bàn jué sài) means 'semifinal' in a competition in Chinese."
+      },
+      {
+        "question": "What time of day is '傍晚'?",
+        "options": ["morning", "evening", "noon", "midnight"],
+        "correct": 1,
+        "explanation": "'傍晚' (bàngwǎn) means 'evening' or 'dusk' in Chinese."
+      },
+      {
+        "question": "What does '保健' refer to?",
+        "options": ["insurance", "health protection", "medical treatment", "fitness"],
+        "correct": 1,
+        "explanation": "'保健' (bǎo jiàn) refers to 'health protection' or 'health care' in Chinese."
+      },
+      {
+        "question": "What does '报刊' refer to?",
+        "options": ["books", "newspapers and periodicals", "reports", "magazines"],
+        "correct": 1,
+        "explanation": "'报刊' (bào kān) refers to 'newspapers and periodicals' or 'the press' in Chinese."
+      }
+    ],
+    "stage4": [
+      {
+        "question": "What does '报考' mean?",
+        "options": ["to report", "to register for an examination", "to apply for a job", "to announce"],
+        "correct": 1,
+        "explanation": "'报考' (bào kǎo) means 'to register for an examination' or 'to apply to take an exam' in Chinese."
+      },
+      {
+        "question": "When you say '抱歉', you are expressing:",
+        "options": ["happiness", "feeling sorry", "surprise", "confusion"],
+        "correct": 1,
+        "explanation": "'抱歉' (bàoqiàn) means 'to feel sorry' or 'to apologize' in Chinese."
+      },
+      {
+        "question": "What is a '暴风雨'?",
+        "options": ["light rain", "rainstorm or tempest", "drizzle", "fog"],
+        "correct": 1,
+        "explanation": "'暴风雨' (bào fēng yǔ) means 'rainstorm', 'storm', or 'tempest' in Chinese."
+      },
+      {
+        "question": "What does '暴力' refer to?",
+        "options": ["power", "violence", "strength", "energy"],
+        "correct": 1,
+        "explanation": "'暴力' (bàolì) means 'violence' or 'force' in Chinese."
+      },
+      {
+        "question": "What does '暴露' mean?",
+        "options": ["to hide", "to expose", "to cover", "to protect"],
+        "correct": 1,
+        "explanation": "'暴露' (bàolù) means 'to expose' or 'to reveal' in Chinese."
+      }
+    ],
+    "stage5": [
+      {
+        "question": "What is '暴雨'?",
+        "options": ["light rain", "torrential rain", "snow", "hail"],
+        "correct": 1,
+        "explanation": "'暴雨' (bào yǔ) means 'torrential rain' or 'rainstorm' in Chinese."
+      },
+      {
+        "question": "What does '爆' mean?",
+        "options": ["to shrink", "to explode", "to grow", "to break down"],
+        "correct": 1,
+        "explanation": "'爆' (bào) means 'to explode', 'to burst', or 'to crack' in Chinese."
+      },
+      {
+        "question": "What does '爆发' describe?",
+        "options": ["gradual development", "sudden burst or eruption", "slow decline", "steady progress"],
+        "correct": 1,
+        "explanation": "'爆发' (bàofā) means 'to break out', 'to erupt', or 'to burst' in Chinese."
+      },
+      {
+        "question": "What is an '爆炸'?",
+        "options": ["implosion", "blast or explosion", "fire", "collision"],
+        "correct": 1,
+        "explanation": "'爆炸' (bàozhà) means 'explosion' or 'blast' in Chinese."
+      },
+      {
+        "question": "Someone who is '悲惨' is:",
+        "options": ["happy", "miserable", "excited", "confused"],
+        "correct": 1,
+        "explanation": "'悲惨' (bēicǎn) means 'miserable' or 'tragic' in Chinese."
+      }
+    ],
+    "stage6": [
+      {
+        "question": "What is a '背心'?",
+        "options": ["coat", "vest", "shirt", "jacket"],
+        "correct": 1,
+        "explanation": "'背心' (bèi xīn) refers to a 'vest' or 'sleeveless garment' in Chinese."
+      },
+      {
+        "question": "What does '背着' someone mean?",
+        "options": ["supporting someone", "behind someone's back", "facing someone", "trusting someone"],
+        "correct": 1,
+        "explanation": "'背着' (bèi zhē) means 'behind someone's back' or 'to carry on one's back' in Chinese."
+      },
+      {
+        "question": "Who is a '被告'?",
+        "options": ["judge", "defendant", "lawyer", "witness"],
+        "correct": 1,
+        "explanation": "'被告' (bèigào) means 'defendant' or 'the accused' in Chinese."
+      },
+      {
+        "question": "What does '奔跑' mean?",
+        "options": ["to walk", "to run", "to jump", "to sit"],
+        "correct": 1,
+        "explanation": "'奔跑' (bēn pǎo) means 'to run' or 'to rush' in Chinese."
+      },
+      {
+        "question": "What does '本' refer to when used as in '本书'?",
+        "options": ["any", "this", "that", "every"],
+        "correct": 1,
+        "explanation": "'本' (běn) as in '本书' means 'this book' or 'the current book' in Chinese."
+      }
+    ],
+    "stage7": [
+      {
+        "question": "What does '本地' refer to?",
+        "options": ["foreign", "local", "distant", "central"],
+        "correct": 1,
+        "explanation": "'本地' (běn dì) means 'local', 'native', or 'this locality' in Chinese."
+      },
+      {
+        "question": "What is '本期' in a magazine context?",
+        "options": ["first issue", "current issue", "special issue", "last issue"],
+        "correct": 1,
+        "explanation": "'本期' (běn qī) means 'current period' or 'current issue' of a publication in Chinese."
+      },
+      {
+        "question": "When referring to '本身', what are you talking about?",
+        "options": ["something else", "itself", "someone else", "yourself"],
+        "correct": 1,
+        "explanation": "'本身' (běnshēn) means 'itself' or 'in itself' in Chinese."
+      },
+      {
+        "question": "What does '本土' refer to?",
+        "options": ["foreign land", "mainland or native land", "island", "overseas territory"],
+        "correct": 1,
+        "explanation": "'本土' (běn tǔ) refers to 'native land', 'one's native country', or 'mainland' in Chinese."
+      },
+      {
+        "question": "What is '本质'?",
+        "options": ["appearance", "essence", "size", "color"],
+        "correct": 1,
+        "explanation": "'本质' (běnzhì) means 'essence', 'nature', or 'innate character' in Chinese."
+      }
+    ],
+    "stage8": [
+      {
+        "question": "What does '逼' mean?",
+        "options": ["to ask", "to compel or force", "to invite", "to suggest"],
+        "correct": 1,
+        "explanation": "'逼' (bī) means 'to force', 'to compel', or 'to press' in Chinese."
+      },
+      {
+        "question": "What is a '笔试'?",
+        "options": ["oral test", "written examination", "interview", "practical exam"],
+        "correct": 1,
+        "explanation": "'笔试' (bǐ shì) means 'written examination' in Chinese."
+      },
+      {
+        "question": "The phrase '必将' indicates:",
+        "options": ["uncertainty", "certainty (will certainly)", "possibility", "doubt"],
+        "correct": 1,
+        "explanation": "'必将' (bì jiāng) means 'will certainly' or 'will surely' in Chinese."
+      },
+      {
+        "question": "A course that is '必修' is:",
+        "options": ["optional", "obligatory", "extra", "advanced"],
+        "correct": 1,
+        "explanation": "'必修' (bì xiū) means 'obligatory', 'compulsory', or 'required' in Chinese."
+      },
+      {
+        "question": "What does '闭' mean?",
+        "options": ["to open", "to close", "to move", "to shake"],
+        "correct": 1,
+        "explanation": "'闭' (bì) means 'to close', 'to shut', or 'to obstruct' in Chinese."
+      }
+    ],
+    "stage9": [
+      {
+        "question": "What is the '边缘' of something?",
+        "options": ["center", "edge", "top", "bottom"],
+        "correct": 1,
+        "explanation": "'边缘' (biānyuán) means 'edge', 'margin', or 'periphery' in Chinese."
+      },
+      {
+        "question": "What does '编制' refer to?",
+        "options": ["destruction", "authorized strength or compilation", "limitation", "expansion"],
+        "correct": 1,
+        "explanation": "'编制' (biān zhì) means 'to compile', 'to draw up', or refers to 'authorized strength' in Chinese."
+      },
+      {
+        "question": "Something that is '扁' is:",
+        "options": ["round", "flat", "thick", "pointy"],
+        "correct": 1,
+        "explanation": "'扁' (biǎn) means 'flat', 'compressed', or 'depressed' in Chinese."
+      },
+      {
+        "question": "What does '变更' mean?",
+        "options": ["to remain the same", "to change or alter", "to improve", "to reduce"],
+        "correct": 1,
+        "explanation": "'变更' (biàn gēng) means 'to change', 'to alter', or 'to modify' in Chinese."
+      },
+      {
+        "question": "What does '变换' refer to?",
+        "options": ["stability", "transformation", "repetition", "destruction"],
+        "correct": 1,
+        "explanation": "'变换' (biàn huàn) means 'to transform', 'to convert', or 'to vary' in Chinese."
+      }
+    ],
+    "stage10": [
+      {
+        "question": "When something '变形', it:",
+        "options": ["maintains its shape", "deforms or changes shape", "disappears", "multiplies"],
+        "correct": 1,
+        "explanation": "'变形' (biàn xíng) means 'to deform', 'to be out of shape', or 'metamorphosis' in Chinese."
+      }
+    ]
+  }
+}
