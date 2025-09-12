@@ -4,7 +4,7 @@ function handleLogin(event) {
     
     if (username) {
         localStorage.setItem('username', username);
-        window.location.href = 'home.html';
+        window.location.href = '../pages/home.html';
     }
     return false;
 }
@@ -71,7 +71,7 @@ function showMessage(message, type) {
 function checkAuth() {
     const username = localStorage.getItem('username');
     if (!username) {
-        window.location.href = 'login.html';
+        window.location.href = '../pages/login.html';
     }
     return username;
 }
@@ -80,7 +80,7 @@ function checkAuth() {
 if (window.location.pathname.includes('login.html')) {
     const username = localStorage.getItem('username');
     if (username) {
-        window.location.href = 'home.html';
+        window.location.href = '../pages/home.html';
     }
 }
 
