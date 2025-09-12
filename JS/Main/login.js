@@ -2,25 +2,10 @@ function handleLogin(event) {
     event.preventDefault();
     const username = document.getElementById('username').value.trim();
     
-    if (!username) {
-        showError('Please enter a username');
-        return false;
-    }
-
-    // Show loading state
-    showLoading(true);
-    
-    // Store username in localStorage
-    localStorage.setItem('username', username);
-    
-    // Show success message
-    showSuccess('Login successful! Redirecting...');
-    
-    // Redirect to home page
-    setTimeout(() => {
+    if (username) {
+        localStorage.setItem('username', username);
         window.location.href = 'home.html';
-    }, 800);
-    
+    }
     return false;
 }
 
