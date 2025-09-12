@@ -198,6 +198,18 @@ class CourseDisplay {
         const stageNum = exerciseKey.replace('stage', '');
         this.currentStage = stageNum;
         this.hideModal('stages-modal');
+        
+        // Reset the exercise object if it exists (defensive check)
+        if (this.multipleChoiceExercise && typeof this.multipleChoiceExercise.resetExercise === 'function') {
+            this.multipleChoiceExercise.resetExercise();
+            console.log('Quiz exercise reset before starting new quiz');
+        } else {
+            console.log('Creating new exercise instance');
+            // If for some reason the exercise object is missing or corrupt, recreate it
+            this.multipleChoiceExercise = new MultipleChoiceExercise();
+        }
+        
+        // Start fresh display
         await this.multipleChoiceExercise.display(this.currentLevel, stageNum);
     }
 

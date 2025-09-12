@@ -38,16 +38,12 @@ export default class MultipleChoiceExercise {
             this.stageKey = `stage${stageNum}`;
             this.questions = data.stages[this.stageKey] || [];
             
-            // Check if we have saved progress for this quiz
-            const savedProgress = this.getSavedProgress(level, this.stageKey);
-            if (savedProgress) {
-                this.currentQuestionIndex = savedProgress.currentQuestion || 0;
-                this.score = savedProgress.score || 0;
-                console.log(`Loaded saved progress: Question ${this.currentQuestionIndex + 1}, Score: ${this.score}`);
-            } else {
-                this.currentQuestionIndex = 0;
-                this.score = 0;
-            }
+            // Always start from the beginning for a fresh experience
+            this.currentQuestionIndex = 0;
+            this.score = 0;
+            this.selectedAnswer = null;
+            
+            console.log(`Starting fresh quiz for HSK${level} Stage ${stageNum} with ${this.questions.length} questions`);
             
             if (this.questions.length === 0) {
                 throw new Error(`No questions found for stage${stageNum}`);
@@ -221,14 +217,34 @@ export default class MultipleChoiceExercise {
                         percentage >= 60 ? 'Good job! Keep practicing.' : 
                         'Keep studying and try again!'}
                     </p>
-                    <button class="back-to-stages-btn" style="background-color: #667eea; color: white; border: none; padding: 12px 24px; border-radius: 20px; cursor: pointer; font-size: 16px; margin: 10px;">
-                        Back to Quiz Stages
-                    </button>
+                    <div style="display: flex; gap: 10px; justify-content: center; align-items: center;">
+                        <button class="restart-quiz-btn" style="background-color: #ff6b6b; color: white; border: none; padding: 12px 24px; border-radius: 20px; cursor: pointer; font-size: 16px; margin: 10px;">
+                            Try Again
+                        </button>
+                        <button class="back-to-stages-btn" style="background-color: #667eea; color: white; border: none; padding: 12px 24px; border-radius: 20px; cursor: pointer; font-size: 16px; margin: 10px;">
+                            Back to Quiz Stages
+                        </button>
+                    </div>
                 </div>
             </div>
         `;
 
+        this.attachResultsEventListeners();
+    }
+    
+    // New method to handle the results page event listeners
+    attachResultsEventListeners() {
         this.attachEventListeners();
+        const restartBtn = document.querySelector('.restart-quiz-btn');
+        if (restartBtn) {
+            restartBtn.addEventListener('click', () => this.restartQuiz());
+        }
+    }
+    
+    // New method to restart the current quiz
+    restartQuiz() {
+        this.resetExercise();
+        this.displayCurrentQuestion();
     }
 
     backToStages() {
@@ -239,6 +255,8 @@ export default class MultipleChoiceExercise {
         if (this.hskLevel && this.stageKey) {
             this.saveProgress();
         }
+
+        this.resetExercise();
         
         const content = document.getElementById('lesson-content');
         const overlay = document.getElementById('overlay');
@@ -269,8 +287,27 @@ export default class MultipleChoiceExercise {
             }
         }
     }
+    
+    resetExercise() {
+        console.log('Resetting exercise state for next attempt');
+        this.currentQuestionIndex = 0;
+        this.score = 0;
+        this.selectedAnswer = null;
+        
+        // Clear any cached progress for this session (but keep in localStorage for stats)
+        if (this.progress && this.hskLevel && this.stageKey) {
+            const progressKey = `hsk${this.hskLevel}_${this.stageKey}`;
+            if (this.progress[progressKey]) {
+                console.log(`Resetting current session progress for ${progressKey}`);
+                // We don't delete from localStorage, just from the current session
+                this.progress[progressKey].currentForSession = 0;
+            }
+        }
+        
+        console.log('Exercise reset complete, ready for next attempt');
+    }
 
-    close() {
+    close() {        
         if (window.courseDisplay && window.courseDisplay.closeContent) {
             window.courseDisplay.closeContent();
         } else {
@@ -290,6 +327,8 @@ export default class MultipleChoiceExercise {
                 }, 500);
             }
         }
+        //reset
+        this.resetExercise();
     }
 
     showError(message) {
