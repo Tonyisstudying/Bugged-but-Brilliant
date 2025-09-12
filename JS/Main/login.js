@@ -1,9 +1,4 @@
-// Import the API client
-import ApiClient from '../Utils/apiClient.js';
-
-const apiClient = new ApiClient();
-
-async function handleLogin(event) {
+function handleLogin(event) {
     event.preventDefault();
     const username = document.getElementById('username').value.trim();
     
@@ -12,67 +7,26 @@ async function handleLogin(event) {
         return false;
     }
 
-    try {
-        // Show loading state
-        showLoading(true);
-        
-        // Test if API is available first
-        const apiAvailable = await apiClient.testConnection();
-        
-        if (apiAvailable) {
-            console.log('🟢 Using API for login');
-            const response = await apiClient.post('/login', { username });
-            
-            if (response.success) {
-                // Store session data
-                localStorage.setItem('username', username);
-                apiClient.updateSessionId(response.sessionId);
-                
-                if (response.user) {
-                    localStorage.setItem('xp', response.user.xp || 0);
-                    localStorage.setItem('streak', response.user.streak || 0);
-                }
-                
-                showSuccess('Login successful! Redirecting...');
-                setTimeout(() => {
-                    window.location.href = 'home.html';
-                }, 1000);
-                return false;
-            }
-        } else {
-            throw new Error('API not available');
-        }
-        
-    } catch (error) {
-        console.log('🔴 API login failed, using localStorage fallback:', error.message);
-        // Fallback to original localStorage method
-        localStorage.setItem('username', username);
-        showSuccess('Login successful (offline mode)! Redirecting...');
-        setTimeout(() => {
-            window.location.href = 'home.html';
-        }, 1000);
-    } finally {
-        showLoading(false);
-    }
+    // Show loading state
+    showLoading(true);
+    
+    // Store username in localStorage
+    localStorage.setItem('username', username);
+    
+    // Show success message
+    showSuccess('Login successful! Redirecting...');
+    
+    // Redirect to home page
+    setTimeout(() => {
+        window.location.href = 'home.html';
+    }, 800);
     
     return false;
 }
 
-async function logout() {
-    const sessionId = localStorage.getItem('sessionId');
-    
-    if (sessionId) {
-        try {
-            await apiClient.post('/logout', { sessionId });
-            console.log('🟢 Logged out via API');
-        } catch (error) {
-            console.log('🔴 API logout failed:', error.message);
-        }
-    }
-    
-    // Always clear localStorage
+function logout() {
+    // Clear localStorage
     localStorage.clear();
-    apiClient.updateSessionId(null);
     window.location.href = 'login.html';
 }
 
@@ -88,7 +42,7 @@ function showLoading(isLoading) {
     const button = document.querySelector('.start-button');
     if (button) {
         if (isLoading) {
-            button.textContent = 'Connecting...';
+            button.textContent = 'Logging in...';
             button.disabled = true;
         } else {
             button.textContent = 'Start';
@@ -151,20 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         form.addEventListener('submit', handleLogin);
     }
-    
-    // Test API connection
-    console.log('🔄 Testing API connection...');
-    apiClient.testConnection().then(isOnline => {
-        if (isOnline) {
-            console.log('🟢 Backend is available - enhanced features enabled');
-        } else {
-            console.log('🟡 Backend not available - running in offline mode');
-        }
-    });
 });
 
 // Make functions globally available
 window.handleLogin = handleLogin;
 window.logout = logout;
 window.checkAuth = checkAuth;
-window.apiClient = apiClient;
