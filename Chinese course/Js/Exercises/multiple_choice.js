@@ -38,8 +38,6 @@ export default class MultipleChoiceExercise {
             this.stageKey = `stage${stageNum}`;
             this.questions = data.stages[this.stageKey] || [];
             
-            console.log(`Loaded ${this.questions.length} questions for HSK${level} Stage ${stageNum}`);
-            
             // Check if we have saved progress for this quiz
             const savedProgress = this.getSavedProgress(level, this.stageKey);
             if (savedProgress) {
@@ -179,7 +177,6 @@ export default class MultipleChoiceExercise {
         if (isCorrect) {
             this.score++;
         }
-
         document.getElementById('next-question').style.display = 'block';
     }
 
