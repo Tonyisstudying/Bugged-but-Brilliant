@@ -19,7 +19,6 @@ class CourseDisplay {
             });
         });
 
-        // Modal close listeners
         this.setupModalListeners();
     }
 
@@ -55,20 +54,15 @@ class CourseDisplay {
         if (categoryTitle) {
             categoryTitle.textContent = `Choose Learning Mode - HSK ${level}`;
         }
-
-        // Add click listeners to category cards
         this.setupCategoryListeners();
-        
         this.showModal('category-modal');
     }
 
     setupCategoryListeners() {
         document.querySelectorAll('.category-card').forEach(card => {
-            // Remove existing listeners
             card.replaceWith(card.cloneNode(true));
         });
 
-        // Re-attach listeners to fresh elements
         document.querySelectorAll('.category-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 const categoryId = card.dataset.category;
@@ -90,7 +84,6 @@ class CourseDisplay {
 
     async showAllWords() {
         try {
-            // Load words from consolidated file
             const response = await fetch(`../Json/HSK${this.currentLevel}/words.json`);
             if (!response.ok) throw new Error('Failed to load words data');
             const data = await response.json();

@@ -14,11 +14,10 @@ export default class MultipleChoiceExercise {
     async display(level = 1, stage = 1) {
         try {
             console.log(`Loading quiz for HSK${level} Stage ${stage}`);
-            this.hskLevel = level; // Store the HSK level for later use
-            this.stage = stage; // Store the stage for later use
+            this.hskLevel = level;
+            this.stage = stage; 
             await this.loadData(level, stage);
-            
-            // Show the lesson content container
+
             this.showLessonContent();
             this.displayCurrentQuestion();
         } catch (error) {
@@ -78,8 +77,6 @@ export default class MultipleChoiceExercise {
             if (this.questions.length === 0) {
                 throw new Error('No questions found in exercise data');
             }
-            
-            // Show the lesson content container
             this.showLessonContent();
             this.displayCurrentQuestion();
         } catch (error) {
@@ -121,9 +118,6 @@ export default class MultipleChoiceExercise {
     }
 
     attachEventListeners() {
-        console.log('Attaching event listeners...');
-        
-        // Option buttons
         document.querySelectorAll('.option-btn').forEach(btn => {
             btn.addEventListener('click', (e) => this.selectAnswer(e));
         });
@@ -148,8 +142,6 @@ export default class MultipleChoiceExercise {
                 this.backToStages();
             })
         }
-
-        // Back to stages button (on results page)
         const backBtn = document.querySelector('.back-to-stages-btn');
         if (backBtn) {
             backBtn.addEventListener('click', () => this.backToStages());
@@ -192,9 +184,9 @@ export default class MultipleChoiceExercise {
     }
 
     nextQuestion() {
+        this.currentQuestionIndex++;
+        this.selectedAnswer = null;
         if (this.currentQuestionIndex < this.questions.length - 1) {
-            this.currentQuestionIndex++;
-            this.selectedAnswer = null;
             this.saveProgress();
             this.displayCurrentQuestion();
         } else {
@@ -282,7 +274,6 @@ export default class MultipleChoiceExercise {
     }
 
     close() {
-        // Use the courseDisplay's closeContent method if available
         if (window.courseDisplay && window.courseDisplay.closeContent) {
             window.courseDisplay.closeContent();
         } else {
@@ -343,12 +334,10 @@ export default class MultipleChoiceExercise {
         localStorage.setItem(progressKey, JSON.stringify(progressData));
         console.log(`Progress saved for HSK${this.hskLevel} ${this.stageKey}:`, progressData);
         
-        // Update the progress object
         if (!this.progress) this.progress = {};
         this.progress[`hsk${this.hskLevel}_${this.stageKey}`] = progressData;
     }
     
-    // load saved progress from localStorage
     loadProgress() {
         try {
             this.progress = {};
@@ -371,7 +360,6 @@ export default class MultipleChoiceExercise {
         }
     }
     
-    // Get saved progress 
     getSavedProgress(level, stage) {
         const progressKey = `hsk${level}_${stage}`;
         return this.progress ? this.progress[progressKey] : null;
