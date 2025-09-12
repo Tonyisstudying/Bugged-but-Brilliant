@@ -209,7 +209,7 @@ h1 {
 }
 
 .topic-card p {
-    color:极客d8bfd8;
+    color: #d8bfd8;
 }
 
 .detail-content {
@@ -257,7 +257,7 @@ h1 {
 .detail-list li {
     padding: 10px;
     margin-bottom: 10px;
-    background: rgba(147, 112, 219, 极客0.1);
+    background: rgba(147, 112, 219, 0.1);
     border-radius: 5px;
     border-left: 3px solid #9370db;
 }
@@ -282,7 +282,7 @@ h1 {
 
 .back-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba极客(255, 20, 147, 0.6);
+    box-shadow: 0 8px 20px rgba(255, 20, 147, 0.6);
 }
 
 footer {
