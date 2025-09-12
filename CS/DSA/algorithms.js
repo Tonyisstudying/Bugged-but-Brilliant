@@ -1,21 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Title animation
     const mainTitle = document.querySelector('.main-title');
     const titleContainer = document.querySelector('.title-container');
     const mainContent = document.querySelector('.main-content');
     
-    // Show the title with animation after a small delay
     setTimeout(() => {
         mainTitle.classList.add('active');
     }, 500);
     
-    // Handle scroll to transform title
     let titleAnimationComplete = false;
     
     window.addEventListener('scroll', function() {
         const scrollPosition = window.scrollY;
-        
-        // Transform title when scrolled down
         if (scrollPosition > 100) {
             titleContainer.classList.add('scrolled');
             mainTitle.classList.add('scrolled');
@@ -33,14 +28,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Animation for algorithm boxes
     const algoBoxes = document.querySelectorAll('.algo-box');
     algoBoxes.forEach((box, index) => {
-        // Add delay for staggered animation
         setTimeout(() => {
             box.style.opacity = '1';
             box.style.transform = 'translateY(0)';
         }, 200 * index);
     });
     
-    // Add algorithm icon if missing
     const icon = document.querySelector('.central-icon img');
     if (icon) {
         icon.onerror = function() {
@@ -49,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Helper function to animate number counters
 function animateCounter(element, start, end, duration) {
     let startTime = null;
     
@@ -69,7 +61,6 @@ function animateCounter(element, start, end, duration) {
     requestAnimationFrame(animation);
 }
 
-// Add CSS for fade-in animation
 const style = document.createElement('style');
 style.textContent = `
     .fade-in {
