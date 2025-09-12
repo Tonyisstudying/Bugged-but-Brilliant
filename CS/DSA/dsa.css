@@ -323,6 +323,60 @@ footer p {
     margin: 10px 0;
 }
 
+/* Exercise Section Styles */
+        .exercise-section {
+            display: none;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(147, 112, 219, 0.2);
+            border: 1px solid #9370db;
+        }
+        
+        .exercise-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .exercise-header h2 {
+            font-size: 2.5rem;
+            color: #ff1493;
+            margin-bottom: 15px;
+        }
+        
+        .exercise-header p {
+            color: #d8bfd8;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .question {
+            background: rgba(74, 0, 66, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ff1493;
+        }
+        
+        .question h3 {
+            color: #ff1493;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -351,3 +405,87 @@ footer p {
         width: 100%;
     }
 }
+
+@media (max-width: 600px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .option {
+            background: rgba(147, 112, 219, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .option:hover {
+            background: rgba(147, 112, 219, 0.3);
+            border-color: #9370db;
+        }
+        
+        .option.selected {
+            background: rgba(255, 20, 147, 0.3);
+            border-color: #ff1493;
+        }
+        
+        .option.correct {
+            background: rgba(0, 128, 0, 0.3);
+            border-color: #00ff00;
+        }
+        
+        .option.incorrect {
+            background: rgba(255, 0, 0, 0.3);
+            border-color: #ff0000;
+        }
+        
+        .exercise-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #9370db, #ff1493);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(147, 112, 219, 0.4);
+        }
+        
+        .exercise-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(147, 112, 219, 0.6);
+        }
+        
+        .results {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(74, 0, 66, 0.2);
+            border-radius: 10px;
+            border: 1px solid #9370db;
+            display: none;
+        }
+        
+        .results h3 {
+            color: #ff1493;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .score {
+            font-size: 2rem;
+            color: #9370db;
+            margin: 15px 0;
+        }
+        
+        .exercise-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
