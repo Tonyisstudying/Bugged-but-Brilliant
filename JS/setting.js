@@ -1,11 +1,6 @@
-import ApiClient from './Utils/apiClient.js';
-
-const apiClient = new ApiClient();
-
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', function() {
     // Get username from localStorage
     const username = localStorage.getItem('username');
-    const sessionId = localStorage.getItem('sessionId');
     
     // Update the username display
     const usernameDisplay = document.getElementById('username-display');
@@ -17,40 +12,11 @@ document.addEventListener('DOMContentLoaded', async function() {
         return;
     }
     
-    // Try to load data from server if session exists
-    if (sessionId) {
-        try {
-            // Load user profile
-            const profile = await apiClient.get('/profile');
-            if (profile) {
-                updateXpDisplay(profile.xp || 0);
-                updateStreak(profile.streak || 0);
-                localStorage.setItem('xp', profile.xp || 0);
-                localStorage.setItem('streak', profile.streak || 0);
-            }
-            
-            // Load settings
-            const settingsResponse = await apiClient.get('/settings');
-            if (settingsResponse.settings) {
-                applySettings(settingsResponse.settings);
-            }
-            
-            console.log('🟢 Settings loaded from server');
-        } catch (error) {
-            console.log('🔴 Failed to load from server, using localStorage:', error.message);
-            // Continue with localStorage values
-            let xp = parseInt(localStorage.getItem('xp')) || 650;
-            let streak = parseInt(localStorage.getItem('streak')) || 3;
-            updateXpDisplay(xp);
-            updateStreak(streak);
-        }
-    } else {
-        // No session, use localStorage
-        let xp = parseInt(localStorage.getItem('xp')) || 650;
-        let streak = parseInt(localStorage.getItem('streak')) || 3;
-        updateXpDisplay(xp);
-        updateStreak(streak);
-    }
+    // Use localStorage values
+    let xp = parseInt(localStorage.getItem('xp')) || 650;
+    let streak = parseInt(localStorage.getItem('streak')) || 3;
+    updateXpDisplay(xp);
+    updateStreak(streak);
     
     // Connect logout button
     const logoutButton = document.querySelector('.logout button');
@@ -76,54 +42,30 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// Enhanced toggle switches with server sync
+// Toggle switches
 document.querySelectorAll('.toggle-switch input').forEach(switchInput => {
-    switchInput.addEventListener('change', async function () {
+    switchInput.addEventListener('change', function () {
         const settingType = this.closest('.setting-item').querySelector('h3').textContent;
         const isEnabled = this.checked;
         
         console.log(`⚙️ Setting "${settingType}" changed to: ${isEnabled ? 'on' : 'off'}`);
         
-        // Save to server if session exists
-        const sessionId = localStorage.getItem('sessionId');
-        if (sessionId) {
-            try {
-                await apiClient.post('/settings', {
-                    settings: {
-                        [settingType]: isEnabled
-                    }
-                });
-                console.log('🟢 Setting saved to server');
-            } catch (error) {
-                console.log('🔴 Failed to save setting to server:', error.message);
-            }
-        }
+        // Save to localStorage
+        localStorage.setItem(settingType, isEnabled);
     });
 });
 
-// Enhanced theme selector with server sync
+// Theme selector
 document.querySelectorAll('.theme-option').forEach(themeOption => {
-    themeOption.addEventListener('click', async function () {
+    themeOption.addEventListener('click', function () {
         document.querySelectorAll('.theme-option').forEach(opt => opt.classList.remove('active'));
         this.classList.add('active');
         
         const isDark = this.classList.contains('theme-dark');
         applyTheme(isDark);
         
-        // Save theme preference to server
-        const sessionId = localStorage.getItem('sessionId');
-        if (sessionId) {
-            try {
-                await apiClient.post('/settings', {
-                    settings: {
-                        theme: isDark ? 'dark' : 'light'
-                    }
-                });
-                console.log('🟢 Theme saved to server');
-            } catch (error) {
-                console.log('🔴 Failed to save theme to server:', error.message);
-            }
-        }
+        // Save theme preference to localStorage
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 });
 
@@ -246,47 +188,22 @@ function updateStreak(days) {
     }
 }
 
-// Enhanced XP click with server sync
+// XP click functionality
 const profileImg = document.querySelector('.profile-info img');
 if (profileImg) {
-    profileImg.addEventListener('click', async () => {
+    profileImg.addEventListener('click', () => {
         let xp = parseInt(localStorage.getItem('xp')) || 0;
         xp += 50;
         if (xp > 1000) xp = 1000;
         
         localStorage.setItem('xp', xp);
         updateXpDisplay(xp);
-        
-        // Sync to server
-        const sessionId = localStorage.getItem('sessionId');
-        if (sessionId) {
-            try {
-                await apiClient.post('/settings', {
-                    settings: { xp }
-                });
-                console.log('🟢 XP updated on server');
-            } catch (error) {
-                console.log('🔴 Failed to sync XP to server');
-            }
-        }
     });
 }
 
 // Make logout function available globally
-window.logout = async function() {
-    const sessionId = localStorage.getItem('sessionId');
-    
-    if (sessionId) {
-        try {
-            await apiClient.post('/logout', { sessionId });
-            console.log('🟢 Logged out via API');
-        } catch (error) {
-            console.log('🔴 API logout failed:', error.message);
-        }
-    }
-    
-    // Always clear localStorage
+window.logout = function() {
+    // Clear localStorage
     localStorage.clear();
-    apiClient.updateSessionId(null);
     window.location.href = 'login.html';
 };
