@@ -1,0 +1,394 @@
+{
+  "level": 6,
+  "title": "HSK 6 - Vocabulary Collection",
+  "stages": {
+    "stage1": [
+      {
+        "id": "aizhi",
+        "hanzi": "挨着",
+        "pinyin": "āi zhé",
+        "translation": "next to",
+        "definition": "Next to, close to, adjacent",
+        "example": "他的座位挨着我。(tā de zuò wèi āi zhé wǒ) - His seat is next to mine."
+      },
+      {
+        "id": "ai",
+        "hanzi": "挨",
+        "pinyin": "ái",
+        "translation": "next to",
+        "definition": "Next to, in order",
+        "example": "我们挨门挨户地访问。(wǒ men ái mén ái hù de fǎng wèn) - We visited door by door."
+      },
+      {
+        "id": "aida",
+        "hanzi": "挨打",
+        "pinyin": "ái dǎ",
+        "translation": "take a beating",
+        "definition": "To take a beating, to get thrashed, to come under attack",
+        "example": "那个孩子因为调皮挨打了。(nà gè hái zi yīn wèi tiáo pí ái dǎ le) - That child was beaten for being naughty."
+      },
+      {
+        "id": "anjian",
+        "hanzi": "安检",
+        "pinyin": "ān jiǎn",
+        "translation": "security check",
+        "definition": "Security check, security inspection",
+        "example": "所有乘客都必须通过安检。(suǒ yǒu chéng kè dōu bì xū tōng guò ān jiǎn) - All passengers must go through the security check."
+      },
+      {
+        "id": "bagong",
+        "hanzi": "罢工",
+        "pinyin": "bàgōng",
+        "translation": "strike",
+        "definition": "To go on strike, a strike (by workers)",
+        "example": "工人们决定罢工抗议。(gōng rén men jué dìng bà gōng kàng yì) - The workers decided to go on strike in protest."
+      }
+    ],
+    "stage2": [
+      {
+        "id": "bale",
+        "hanzi": "罢了",
+        "pinyin": "bà le",
+        "translation": "that's all",
+        "definition": "That's all, nothing more, (used as an auxiliary word)",
+        "example": "我只是说说罢了。(wǒ zhǐ shì shuō shuō bà le) - I was just saying, that's all."
+      },
+      {
+        "id": "bailing",
+        "hanzi": "白领",
+        "pinyin": "bái lǐng",
+        "translation": "white collar",
+        "definition": "White-collar worker, office worker",
+        "example": "他是一名白领工作者。(tā shì yī míng bái lǐng gōng zuò zhě) - He is a white-collar worker."
+      },
+      {
+        "id": "baifendian",
+        "hanzi": "百分点",
+        "pinyin": "bǎi fēn diǎn",
+        "translation": "percentage point",
+        "definition": "Percentage point",
+        "example": "通货膨胀率上升了两个百分点。(tōng huò péng zhàng lǜ shàng shēng le liǎng gè bǎi fēn diǎn) - The inflation rate rose by two percentage points."
+      },
+      {
+        "id": "bangong",
+        "hanzi": "办公",
+        "pinyin": "bàn gōng",
+        "translation": "work in an office",
+        "definition": "To work, to handle official business, to work in an office",
+        "example": "他在家里办公。(tā zài jiā lǐ bàn gōng) - He works from home."
+      },
+      {
+        "id": "banshichu",
+        "hanzi": "办事处",
+        "pinyin": "bàn shì chù",
+        "translation": "office",
+        "definition": "Office, agency, service center",
+        "example": "公司在上海设有办事处。(gōng sī zài shàng hǎi shè yǒu bàn shì chù) - The company has an office in Shanghai."
+      }
+    ],
+    "stage3": [
+      {
+        "id": "banxue",
+        "hanzi": "办学",
+        "pinyin": "bàn xué",
+        "translation": "run a school",
+        "definition": "To run a school, to establish a school",
+        "example": "政府支持民间办学。(zhèng fǔ zhī chí mín jiān bàn xué) - The government supports private education."
+      },
+      {
+        "id": "banjuesai",
+        "hanzi": "半决赛",
+        "pinyin": "bàn jué sài",
+        "translation": "semifinal",
+        "definition": "Semifinal (in a competition)",
+        "example": "他们进入了半决赛。(tā men jìn rù le bàn jué sài) - They advanced to the semifinal."
+      },
+      {
+        "id": "bangwan",
+        "hanzi": "傍晚",
+        "pinyin": "bàngwǎn",
+        "translation": "evening",
+        "definition": "Evening, dusk",
+        "example": "傍晚的时候，我们去散步。(bàng wǎn de shí hòu, wǒ men qù sàn bù) - In the evening, we went for a walk."
+      },
+      {
+        "id": "baojian",
+        "hanzi": "保健",
+        "pinyin": "bǎo jiàn",
+        "translation": "health protection",
+        "definition": "Health protection, health care",
+        "example": "保健品市场发展迅速。(bǎo jiàn pǐn shì chǎng fā zhǎn xùn sù) - The health care product market is developing rapidly."
+      },
+      {
+        "id": "baokan",
+        "hanzi": "报刊",
+        "pinyin": "bào kān",
+        "translation": "newspapers and periodicals",
+        "definition": "Newspapers and periodicals, the press",
+        "example": "报刊上报道了这一事件。(bào kān shàng bào dào le zhè yī shì jiàn) - The press reported on this event."
+      }
+    ],
+    "stage4": [
+      {
+        "id": "baokao",
+        "hanzi": "报考",
+        "pinyin": "bào kǎo",
+        "translation": "register for examination",
+        "definition": "To register for an examination, to apply to take an exam",
+        "example": "他报考了北京大学。(tā bào kǎo le běi jīng dà xué) - He applied for Beijing University."
+      },
+      {
+        "id": "baoqian",
+        "hanzi": "抱歉",
+        "pinyin": "bàoqiàn",
+        "translation": "feel sorry",
+        "definition": "To feel sorry, to apologize",
+        "example": "我对此感到抱歉。(wǒ duì cǐ gǎn dào bào qiàn) - I feel sorry about this."
+      },
+      {
+        "id": "baofengyu",
+        "hanzi": "暴风雨",
+        "pinyin": "bào fēng yǔ",
+        "translation": "rainstorm",
+        "definition": "Storm, tempest, rainstorm",
+        "example": "暴风雨摧毁了许多房屋。(bào fēng yǔ cuī huǐ le xǔ duō fáng wū) - The storm destroyed many houses."
+      },
+      {
+        "id": "baoli",
+        "hanzi": "暴力",
+        "pinyin": "bàolì",
+        "translation": "violence",
+        "definition": "Violence, force",
+        "example": "我们反对使用暴力。(wǒ men fǎn duì shǐ yòng bào lì) - We oppose the use of violence."
+      },
+      {
+        "id": "baolu",
+        "hanzi": "暴露",
+        "pinyin": "bàolù",
+        "translation": "expose",
+        "definition": "To expose, to reveal",
+        "example": "这起事件暴露了许多问题。(zhè qǐ shì jiàn bào lù le xǔ duō wèn tí) - This incident exposed many problems."
+      }
+    ],
+    "stage5": [
+      {
+        "id": "baoyu",
+        "hanzi": "暴雨",
+        "pinyin": "bào yǔ",
+        "translation": "torrential rain",
+        "definition": "Torrential rain, rainstorm, downpour",
+        "example": "暴雨导致了严重的洪水。(bào yǔ dǎo zhì le yán zhòng de hóng shuǐ) - The torrential rain caused serious flooding."
+      },
+      {
+        "id": "bao",
+        "hanzi": "爆",
+        "pinyin": "bào",
+        "translation": "explode",
+        "definition": "To explode, to burst, to crack, to quick-fry",
+        "example": "气球爆了。(qì qiú bào le) - The balloon burst."
+      },
+      {
+        "id": "baofa",
+        "hanzi": "爆发",
+        "pinyin": "bàofā",
+        "translation": "burst",
+        "definition": "To break out, to erupt, to burst",
+        "example": "战争爆发于1939年。(zhàn zhēng bào fā yú yī jiǔ sān jiǔ nián) - The war broke out in 1939."
+      },
+      {
+        "id": "baozha",
+        "hanzi": "爆炸",
+        "pinyin": "bàozhà",
+        "translation": "blast",
+        "definition": "To explode, explosion, blast",
+        "example": "工厂发生了爆炸。(gōng chǎng fā shēng le bào zhà) - There was an explosion at the factory."
+      },
+      {
+        "id": "beican",
+        "hanzi": "悲惨",
+        "pinyin": "bēicǎn",
+        "translation": "miserable",
+        "definition": "Miserable, tragic",
+        "example": "他的童年非常悲惨。(tā de tóng nián fēi cháng bēi cǎn) - His childhood was very miserable."
+      }
+    ],
+    "stage6": [
+      {
+        "id": "beixin",
+        "hanzi": "背心",
+        "pinyin": "bèi xīn",
+        "translation": "vest",
+        "definition": "Vest, sleeveless garment",
+        "example": "天热时，他只穿一件背心。(tiān rè shí, tā zhǐ chuān yī jiàn bèi xīn) - When it's hot, he wears only a vest."
+      },
+      {
+        "id": "beizhe",
+        "hanzi": "背着",
+        "pinyin": "bèi zhē",
+        "translation": "behind one's back",
+        "definition": "Behind someone's back, to carry on one's back",
+        "example": "他背着妻子去见朋友。(tā bèi zhe qī zi qù jiàn péng yǒu) - He went to see friends behind his wife's back."
+      },
+      {
+        "id": "beigao",
+        "hanzi": "被告",
+        "pinyin": "bèigào",
+        "translation": "defendant",
+        "definition": "Defendant, accused",
+        "example": "被告否认了指控。(bèi gào fǒu rèn le zhǐ kòng) - The defendant denied the charges."
+      },
+      {
+        "id": "benpao",
+        "hanzi": "奔跑",
+        "pinyin": "bēn pǎo",
+        "translation": "run",
+        "definition": "To run, to rush",
+        "example": "孩子们在草地上奔跑。(hái zi men zài cǎo dì shàng bēn pǎo) - The children are running on the grass."
+      },
+      {
+        "id": "ben",
+        "hanzi": "本（代、副）",
+        "pinyin": "běn",
+        "translation": "this",
+        "definition": "This, current, original",
+        "example": "本书介绍中国历史。(běn shū jiè shào zhōng guó lì shǐ) - This book introduces Chinese history."
+      }
+    ],
+    "stage7": [
+      {
+        "id": "bendi",
+        "hanzi": "本地",
+        "pinyin": "běn dì",
+        "translation": "local",
+        "definition": "Local, native, this locality",
+        "example": "我是本地人。(wǒ shì běn dì rén) - I am a local person."
+      },
+      {
+        "id": "benqi",
+        "hanzi": "本期",
+        "pinyin": "běn qī",
+        "translation": "current period",
+        "definition": "Current period, current issue (of a publication)",
+        "example": "本期杂志已经出版。(běn qī zá zhì yǐ jīng chū bǎn) - The current issue of the magazine has been published."
+      },
+      {
+        "id": "benshen",
+        "hanzi": "本身",
+        "pinyin": "běnshēn",
+        "translation": "itself",
+        "definition": "Itself, in itself, itself",
+        "example": "这个问题本身就很复杂。(zhè ge wèn tí běn shēn jiù hěn fù zá) - The problem itself is very complex."
+      },
+      {
+        "id": "bentu",
+        "hanzi": "本土",
+        "pinyin": "běn tǔ",
+        "translation": "mainland",
+        "definition": "Native land, one's native country, mainland, metropolitan territory",
+        "example": "这种文化源于本土。(zhè zhǒng wén huà yuán yú běn tǔ) - This culture originates from the native land."
+      },
+      {
+        "id": "benzhi",
+        "hanzi": "本质",
+        "pinyin": "běnzhì",
+        "translation": "essence",
+        "definition": "Essence, nature, innate character",
+        "example": "我们要抓住问题的本质。(wǒ men yào zhuā zhù wèn tí de běn zhì) - We need to grasp the essence of the problem."
+      }
+    ],
+    "stage8": [
+      {
+        "id": "bi",
+        "hanzi": "逼",
+        "pinyin": "bī",
+        "translation": "compel",
+        "definition": "To force, to compel, to press, to close, to narrow",
+        "example": "父母不应该逼孩子学习。(fù mǔ bù yīng gāi bī hái zi xué xí) - Parents shouldn't force their children to study."
+      },
+      {
+        "id": "bishi",
+        "hanzi": "笔试",
+        "pinyin": "bǐ shì",
+        "translation": "written examination",
+        "definition": "Written examination",
+        "example": "面试之前要先通过笔试。(miàn shì zhī qián yào xiān tōng guò bǐ shì) - Before the interview, you need to pass the written examination."
+      },
+      {
+        "id": "bijiang",
+        "hanzi": "必将",
+        "pinyin": "bì jiāng",
+        "translation": "will certainly",
+        "definition": "Will certainly, will surely",
+        "example": "这一政策必将促进经济发展。(zhè yī zhèng cè bì jiāng cù jìn jīng jì fā zhǎn) - This policy will certainly promote economic development."
+      },
+      {
+        "id": "bixu",
+        "hanzi": "必修",
+        "pinyin": "bì xiū",
+        "translation": "obligatory",
+        "definition": "Obligatory, compulsory, required",
+        "example": "这门课程是必修课。(zhè mén kè chéng shì bì xiū kè) - This course is compulsory."
+      },
+      {
+        "id": "bi",
+        "hanzi": "闭",
+        "pinyin": "bì",
+        "translation": "close",
+        "definition": "To close, to shut, to obstruct, to stop up",
+        "example": "他紧闭双眼。(tā jǐn bì shuāng yǎn) - He closed his eyes tightly."
+      }
+    ],
+    "stage9": [
+      {
+        "id": "bianyuan",
+        "hanzi": "边缘",
+        "pinyin": "biānyuán",
+        "translation": "edge",
+        "definition": "Edge, margin, periphery",
+        "example": "他站在悬崖的边缘。(tā zhàn zài xuán yá de biān yuán) - He stood on the edge of the cliff."
+      },
+      {
+        "id": "bianzhi",
+        "hanzi": "编制",
+        "pinyin": "biān zhì",
+        "translation": "authorized strength",
+        "definition": "To compile, to draw up, authorized strength (of a unit)",
+        "example": "公司计划编制新的预算。(gōng sī jì huà biān zhì xīn de yù suàn) - The company plans to draw up a new budget."
+      },
+      {
+        "id": "bian",
+        "hanzi": "扁",
+        "pinyin": "biǎn",
+        "translation": "flat",
+        "definition": "Flat, compressed, depressed",
+        "example": "这个盒子很扁。(zhè ge hé zi hěn biǎn) - This box is very flat."
+      },
+      {
+        "id": "biangeng",
+        "hanzi": "变更",
+        "pinyin": "biàn gēng",
+        "translation": "change",
+        "definition": "To change, to alter, to modify",
+        "example": "我们需要变更计划。(wǒ men xū yào biàn gēng jì huà) - We need to change the plan."
+      },
+      {
+        "id": "bianhuan",
+        "hanzi": "变换",
+        "pinyin": "biàn huàn",
+        "translation": "transform",
+        "definition": "To transform, to convert, to vary, to alternate",
+        "example": "光线变换出不同的颜色。(guāng xiàn biàn huàn chū bù tóng de yán sè) - The light transforms into different colors."
+      }
+    ],
+    "stage10": [
+      {
+        "id": "bianxing",
+        "hanzi": "变形",
+        "pinyin": "biàn xíng",
+        "translation": "deform",
+        "definition": "To deform, to be out of shape, deformation, metamorphosis",
+        "example": "金属在高温下会变形。(jīn shǔ zài gāo wēn xià huì biàn xíng) - Metal deforms under high temperature."
+      }
+    ]
+  }
+}

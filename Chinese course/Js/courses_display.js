@@ -91,7 +91,7 @@ class CourseDisplay {
     async showAllWords() {
         try {
             // Load words from consolidated file
-            const response = await fetch(`../../../Json/HSK${this.currentLevel}/words.json`);
+            const response = await fetch(`../Json/HSK${this.currentLevel}/words.json`);
             if (!response.ok) throw new Error('Failed to load words data');
             const data = await response.json();
             const allWords = [];
