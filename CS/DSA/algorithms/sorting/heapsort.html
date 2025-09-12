@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heap Sort - DSA</title>
+    <link rel="icon" type="image/x-icon" href="../../../Assets/images/team logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/csharp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/php.min.js"></script>
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .back-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+
+        /* Algorithm content */
+        .algorithm-container {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .algorithm-header h1 {
+            font-size: 2.5rem;
+            color: #0052cc;
+        }
+        
+        .last-updated {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        .algorithm-description {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .algorithm-steps {
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-steps h2 {
+            margin-bottom: 1rem;
+            color: #0052cc;
+            font-size: 1.8rem;
+        }
+        
+        .algorithm-steps ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .algorithm-steps li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .algorithm-steps ul li ul {
+            padding-left: 1.5rem;
+            margin: 0.8rem 0;
+        }
+
+        /* Implementation section */
+        .implementation {
+            margin-top: 2.5rem;
+        }
+        
+        .implementation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .implementation-header h2 {
+            color: #0052cc;
+        }
+        
+        .implementation-description {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        /* Code editor */
+        .code-container {
+            position: relative;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .language-tabs {
+            display: flex;
+            background: #333;
+            padding: 0.5rem;
+            overflow-x: auto;
+        }
+        
+        .language-tabs button {
+            background: none;
+            border: none;
+            color: #ccc;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            margin-right: 0.3rem;
+        }
+        
+        .language-tabs button.active {
+            background: #0e639c;
+            color: white;
+        }
+        
+        .language-tabs button:hover:not(.active) {
+            background: #444;
+        }
+        
+        .code-editor {
+            background: #1e1e1e;
+            position: relative;
+        }
+        
+        .editor-header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0.5rem;
+            background: #252526;
+            border-bottom: 1px solid #333;
+        }
+        
+        .editor-buttons button {
+            background: none;
+            border: none;
+            color: #ccc;
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: 0.3rem;
+        }
+        
+        .editor-buttons button:hover {
+            background: #444;
+        }
+        
+        .code-block {
+            display: none;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        
+        .code-block.active {
+            display: block;
+        }
+        
+        /* Practice button */
+        .practice-btn {
+            display: block;
+            background-color: #008964;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 2rem 0;
+            transition: background-color 0.3s ease;
+        }
+        
+        .practice-btn:hover {
+            background-color: #006e50;
+        }
+        
+        .practice-btn i {
+            margin-left: 0.5rem;
+        }
+        
+        /* Output section */
+        .output-container {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .output-header {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .output-content {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* Share buttons */
+        .share-buttons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .share-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #0052cc;
+            margin-left: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .share-btn:hover {
+            transform: scale(1.15);
+        }
+        
+        /* Complexity analysis */
+        .complexity-container {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            color: #fff;
+        }
+        
+        .complexity-header {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #444;
+            padding-bottom: 0.5rem;
+        }
+        
+        .complexity-subheader {
+            color: #ddd;
+            font-weight: 600;
+            margin: 1rem 0 0.5rem;
+        }
+        
+        .complexity-list {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .complexity-list li {
+            margin-bottom: 0.8rem;
+            color: #ddd;
+        }
+        
+        .complexity-highlight {
+            color: #61dafb;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Important points section */
+        .important-points {
+            background-color: #f0f4fa;
+            border-left: 4px solid #0052cc;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .important-points-header {
+            font-size: 1.2rem;
+            color: #0052cc;
+            margin-bottom: 1rem;
+        }
+        
+        /* Link styling */
+        .text-link {
+            color: #10B981;
+            text-decoration: none;
+            border-bottom: 1px dashed #10B981;
+            transition: all 0.3s ease;
+        }
+        
+        .text-link:hover {
+            color: #059669;
+            border-bottom: 1px solid #059669;
+        }
+        
+        @media (max-width: 768px) {
+            .algorithm-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .share-buttons {
+                margin-top: 1rem;
+            }
+            
+            .language-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .language-tabs button {
+                margin-bottom: 0.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../sorting.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Sorting Algorithms</a>
+        </div>
+        
+        <div class="algorithm-container">
+            <div class="algorithm-header">
+                <div>
+                    <h1>Heap Sort</h1>
+                </div>
+            </div>
+            
+            <div class="algorithm-description">
+                <p>Heap sort is a comparison-based sorting technique based on Binary Heap Data Structure. It can be seen as an optimization over <a href="selection.html" class="text-link">selection sort</a> where we first find the max (or min) element and swap it with the last (or first). We repeat the same process for the remaining elements. In Heap Sort, we use Binary Heap so that we can quickly find and move the max element in O(Log n) instead of O(n) and hence achieve the O(n Log n) time complexity.</p>
+            </div>
+            
+            <div class="algorithm-steps">
+                <h2>Heap Sort Algorithm</h2>
+                <p>First convert the array into a max heap using <strong>heapify</strong>. Please note that this happens in-place. The array elements are re-arranged to follow heap properties. Then one by one delete the root node of the Max-heap and replace it with the last node and <strong>heapify</strong>. Repeat this process while size of heap is greater than 1.</p>
+                
+                <ul>
+                    <li>Rearrange array elements so that they form a Max Heap.</li>
+                    <li>Repeat the following steps until the heap contains only one element:
+                        <ul>
+                            <li>Swap the root element of the heap (which is the largest element in current heap) with the last element of the heap.</li>
+                            <li>Remove the last element of the heap (which is now in the correct position). We mainly reduce heap size and do not remove element from the actual array.</li>
+                            <li>Heapify the remaining elements of the heap.</li>
+                        </ul>
+                    </li>
+                    <li>Finally we get sorted array.</li>
+                </ul>
+            </div>
+            
+            <div class="implementation">
+                <div class="implementation-header">
+                    <h2>Implementation</h2>
+                </div>
+                
+                
+                <div class="code-container">
+                    <div class="language-tabs">
+                        <button class="language-tab active" data-lang="cpp">C++</button>
+                        <button class="language-tab" data-lang="c">C</button>
+                        <button class="language-tab" data-lang="java">Java</button>
+                        <button class="language-tab" data-lang="python">Python</button>
+                        <button class="language-tab" data-lang="csharp">C#</button>
+                        <button class="language-tab" data-lang="javascript">JavaScript</button>
+                        <button class="language-tab" data-lang="php">PHP</button>
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-header">
+                            <div class="editor-buttons">
+                                <button title="Copy code"><i class="far fa-copy"></i></button>
+                                <button title="Run code"><i class="fas fa-play"></i></button>
+                                <button title="Full screen"><i class="fas fa-expand"></i></button>
+                            </div>
+                        </div>
+                        
+                        <!-- C++ implementation -->
+                        <div class="code-block active" data-lang="cpp">
+                            <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// To heapify a subtree with node i
+// which is an index in arr[].
+// n is size of heap
+void heapify(vector&lt;int&gt;& arr, int n, int i) {
+    // Initialize largest as root
+    int largest = i;
+    
+    // Left = 2*i + 1
+    int l = 2 * i + 1;
+    
+    // Right = 2*i + 2
+    int r = 2 * i + 2;
+    
+    // If left child is larger than root
+    if (l < n && arr[l] > arr[largest])
+        largest = l;
+    
+    // If right child is larger than largest so far
+    if (r < n && arr[r] > arr[largest])
+        largest = r;
+    
+    // If largest is not root
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+        
+        // Recursively heapify the affected sub-tree
+        heapify(arr, n, largest);
+    }
+}
+
+// Main function to do heap sort
+void heapSort(vector&lt;int&gt;& arr) {
+    int n = arr.size();
+    
+    // Build heap (rearrange array)
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+    
+    // One by one extract an element from heap
+    for (int i = n - 1; i > 0; i--) {
+        // Move current root to end
+        swap(arr[0], arr[i]);
+        
+        // Call max heapify on the reduced heap
+        heapify(arr, i, 0);
+    }
+}
+
+// A utility function to print array of size n
+void printArray(vector&lt;int&gt;& arr) {
+    for (int i = 0; i < arr.size(); i++)
+        cout << arr[i] << " ";
+    cout << "\n";
+}
+
+// Driver code
+int main() {
+    vector&lt;int&gt; arr = { 12, 11, 13, 5, 6, 7 };
+    
+    heapSort(arr);
+    
+    cout << "Sorted array is \n";
+    printArray(arr);
+}</code></pre>
+                        </div>
+                        
+                        <!-- C implementation -->
+                        <div class="code-block" data-lang="c">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// To heapify a subtree rooted with node i which is
+// an index in arr[]. n is size of heap
+void heapify(int arr[], int n, int i) {
+    int largest = i; // Initialize largest as root
+    int l = 2 * i + 1; // left = 2*i + 1
+    int r = 2 * i + 2; // right = 2*i + 2
+
+    // If left child is larger than root
+    if (l < n && arr[l] > arr[largest])
+        largest = l;
+
+    // If right child is larger than largest so far
+    if (r < n && arr[r] > arr[largest])
+        largest = r;
+
+    // If largest is not root
+    if (largest != i) {
+        int swap = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = swap;
+
+        // Recursively heapify the affected sub-tree
+        heapify(arr, n, largest);
+    }
+}
+
+// Main function to do heap sort
+void heapSort(int arr[], int n) {
+    // Build heap (rearrange array)
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+
+    // One by one extract an element from heap
+    for (int i = n - 1; i > 0; i--) {
+        // Move current root to end
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        // call max heapify on the reduced heap
+        heapify(arr, i, 0);
+    }
+}
+
+/* A utility function to print array of size n */
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; ++i)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+// Driver code
+int main() {
+    int arr[] = { 12, 11, 13, 5, 6, 7 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    heapSort(arr, n);
+
+    printf("Sorted array is \n");
+    printArray(arr, n);
+}</code></pre>
+                        </div>
+                        
+                        <!-- Java implementation -->
+                        <div class="code-block" data-lang="java">
+                            <pre><code class="language-java">// Java program for implementation of Heap Sort
+public class HeapSort {
+    public void sort(int arr[]) {
+        int n = arr.length;
+
+        // Build heap (rearrange array)
+        for (int i = n / 2 - 1; i >= 0; i--)
+            heapify(arr, n, i);
+
+        // One by one extract an element from heap
+        for (int i = n - 1; i > 0; i--) {
+            // Move current root to end
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            // call max heapify on the reduced heap
+            heapify(arr, i, 0);
+        }
+    }
+
+    // To heapify a subtree rooted with node i which is
+    // an index in arr[]. n is size of heap
+    void heapify(int arr[], int n, int i) {
+        int largest = i; // Initialize largest as root
+        int l = 2 * i + 1; // left = 2*i + 1
+        int r = 2 * i + 2; // right = 2*i + 2
+
+        // If left child is larger than root
+        if (l < n && arr[l] > arr[largest])
+            largest = l;
+
+        // If right child is larger than largest so far
+        if (r < n && arr[r] > arr[largest])
+            largest = r;
+
+        // If largest is not root
+        if (largest != i) {
+            int swap = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = swap;
+
+            // Recursively heapify the affected sub-tree
+            heapify(arr, n, largest);
+        }
+    }
+
+    /* A utility function to print array of size n */
+    static void printArray(int arr[]) {
+        int n = arr.length;
+        for (int i = 0; i < n; ++i)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+
+    // Driver code
+    public static void main(String args[]) {
+        int arr[] = { 12, 11, 13, 5, 6, 7 };
+        int n = arr.length;
+
+        HeapSort ob = new HeapSort();
+        ob.sort(arr);
+
+        System.out.println("Sorted array is");
+        printArray(arr);
+    }
+}</code></pre>
+                        </div>
+                        
+                        <!-- Python implementation -->
+                        <div class="code-block" data-lang="python">
+                            <pre><code class="language-python"># Python program for implementation of heap Sort
+
+# To heapify subtree rooted at index i.
+# n is size of heap
+def heapify(arr, n, i):
+    largest = i  # Initialize largest as root
+    l = 2 * i + 1     # left = 2*i + 1
+    r = 2 * i + 2     # right = 2*i + 2
+
+    # See if left child of root exists and is
+    # greater than root
+    if l < n and arr[largest] < arr[l]:
+        largest = l
+
+    # See if right child of root exists and is
+    # greater than root
+    if r < n and arr[largest] < arr[r]:
+        largest = r
+
+    # Change root if needed
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]  # swap
+
+        # Heapify the root.
+        heapify(arr, n, largest)
+
+# The main function to sort an array of given size
+def heapSort(arr):
+    n = len(arr)
+
+    # Build a maxheap.
+    for i in range(n//2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    # One by one extract elements
+    for i in range(n-1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]  # swap
+        heapify(arr, i, 0)
+
+# Driver code
+if __name__ == '__main__':
+    arr = [12, 11, 13, 5, 6, 7]
+    heapSort(arr)
+    n = len(arr)
+    print("Sorted array is")
+    for i in range(n):
+        print("%d" % arr[i], end=" ")</code></pre>
+                        </div>
+                        
+                        <!-- C# implementation -->
+                        <div class="code-block" data-lang="csharp">
+                            <pre><code class="language-csharp">// C# program for implementation of Heap Sort
+using System;
+
+public class HeapSort {
+    public void Sort(int[] arr) {
+        int n = arr.Length;
+
+        // Build heap (rearrange array)
+        for (int i = n / 2 - 1; i >= 0; i--)
+            Heapify(arr, n, i);
+
+        // One by one extract an element from heap
+        for (int i = n - 1; i > 0; i--) {
+            // Move current root to end
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            // call max heapify on the reduced heap
+            Heapify(arr, i, 0);
+        }
+    }
+
+    // To heapify a subtree rooted with node i which is
+    // an index in arr[]. n is size of heap
+    void Heapify(int[] arr, int n, int i) {
+        int largest = i; // Initialize largest as root
+        int l = 2 * i + 1; // left = 2*i + 1
+        int r = 2 * i + 2; // right = 2*i + 2
+
+        // If left child is larger than root
+        if (l < n && arr[l] > arr[largest])
+            largest = l;
+
+        // If right child is larger than largest so far
+        if (r < n && arr[r] > arr[largest])
+            largest = r;
+
+        // If largest is not root
+        if (largest != i) {
+            int swap = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = swap;
+
+            // Recursively heapify the affected sub-tree
+            Heapify(arr, n, largest);
+        }
+    }
+
+    /* A utility function to print array of size n */
+    static void PrintArray(int[] arr) {
+        int n = arr.Length;
+        for (int i = 0; i < n; ++i)
+            Console.Write(arr[i] + " ");
+        Console.WriteLine();
+    }
+
+    // Driver code
+    public static void Main() {
+        int[] arr = { 12, 11, 13, 5, 6, 7 };
+        int n = arr.Length;
+
+        HeapSort ob = new HeapSort();
+        ob.Sort(arr);
+
+        Console.WriteLine("Sorted array is");
+        PrintArray(arr);
+    }
+}</code></pre>
+                        </div>
+                        
+                        <!-- JavaScript implementation -->
+                        <div class="code-block" data-lang="javascript">
+                            <pre><code class="language-javascript">// JavaScript program for implementation of Heap Sort
+
+// To heapify a subtree rooted with node i which is
+// an index in arr[]. n is size of heap
+function heapify(arr, n, i) {
+    let largest = i; // Initialize largest as root
+    let l = 2 * i + 1; // left = 2*i + 1
+    let r = 2 * i + 2; // right = 2*i + 2
+
+    // If left child is larger than root
+    if (l < n && arr[l] > arr[largest])
+        largest = l;
+
+    // If right child is larger than largest so far
+    if (r < n && arr[r] > arr[largest])
+        largest = r;
+
+    // If largest is not root
+    if (largest != i) {
+        let swap = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = swap;
+
+        // Recursively heapify the affected sub-tree
+        heapify(arr, n, largest);
+    }
+}
+
+// Main function to do heap sort
+function heapSort(arr) {
+    const n = arr.length;
+
+    // Build heap (rearrange array)
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--)
+        heapify(arr, n, i);
+
+    // One by one extract an element from heap
+    for (let i = n - 1; i > 0; i--) {
+        // Move current root to end
+        let temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        // call max heapify on the reduced heap
+        heapify(arr, i, 0);
+    }
+    return arr;
+}
+
+// Driver code
+let arr = [12, 11, 13, 5, 6, 7];
+heapSort(arr);
+console.log("Sorted array is:");
+console.log(arr.join(" "));</code></pre>
+                        </div>
+                        
+                        <!-- PHP implementation -->
+                        <div class="code-block" data-lang="php">
+                            <pre><code class="language-php">&lt;?php
+// PHP program for implementation of Heap Sort
+
+// To heapify a subtree rooted with node i which is
+// an index in arr[]. n is size of heap
+function heapify(&$arr, $n, $i) {
+    $largest = $i; // Initialize largest as root
+    $l = 2 * $i + 1; // left = 2*i + 1
+    $r = 2 * $i + 2; // right = 2*i + 2
+
+    // If left child is larger than root
+    if ($l < $n && $arr[$l] > $arr[$largest])
+        $largest = $l;
+
+    // If right child is larger than largest so far
+    if ($r < $n && $arr[$r] > $arr[$largest])
+        $largest = $r;
+
+    // If largest is not root
+    if ($largest != $i) {
+        $swap = $arr[$i];
+        $arr[$i] = $arr[$largest];
+        $arr[$largest] = $swap;
+
+        // Recursively heapify the affected sub-tree
+        heapify($arr, $n, $largest);
+    }
+}
+
+// main function to do heap sort
+function heapSort(&$arr) {
+    $n = count($arr);
+
+    // Build heap (rearrange array)
+    for ($i = $n / 2 - 1; $i >= 0; $i--)
+        heapify($arr, $n, $i);
+
+    // One by one extract an element from heap
+    for ($i = $n - 1; $i > 0; $i--) {
+        // Move current root to end
+        $temp = $arr[0];
+        $arr[0] = $arr[$i];
+        $arr[$i] = $temp;
+
+        // call max heapify on the reduced heap
+        heapify($arr, $i, 0);
+    }
+}
+
+// A utility function to print array of size n
+function printArray($arr) {
+    $n = count($arr);
+    for ($i = 0; $i < $n; ++$i)
+        echo $arr[$i] . " ";
+    echo "\n";
+}
+
+// Driver code
+$arr = array(12, 11, 13, 5, 6, 7);
+heapSort($arr);
+echo "Sorted array is \n";
+printArray($arr);
+?&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="output-container">
+                    <div class="output-header">Output</div>
+                    <div class="output-content">
+                        Sorted array is
+                        5 6 7 11 12 13
+                    </div>
+                </div>
+                
+                <div class="complexity-container">
+                    <div class="complexity-header">Complexity Analysis of Heap Sort</div>
+                    
+                    <div class="complexity-subheader">Time Complexity: O(n log n)</div>
+                    <div class="complexity-subheader">Auxiliary Space: O(log n)</div>
+                    <p>due to the recursive call stack. However, auxiliary space can be O(1) for iterative implementation.</p>
+                </div>
+                
+                <div class="important-points">
+                    <div class="important-points-header">Important points about Heap Sort</div>
+                    <ul>
+                        <li>An in-place algorithm.</li>
+                        <li>Its typical implementation is not stable but can be made stable.</li>
+                        <li>Generally, it has better performance than quicksort for data that is nearly sorted or reversed.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../sorting/function.js"></script>
+</body>
+</html>

@@ -1,0 +1,713 @@
+{
+  "level": 1,
+  "title": "HSK 1 - Quiz Collection",
+  "stages": {
+    "stage1": [
+      {
+        "question": "What does '爱' mean?",
+        "options": ["hate", "love", "like", "dislike"],
+        "correct": 1,
+        "explanation": "'爱' (ài) means 'love' in Chinese."
+      },
+      {
+        "question": "How do you say 'hobby' in Chinese?",
+        "options": ["爱好", "喜欢", "工作", "学习"],
+        "correct": 0,
+        "explanation": "'爱好' (àihào) means 'hobby' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '八'?",
+        "options": ["seven", "nine", "eight", "six"],
+        "correct": 2,
+        "explanation": "'八' (bā) means 'eight' in Chinese."
+      },
+      {
+        "question": "Which word means 'father'?",
+        "options": ["妈妈", "爸爸", "哥哥", "弟弟"],
+        "correct": 1,
+        "explanation": "'爸爸' (bàba) means 'father' in Chinese."
+      },
+      {
+        "question": "What does '白' mean?",
+        "options": ["black", "red", "white", "blue"],
+        "correct": 2,
+        "explanation": "'白' (bái) means 'white' in Chinese."
+      },
+      {
+        "question": "How do you say 'hundred' in Chinese?",
+        "options": ["十", "百", "千", "万"],
+        "correct": 1,
+        "explanation": "'百' (bǎi) means 'hundred' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '班'?",
+        "options": ["school", "class", "teacher", "student"],
+        "correct": 1,
+        "explanation": "'班' (bān) means 'class' in Chinese."
+      },
+      {
+        "question": "Which word means 'half'?",
+        "options": ["全", "半", "多", "少"],
+        "correct": 1,
+        "explanation": "'半' (bàn) means 'half' in Chinese."
+      }
+    ],
+    "stage2": [
+      {
+        "question": "What does '帮' mean?",
+        "options": ["hurt", "help", "ignore", "avoid"],
+        "correct": 1,
+        "explanation": "'帮' (bāng) means 'help' in Chinese."
+      },
+      {
+        "question": "How do you say 'bag' in Chinese?",
+        "options": ["书", "包", "笔", "纸"],
+        "correct": 1,
+        "explanation": "'包' (bāo) means 'bag' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '杯子'?",
+        "options": ["plate", "bowl", "cup", "spoon"],
+        "correct": 2,
+        "explanation": "'杯子' (bēizi) means 'cup' in Chinese."
+      },
+      {
+        "question": "Which direction is '北'?",
+        "options": ["south", "east", "west", "north"],
+        "correct": 3,
+        "explanation": "'北' (běi) means 'north' in Chinese."
+      },
+      {
+        "question": "What does '本' mean?",
+        "options": ["pen", "book", "paper", "desk"],
+        "correct": 1,
+        "explanation": "'本' (běn) is a measure word for books."
+      },
+      {
+        "question": "How do you say 'compare' in Chinese?",
+        "options": ["比", "和", "像", "同"],
+        "correct": 0,
+        "explanation": "'比' (bǐ) means 'compare' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '别'?",
+        "options": ["please", "don't", "can", "must"],
+        "correct": 1,
+        "explanation": "'别' (bié) means 'don't' in Chinese."
+      },
+      {
+        "question": "Which word means 'illness'?",
+        "options": ["药", "病", "医生", "医院"],
+        "correct": 1,
+        "explanation": "'病' (bìng) means 'illness' in Chinese."
+      }
+    ],
+    "stage3": [
+      {
+        "question": "What does '不客气' mean?",
+        "options": ["thank you", "sorry", "you're welcome", "excuse me"],
+        "correct": 2,
+        "explanation": "'不客气' (bù kè qi) means 'you're welcome' in Chinese."
+      },
+      {
+        "question": "How do you say 'dish/vegetable' in Chinese?",
+        "options": ["肉", "菜", "饭", "面"],
+        "correct": 1,
+        "explanation": "'菜' (cài) means 'dish' or 'vegetable' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '茶'?",
+        "options": ["coffee", "water", "tea", "juice"],
+        "correct": 2,
+        "explanation": "'茶' (chá) means 'tea' in Chinese."
+      },
+      {
+        "question": "Which word means 'often'?",
+        "options": ["有时", "常常", "从不", "很少"],
+        "correct": 1,
+        "explanation": "'常常' (chángcháng) means 'often' in Chinese."
+      },
+      {
+        "question": "What does '唱歌' mean?",
+        "options": ["dance", "sing songs", "play music", "listen"],
+        "correct": 1,
+        "explanation": "'唱歌' (chànggē) means 'sing songs' in Chinese."
+      },
+      {
+        "question": "How do you say 'vehicle' in Chinese?",
+        "options": ["车", "船", "飞机", "火车"],
+        "correct": 0,
+        "explanation": "'车' (chē) means 'vehicle' or 'car' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '吃饭'?",
+        "options": ["drink water", "eat meal", "cook food", "buy food"],
+        "correct": 1,
+        "explanation": "'吃饭' (chī fàn) means 'eat a meal' in Chinese."
+      },
+      {
+        "question": "Which word means 'go out'?",
+        "options": ["进来", "出去", "回来", "过来"],
+        "correct": 1,
+        "explanation": "'出去' (chū qù) means 'go out' in Chinese."
+      }
+    ],
+    "stage4": [
+      {
+        "question": "What does '从' mean?",
+        "options": ["to", "from", "with", "without"],
+        "correct": 1,
+        "explanation": "'从' (cóng) means 'from' in Chinese."
+      },
+      {
+        "question": "How do you say 'wrong' in Chinese?",
+        "options": ["对", "错", "好", "坏"],
+        "correct": 1,
+        "explanation": "'错' (cuò) means 'wrong' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '打电话'?",
+        "options": ["send message", "make call", "write letter", "send email"],
+        "correct": 1,
+        "explanation": "'打电话' (dǎ diànhuà) means 'make a phone call' in Chinese."
+      },
+      {
+        "question": "Which word means 'university'?",
+        "options": ["小学", "中学", "大学", "幼儿园"],
+        "correct": 2,
+        "explanation": "'大学' (dàxué) means 'university' in Chinese."
+      },
+      {
+        "question": "What does '到' mean?",
+        "options": ["leave", "arrive", "stay", "return"],
+        "correct": 1,
+        "explanation": "'到' (dào) means 'arrive' or 'reach' in Chinese."
+      },
+      {
+        "question": "How do you say 'wait' in Chinese?",
+        "options": ["走", "等", "跑", "停"],
+        "correct": 1,
+        "explanation": "'等' (děng) means 'wait' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '地方'?",
+        "options": ["time", "person", "place", "thing"],
+        "correct": 2,
+        "explanation": "'地方' (dìfāng) means 'place' or 'location' in Chinese."
+      },
+      {
+        "question": "Which phrase means 'on the ground'?",
+        "options": ["天上", "地上", "水里", "空中"],
+        "correct": 1,
+        "explanation": "'地上' (dì shàng) means 'on the ground' in Chinese."
+      }
+    ],
+    "stage5": [
+      {
+        "question": "What does '次' mean when counting?",
+        "options": ["day", "time/occasion", "year", "month"],
+        "correct": 1,
+        "explanation": "'次' (cì) is a measure word for times or occasions."
+      },
+      {
+        "question": "How do you say 'take a taxi' in Chinese?",
+        "options": ["坐车", "打车", "开车", "买车"],
+        "correct": 1,
+        "explanation": "'打车' (dǎ chē) means 'take a taxi' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '打开'?",
+        "options": ["close", "open", "break", "fix"],
+        "correct": 1,
+        "explanation": "'打开' (dǎ kāi) means 'open' in Chinese."
+      },
+      {
+        "question": "Which word means 'play ball sports'?",
+        "options": ["打球", "踢球", "投球", "抛球"],
+        "correct": 0,
+        "explanation": "'打球' (dǎ qiú) means 'play ball sports' in Chinese."
+      },
+      {
+        "question": "What does '大学生' mean?",
+        "options": ["high school student", "university student", "graduate student", "elementary student"],
+        "correct": 1,
+        "explanation": "'大学生' (dàxuéshēng) means 'university student' in Chinese."
+      },
+      {
+        "question": "How do you say 'get/obtain' in Chinese?",
+        "options": ["失去", "得到", "给予", "拿走"],
+        "correct": 1,
+        "explanation": "'得到' (dé dào) means 'get' or 'obtain' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '地点'?",
+        "options": ["time", "location", "person", "event"],
+        "correct": 1,
+        "explanation": "'地点' (dì diǎn) means 'location' in Chinese."
+      },
+      {
+        "question": "Which is the possessive particle in Chinese?",
+        "options": ["了", "的", "在", "和"],
+        "correct": 1,
+        "explanation": "'的' (de) is the possessive particle in Chinese."
+      }
+    ],
+    "stage6": [
+      {
+        "question": "What does '北京' refer to?",
+        "options": ["Shanghai", "Beijing", "Guangzhou", "Shenzhen"],
+        "correct": 1,
+        "explanation": "'北京' (Běijīng) is the capital city Beijing."
+      },
+      {
+        "question": "How do you say 'steamed bun' in Chinese?",
+        "options": ["饺子", "包子", "面条", "米饭"],
+        "correct": 1,
+        "explanation": "'包子' (bāozi) means 'steamed bun' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '病人'?",
+        "options": ["doctor", "nurse", "patient", "medicine"],
+        "correct": 2,
+        "explanation": "'病人' (bìngrén) means 'patient' in Chinese."
+      },
+      {
+        "question": "Which word means 'other people'?",
+        "options": ["我们", "别人", "大家", "人们"],
+        "correct": 1,
+        "explanation": "'别人' (bié rén) means 'other people' in Chinese."
+      },
+      {
+        "question": "What does '车站' mean?",
+        "options": ["airport", "station", "hospital", "school"],
+        "correct": 1,
+        "explanation": "'车站' (chē zhàn) means 'station' (bus/train station) in Chinese."
+      },
+      {
+        "question": "How do you say 'come out' in Chinese?",
+        "options": ["进去", "出来", "回去", "过来"],
+        "correct": 1,
+        "explanation": "'出来' (chū lái) means 'come out' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '常'?",
+        "options": ["never", "sometimes", "often", "always"],
+        "correct": 2,
+        "explanation": "'常' (cháng) means 'often' or 'frequently' in Chinese."
+      },
+      {
+        "question": "Which word means 'daytime'?",
+        "options": ["晚上", "白天", "早上", "下午"],
+        "correct": 1,
+        "explanation": "'白天' (bái tiān) means 'daytime' in Chinese."
+      }
+    ],
+    "stage7": [
+      {
+        "question": "What does '地图' mean?",
+        "options": ["book", "map", "picture", "newspaper"],
+        "correct": 1,
+        "explanation": "'地图' (dì tú) means 'map' in Chinese."
+      },
+      {
+        "question": "How do you say 'younger brother' in Chinese?",
+        "options": ["哥哥", "弟弟", "姐姐", "妹妹"],
+        "correct": 1,
+        "explanation": "'弟弟' (dì di) means 'younger brother' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '电话'?",
+        "options": ["computer", "telephone", "television", "radio"],
+        "correct": 1,
+        "explanation": "'电话' (diàn huà) means 'telephone' in Chinese."
+      },
+      {
+        "question": "Which word means 'computer'?",
+        "options": ["电视", "电脑", "电话", "电影"],
+        "correct": 1,
+        "explanation": "'电脑' (diàn nǎo) means 'computer' in Chinese."
+      },
+      {
+        "question": "What does '电影' mean?",
+        "options": ["television", "movie", "music", "book"],
+        "correct": 1,
+        "explanation": "'电影' (diàn yǐng) means 'movie' in Chinese."
+      },
+      {
+        "question": "How do you say 'o'clock' in Chinese?",
+        "options": ["分", "点", "时", "刻"],
+        "correct": 1,
+        "explanation": "'点' (diǎn) means 'o'clock' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '第'?",
+        "options": ["first", "ordinal prefix", "number", "last"],
+        "correct": 1,
+        "explanation": "'第' (dì) is an ordinal number prefix in Chinese."
+      },
+      {
+        "question": "Which word means 'electricity'?",
+        "options": ["水", "电", "火", "风"],
+        "correct": 1,
+        "explanation": "'电' (diàn) means 'electricity' in Chinese."
+      }
+    ],
+    "stage8": [
+      {
+        "question": "What does '电影院' mean?",
+        "options": ["library", "cinema", "school", "hospital"],
+        "correct": 1,
+        "explanation": "'电影院' (diàn yǐng yuàn) means 'cinema' in Chinese."
+      },
+      {
+        "question": "How do you say 'east' in Chinese?",
+        "options": ["西", "南", "东", "北"],
+        "correct": 2,
+        "explanation": "'东' (dōng) means 'east' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '东西'?",
+        "options": ["direction", "thing", "food", "place"],
+        "correct": 1,
+        "explanation": "'东西' (dōng xi) means 'thing' or 'stuff' in Chinese."
+      },
+      {
+        "question": "Which word means 'understand'?",
+        "options": ["知道", "懂", "学习", "想"],
+        "correct": 1,
+        "explanation": "'懂' (dǒng) means 'understand' in Chinese."
+      },
+      {
+        "question": "What does '动作' mean?",
+        "options": ["feeling", "action", "thought", "word"],
+        "correct": 1,
+        "explanation": "'动作' (dòng zuò) means 'action' in Chinese."
+      },
+      {
+        "question": "How do you say 'all' in Chinese?",
+        "options": ["些", "都", "很", "太"],
+        "correct": 1,
+        "explanation": "'都' (dōu) means 'all' or 'both' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '读书'?",
+        "options": ["write", "study", "play", "work"],
+        "correct": 1,
+        "explanation": "'读书' (dú shū) means 'study' or 'read books' in Chinese."
+      },
+      {
+        "question": "Which word means 'correct'?",
+        "options": ["错", "对", "坏", "假"],
+        "correct": 1,
+        "explanation": "'对' (duì) means 'correct' or 'right' in Chinese."
+      }
+    ],
+    "stage9": [
+      {
+        "question": "What does '对不起' mean?",
+        "options": ["thank you", "sorry", "hello", "goodbye"],
+        "correct": 1,
+        "explanation": "'对不起' (duì bu qǐ) means 'sorry' in Chinese."
+      },
+      {
+        "question": "How do you say 'many' in Chinese?",
+        "options": ["少", "多", "一些", "几"],
+        "correct": 1,
+        "explanation": "'多' (duō) means 'many' or 'much' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '多少'?",
+        "options": ["how old", "how many", "how far", "how long"],
+        "correct": 1,
+        "explanation": "'多少' (duō shao) means 'how many' or 'how much' in Chinese."
+      },
+      {
+        "question": "Which word means 'hungry'?",
+        "options": ["饱", "饿", "渴", "累"],
+        "correct": 1,
+        "explanation": "'饿' (è) means 'hungry' in Chinese."
+      },
+      {
+        "question": "What does '儿子' mean?",
+        "options": ["daughter", "son", "father", "mother"],
+        "correct": 1,
+        "explanation": "'儿子' (ér zi) means 'son' in Chinese."
+      },
+      {
+        "question": "How do you say 'restaurant' in Chinese?",
+        "options": ["商店", "饭店", "学校", "医院"],
+        "correct": 1,
+        "explanation": "'饭店' (fàn diàn) means 'restaurant' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '房间'?",
+        "options": ["kitchen", "room", "garden", "garage"],
+        "correct": 1,
+        "explanation": "'房间' (fáng jiān) means 'room' in Chinese."
+      },
+      {
+        "question": "Which word means 'house'?",
+        "options": ["车", "房子", "树", "桥"],
+        "correct": 1,
+        "explanation": "'房子' (fáng zi) means 'house' in Chinese."
+      }
+    ],
+    "stage10": [
+      {
+        "question": "What does '放' mean?",
+        "options": ["take", "put", "carry", "hold"],
+        "correct": 1,
+        "explanation": "'放' (fàng) means 'put' or 'place' in Chinese."
+      },
+      {
+        "question": "How do you say 'have vacation' in Chinese?",
+        "options": ["上班", "放假", "工作", "学习"],
+        "correct": 1,
+        "explanation": "'放假' (fàng jià) means 'have vacation' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '飞机'?",
+        "options": ["car", "train", "airplane", "ship"],
+        "correct": 2,
+        "explanation": "'飞机' (fēi jī) means 'airplane' in Chinese."
+      },
+      {
+        "question": "Which word means 'very'?",
+        "options": ["很", "非常", "太", "真"],
+        "correct": 1,
+        "explanation": "'非常' (fēi cháng) means 'very' or 'extremely' in Chinese."
+      },
+      {
+        "question": "What does '分' mean when talking about time?",
+        "options": ["hour", "minute", "second", "day"],
+        "correct": 1,
+        "explanation": "'分' (fēn) means 'minute' in Chinese."
+      },
+      {
+        "question": "How do you say 'wind' in Chinese?",
+        "options": ["雨", "雪", "风", "云"],
+        "correct": 2,
+        "explanation": "'风' (fēng) means 'wind' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '干净'?",
+        "options": ["dirty", "clean", "messy", "broken"],
+        "correct": 1,
+        "explanation": "'干净' (gān jìng) means 'clean' in Chinese."
+      },
+      {
+        "question": "Which word means 'fly'?",
+        "options": ["走", "跑", "飞", "游"],
+        "correct": 2,
+        "explanation": "'飞' (fēi) means 'fly' in Chinese."
+      }
+    ],
+    "stage11": [
+      {
+        "question": "What does '高' mean?",
+        "options": ["short", "tall", "fat", "thin"],
+        "correct": 1,
+        "explanation": "'高' (gāo) means 'tall' or 'high' in Chinese."
+      },
+      {
+        "question": "How do you say 'happy' in Chinese?",
+        "options": ["难过", "高兴", "生气", "害怕"],
+        "correct": 1,
+        "explanation": "'高兴' (gāo xìng) means 'happy' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '告诉'?",
+        "options": ["ask", "tell", "listen", "speak"],
+        "correct": 1,
+        "explanation": "'告诉' (gào sù) means 'tell' in Chinese."
+      },
+      {
+        "question": "Which word means 'older brother'?",
+        "options": ["弟弟", "哥哥", "妹妹", "姐姐"],
+        "correct": 1,
+        "explanation": "'哥哥' (gē ge) means 'older brother' in Chinese."
+      },
+      {
+        "question": "What does '歌' mean?",
+        "options": ["dance", "song", "movie", "book"],
+        "correct": 1,
+        "explanation": "'歌' (gē) means 'song' in Chinese."
+      },
+      {
+        "question": "How do you say 'give' in Chinese?",
+        "options": ["拿", "给", "要", "买"],
+        "correct": 1,
+        "explanation": "'给' (gěi) means 'give' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '跟'?",
+        "options": ["without", "with", "before", "after"],
+        "correct": 1,
+        "explanation": "'跟' (gēn) means 'with' in Chinese."
+      },
+      {
+        "question": "Which is the general classifier in Chinese?",
+        "options": ["本", "个", "张", "只"],
+        "correct": 1,
+        "explanation": "'个' (gè) is the general classifier in Chinese."
+      }
+    ],
+    "stage12": [
+      {
+        "question": "What does '工人' mean?",
+        "options": ["teacher", "worker", "doctor", "student"],
+        "correct": 1,
+        "explanation": "'工人' (gōng rén) means 'worker' in Chinese."
+      },
+      {
+        "question": "How do you say 'work' in Chinese?",
+        "options": ["学习", "工作", "玩", "休息"],
+        "correct": 1,
+        "explanation": "'工作' (gōng zuò) means 'work' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '关'?",
+        "options": ["open", "close", "push", "pull"],
+        "correct": 1,
+        "explanation": "'关' (guān) means 'close' in Chinese."
+      },
+      {
+        "question": "Which word means 'expensive'?",
+        "options": ["便宜", "贵", "免费", "便宜"],
+        "correct": 1,
+        "explanation": "'贵' (guì) means 'expensive' in Chinese."
+      },
+      {
+        "question": "What does '国家' mean?",
+        "options": ["city", "country", "province", "village"],
+        "correct": 1,
+        "explanation": "'国家' (guó jiā) means 'country' in Chinese."
+      },
+      {
+        "question": "How do you say 'pass' in Chinese?",
+        "options": ["停", "过", "来", "去"],
+        "correct": 1,
+        "explanation": "'过' (guò) means 'pass' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '还是'?",
+        "options": ["and", "or", "but", "so"],
+        "correct": 1,
+        "explanation": "'还是' (hái shì) means 'or' in Chinese."
+      },
+      {
+        "question": "Which word means 'still'?",
+        "options": ["已经", "还", "刚", "就"],
+        "correct": 1,
+        "explanation": "'还' (hái) means 'still' in Chinese."
+      },
+      {
+        "question": "What does '能' mean?",
+        "options": ["want", "need", "can", "must"],
+        "correct": 2,
+        "explanation": "'能' (néng) means 'can' or 'to be able to' in Chinese."
+      },
+      {
+        "question": "How do you say 'you' in Chinese?",
+        "options": ["我", "你", "他", "她"],
+        "correct": 1,
+        "explanation": "'你' (nǐ) means 'you' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '呢'?",
+        "options": ["question particle", "past tense marker", "plural marker", "possessive marker"],
+        "correct": 0,
+        "explanation": "'呢' (ne) is a question particle in Chinese."
+      },
+      {
+        "question": "Which word means 'woman'?",
+        "options": ["男人", "女人", "男孩", "女孩"],
+        "correct": 1,
+        "explanation": "'女人' (nǚ rén) means 'woman' in Chinese."
+      }
+    ],
+    "stage13": [
+      {
+        "question": "What does '孩子' mean?",
+        "options": ["adult", "child", "elderly", "teenager"],
+        "correct": 1,
+        "explanation": "'孩子' (hái zi) means 'child' in Chinese."
+      },
+      {
+        "question": "How do you say 'Chinese language' in Chinese?",
+        "options": ["英语", "汉语", "法语", "日语"],
+        "correct": 1,
+        "explanation": "'汉语' (Hàn yǔ) means 'Chinese language' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '汉字'?",
+        "options": ["English letter", "Chinese character", "number", "symbol"],
+        "correct": 1,
+        "explanation": "'汉字' (Hàn zì) means 'Chinese character' in Chinese."
+      },
+      {
+        "question": "Which word means 'good'?",
+        "options": ["坏", "好", "差", "错"],
+        "correct": 1,
+        "explanation": "'好' (hǎo) means 'good' in Chinese."
+      },
+      {
+        "question": "What does '好吃' mean?",
+        "options": ["ugly", "delicious", "expensive", "cheap"],
+        "correct": 1,
+        "explanation": "'好吃' (hǎo chī) means 'delicious' in Chinese."
+      },
+      {
+        "question": "How do you say 'good-looking' in Chinese?",
+        "options": ["好看", "好听", "好吃", "好玩"],
+        "correct": 0,
+        "explanation": "'好看' (hǎo kàn) means 'good-looking' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '好玩儿'?",
+        "options": ["boring", "fun", "difficult", "easy"],
+        "correct": 1,
+        "explanation": "'好玩儿' (hǎo wánr) means 'fun' in Chinese."
+      },
+      {
+        "question": "Which word means 'number'?",
+        "options": ["字", "号", "名", "码"],
+        "correct": 1,
+        "explanation": "'号' (hào) means 'number' in Chinese."
+      }
+    ],
+    "stage14": [
+      {
+        "question": "What does '喝' mean?",
+        "options": ["eat", "drink", "sleep", "walk"],
+        "correct": 1,
+        "explanation": "'喝' (hē) means 'drink' in Chinese."
+      },
+      {
+        "question": "What is the meaning of '和'?",
+        "options": ["but", "or", "and", "so"],
+        "correct": 2,
+        "explanation": "'和' (hé) means 'and' in Chinese."
+      },
+      {
+        "question": "How do you say 'very' in Chinese?",
+        "options": ["太", "非常", "真", "很"],
+        "correct": 3,
+        "explanation": "'很' (hěn) means 'very' in Chinese."
+      },
+      {
+        "question": "What does '黑' mean?",
+        "options": ["white", "red", "black", "yellow"],
+        "correct": 2,
+        "explanation": "'黑' (hēi) means 'black' in Chinese."
+      },
+      {
+        "question": "Which word means 'red'?",
+        "options": ["黄", "蓝", "绿", "红"],
+        "correct": 3,
+        "explanation": "'红' (hóng) means 'red' in Chinese."
+      }
+    ]
+  }
+}
+

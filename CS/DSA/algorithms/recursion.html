@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+        
+        /* Hero section */
+        .hero-section {
+            background-color: #0052cc;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: #0052cc;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.8rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Code section */
+        .code-section {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-tabs {
+            display: flex;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+            overflow-x: auto;
+        }
+
+        .code-tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .code-tab.active {
+            background-color: #0078d7;
+            color: white;
+        }
+
+        .code-content {
+            padding: 0;
+            position: relative;
+        }
+
+        .code-block {
+            display: none;
+            position: relative;
+        }
+
+        .code-block.active {
+            display: block;
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 1.5rem;
+            overflow-x: auto;
+            border-radius: 0;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 4px;
+            padding: 0.4rem 0.7rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Visual representation */
+        .visual-section {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .recursion-visual {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Steps section */
+        .steps-section ul, .steps-section ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .steps-section li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* Complexity section */
+        .complexity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .complexity-table th, .complexity-table td {
+            border: 1px solid #e0e0e0;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .complexity-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        /* Examples */
+        .example {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0078d7;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .example h3 {
+            margin-bottom: 0.8rem;
+            color: #0052cc;
+        }
+
+        .example pre {
+            background-color: #f1f1f1;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-top: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.3rem;
+            }
+            
+            .content-section h2 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../algorithms.html" class="back-btn">← Back to Algorithms</a>
+        </div>
+        
+        <div class="hero-section">
+            <h1>Recursion</h1>
+            <p>A programming technique where a function calls itself within its own definition. It is usually used to solve problems that can be broken down into smaller instances of the same problem.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>What is Recursion?</h2>
+            <p>Recursion is a method of solving a problem where the solution depends on solutions to smaller instances of the same problem. In programming, this takes the form of a function that calls itself with a modified parameter until it reaches a base case.</p>
+            <p>A recursive function needs two main components:</p>
+            <ul class="steps-section">
+                <li><strong>Base Case:</strong> A condition that stops the recursion to prevent infinite loops</li>
+                <li><strong>Recursive Case:</strong> Where the function calls itself with a changed input to approach the base case</li>
+            </ul>
+            <p>Recursion is particularly useful for tasks that can be defined in terms of similar subtasks, especially when the solution is easier to express in recursive terms than using loops.</p>
+        </div>
+
+        <div class="content-section visual-section">
+            <img src="../../Assets/images/recursion-visualization.png" alt="Recursion Visualization" class="recursion-visual">
+        </div>
+
+        <div class="content-section">
+            <h2>Understanding Recursion Through Examples</h2>
+            
+            <div class="example">
+                <h3>Classic Example: Calculating Factorial</h3>
+                <p>The factorial of a non-negative integer n, denoted n!, is the product of all positive integers less than or equal to n.</p>
+                <p>For example: 5! = 5 × 4 × 3 × 2 × 1 = 120</p>
+                <p>We can define this recursively as: n! = n × (n-1)! with base case 0! = 1</p>
+            </div>
+            
+            <div class="example">
+                <h3>Fibonacci Sequence</h3>
+                <p>The Fibonacci sequence is defined as:</p>
+                <ul>
+                    <li>F(0) = 0 (base case)</li>
+                    <li>F(1) = 1 (base case)</li>
+                    <li>F(n) = F(n-1) + F(n-2) (for n > 1)</li>
+                </ul>
+                <p>This naturally lends itself to a recursive solution.</p>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <div class="code-tabs">
+                <div class="code-tab active" onclick="switchTab(this, 'cpp')">C++</div>
+                <div class="code-tab" onclick="switchTab(this, 'java')">Java</div>
+                <div class="code-tab" onclick="switchTab(this, 'python')">Python</div>
+                <div class="code-tab" onclick="switchTab(this, 'csharp')">C#</div>
+                <div class="code-tab" onclick="switchTab(this, 'javascript')">JavaScript</div>
+                <div class="code-tab" onclick="switchTab(this, 'php')">PHP</div>
+            </div>
+            <div class="code-content">
+                <div class="code-block active" id="cpp">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-cpp">// C++ Examples of Recursion
+
+// Example 1: Factorial calculation
+int factorial(int n) {
+    // Base case
+    if (n == 0 || n == 1)
+        return 1;
+    
+    // Recursive case
+    return n * factorial(n - 1);
+}
+
+// Example 2: Fibonacci sequence
+int fibonacci(int n) {
+    // Base cases
+    if (n <= 0)
+        return 0;
+    if (n == 1)
+        return 1;
+    
+    // Recursive case
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Example 3: Sum of array elements
+int arraySum(int arr[], int n) {
+    // Base case
+    if (n <= 0)
+        return 0;
+    
+    // Recursive case: sum of last element + sum of remaining elements
+    return arr[n-1] + arraySum(arr, n-1);
+}
+
+// Example 4: Binary search using recursion
+int binarySearch(int arr[], int left, int right, int x) {
+    if (right >= left) {
+        int mid = left + (right - left) / 2;
+        
+        // If the element is present at the middle
+        if (arr[mid] == x)
+            return mid;
+        
+        // If element is smaller than mid, search in left subarray
+        if (arr[mid] > x)
+            return binarySearch(arr, left, mid - 1, x);
+        
+        // Else search in right subarray
+        return binarySearch(arr, mid + 1, right, x);
+    }
+    
+    // Element is not present in array
+    return -1;
+}
+
+// Example 5: Tower of Hanoi
+void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod) {
+    if (n == 1) {
+        cout << "Move disk 1 from rod " << from_rod << " to rod " << to_rod << endl;
+        return;
+    }
+    towerOfHanoi(n-1, from_rod, aux_rod, to_rod);
+    cout << "Move disk " << n << " from rod " << from_rod << " to rod " << to_rod << endl;
+    towerOfHanoi(n-1, aux_rod, to_rod, from_rod);
+}</code></pre>
+                </div>
+                <div class="code-block" id="java">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-java">// Java Examples of Recursion
+
+public class RecursionExamples {
+    
+    // Example 1: Factorial calculation
+    public static int factorial(int n) {
+        // Base case
+        if (n == 0 || n == 1)
+            return 1;
+        
+        // Recursive case
+        return n * factorial(n - 1);
+    }
+    
+    // Example 2: Fibonacci sequence
+    public static int fibonacci(int n) {
+        // Base cases
+        if (n <= 0)
+            return 0;
+        if (n == 1)
+            return 1;
+        
+        // Recursive case
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+    
+    // Example 3: Sum of array elements
+    public static int arraySum(int[] arr, int n) {
+        // Base case
+        if (n <= 0)
+            return 0;
+        
+        // Recursive case: sum of last element + sum of remaining elements
+        return arr[n-1] + arraySum(arr, n-1);
+    }
+    
+    // Example 4: Binary search using recursion
+    public static int binarySearch(int[] arr, int left, int right, int x) {
+        if (right >= left) {
+            int mid = left + (right - left) / 2;
+            
+            // If the element is present at the middle
+            if (arr[mid] == x)
+                return mid;
+            
+            // If element is smaller than mid, search in left subarray
+            if (arr[mid] > x)
+                return binarySearch(arr, left, mid - 1, x);
+            
+            // Else search in right subarray
+            return binarySearch(arr, mid + 1, right, x);
+        }
+        
+        // Element is not present in array
+        return -1;
+    }
+    
+    // Example 5: Tower of Hanoi
+    public static void towerOfHanoi(int n, char fromRod, char toRod, char auxRod) {
+        if (n == 1) {
+            System.out.println("Move disk 1 from rod " + fromRod + " to rod " + toRod);
+            return;
+        }
+        towerOfHanoi(n-1, fromRod, auxRod, toRod);
+        System.out.println("Move disk " + n + " from rod " + fromRod + " to rod " + toRod);
+        towerOfHanoi(n-1, auxRod, toRod, fromRod);
+    }
+    
+    // Example 6: String reversal using recursion
+    public static String reverseString(String str) {
+        // Base case
+        if (str.isEmpty())
+            return str;
+            
+        // Recursive case: reverse the substring starting from index 1, then add the first character
+        return reverseString(str.substring(1)) + str.charAt(0);
+    }
+}</code></pre>
+                </div>
+                <div class="code-block" id="python">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-python"># Python Examples of Recursion
+
+# Example 1: Factorial calculation
+def factorial(n):
+    # Base case
+    if n == 0 or n == 1:
+        return 1
+    
+    # Recursive case
+    return n * factorial(n - 1)
+
+# Example 2: Fibonacci sequence
+def fibonacci(n):
+    # Base cases
+    if n <= 0:
+        return 0
+    if n == 1:
+        return 1
+    
+    # Recursive case
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+# Example 3: Sum of array elements
+def array_sum(arr, n):
+    # Base case
+    if n <= 0:
+        return 0
+    
+    # Recursive case: sum of last element + sum of remaining elements
+    return arr[n-1] + array_sum(arr, n-1)
+
+# Example 4: Binary search using recursion
+def binary_search(arr, left, right, x):
+    if right >= left:
+        mid = left + (right - left) // 2
+        
+        # If the element is present at the middle
+        if arr[mid] == x:
+            return mid
+        
+        # If element is smaller than mid, search in left subarray
+        if arr[mid] > x:
+            return binary_search(arr, left, mid - 1, x)
+        
+        # Else search in right subarray
+        return binary_search(arr, mid + 1, right, x)
+    
+    # Element is not present in array
+    return -1
+
+# Example 5: Tower of Hanoi
+def tower_of_hanoi(n, from_rod, to_rod, aux_rod):
+    if n == 1:
+        print(f"Move disk 1 from rod {from_rod} to rod {to_rod}")
+        return
+    tower_of_hanoi(n-1, from_rod, aux_rod, to_rod)
+    print(f"Move disk {n} from rod {from_rod} to rod {to_rod}")
+    tower_of_hanoi(n-1, aux_rod, to_rod, from_rod)
+
+# Example 6: Palindrome check
+def is_palindrome(s):
+    # Base cases
+    if len(s) <= 1:
+        return True
+    
+    # Recursive case: check if first and last characters match and rest is palindrome
+    return s[0] == s[-1] and is_palindrome(s[1:-1])
+
+# Example 7: Directory traversal
+import os
+
+def list_files_recursively(directory):
+    files = []
+    
+    # List all entries in the directory
+    entries = os.listdir(directory)
+    
+    for entry in entries:
+        full_path = os.path.join(directory, entry)
+        
+        # If the entry is a file, add it to the list
+        if os.path.isfile(full_path):
+            files.append(full_path)
+        
+        # If the entry is a directory, recursively list its files
+        elif os.path.isdir(full_path):
+            files.extend(list_files_recursively(full_path))
+    
+    return files</code></pre>
+                </div>
+                <div class="code-block" id="csharp">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-csharp">// C# Examples of Recursion
+
+using System;
+using System.Collections.Generic;
+
+public class RecursionExamples
+{
+    // Example 1: Factorial calculation
+    public static int Factorial(int n)
+    {
+        // Base case
+        if (n == 0 || n == 1)
+            return 1;
+        
+        // Recursive case
+        return n * Factorial(n - 1);
+    }
+    
+    // Example 2: Fibonacci sequence
+    public static int Fibonacci(int n)
+    {
+        // Base cases
+        if (n <= 0)
+            return 0;
+        if (n == 1)
+            return 1;
+        
+        // Recursive case
+        return Fibonacci(n - 1) + Fibonacci(n - 2);
+    }
+    
+    // Example 3: Sum of array elements
+    public static int ArraySum(int[] arr, int n)
+    {
+        // Base case
+        if (n <= 0)
+            return 0;
+        
+        // Recursive case: sum of last element + sum of remaining elements
+        return arr[n-1] + ArraySum(arr, n-1);
+    }
+    
+    // Example 4: Binary search using recursion
+    public static int BinarySearch(int[] arr, int left, int right, int x)
+    {
+        if (right >= left)
+        {
+            int mid = left + (right - left) / 2;
+            
+            // If the element is present at the middle
+            if (arr[mid] == x)
+                return mid;
+            
+            // If element is smaller than mid, search in left subarray
+            if (arr[mid] > x)
+                return BinarySearch(arr, left, mid - 1, x);
+            
+            // Else search in right subarray
+            return BinarySearch(arr, mid + 1, right, x);
+        }
+        
+        // Element is not present in array
+        return -1;
+    }
+    
+    // Example 5: Tower of Hanoi
+    public static void TowerOfHanoi(int n, char fromRod, char toRod, char auxRod)
+    {
+        if (n == 1)
+        {
+            Console.WriteLine($"Move disk 1 from rod {fromRod} to rod {toRod}");
+            return;
+        }
+        TowerOfHanoi(n-1, fromRod, auxRod, toRod);
+        Console.WriteLine($"Move disk {n} from rod {fromRod} to rod {toRod}");
+        TowerOfHanoi(n-1, auxRod, toRod, fromRod);
+    }
+    
+    // Example 6: Tree traversal using recursion
+    public class TreeNode
+    {
+        public int Value;
+        public TreeNode Left;
+        public TreeNode Right;
+        
+        public TreeNode(int value)
+        {
+            Value = value;
+            Left = null;
+            Right = null;
+        }
+    }
+    
+    // In-order traversal: Left -> Root -> Right
+    public static void InOrderTraversal(TreeNode root)
+    {
+        if (root == null)
+            return;
+        
+        InOrderTraversal(root.Left);
+        Console.Write(root.Value + " ");
+        InOrderTraversal(root.Right);
+    }
+}</code></pre>
+                </div>
+                <div class="code-block" id="javascript">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-javascript">// JavaScript Examples of Recursion
+
+// Example 1: Factorial calculation
+function factorial(n) {
+    // Base case
+    if (n === 0 || n === 1)
+        return 1;
+    
+    // Recursive case
+    return n * factorial(n - 1);
+}
+
+// Example 2: Fibonacci sequence
+function fibonacci(n) {
+    // Base cases
+    if (n <= 0)
+        return 0;
+    if (n === 1)
+        return 1;
+    
+    // Recursive case
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Example 3: Sum of array elements
+function arraySum(arr, n) {
+    // Base case
+    if (n <= 0)
+        return 0;
+    
+    // Recursive case: sum of last element + sum of remaining elements
+    return arr[n-1] + arraySum(arr, n-1);
+}
+
+// Example 4: Binary search using recursion
+function binarySearch(arr, left, right, x) {
+    if (right >= left) {
+        const mid = Math.floor(left + (right - left) / 2);
+        
+        // If the element is present at the middle
+        if (arr[mid] === x)
+            return mid;
+        
+        // If element is smaller than mid, search in left subarray
+        if (arr[mid] > x)
+            return binarySearch(arr, left, mid - 1, x);
+        
+        // Else search in right subarray
+        return binarySearch(arr, mid + 1, right, x);
+    }
+    
+    // Element is not present in array
+    return -1;
+}
+
+// Example 5: Deep copy of an object
+function deepCopy(obj) {
+    // Base cases: null or primitive values
+    if (obj === null || typeof obj !== 'object')
+        return obj;
+    
+    // Handle arrays
+    if (Array.isArray(obj)) {
+        return obj.map(item => deepCopy(item));
+    }
+    
+    // Handle objects
+    const copy = {};
+    for (const key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            copy[key] = deepCopy(obj[key]);
+        }
+    }
+    return copy;
+}
+
+// Example 6: Flattening nested arrays
+function flattenArray(arr) {
+    let result = [];
+    
+    for (let i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+            // Recursively flatten nested arrays and concatenate
+            result = result.concat(flattenArray(arr[i]));
+        } else {
+            // Add non-array element to result
+            result.push(arr[i]);
+        }
+    }
+    
+    return result;
+}
+
+// Example 7: DOM traversal
+function countElementsInDOM(element) {
+    let count = 1; // Count the current element
+    
+    // Base case: element has no children
+    if (element.children.length === 0) {
+        return count;
+    }
+    
+    // Recursive case: add counts from all children
+    for (let i = 0; i < element.children.length; i++) {
+        count += countElementsInDOM(element.children[i]);
+    }
+    
+    return count;
+}</code></pre>
+                </div>
+                <div class="code-block" id="php">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-php"><?php
+// PHP Examples of Recursion
+
+// Example 1: Factorial calculation
+function factorial($n) {
+    // Base case
+    if ($n == 0 || $n == 1)
+        return 1;
+    
+    // Recursive case
+    return $n * factorial($n - 1);
+}
+
+// Example 2: Fibonacci sequence
+function fibonacci($n) {
+    // Base cases
+    if ($n <= 0)
+        return 0;
+    if ($n == 1)
+        return 1;
+    
+    // Recursive case
+    return fibonacci($n - 1) + fibonacci($n - 2);
+}
+
+// Example 3: Sum of array elements
+function arraySum($arr, $n) {
+    // Base case
+    if ($n <= 0)
+        return 0;
+    
+    // Recursive case: sum of last element + sum of remaining elements
+    return $arr[$n-1] + arraySum($arr, $n-1);
+}
+
+// Example 4: Binary search using recursion
+function binarySearch($arr, $left, $right, $x) {
+    if ($right >= $left) {
+        $mid = $left + (int)(($right - $left) / 2);
+        
+        // If the element is present at the middle
+        if ($arr[$mid] == $x)
+            return $mid;
+        
+        // If element is smaller than mid, search in left subarray
+        if ($arr[$mid] > $x)
+            return binarySearch($arr, $left, $mid - 1, $x);
+        
+        // Else search in right subarray
+        return binarySearch($arr, $mid + 1, $right, $x);
+    }
+    
+    // Element is not present in array
+    return -1;
+}
+
+// Example 5: Directory traversal
+function listFiles($dir) {
+    $files = array();
+    
+    // Get all entries in the directory
+    $entries = scandir($dir);
+    
+    foreach ($entries as $entry) {
+        // Skip . and .. directories
+        if ($entry === '.' || $entry === '..') {
+            continue;
+        }
+        
+        $path = $dir . '/' . $entry;
+        
+        // If it's a file, add it to the list
+        if (is_file($path)) {
+            $files[] = $path;
+        } 
+        // If it's a directory, recursively list files inside it
+        elseif (is_dir($path)) {
+            $files = array_merge($files, listFiles($path));
+        }
+    }
+    
+    return $files;
+}
+
+// Example 6: Nested array traversal and sum
+function nestedArraySum($arr) {
+    $sum = 0;
+    
+    foreach ($arr as $value) {
+        if (is_array($value)) {
+            // If the element is an array, recursively sum its elements
+            $sum += nestedArraySum($value);
+        } else {
+            // If it's a number, add it to the sum
+            $sum += $value;
+        }
+    }
+    
+    return $sum;
+}
+?></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Recursion vs Iteration</h2>
+            <p>While recursion can make code more elegant and readable for certain problems, there are trade-offs to consider:</p>
+            
+            <table class="complexity-table">
+                <tr>
+                    <th></th>
+                    <th>Recursion</th>
+                    <th>Iteration</th>
+                </tr>
+                <tr>
+                    <td><strong>Memory Usage</strong></td>
+                    <td>Higher (maintains function call stack)</td>
+                    <td>Lower (no additional function calls)</td>
+                </tr>
+                <tr>
+                    <td><strong>Speed</strong></td>
+                    <td>Usually slower (function call overhead)</td>
+                    <td>Typically faster</td>
+                </tr>
+                <tr>
+                    <td><strong>Readability</strong></td>
+                    <td>Often cleaner for certain problems</td>
+                    <td>Can be more complex for problems that are naturally recursive</td>
+                </tr>
+                <tr>
+                    <td><strong>Risk</strong></td>
+                    <td>Stack overflow for deep recursion</td>
+                    <td>Infinite loops if termination condition is wrong</td>
+                </tr>
+            </table>
+            
+            <p>Many problems can be solved using either approach, and the choice often depends on the specific requirements of the situation.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Common Applications of Recursion</h2>
+            <ul class="steps-section">
+                <li><strong>Tree and graph algorithms:</strong> Traversal, searching, and manipulation</li>
+                <li><strong>Divide and conquer algorithms:</strong> Merge sort, quicksort</li>
+                <li><strong>Backtracking algorithms:</strong> N-Queens problem, Sudoku solver</li>
+                <li><strong>Dynamic programming:</strong> Many DP problems start with a recursive solution</li>
+                <li><strong>Fractals:</strong> Generating self-similar patterns</li>
+                <li><strong>Parsing expressions:</strong> Evaluating arithmetic expressions</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Tips for Writing Recursive Functions</h2>
+            <ol class="steps-section">
+                <li>Always identify the base case(s) first to prevent infinite recursion</li>
+                <li>Make sure the recursive calls move toward the base case</li>
+                <li>Consider using memoization to avoid redundant calculations in recursive functions</li>
+                <li>Be mindful of the stack size limit in your programming language</li>
+                <li>For complex problems, draw out the recursive calls to understand the flow</li>
+                <li>Consider if tail recursion is applicable and if your language optimizes for it</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/csharp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/php.min.js"></script>
+    <script>
+        hljs.highlightAll();
+        
+        function switchTab(element, language) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.code-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Add active class to selected tab
+            element.classList.add('active');
+            
+            // Hide all code blocks
+            document.querySelectorAll('.code-block').forEach(block => {
+                block.classList.remove('active');
+            });
+            
+            // Show selected code block
+            document.getElementById(language).classList.add('active');
+        }
+        
+        function copyCode(button) {
+            const pre = button.nextElementSibling;
+            const code = pre.textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                const originalIcon = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

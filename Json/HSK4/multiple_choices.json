@@ -1,0 +1,678 @@
+{
+  "level": 4,
+  "title": "HSK 4 - Quiz Collection",
+  "stages": {
+    "stage1": [
+      {
+        "question": "What does '办事' mean?",
+        "options": ["to work", "to handle matters", "to manage", "to serve"],
+        "correct": 1,
+        "explanation": "'办事' (bànshì) means 'to handle matters' in Chinese."
+      },
+      {
+        "question": "What is a '包裹'?",
+        "options": ["box", "package", "container", "bag"],
+        "correct": 1,
+        "explanation": "'包裹' (bāoguǒ) means 'package' in Chinese."
+      },
+      {
+        "question": "What does '包含' mean?",
+        "options": ["to wrap", "to include", "to cover", "to hold"],
+        "correct": 1,
+        "explanation": "'包含' (bāohán) means 'to include' in Chinese."
+      },
+      {
+        "question": "What does '包括' mean?",
+        "options": ["to contain", "to include", "to comprise", "to encompass"],
+        "correct": 1,
+        "explanation": "'包括' (bāokuò) means 'to include' in Chinese."
+      },
+      {
+        "question": "What does '薄' describe?",
+        "options": ["thick", "thin", "heavy", "light"],
+        "correct": 1,
+        "explanation": "'薄' (báo) means 'thin' in Chinese."
+      }
+    ],
+    "stage2": [
+      {
+        "question": "What is a '宝'?",
+        "options": ["gem", "treasure", "jewelry", "precious item"],
+        "correct": 1,
+        "explanation": "'宝' (bǎo) means 'treasure' in Chinese."
+      },
+      {
+        "question": "What does '宝宝' refer to?",
+        "options": ["child", "baby", "toddler", "infant"],
+        "correct": 1,
+        "explanation": "'宝宝' (bǎobao) means 'baby' in Chinese."
+      },
+      {
+        "question": "What does '宝贝' typically refer to?",
+        "options": ["valuable", "treasure", "dear one", "possession"],
+        "correct": 1,
+        "explanation": "'宝贝' (bǎobèi) means 'treasure' or a term of endearment in Chinese."
+      },
+      {
+        "question": "What does '宝贵' mean?",
+        "options": ["cheap", "valuable", "expensive", "worthy"],
+        "correct": 1,
+        "explanation": "'宝贵' (bǎoguì) means 'valuable' in Chinese."
+      },
+      {
+        "question": "What is a '宝石'?",
+        "options": ["rock", "gemstone", "crystal", "jewel"],
+        "correct": 1,
+        "explanation": "'宝石' (bǎoshí) means 'gemstone' in Chinese."
+      }
+    ],
+    "stage3": [
+      {
+        "question": "What does '保密' mean?",
+        "options": ["to protect", "to keep secret", "to preserve", "to guard"],
+        "correct": 1,
+        "explanation": "'保密' (bǎomì) means 'to keep secret' in Chinese."
+      },
+      {
+        "question": "What does '保守' mean?",
+        "options": ["to defend", "to keep", "to maintain", "to conserve"],
+        "correct": 1,
+        "explanation": "'保守' (bǎoshǒu) means 'to keep' or 'conservative' in Chinese."
+      },
+      {
+        "question": "What does '抱' mean?",
+        "options": ["to carry", "to hold", "to hug", "to embrace"],
+        "correct": 1,
+        "explanation": "'抱' (bào) means 'to hold' or 'to embrace' in Chinese."
+      },
+      {
+        "question": "What is a '背景'?",
+        "options": ["setting", "background", "context", "backdrop"],
+        "correct": 1,
+        "explanation": "'背景' (bèijǐng) means 'background' in Chinese."
+      },
+      {
+        "question": "What does '倍' refer to?",
+        "options": ["double", "times", "multiple", "fold"],
+        "correct": 1,
+        "explanation": "'倍' (bèi) means 'times' (as in multiplier) in Chinese."
+      }
+    ],
+    "stage4": [
+      {
+        "question": "What does '被迫' mean?",
+        "options": ["to be allowed", "to be forced", "to be permitted", "to be ordered"],
+        "correct": 1,
+        "explanation": "'被迫' (bèipò) means 'to be forced' in Chinese."
+      },
+      {
+        "question": "What is '本科'?",
+        "options": ["graduate school", "undergraduate", "primary education", "vocational training"],
+        "correct": 1,
+        "explanation": "'本科' (běnkē) refers to 'undergraduate' education in Chinese."
+      },
+      {
+        "question": "What does '笨' describe?",
+        "options": ["smart", "stupid", "slow", "clumsy"],
+        "correct": 1,
+        "explanation": "'笨' (bèn) means 'stupid' in Chinese."
+      },
+      {
+        "question": "What is a '比分'?",
+        "options": ["ratio", "score", "percentage", "proportion"],
+        "correct": 1,
+        "explanation": "'比分' (bǐfèn) means 'score' (as in sports) in Chinese."
+      },
+      {
+        "question": "What does '毕业' mean?",
+        "options": ["to study", "to graduate", "to learn", "to finish"],
+        "correct": 1,
+        "explanation": "'毕业' (bìyè) means 'to graduate' in Chinese."
+      }
+    ],
+    "stage5": [
+      {
+        "question": "What is a '毕业生'?",
+        "options": ["student", "graduate", "alumni", "senior"],
+        "correct": 1,
+        "explanation": "'毕业生' (bìyèshēng) means 'graduate' in Chinese."
+      },
+      {
+        "question": "What does '避' mean?",
+        "options": ["to face", "to avoid", "to encounter", "to meet"],
+        "correct": 1,
+        "explanation": "'避' (bì) means 'to avoid' in Chinese."
+      },
+      {
+        "question": "What does '避免' mean?",
+        "options": ["to prevent", "to avoid", "to escape", "to evade"],
+        "correct": 1,
+        "explanation": "'避免' (bìmiǎn) means 'to avoid' in Chinese."
+      },
+      {
+        "question": "What does '编' mean?",
+        "options": ["to write", "to compile", "to create", "to edit"],
+        "correct": 1,
+        "explanation": "'编' (biān) means 'to compile' in Chinese."
+      },
+      {
+        "question": "What does '辩论' refer to?",
+        "options": ["discussion", "to debate", "argument", "dispute"],
+        "correct": 1,
+        "explanation": "'辩论' (biànlùn) means 'to debate' in Chinese."
+      }
+    ],
+    "stage6": [
+      {
+        "question": "What is a '标志'?",
+        "options": ["symbol", "sign", "mark", "logo"],
+        "correct": 1,
+        "explanation": "'标志' (biāozhì) means 'sign' in Chinese."
+      },
+      {
+        "question": "What is '表情'?",
+        "options": ["feeling", "expression", "emotion", "mood"],
+        "correct": 1,
+        "explanation": "'表情' (biǎoqíng) means 'expression' in Chinese."
+      },
+      {
+        "question": "What does '表扬' mean?",
+        "options": ["to reward", "to praise", "to recognize", "to acknowledge"],
+        "correct": 1,
+        "explanation": "'表扬' (biǎoyáng) means 'to praise' in Chinese."
+      },
+      {
+        "question": "What does '别' mean as a command?",
+        "options": ["stop", "don't", "no", "avoid"],
+        "correct": 1,
+        "explanation": "'别' (bié) means 'don't' in Chinese."
+      },
+      {
+        "question": "What is '冰'?",
+        "options": ["water", "ice", "frost", "snow"],
+        "correct": 1,
+        "explanation": "'冰' (bīng) means 'ice' in Chinese."
+      }
+    ],
+    "stage7": [
+      {
+        "question": "What is a '冰箱'?",
+        "options": ["freezer", "refrigerator", "cooler", "icebox"],
+        "correct": 1,
+        "explanation": "'冰箱' (bīngxiāng) means 'refrigerator' in Chinese."
+      },
+      {
+        "question": "What does '冰雪' refer to?",
+        "options": ["cold weather", "ice and snow", "winter", "frost"],
+        "correct": 1,
+        "explanation": "'冰雪' (bīngxuě) means 'ice and snow' in Chinese."
+      },
+      {
+        "question": "What does '兵' mean?",
+        "options": ["army", "soldier", "military", "warrior"],
+        "correct": 1,
+        "explanation": "'兵' (bīng) means 'soldier' in Chinese."
+      },
+      {
+        "question": "What does '并' mean?",
+        "options": ["separate", "to combine", "to add", "to join"],
+        "correct": 1,
+        "explanation": "'并' (bìng) means 'to combine' in Chinese."
+      },
+      {
+        "question": "What does '不要紧' mean?",
+        "options": ["important", "not serious", "dangerous", "no problem"],
+        "correct": 1,
+        "explanation": "'不要紧' (bùyàojǐn) means 'not serious' in Chinese."
+      }
+    ],
+    "stage8": [
+      {
+        "question": "What does '不在乎' mean?",
+        "options": ["to worry", "not to care", "to be concerned", "to mind"],
+        "correct": 1,
+        "explanation": "'不在乎' (bùzàihu) means 'not to care' in Chinese."
+      },
+      {
+        "question": "What does '不管' mean?",
+        "options": ["regardless", "no matter", "despite", "without"],
+        "correct": 1,
+        "explanation": "'不管' (bùguǎn) means 'no matter' in Chinese."
+      },
+      {
+        "question": "What does '不然' mean?",
+        "options": ["else", "otherwise", "instead", "rather"],
+        "correct": 1,
+        "explanation": "'不然' (bùrán) means 'otherwise' in Chinese."
+      },
+      {
+        "question": "What does '布置' mean?",
+        "options": ["to decorate", "to arrange", "to design", "to set up"],
+        "correct": 1,
+        "explanation": "'布置' (bùzhì) means 'to arrange' in Chinese."
+      },
+      {
+        "question": "What does '步行' mean?",
+        "options": ["to jog", "to walk", "to run", "to hike"],
+        "correct": 1,
+        "explanation": "'步行' (bùxíng) means 'to walk' in Chinese."
+      }
+    ],
+    "stage9": [
+      {
+        "question": "What does '擦' mean?",
+        "options": ["to clean", "to wipe", "to scrub", "to polish"],
+        "correct": 1,
+        "explanation": "'擦' (cā) means 'to wipe' in Chinese."
+      },
+      {
+        "question": "What does '才' refer to?",
+        "options": ["skill", "talent", "ability", "gift"],
+        "correct": 1,
+        "explanation": "'才' (cái) means 'talent' in Chinese."
+      },
+      {
+        "question": "What is '材料'?",
+        "options": ["resource", "material", "source", "component"],
+        "correct": 1,
+        "explanation": "'材料' (cáiliào) means 'material' in Chinese."
+      },
+      {
+        "question": "What is '财产'?",
+        "options": ["money", "property", "assets", "wealth"],
+        "correct": 1,
+        "explanation": "'财产' (cáichǎn) means 'property' in Chinese."
+      },
+      {
+        "question": "What is '财富'?",
+        "options": ["money", "wealth", "riches", "fortune"],
+        "correct": 1,
+        "explanation": "'财富' (cáifù) means 'wealth' in Chinese."
+      }
+    ],
+    "stage10": [
+      {
+        "question": "What does '采访' mean?",
+        "options": ["to visit", "to interview", "to survey", "to research"],
+        "correct": 1,
+        "explanation": "'采访' (cǎifǎng) means 'to interview' in Chinese."
+      },
+      {
+        "question": "What does '参考' mean?",
+        "options": ["to study", "to consult", "to learn", "to read"],
+        "correct": 1,
+        "explanation": "'参考' (cānkǎo) means 'to consult' in Chinese."
+      },
+      {
+        "question": "What does '参与' mean?",
+        "options": ["to join", "to participate", "to attend", "to engage"],
+        "correct": 1,
+        "explanation": "'参与' (cānyù) means 'to participate' in Chinese."
+      },
+      {
+        "question": "What is a '操场'?",
+        "options": ["field", "playground", "stadium", "gym"],
+        "correct": 1,
+        "explanation": "'操场' (cāochǎng) means 'playground' in Chinese."
+      },
+      {
+        "question": "What does '操作' mean?",
+        "options": ["to use", "to operate", "to handle", "to control"],
+        "correct": 1,
+        "explanation": "'操作' (cāozuò) means 'to operate' in Chinese."
+      }
+    ],
+    "stage11": [
+      {
+        "question": "What does '测' mean?",
+        "options": ["to check", "to measure", "to evaluate", "to assess"],
+        "correct": 1,
+        "explanation": "'测' (cè) means 'to measure' in Chinese."
+      },
+      {
+        "question": "What does '测量' mean?",
+        "options": ["to calculate", "to measure", "to survey", "to gauge"],
+        "correct": 1,
+        "explanation": "'测量' (cèliáng) means 'to measure' in Chinese."
+      },
+      {
+        "question": "What does '测试' refer to?",
+        "options": ["examination", "test", "quiz", "assessment"],
+        "correct": 1,
+        "explanation": "'测试' (cèshì) means 'test' in Chinese."
+      },
+      {
+        "question": "What does '曾' indicate?",
+        "options": ["before", "once", "already", "ever"],
+        "correct": 1,
+        "explanation": "'曾' (céng) means 'once' or 'previously' in Chinese."
+      },
+      {
+        "question": "What is '茶叶'?",
+        "options": ["coffee", "tea", "beverage", "drink"],
+        "correct": 1,
+        "explanation": "'茶叶' (cháyè) means 'tea' in Chinese."
+      }
+    ],
+    "stage12": [
+      {
+        "question": "What is a '产品'?",
+        "options": ["goods", "product", "merchandise", "item"],
+        "correct": 1,
+        "explanation": "'产品' (chǎnpǐn) means 'product' in Chinese."
+      },
+      {
+        "question": "What does '长途' refer to?",
+        "options": ["journey", "long distance", "travel", "trip"],
+        "correct": 1,
+        "explanation": "'长途' (chángtú) means 'long distance' in Chinese."
+      },
+      {
+        "question": "What is '常识'?",
+        "options": ["knowledge", "common sense", "information", "wisdom"],
+        "correct": 1,
+        "explanation": "'常识' (chángshí) means 'common sense' in Chinese."
+      },
+      {
+        "question": "What is a '唱片'?",
+        "options": ["CD", "record", "album", "disc"],
+        "correct": 1,
+        "explanation": "'唱片' (chàngpiàn) means 'record' or 'album' in Chinese."
+      },
+      {
+        "question": "What does '抄' mean?",
+        "options": ["to write", "to copy", "to duplicate", "to transcribe"],
+        "correct": 1,
+        "explanation": "'抄' (chāo) means 'to copy' in Chinese."
+      }
+    ],
+    "stage13": [
+      {
+        "question": "What does '抄写' mean?",
+        "options": ["to write", "to copy", "to document", "to record"],
+        "correct": 1,
+        "explanation": "'抄写' (chāoxiě) means 'to copy' in Chinese."
+      },
+      {
+        "question": "What is '潮'?",
+        "options": ["wave", "tide", "current", "flow"],
+        "correct": 1,
+        "explanation": "'潮' (cháo) means 'tide' in Chinese."
+      },
+      {
+        "question": "What does '潮流' refer to?",
+        "options": ["fashion", "trend", "current", "movement"],
+        "correct": 1,
+        "explanation": "'潮流' (cháoliú) means 'trend' in Chinese."
+      },
+      {
+        "question": "What does '潮湿' describe?",
+        "options": ["wet", "damp", "moist", "humid"],
+        "correct": 1,
+        "explanation": "'潮湿' (cháoshī) means 'damp' in Chinese."
+      },
+      {
+        "question": "What does '彻底' mean?",
+        "options": ["complete", "thorough", "radical", "absolute"],
+        "correct": 1,
+        "explanation": "'彻底' (chèdǐ) means 'thorough' in Chinese."
+      }
+    ],
+    "stage14": [
+      {
+        "question": "What does '沉' mean?",
+        "options": ["to float", "to sink", "to dive", "to fall"],
+        "correct": 1,
+        "explanation": "'沉' (chén) means 'to sink' in Chinese."
+      },
+      {
+        "question": "What does '沉默' describe?",
+        "options": ["noisy", "silent", "quiet", "reserved"],
+        "correct": 1,
+        "explanation": "'沉默' (chénmò) means 'silent' in Chinese."
+      },
+      {
+        "question": "What does '沉重' describe?",
+        "options": ["light", "heavy", "serious", "difficult"],
+        "correct": 1,
+        "explanation": "'沉重' (chénzhòng) means 'heavy' in Chinese."
+      },
+      {
+        "question": "What does '称赞' mean?",
+        "options": ["to compliment", "to praise", "to admire", "to congratulate"],
+        "correct": 1,
+        "explanation": "'称赞' (chēngzàn) means 'to praise' in Chinese."
+      },
+      {
+        "question": "What is a '成人'?",
+        "options": ["child", "adult", "teenager", "person"],
+        "correct": 1,
+        "explanation": "'成人' (chéngrén) means 'adult' in Chinese."
+      }
+    ],
+    "stage15": [
+      {
+        "question": "What does '诚实' describe?",
+        "options": ["truthful", "honest", "sincere", "genuine"],
+        "correct": 1,
+        "explanation": "'诚实' (chéngshí) means 'honest' in Chinese."
+      },
+      {
+        "question": "What is '诚信'?",
+        "options": ["integrity", "honesty", "sincerity", "trustworthiness"],
+        "correct": 1,
+        "explanation": "'诚信' (chéngxìn) means 'honesty' or 'integrity' in Chinese."
+      },
+      {
+        "question": "What does '承担' mean?",
+        "options": ["to take", "to undertake", "to assume", "to bear"],
+        "correct": 1,
+        "explanation": "'承担' (chéngdān) means 'to undertake' in Chinese."
+      },
+      {
+        "question": "What does '承认' mean?",
+        "options": ["to confess", "to admit", "to recognize", "to acknowledge"],
+        "correct": 1,
+        "explanation": "'承认' (chéngrèn) means 'to admit' in Chinese."
+      },
+      {
+        "question": "What does '惩罚' mean?",
+        "options": ["to discipline", "to punish", "to penalize", "to chastise"],
+        "correct": 1,
+        "explanation": "'惩罚' (chéngfá) means 'to punish' in Chinese."
+      }
+    ],
+    "stage16": [
+      {
+        "question": "What is a '城市'?",
+        "options": ["town", "city", "village", "metropolis"],
+        "correct": 1,
+        "explanation": "'城市' (chéngshì) means 'city' in Chinese."
+      },
+      {
+        "question": "What does '充电' mean?",
+        "options": ["to power", "to charge", "to energize", "to electrify"],
+        "correct": 1,
+        "explanation": "'充电' (chōngdiàn) means 'to charge' in Chinese."
+      },
+      {
+        "question": "What does '充分' describe?",
+        "options": ["sufficient", "ample", "abundant", "adequate"],
+        "correct": 1,
+        "explanation": "'充分' (chōngfèn) means 'ample' in Chinese."
+      },
+      {
+        "question": "What does '充满' mean?",
+        "options": ["filled with", "full of", "brimming with", "abundant in"],
+        "correct": 1,
+        "explanation": "'充满' (chōngmǎn) means 'full of' in Chinese."
+      },
+      {
+        "question": "What is a '冲突'?",
+        "options": ["disagreement", "conflict", "fight", "clash"],
+        "correct": 1,
+        "explanation": "'冲突' (chōngtū) means 'conflict' in Chinese."
+      }
+    ],
+    "stage17": [
+      {
+        "question": "What does '愁' mean?",
+        "options": ["sad", "to worry", "anxious", "depressed"],
+        "correct": 1,
+        "explanation": "'愁' (chóu) means 'to worry' in Chinese."
+      },
+      {
+        "question": "What does '抽烟' mean?",
+        "options": ["to puff", "to smoke", "to inhale", "to consume"],
+        "correct": 1,
+        "explanation": "'抽烟' (chōuyān) means 'to smoke' in Chinese."
+      },
+      {
+        "question": "What does '厨' refer to?",
+        "options": ["cooking", "kitchen", "chef", "cuisine"],
+        "correct": 1,
+        "explanation": "'厨' (chú) means 'kitchen' in Chinese."
+      },
+      {
+        "question": "What is '出差'?",
+        "options": ["trip", "business trip", "travel", "journey"],
+        "correct": 1,
+        "explanation": "'出差' (chūchāi) means 'business trip' in Chinese."
+      },
+      {
+        "question": "What does '出发' mean?",
+        "options": ["to leave", "to set off", "to depart", "to start"],
+        "correct": 1,
+        "explanation": "'出发' (chūfā) means 'to set off' in Chinese."
+      }
+    ],
+    "stage18": [
+      {
+        "question": "What does '出版' mean?",
+        "options": ["to print", "to publish", "to release", "to produce"],
+        "correct": 1,
+        "explanation": "'出版' (chūbǎn) means 'to publish' in Chinese."
+      },
+      {
+        "question": "What is '出口'?",
+        "options": ["entrance", "exit", "doorway", "gateway"],
+        "correct": 1,
+        "explanation": "'出口' (chūkǒu) means 'exit' in Chinese."
+      },
+      {
+        "question": "What does '出身' refer to?",
+        "options": ["origin", "background", "birth", "ancestry"],
+        "correct": 1,
+        "explanation": "'出身' (chūshēn) means 'background' in Chinese."
+      },
+      {
+        "question": "What is '除夕'?",
+        "options": ["New Year", "New Year's Eve", "Spring Festival", "Eve"],
+        "correct": 1,
+        "explanation": "'除夕' (chúxī) means 'New Year's Eve' in Chinese."
+      },
+      {
+        "question": "What does '出现' mean?",
+        "options": ["to show", "to appear", "to emerge", "to arise"],
+        "correct": 1,
+        "explanation": "'出现' (chūxiàn) means 'to appear' in Chinese."
+      }
+    ],
+    "stage19": [
+      {
+        "question": "What does '创作' mean?",
+        "options": ["to destroy", "to create", "to copy", "to complete"],
+        "correct": 1,
+        "explanation": "'创作' (chuàngzuò) means 'to create' in Chinese."
+      },
+      {
+        "question": "What is a '窗商'?",
+        "options": ["window type", "window merchant", "window cleaner", "window frame"],
+        "correct": 1,
+        "explanation": "'窗商' (chuāngshāng) means 'window merchant' in Chinese."
+      },
+      {
+        "question": "What does '出让' mean?",
+        "options": ["to take", "to cede", "to find", "to hide"],
+        "correct": 1,
+        "explanation": "'出让' (chūràng) means 'to cede' in Chinese."
+      },
+      {
+        "question": "What does '刺激' mean?",
+        "options": ["to calm", "to stimulate", "to sleep", "to eat"],
+        "correct": 1,
+        "explanation": "'刺激' (cìjī) means 'to stimulate' in Chinese."
+      },
+      {
+        "question": "What does '匆' describe?",
+        "options": ["slowness", "hurried", "carefulness", "laziness"],
+        "correct": 1,
+        "explanation": "'匆' (cōng) means 'hurried' in Chinese."
+      }
+    ],
+    "stage20": [
+      {
+        "question": "What does '匆忙' mean?",
+        "options": ["relaxed", "in a hurry", "happy", "sad"],
+        "correct": 1,
+        "explanation": "'匆忙' (cōngmáng) means 'in a hurry' in Chinese."
+      },
+      {
+        "question": "How would you use '从前'?",
+        "options": ["in news", "in stories", "in science", "in business"],
+        "correct": 1,
+        "explanation": "'从前' (cóngqián) means 'previously' or 'once upon a time' in Chinese."
+      },
+      {
+        "question": "What does '从事' mean?",
+        "options": ["to quit", "to engage in", "to travel", "to study"],
+        "correct": 1,
+        "explanation": "'从事' (cóngshì) means 'to engage in' in Chinese."
+      },
+      {
+        "question": "What is a '错误'?",
+        "options": ["success", "mistake", "victory", "truth"],
+        "correct": 1,
+        "explanation": "'错误' (cuòwù) means 'mistake' in Chinese."
+      },
+      {
+        "question": "What does '传输' refer to?",
+        "options": ["transportation", "transmission", "translation", "tradition"],
+        "correct": 1,
+        "explanation": "'传输' (chuánshū) means 'to transmit' in Chinese."
+      }
+    ],
+    "stage21": [
+      {
+        "question": "What is '传统'?",
+        "options": ["modern invention", "tradition", "transportation", "communication"],
+        "correct": 1,
+        "explanation": "'传统' (chuántǒng) means 'tradition' in Chinese."
+      },
+      {
+        "question": "What is a '传说'?",
+        "options": ["news", "legend", "fact", "opinion"],
+        "correct": 1,
+        "explanation": "'传说' (chuánshuō) means 'legend' in Chinese."
+      },
+      {
+        "question": "What does '处理' mean?",
+        "options": ["to avoid", "to handle", "to create", "to forget"],
+        "correct": 1,
+        "explanation": "'处理' (chǔlǐ) means 'to handle' in Chinese."
+      },
+      {
+        "question": "What is '储蓄' related to?",
+        "options": ["spending", "saving", "lending", "losing"],
+        "correct": 1,
+        "explanation": "'储蓄' (chǔxù) means 'to save' in Chinese."
+      },
+      {
+        "question": "How often is '常常'?",
+        "options": ["never", "often", "rarely", "always"],
+        "correct": 1,
+        "explanation": "'常常' (chángcháng) means 'often' in Chinese."
+      }
+    ]
+  }
+}

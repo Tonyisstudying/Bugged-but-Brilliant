@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Algorithms</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+        
+        /* Hero section */
+        .hero-section {
+            background-color: #0052cc;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: #0052cc;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.8rem;
+        }
+
+        .content-section h3 {
+            color: #0052cc;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Algorithm cards */
+        .algorithm-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .algorithm-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .algorithm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .algorithm-card h3 {
+            color: #0052cc;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .algorithm-card p {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .algorithm-card .complexity {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        /* Application areas */
+        .application-areas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .application-area {
+            background-color: #f0f7ff;
+            color: #0052cc;
+            padding: 0.7rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Lists */
+        .content-section ul, .content-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.7rem;
+            line-height: 1.6;
+        }
+
+        /* Visual representations */
+        .visual-container {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .visual-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 320px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .visual-card:hover {
+            transform: scale(1.03);
+        }
+
+        .visual-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .visual-card .caption {
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Code section */
+        .code-section {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-tabs {
+            display: flex;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+            overflow-x: auto;
+        }
+
+        .code-tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .code-tab.active {
+            background-color: #0078d7;
+            color: white;
+        }
+
+        .code-content {
+            padding: 0;
+            position: relative;
+        }
+
+        .code-block {
+            display: none;
+            position: relative;
+        }
+
+        .code-block.active {
+            display: block;
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 1.5rem;
+            overflow-x: auto;
+            border-radius: 0;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 4px;
+            padding: 0.4rem 0.7rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.3rem;
+            }
+            
+            .content-section h2 {
+                font-size: 1.7rem;
+            }
+
+            .algorithm-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .visual-container {
+                justify-content: center;
+            }
+
+            .visual-card {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../algorithms.html" class="back-btn">← Back to Algorithms</a>
+        </div>
+        
+        <div class="hero-section">
+            <h1>Geometric Algorithms</h1>
+            <p>A type of algorithm that deal with solving problems related to geometry, involving calculations on spatial data like points, lines, polygons, and other geometric objects.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>What are Geometric Algorithms?</h2>
+            <p>Geometric algorithms are a type of algorithm that deal with solving problems related to geometry. These algorithms are designed to perform computations on geometric objects like points, lines, polygons, and higher-dimensional shapes.</p>
+            
+            <p>The field of computational geometry focuses on the development of efficient algorithms for solving geometric problems. These problems often involve:</p>
+            
+            <ul>
+                <li>Solving problems involving distances, intersections, arrangements, and transformations.</li>
+                <li>Computing properties of geometric objects (area, perimeter, volume)</li>
+                <li>Finding relationships between geometric objects (containment, overlap)</li>
+                <li>Performing geometric transformations (rotation, scaling, translation)</li>
+                <li>Finding optimal arrangements or configurations</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Applications</h2>
+            <p>Geometric algorithms are extensively used across numerous fields:</p>
+            
+            <div class="application-areas">
+                <div class="application-area">Computer Graphics</div>
+                <div class="application-area">Computer-Aided Design</div>
+                <div class="application-area">Robotics</div>
+                <div class="application-area">Geographic Information Systems</div>
+                <div class="application-area">Medical Imaging</div>
+                <div class="application-area">Astronomy</div>
+                <div class="application-area">Virtual Reality</div>
+                <div class="application-area">Game Development</div>
+                <div class="application-area">Motion Planning</div>
+            </div>
+            
+            <p style="margin-top: 1.5rem;">These algorithms form the backbone of spatial computation and analysis in modern technology, enabling everything from 3D rendering in video games to path planning for autonomous vehicles.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Popular Geometric Algorithms</h2>
+            <div class="algorithm-cards">
+                <div class="algorithm-card">
+                    <h3>Convex Hull</h3>
+                    <p>Computes the smallest convex polygon that encloses a set of points. Like stretching a rubber band around a set of nails on a board.</p>
+                    <p class="complexity"><strong>Time Complexity:</strong> O(n log n) where n is the number of points</p>
+                </div>
+                
+                <div class="algorithm-card">
+                    <h3>Closest Pair</h3>
+                    <p>Finds the two closest points in a set. An efficient solution uses divide-and-conquer with a plane sweep approach.</p>
+                    <p class="complexity"><strong>Time Complexity:</strong> O(n log n) where n is the number of points</p>
+                </div>
+                
+                <div class="algorithm-card">
+                    <h3>Line Intersection</h3>
+                    <p>Determines whether and where two or more lines intersect. The problem becomes more complex when dealing with multiple line segments.</p>
+                    <p class="complexity"><strong>Time Complexity:</strong> O(n log n) for n line segments using sweep line</p>
+                </div>
+                
+                <div class="algorithm-card">
+                    <h3>Point-in-Polygon</h3>
+                    <p>Determines whether a point lies inside, outside, or on the boundary of a polygon. Common approaches include the ray casting algorithm and winding number algorithm.</p>
+                    <p class="complexity"><strong>Time Complexity:</strong> O(n) where n is the number of vertices</p>
+                </div>
+                
+                <div class="algorithm-card">
+                    <h3>Sweep Line</h3>
+                    <p>A technique used in computational geometry where a conceptual line is swept across the plane, processing events at specific points to solve problems like line segment intersections.</p>
+                    <p class="complexity"><strong>Time Complexity:</strong> Typically O(n log n) for many applications</p>
+                </div>
+                
+                <div class="algorithm-card">
+                    <h3>Voronoi Diagram</h3>
+                    <p>Partitions a plane into regions based on distance to a specific set of points. Each region consists of all points closer to a specific site than to any other.</p>
+                    <p class="complexity"><strong>Time Complexity:</strong> O(n log n) where n is the number of points</p>
+                </div>
+                
+                <div class="algorithm-card">
+                    <h3>Delaunay Triangulation</h3>
+                    <p>A triangulation that maximizes the minimum angle of all triangles. It's the dual of the Voronoi diagram and has applications in mesh generation.</p>
+                    <p class="complexity"><strong>Time Complexity:</strong> O(n log n) on average</p>
+                </div>
+                
+                <div class="algorithm-card">
+                    <h3>Rotating Calipers</h3>
+                    <p>A technique for solving problems like finding the diameter of a convex polygon (the maximum distance between any two points).</p>
+                    <p class="complexity"><strong>Time Complexity:</strong> O(n) after computing the convex hull</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="visual-container">
+            <div class="visual-card">
+                <img src="../../Assets/images/convex-hull.png" alt="Convex Hull Algorithm Visualization">
+                <div class="caption">Convex Hull: The smallest convex polygon containing all points</div>
+            </div>
+            <div class="visual-card">
+                <img src="../../Assets/images/voronoi.png" alt="Voronoi Diagram Visualization">
+                <div class="caption">Voronoi Diagram: Partitioning space based on proximity to points</div>
+            </div>
+            <div class="visual-card">
+                <img src="../../Assets/images/delaunay.png" alt="Delaunay Triangulation Visualization">
+                <div class="caption">Delaunay Triangulation: Optimized triangulation of a set of points</div>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <div class="code-tabs">
+                <div class="code-tab active" onclick="switchTab(this, 'cpp')">C++</div>
+                <div class="code-tab" onclick="switchTab(this, 'java')">Java</div>
+                <div class="code-tab" onclick="switchTab(this, 'python')">Python</div>
+            </div>
+            <div class="code-content">
+                <div class="code-block active" id="cpp">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-cpp">// Convex Hull using Graham's Scan algorithm in C++
+#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+// A structure to represent a point in 2D plane
+struct Point {
+    int x, y;
+};
+
+// Global point needed for sorting points with reference
+// to the first point
+Point p0;
+
+// A utility function to find next to top in a stack
+Point nextToTop(stack&lt;Point&gt; &s) {
+    Point p = s.top();
+    s.pop();
+    Point res = s.top();
+    s.push(p);
+    return res;
+}
+
+// A utility function to swap two points
+void swap(Point &p1, Point &p2) {
+    Point temp = p1;
+    p1 = p2;
+    p2 = temp;
+}
+
+// A utility function to return square of distance
+// between p1 and p2
+int distSq(Point p1, Point p2) {
+    return (p1.x - p2.x) * (p1.x - p2.x) +
+           (p1.y - p2.y) * (p1.y - p2.y);
+}
+
+// To find orientation of ordered triplet (p, q, r).
+// The function returns following values
+// 0 --> p, q and r are collinear
+// 1 --> Clockwise
+// 2 --> Counterclockwise
+int orientation(Point p, Point q, Point r) {
+    int val = (q.y - p.y) * (r.x - q.x) -
+              (q.x - p.x) * (r.y - q.y);
+
+    if (val == 0) return 0;  // collinear
+    return (val > 0)? 1: 2;  // clockwise or counterclockwise
+}
+
+// A function used by library function qsort() to sort an array of
+// points with respect to the first point
+int compare(const void *vp1, const void *vp2) {
+   Point *p1 = (Point *)vp1;
+   Point *p2 = (Point *)vp2;
+
+   // Find orientation
+   int o = orientation(p0, *p1, *p2);
+   if (o == 0)
+     return (distSq(p0, *p2) >= distSq(p0, *p1))? -1 : 1;
+
+   return (o == 2)? -1: 1;
+}
+
+// Prints convex hull of a set of n points.
+void convexHull(Point points[], int n) {
+    // Find the bottommost point
+    int ymin = points[0].y, min = 0;
+    for (int i = 1; i < n; i++) {
+        int y = points[i].y;
+
+        // Pick the bottom-most or choose the left
+        // most point in case of tie
+        if ((y < ymin) || (ymin == y &&
+            points[i].x < points[min].x))
+            ymin = points[i].y, min = i;
+    }
+
+    // Place the bottom-most point at first position
+    swap(points[0], points[min]);
+
+    // Sort n-1 points with respect to the first point.
+    // A point p1 comes before p2 in sorted output if p2
+    // has larger polar angle (in counterclockwise
+    // direction) than p1
+    p0 = points[0];
+    qsort(&points[1], n-1, sizeof(Point), compare);
+
+    // If two or more points make same angle with p0,
+    // Remove all but the farthest one from p0
+    // Keep only the farthest point for each angle
+    int m = 1; // Initialize size of modified array
+    for (int i=1; i<n; i++) {
+        // Keep removing points while angle of i and i+1 is same
+        // with respect to p0
+        while (i < n-1 && orientation(p0, points[i],
+                                    points[i+1]) == 0)
+            i++;
+
+        points[m] = points[i];
+        m++;  // Update size of modified array
+    }
+
+    // If modified array of points has less than 3 points,
+    // convex hull is not possible
+    if (m < 3) return;
+
+    // Create an empty stack and push first three points to it
+    stack<Point> S;
+    S.push(points[0]);
+    S.push(points[1]);
+    S.push(points[2]);
+
+    // Process remaining n-3 points
+    for (int i = 3; i < m; i++) {
+        // Keep removing top while the angle formed by
+        // points next-to-top, top, and points[i] makes
+        // a non-left turn
+        while (S.size() > 1 && orientation(nextToTop(S), S.top(), points[i]) != 2)
+            S.pop();
+        S.push(points[i]);
+    }
+
+    // Print the stack which contains the convex hull
+    cout << "Convex Hull Points:" << endl;
+    while (!S.empty()) {
+        Point p = S.top();
+        cout << "(" << p.x << ", " << p.y << ")" << endl;
+        S.pop();
+    }
+}
+
+// Driver code
+int main() {
+    Point points[] = {{0, 3}, {1, 1}, {2, 2}, {4, 4},
+                      {0, 0}, {1, 2}, {3, 1}, {3, 3}};
+    int n = sizeof(points)/sizeof(points[0]);
+    convexHull(points, n);
+    return 0;
+}</code></pre>
+                </div>
+                <div class="code-block" id="java">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-java">// Point-in-Polygon using Ray Casting Algorithm in Java
+import java.util.ArrayList;
+import java.util.List;
+
+class Point {
+    double x, y;
+    
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class GeometricAlgorithms {
+    // Returns true if the point p is inside the polygon represented by vertices
+    public static boolean isPointInPolygon(Point p, List<Point> vertices) {
+        if (vertices.size() < 3) {
+            return false;
+        }
+        
+        int n = vertices.size();
+        boolean inside = false;
+        
+        // Ray casting algorithm
+        for (int i = 0, j = n - 1; i < n; j = i++) {
+            if (((vertices.get(i).y > p.y) != (vertices.get(j).y > p.y)) &&
+                (p.x < (vertices.get(j).x - vertices.get(i).x) * (p.y - vertices.get(i).y) / 
+                (vertices.get(j).y - vertices.get(i).y) + vertices.get(i).x)) {
+                inside = !inside;
+            }
+        }
+        
+        return inside;
+    }
+    
+    // Method to calculate the distance between two points
+    public static double distance(Point p1, Point p2) {
+        return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+    }
+    
+    // Method to find the closest pair of points using a naive approach
+    public static double closestPairNaive(List<Point> points) {
+        if (points.size() < 2) return Double.POSITIVE_INFINITY;
+        
+        double minDist = Double.POSITIVE_INFINITY;
+        
+        for (int i = 0; i < points.size(); i++) {
+            for (int j = i + 1; j < points.size(); j++) {
+                double dist = distance(points.get(i), points.get(j));
+                if (dist < minDist) {
+                    minDist = dist;
+                }
+            }
+        }
+        
+        return minDist;
+    }
+    
+    // Method to check if two line segments intersect
+    public static boolean doLinesIntersect(Point p1, Point p2, Point p3, Point p4) {
+        // Calculate directions
+        int d1 = direction(p3, p4, p1);
+        int d2 = direction(p3, p4, p2);
+        int d3 = direction(p1, p2, p3);
+        int d4 = direction(p1, p2, p4);
+        
+        // Check if they intersect
+        if (((d1 > 0 && d2 < 0) || (d1 < 0 && d2 > 0)) && 
+            ((d3 > 0 && d4 < 0) || (d3 < 0 && d4 > 0))) {
+            return true;
+        }
+        
+        // Check for collinearity and overlap
+        if (d1 == 0 && onSegment(p3, p4, p1)) return true;
+        if (d2 == 0 && onSegment(p3, p4, p2)) return true;
+        if (d3 == 0 && onSegment(p1, p2, p3)) return true;
+        if (d4 == 0 && onSegment(p1, p2, p4)) return true;
+        
+        return false;
+    }
+    
+    // Helper function for doLinesIntersect
+    private static int direction(Point p, Point q, Point r) {
+        double val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
+        if (val == 0) return 0;  // collinear
+        return (val > 0) ? 1 : -1; // clockwise or counterclockwise
+    }
+    
+    // Helper function for doLinesIntersect
+    private static boolean onSegment(Point p, Point q, Point r) {
+        return (r.x <= Math.max(p.x, q.x) && r.x >= Math.min(p.x, q.x) &&
+                r.y <= Math.max(p.y, q.y) && r.y >= Math.min(p.y, q.y));
+    }
+    
+    public static void main(String[] args) {
+        // Example: Check if a point is inside a polygon
+        List<Point> polygon = new ArrayList<>();
+        polygon.add(new Point(0, 0));
+        polygon.add(new Point(10, 0));
+        polygon.add(new Point(10, 10));
+        polygon.add(new Point(0, 10));
+        
+        Point testPoint = new Point(5, 5);
+        System.out.println("Point (5,5) is " + 
+                         (isPointInPolygon(testPoint, polygon) ? "inside" : "outside") + 
+                         " the polygon");
+        
+        // Example: Find the closest pair
+        List<Point> points = new ArrayList<>();
+        points.add(new Point(2, 3));
+        points.add(new Point(12, 30));
+        points.add(new Point(40, 50));
+        points.add(new Point(5, 1));
+        points.add(new Point(6, 2));
+        
+        System.out.println("Distance of closest pair: " + closestPairNaive(points));
+        
+        // Example: Check if two line segments intersect
+        Point p1 = new Point(1, 1);
+        Point p2 = new Point(10, 10);
+        Point p3 = new Point(1, 10);
+        Point p4 = new Point(10, 1);
+        
+        System.out.println("Lines intersect: " + doLinesIntersect(p1, p2, p3, p4));
+    }
+}</code></pre>
+                </div>
+                <div class="code-block" id="python">
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code class="language-python"># Voronoi Diagram using scipy in Python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.spatial import Voronoi, voronoi_plot_2d
+
+# Function to generate and plot a Voronoi diagram
+def plot_voronoi(points):
+    """
+    Generate and plot a Voronoi diagram for a set of points
+    
+    Args:
+        points: A numpy array of shape (n, 2) containing n points in 2D
+    """
+    # Compute Voronoi diagram
+    vor = Voronoi(points)
+    
+    # Plot
+    fig = plt.figure(figsize=(10, 10))
+    ax = fig.add_subplot(111)
+    
+    # Plot the Voronoi diagram
+    voronoi_plot_2d(vor, ax=ax, show_points=True, show_vertices=True,
+                   line_colors='blue', line_width=2, line_alpha=0.6,
+                   point_size=10)
+    
+    # Plot the original points
+    ax.plot(points[:, 0], points[:, 1], 'ko', markersize=8)
+    
+    ax.set_title('Voronoi Diagram')
+    plt.show()
+    
+    return vor
+
+# Generate random points
+np.random.seed(42)  # For reproducibility
+points = np.random.rand(15, 2) * 10  # 15 random points in 2D
+
+# Plot the Voronoi diagram
+vor = plot_voronoi(points)
+
+# Function to implement Graham's scan for Convex Hull
+def convex_hull_graham(points):
+    """
+    Compute the convex hull of a set of points using Graham's scan algorithm.
+    
+    Args:
+        points: A numpy array of shape (n, 2) containing n points in 2D
+    
+    Returns:
+        A list of indices of points that make up the convex hull in counterclockwise order
+    """
+    def polar_angle(p0, p1):
+        """Calculate polar angle between p0 and p1"""
+        y_span = p1[1] - p0[1]
+        x_span = p1[0] - p0[0]
+        return np.arctan2(y_span, x_span)
+    
+    def distance_sq(p0, p1):
+        """Calculate squared distance between p0 and p1"""
+        y_span = p1[1] - p0[1]
+        x_span = p1[0] - p0[0]
+        return y_span**2 + x_span**2
+    
+    def ccw(p0, p1, p2):
+        """Return True if p0, p1, p2 are in counter-clockwise order"""
+        return (p1[0] - p0[0]) * (p2[1] - p0[1]) - (p2[0] - p0[0]) * (p1[1] - p0[1]) > 0
+    
+    # Find the point with the lowest y-coordinate (and leftmost if tie)
+    min_idx = np.lexsort((points[:, 0], points[:, 1]))[0]
+    p0 = points[min_idx]
+    
+    # Sort points by polar angle with respect to p0
+    angles = np.apply_along_axis(lambda p: polar_angle(p0, p), 1, points)
+    distances = np.apply_along_axis(lambda p: distance_sq(p0, p), 1, points)
+    
+    # Create indices array and sort first by angles, then by distances
+    indices = np.arange(len(points))
+    indices = indices[indices != min_idx]  # Remove p0
+    indices = np.array(sorted(indices, key=lambda i: (angles[i], distances[i])))
+    indices = np.append([min_idx], indices)  # Add p0 at the beginning
+    
+    # Graham's scan
+    stack = [indices[0], indices[1]]
+    
+    for i in range(2, len(indices)):
+        while len(stack) > 1 and not ccw(points[stack[-2]], points[stack[-1]], points[indices[i]]):
+            stack.pop()
+        stack.append(indices[i])
+    
+    return stack
+
+# Example usage:
+hull_indices = convex_hull_graham(points)
+hull_points = points[hull_indices]
+
+# Plot the convex hull
+plt.figure(figsize=(10, 10))
+plt.scatter(points[:, 0], points[:, 1], c='blue', label='Points')
+plt.fill(hull_points[:, 0], hull_points[:, 1], alpha=0.3, c='red', label='Convex Hull')
+plt.plot(np.append(hull_points[:, 0], hull_points[0, 0]), 
+         np.append(hull_points[:, 1], hull_points[0, 1]), 'r-')
+plt.legend()
+plt.title('Convex Hull using Graham\'s Scan')
+plt.show()
+
+# Function to implement Point in Polygon test using Ray Casting
+def point_in_polygon(point, polygon):
+    """
+    Check if a point is inside a polygon using ray casting algorithm
+    
+    Args:
+        point: A tuple (x, y) representing the point
+        polygon: A list of tuples [(x1, y1), (x2, y2), ...] representing the polygon
+    
+    Returns:
+        True if the point is inside the polygon, False otherwise
+    """
+    x, y = point
+    n = len(polygon)
+    inside = False
+    
+    p1x, p1y = polygon[0]
+    for i in range(1, n + 1):
+        p2x, p2y = polygon[i % n]
+        if y > min(p1y, p2y):
+            if y <= max(p1y, p2y):
+                if x <= max(p1x, p2x):
+                    if p1y != p2y:
+                        xinters = (y - p1y) * (p2x - p1x) / (p2y - p1y) + p1x
+                    if p1x == p2x or x <= xinters:
+                        inside = not inside
+        p1x, p1y = p2x, p2y
+    
+    return inside
+
+# Example usage:
+polygon = [(0, 0), (10, 0), (10, 10), (0, 10)]
+test_points = [(5, 5), (15, 15), (0, 0)]
+
+for point in test_points:
+    result = "inside" if point_in_polygon(point, polygon) else "outside"
+    print(f"Point {point} is {result} the polygon")</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Key Challenges in Geometric Algorithms</h2>
+            <ul>
+                <li><strong>Degeneracy Handling:</strong> Many geometric algorithms need to handle special cases like collinear points or overlapping lines.</li>
+                <li><strong>Numerical Precision:</strong> Floating-point arithmetic can lead to errors in geometric calculations, requiring special handling.</li>
+                <li><strong>Computational Complexity:</strong> Many geometric problems have high computational complexity, requiring efficient algorithms.</li>
+                <li><strong>High Dimensionality:</strong> Problems become significantly more complex in higher dimensions.</li>
+                <li><strong>Robustness:</strong> Geometric algorithms need to be robust against edge cases and inconsistent inputs.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script>
+        hljs.highlightAll();
+        
+        function switchTab(element, language) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.code-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Add active class to selected tab
+            element.classList.add('active');
+            
+            // Hide all code blocks
+            document.querySelectorAll('.code-block').forEach(block => {
+                block.classList.remove('active');
+            });
+            
+            // Show selected code block
+            document.getElementById(language).classList.add('active');
+        }
+        
+        function copyCode(button) {
+            const pre = button.nextElementSibling;
+            const code = pre.textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                const originalIcon = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

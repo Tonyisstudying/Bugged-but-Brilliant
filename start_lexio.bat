@@ -1,92 +1,85 @@
 @echo off
-TITLE Lexio GitHub Launcher
+TITLE Lexio Language Learning
 echo ====================================================
-echo       Launching Lexio from GitHub Repository
+echo       Welcome to Lexio Language Learning
 echo ====================================================
 echo.
 
-REM Create a destination folder if it doesn't exist
-SET DEST_FOLDER=%USERPROFILE%\Documents\Lexio
-IF NOT EXIST "%DEST_FOLDER%" (
-    echo Creating Lexio folder...
-    mkdir "%DEST_FOLDER%"
+setlocal
+
+REM Get the directory where the batch file is located
+cd /d "%~dp0"
+
+REM Default port for the server
+set PORT=8080
+
+REM Check if Node.js is installed
+where node >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    echo Node.js is not installed. Opening in simple mode...
+    goto simple_launch
 )
 
-cd /d "%DEST_FOLDER%"
-
-echo Downloading latest version from GitHub...
-echo This may take a moment depending on your internet speed...
-
-REM Use PowerShell to download the ZIP file from GitHub
-powershell -Command "& {Invoke-WebRequest -Uri 'https://github.com/Tonyisstudying/Bugged-but-Brilliant/archive/refs/heads/main.zip' -OutFile 'lexio_latest.zip'}" >nul 2>&1
-
-IF NOT EXIST "lexio_latest.zip" (
-    echo ERROR: Failed to download from GitHub. Please check your internet connection.
-    pause
-    exit /b 1
-)
-
-echo Download complete!
-echo Extracting files...
-
-REM Remove old files (but keep the zip for next time)
-IF EXIST "Bugged-but-Brilliant-main" (
-    rmdir /S /Q "Bugged-but-Brilliant-main"
-)
-
-REM Extract the ZIP file
-powershell -Command "& {Expand-Archive -Path 'lexio_latest.zip' -DestinationPath '.' -Force}" >nul 2>&1
-
-echo Launching Lexio...
-
-REM Check if extraction was successful
-IF EXIST "Bugged-but-Brilliant-main\index.html" (
-    REM Try to open in browser directly
-    start "" "Bugged-but-Brilliant-main\index.html"
-    echo Website opened successfully!
-) ELSE IF EXIST "Bugged-but-Brilliant-main\pages\login.html" (
-    REM Fallback to login page
-    start "" "Bugged-but-Brilliant-main\pages\login.html"
-    echo Website opened successfully!
-) ELSE (
-    echo ERROR: Could not find website files after extraction.
-    echo Please report this issue on GitHub.
-    pause
-    exit /b 1
-)
-
-REM Optional: Check if a local server can be started
-echo.
-echo Checking if we can start a local server for better functionality...
-where node >nul 2>nul
-IF %ERRORLEVEL% EQU 0 (
-    IF EXIST "Bugged-but-Brilliant-main\package.json" (
-        cd "Bugged-but-Brilliant-main"
-        echo Node.js found! Installing dependencies...
-        call npm install >nul 2>&1
-        echo Starting Node.js server...
-        start /B cmd /C "node JS\server.js" >nul 2>&1
-        timeout /t 2 /nobreak >nul
-        echo Server started! You can also access Lexio at: http://localhost:3000
-        start "" http://localhost:3000
+REM Check if http-server is installed globally
+call npm list -g http-server >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    echo Installing http-server...
+    call npm install -g http-server
+    if %ERRORLEVEL% NEQ 0 (
+        echo Failed to install http-server. Opening in simple mode...
+        goto simple_launch
     )
 )
 
-echo.
-echo ====================================================
-echo Lexio is now ready!
-echo ====================================================
-echo.
-echo Your local copy is stored at: %DEST_FOLDER%
-echo.
-echo To create a desktop shortcut, press any key...
-pause >nul
+echo Starting Lexio workspace server on port %PORT%...
 
-REM Create desktop shortcut
-echo Creating desktop shortcut...
-powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut('%USERPROFILE%\Desktop\Lexio.lnk');$s.TargetPath='%DEST_FOLDER%\Bugged-but-Brilliant-main\index.html';$s.WorkingDirectory='%DEST_FOLDER%\Bugged-but-Brilliant-main';$s.Save()"
+REM Check if port is already in use
+netstat -ano | findstr ":%PORT%" >nul
+if %ERRORLEVEL% EQU 0 (
+    echo Port %PORT% is already in use. Trying port 8081...
+    set PORT=8081
+    
+    REM Check if the new port is also in use
+    netstat -ano | findstr ":%PORT%" >nul
+    if %ERRORLEVEL% EQU 0 (
+        echo Port %PORT% is also in use. Opening in simple mode...
+        goto simple_launch
+    )
+)
 
-echo Shortcut created! You can now launch Lexio directly from your desktop.
+REM Start the server
+start "Lexio Server" cmd /c "http-server ./ -p %PORT% -c-1 --cors"
+
+REM Wait for the server to start
+timeout /t 2 /nobreak >nul
+
+echo Lexio server is running on http://localhost:%PORT%
 echo.
-echo Press any key to exit...
+echo Opening Lexio in your browser...
+start "" "http://localhost:%PORT%"
+
+echo.
+echo Lexio has been launched successfully!
+echo.
+echo NOTE: Keep this window open while using Lexio.
+echo       Close this window when you're done to stop the server.
+echo.
+echo Press any key to stop the server and exit...
 pause >nul
+taskkill /fi "WINDOWTITLE eq Lexio Server*" >nul 2>&1
+exit /b 0
+
+:simple_launch
+echo Starting Lexio in simple mode...
+if exist "index.html" (
+    start "" "index.html"
+    echo Lexio has been launched!
+) else (
+    echo ERROR: index.html was not found in this directory.
+    echo Current directory: %CD%
+)
+echo.
+echo Note: Simple mode may not support all features.
+echo       Some functionality might be limited.
+echo.
+pause

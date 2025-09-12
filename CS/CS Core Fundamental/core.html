@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mindmap</title>
+    <link rel="stylesheet" href="core.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🖥️Computer Science Core Fundamentals</h1>
+    </header>
+
+    <div class="mindmap">
+      <div class="center">Computer Science Core Fundamentals</div>
+
+      <div class="branch branch-left">
+        <h3>Hardware: is the physical part of the computer.</h3>
+        <ul>
+          <li>
+            Input Devices: a keyboard, mouse, or camera, let us put data into
+            the system.
+          </li>
+          <li>
+            Output Devices: monitors, speakers, and printers, show the results
+            back to us.
+          </li>
+          <li>
+            Storage Devices
+            <div class="sub-branch">
+              <div class="node">RAM: fast but temporary</div>
+              <div class="node">ROM: permanent storage</div>
+              <div class="node">Larger Devices: HDD, SSD</div>
+            </div>
+          </li>
+          <li>
+            CPU: the brain of the computer, which calculates, makes decisions,
+            and controls how data moves.
+          </li>
+          <li>
+            Motherboard: connects all parts together, and the power supply gives
+            the computer electricity.
+          </li>
+        </ul>
+      </div>
+
+      <div class="branch branch-right">
+        <h3>Software: the set of programs that make the hardware useful.</h3>
+        <ul>
+          <li>
+            Operating System: is very important because it manages all the basic
+            work of the computer. It handles memory, files, devices, and running
+            programs. It also gives us a way to interact with the computer,
+            either through text commands or easy-to-use icons and windows.
+          </li>
+          <li>
+            Application Software: helps users perform specific tasks, like word
+            processing or web browsing.
+          </li>
+          <li>
+            Programming Software: provides tools for developers to create
+            software applications.
+          </li>
+        </ul>
+      </div>
+
+      <div class="branch branch-bottom">
+        <h3>Internet: connects computers worldwide.</h3>
+        <p>
+          The World Wide Web (WWW) is where websites and online resources live.
+          We use domain names (like google.com) instead of numbers (IP
+          addresses), and browsers (like Chrome or Safari) let us visit sites.
+          Search engines (like Google) help us find information.
+        </p>
+      </div>
+
+      <!-- Line -->
+      <div class="line line-left"></div>
+      <div class="line line-right"></div>
+      <div class="line line-bottom"></div>
+    </div>
+
+    <!-- Computer Networks Section -->
+    <section class="networks-section">
+      <h1>🌐 Computer Networks</h1>
+
+      <div class="networks-grid">
+        <div class="network-card">
+          <h3>1. Fundamentals</h3>
+          <p>
+            Networks link devices for communication and resource sharing.
+            Governed by TCP/IP, HTTP, DNS, FTP. Models: OSI (7 layers), TCP/IP
+            (4 layers). Scales: PAN, LAN, MAN, WAN.
+          </p>
+        </div>
+
+        <div class="network-card">
+          <h3>2.1 Architecture & Protocols</h3>
+          <p>
+            Centralized vs decentralized designs. Protocols: TCP/IP, UDP,
+            HTTP/HTTPS, FTP, DNS, BGP, OSPF, RIP.
+          </p>
+        </div>
+
+        <div class="network-card">
+          <h3>2.2 Routing & Switching</h3>
+          <p>
+            Switching (Layer 2): MAC, VLAN, STP. Routing (Layer 3): IP, NAT,
+            static/dynamic paths.
+          </p>
+        </div>
+
+        <div class="network-card">
+          <h3>2.3 Wireless & Mobile</h3>
+          <p>
+            Wi-Fi, 3G/4G/5G, Bluetooth, NFC, mesh networks, mobility management.
+          </p>
+        </div>
+
+        <div class="network-card">
+          <h3>2.4 Network Security</h3>
+          <p>
+            Defenses: firewalls, VPNs, IDS/IPS, encryption, zero-trust. Threats:
+            malware, DDoS, MITM, spoofing, phishing.
+          </p>
+        </div>
+
+        <div class="network-card">
+          <h3>2.5 Cloud & Data Centers</h3>
+          <p>
+            SDN/NFV, virtualization, VMs/containers, load balancing in
+            large-scale systems.
+          </p>
+        </div>
+
+        <div class="network-card">
+          <h3>2.6 IoT Networking</h3>
+          <p>
+            Everyday devices: sensors, cameras, appliances. Protocols: MQTT,
+            CoAP. Challenges: scalability, security.
+          </p>
+        </div>
+
+        <div class="network-card">
+          <h3>2.7 Performance & QoS</h3>
+          <p>
+            Metrics: bandwidth, latency, jitter, packet loss. Techniques:
+            congestion control, traffic shaping, scheduling.
+          </p>
+        </div>
+
+        <div class="network-card">
+          <h3>2.8 Management & Monitoring</h3>
+          <p>
+            Configuration, fault detection, auditing, monitoring tools (SNMP,
+            automation frameworks).
+          </p>
+        </div>
+
+        <div class="network-card">
+          <h3>2.9 Emerging Areas</h3>
+          <p>
+            6G, quantum networking, satellites, AI-driven networking, edge/fog
+            computing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security and Privacy Section -->
+    <section class="security-section">
+      <h2>🔐 Security and Privacy in Computer Science</h2>
+
+      <div class="security-block">
+        <h3>1. Foundations</h3>
+        <ul>
+          <li>
+            Protecting information systems from unauthorized access,
+            modification, or disruption.
+          </li>
+          <li>
+            Guided by the <strong>CIA triad</strong>: confidentiality,
+            integrity, availability.
+          </li>
+          <li>
+            <strong>Privacy</strong>: control over how personal data is
+            collected, used, and shared.
+          </li>
+          <li>
+            <em>Privacy by design</em>: embedding protections from the ground
+            up.
+          </li>
+        </ul>
+      </div>
+
+      <div class="security-block">
+        <h3>2. Core Areas of Security</h3>
+        <ul>
+          <li>
+            <strong>Cryptography</strong>: symmetric/asymmetric encryption, hash
+            functions, digital signatures, zero-knowledge proofs, homomorphic
+            encryption.
+          </li>
+          <li>
+            <strong>Network Security</strong>: firewalls, VPNs, TLS/SSL,
+            defenses against DoS/MITM.
+          </li>
+          <li>
+            <strong>System Security</strong>: OS hardening, patching, access
+            control, malware defense.
+          </li>
+          <li>
+            <strong>Application Security</strong>: secure coding, vulnerability
+            testing, exploit prevention.
+          </li>
+          <li>
+            <strong>Cybersecurity Operations</strong>: monitoring, threat
+            intelligence, incident response.
+          </li>
+        </ul>
+      </div>
+
+      <div class="security-block">
+        <h3>3. Core Areas of Privacy</h3>
+        <ul>
+          <li>
+            <strong>Data Privacy</strong>: anonymization, minimization, GDPR,
+            CCPA compliance.
+          </li>
+          <li>
+            <strong>Differential Privacy</strong>: analyze data without leaking
+            individual info.
+          </li>
+          <li>
+            <strong>Privacy-Preserving Computation</strong>: homomorphic
+            encryption, multi-party computation, federated learning.
+          </li>
+          <li>
+            <strong>Identity & Anonymity</strong>: Tor, zero-knowledge
+            credentials, decentralized identity systems.
+          </li>
+        </ul>
+      </div>
+    </section>
+  </body>
+</html>

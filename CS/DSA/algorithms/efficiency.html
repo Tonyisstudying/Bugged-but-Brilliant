@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Efficiency - DSA</title>
+    <link rel="icon" type="image/x-icon" href="../../Assets/images/team logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+        
+        /* Hero section */
+        .hero-section {
+            background: radial-gradient(circle, #FF9EAA 0%, #FF6B81 100%);
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        /* Main content */
+        .efficiency-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .efficiency-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .efficiency-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .efficiency-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .efficiency-card h2 {
+            color: #0052cc;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        .complexity-list {
+            list-style-type: none;
+        }
+        
+        .complexity-list li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+        
+        .complexity-list li strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #0052cc;
+            font-size: 1.2rem;
+        }
+        
+        .complexity-list li p {
+            color: #555;
+        }
+        
+        /* Big-O visualization */
+        .bigo-chart {
+            width: 100%;
+            height: 300px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .chart-container {
+            width: 100%;
+            height: 250px;
+            position: relative;
+        }
+        
+        .chart-title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .efficiency-card, .bigo-chart {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .efficiency-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .efficiency-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .bigo-chart {
+            animation-delay: 0.6s;
+        }
+        
+        /* Examples section */
+        .examples-section {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease forwards;
+            animation-delay: 0.8s;
+            opacity: 0;
+        }
+        
+        .examples-section h2 {
+            color: #0052cc;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .example-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .example-card h3 {
+            color: #0052cc;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../algorithms.html" class="back-btn">← Back to Algorithms</a>
+        </div>
+        
+        <div class="hero-section">
+            <h1>Algorithm that makes things fast:</h1>
+            <p>Understanding algorithm efficiency is crucial for writing performant code. Learn about time and space complexity analysis and how to choose the right algorithm for your needs.</p>
+        </div>
+        
+        <div class="efficiency-section">
+            <div class="efficiency-card">
+                <h2>Time Complexity</h2>
+                <p>Time complexity measures how runtime increases as input size grows. It answers the question: "How does the algorithm scale with larger input?"</p>
+                <ul class="complexity-list">
+                    <li>
+                        <strong>O(1) - Constant Time</strong>
+                        <p>Runtime is the same regardless of input size. Examples: Accessing an array element, adding an item to a stack.</p>
+                    </li>
+                    <li>
+                        <strong>O(log n) - Logarithmic Time</strong>
+                        <p>Runtime grows logarithmically with input size. Examples: Binary search, balanced tree operations.</p>
+                    </li>
+                    <li>
+                        <strong>O(n) - Linear Time</strong>
+                        <p>Runtime grows linearly with input size. Examples: Linear search, traversing an array.</p>
+                    </li>
+                    <li>
+                        <strong>O(n log n) - Linearithmic Time</strong>
+                        <p>Common in efficient sorting algorithms. Examples: Merge sort, heap sort, quick sort (average case).</p>
+                    </li>
+                    <li>
+                        <strong>O(n²) - Quadratic Time</strong>
+                        <p>Runtime grows with the square of input size. Examples: Bubble sort, insertion sort, simple nested loops.</p>
+                    </li>
+                    <li>
+                        <strong>O(2ⁿ) - Exponential Time</strong>
+                        <p>Runtime doubles with each addition to input size. Examples: Recursive calculation of Fibonacci numbers, traveling salesman problem.</p>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="efficiency-card">
+                <h2>Space Complexity</h2>
+                <p>Space complexity measures how memory usage increases with input size. It answers the question: "How much additional memory does the algorithm need?"</p>
+                <ul class="complexity-list">
+                    <li>
+                        <strong>O(1) - Constant Space</strong>
+                        <p>Uses a fixed amount of memory regardless of input size. Examples: Iterative algorithms that use a few variables.</p>
+                    </li>
+                    <li>
+                        <strong>O(log n) - Logarithmic Space</strong>
+                        <p>Memory usage grows logarithmically with input size. Example: Recursive binary search.</p>
+                    </li>
+                    <li>
+                        <strong>O(n) - Linear Space</strong>
+                        <p>Memory usage grows linearly with input size. Examples: Creating a new array to store results.</p>
+                    </li>
+                    <li>
+                        <strong>O(n²) - Quadratic Space</strong>
+                        <p>Memory usage grows with the square of input size. Example: Creating a 2D matrix for all pairs of items.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="bigo-chart">
+            <h2 class="chart-title">Big-O Complexity Chart</h2>
+            <div class="chart-container">
+                <canvas id="bigOChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="examples-section">
+            <h2>Algorithm Efficiency Examples</h2>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>Searching</h3>
+                    <p><strong>Linear Search:</strong> O(n) time</p>
+                    <p><strong>Binary Search:</strong> O(log n) time</p>
+                    <p>Binary search is significantly faster for large datasets, but requires sorted input.</p>
+                </div>
+                
+                <div class="example-card">
+                    <h3>Sorting</h3>
+                    <p><strong>Bubble Sort:</strong> O(n²) time</p>
+                    <p><strong>Merge Sort:</strong> O(n log n) time</p>
+                    <p>For large datasets, merge sort outperforms bubble sort by orders of magnitude.</p>
+                </div>
+                
+                <div class="example-card">
+                    <h3>Data Structures</h3>
+                    <p><strong>Array Access:</strong> O(1) time</p>
+                    <p><strong>Linked List Access:</strong> O(n) time</p>
+                    <p><strong>Hash Table Lookup:</strong> O(1) average time</p>
+                    <p>Choosing the right data structure is crucial for algorithm efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create Big-O chart
+            const ctx = document.getElementById('bigOChart').getContext('2d');
+            
+            // Generate data points
+            const generateData = (fn, n) => {
+                const data = [];
+                for (let i = 1; i <= n; i++) {
+                    data.push({x: i, y: fn(i)});
+                }
+                return data;
+            };
+            
+            const constant = (n) => 1;
+            const logarithmic = (n) => Math.log2(n) || 0.1;
+            const linear = (n) => n;
+            const linearithmic = (n) => n * (Math.log2(n) || 0.1);
+            const quadratic = (n) => n * n;
+            const exponential = (n) => Math.min(2 ** n, 100); // Cap for display purposes
+            
+            const n = 10;
+            
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [
+                        {
+                            label: 'O(1) - Constant',
+                            data: generateData(constant, n),
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'O(log n) - Logarithmic',
+                            data: generateData(logarithmic, n),
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'O(n) - Linear',
+                            data: generateData(linear, n),
+                            borderColor: 'rgba(255, 159, 64, 1)',
+                            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'O(n log n) - Linearithmic',
+                            data: generateData(linearithmic, n),
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'O(n²) - Quadratic',
+                            data: generateData(quadratic, n),
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'O(2ⁿ) - Exponential',
+                            data: generateData(exponential, n),
+                            borderColor: 'rgba(255, 0, 0, 1)',
+                            backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Input Size (n)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Operations'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

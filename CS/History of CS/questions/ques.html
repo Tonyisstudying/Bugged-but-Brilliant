@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Computer History Quiz</title>
+    <link rel="stylesheet" href="ques.css" />
+  </head>
+  <body>
+    <div class="nav-container">
+        <a href="../historyofcs.html" class="back-button">← Back to History</a>
+        <div class="nav-title">Lexio💖</div>
+    </div>
+    
+    <div class="quiz-container">
+      <h1>💻 Computer History Quiz</h1>
+
+      <!-- 1. MULTIPLE CHOICE -->
+      <h2>1. Multiple Choice</h2>
+
+      <div class="question" data-answer="B">
+        <p>
+          Q1: Which machine was the first to use punched cards to control
+          patterns in textiles?
+        </p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="A" /> A) Pascaline</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="B" /> B) Jacquard Loom</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="C" /> C) Hollerith
+            Tabulator</label
+          ><br />
+          <label><input type="radio" name="q1" value="D" /> D) ENIAC</label>
+        </div>
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+
+      <div class="question" data-answer="C">
+        <p>
+          Q2: What technology defined the 2nd generation of computers
+          (1959–1965)?
+        </p>
+        <div class="options">
+          <label
+            ><input type="radio" name="q2" value="A" /> A) Vacuum tubes</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="B" /> B) Integrated
+            circuits</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="C" /> C) Transistors</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="D" /> D)
+            Microprocessors</label
+          >
+        </div>
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+
+      <div class="question" data-answer="B">
+        <p>
+          Q3: Who is credited with writing the first "program" for Babbage’s
+          Analytical Engine?
+        </p>
+        <div class="options">
+          <label
+            ><input type="radio" name="q3" value="A" /> A) Charles
+            Babbage</label
+          ><br />
+          <label
+            ><input type="radio" name="q3" value="B" /> B) Ada Lovelace</label
+          ><br />
+          <label
+            ><input type="radio" name="q3" value="C" /> C) Herman
+            Hollerith</label
+          ><br />
+          <label
+            ><input type="radio" name="q3" value="D" /> D) John Mauchly</label
+          >
+        </div>
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+
+      <div class="question" data-answer="D">
+        <p>Q4: What made the Z3 (1941) different from the Z1 (1938)?</p>
+        <div class="options">
+          <label
+            ><input type="radio" name="q4" value="A" /> A) Z3 was mechanical; Z1
+            was electronic</label
+          ><br />
+          <label
+            ><input type="radio" name="q4" value="B" /> B) Z3 used binary; Z1
+            used decimal</label
+          ><br />
+          <label
+            ><input type="radio" name="q4" value="C" /> C) Z3 general-purpose;
+            Z1 special-purpose</label
+          ><br />
+          <label
+            ><input type="radio" name="q4" value="D" /> D) Z3 used vacuum tubes;
+            Z1 used gears</label
+          >
+        </div>
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+
+      <div class="question" data-answer="B">
+        <p>
+          Q5: Which of these was NOT a limitation of 1st generation (vacuum
+          tube) computers?
+        </p>
+        <div class="options">
+          <label
+            ><input type="radio" name="q5" value="A" /> A) Large, needed
+            AC</label
+          ><br />
+          <label
+            ><input type="radio" name="q5" value="B" /> B) Used high-level
+            languages</label
+          ><br />
+          <label
+            ><input type="radio" name="q5" value="C" /> C) Expensive to
+            operate</label
+          ><br />
+          <label
+            ><input type="radio" name="q5" value="D" /> D) Frequently
+            overheated</label
+          >
+        </div>
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+
+      <div class="question" data-answer="B">
+        <p>Q6: What was the key innovation of the IBM System/360 (1964)?</p>
+        <div class="options">
+          <label
+            ><input type="radio" name="q6" value="A" /> A) First with
+            microprocessors</label
+          ><br />
+          <label
+            ><input type="radio" name="q6" value="B" /> B) Family of compatible
+            mainframes</label
+          ><br />
+          <label
+            ><input type="radio" name="q6" value="C" /> C) First connected to
+            Internet</label
+          ><br />
+          <label
+            ><input type="radio" name="q6" value="D" /> D) First punched
+            cards</label
+          >
+        </div>
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+
+      <!-- 2. MATCHING -->
+      <h2>2. Matching</h2>
+      <div class="question" data-answer="1=C,2=A,3=B,4=D">
+        <p>
+          Match machines to uses:<br />
+          1) Colossus<br />2) UNIVAC I<br />3) Altair 8800<br />4) IBM 701
+        </p>
+        <input type="text" placeholder="Format: 1=C,2=A,3=B,4=D" />
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+
+      <div class="question" data-answer="1=B,2=A,3=C">
+        <p>
+          Match eras to technology:<br />
+          1) Mechanical Era<br />2) 3rd Gen<br />3) 5th Gen
+        </p>
+        <input type="text" placeholder="Format: 1=B,2=A,3=C" />
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+
+      <!-- 3. FILL IN THE BLANK -->
+      <h2>3. Fill in the Blank</h2>
+      <div class="question" data-answer="ENIAC">
+        <p>
+          Q1: The ____________ (1946) was the first general-purpose electronic
+          computer.
+        </p>
+        <input type="text" placeholder="Your answer" />
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+
+      <div class="question" data-answer="Von Neumann Model">
+        <p>
+          Q2: The ____________ revolutionized programming by storing both data
+          and programs in memory.
+        </p>
+        <input type="text" placeholder="Your answer" />
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+
+      <div class="question" data-answer="4th">
+        <p>
+          Q3: The Apple II and IBM PC were key machines of the ____________
+          generation.
+        </p>
+        <input type="text" placeholder="Your answer" />
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+      <div class="question" data-answer="electromechanical">
+        <p>
+          Q4: The Harvard Mark I (1944) was an ______________ machine, meaning
+          it used both mechanical gears and electrical relays.
+        </p>
+        <input type="text" placeholder="Your answer" />
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+      <div class="question" data-answer="Colossus">
+        <p>
+          Q5: The ______________ (1943) was the first electronic computer
+          designed specifically to crack codes, but its existence was kept
+          secret until the 1970s.
+        </p>
+        <input type="text" placeholder="Your answer" />
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+      <div class="question" data-answer="stored program">
+        <p>
+          Q6: Unlike early computers that required rewiring to "program," the
+          Von Neumann Model introduced the idea of ______________ in memory,
+          making programming much faster.
+        </p>
+        <input type="text" placeholder="Your answer" />
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+      <div class="question" data-answer="Intel 4004">
+        <p>
+          Q7: The ______________ (1971) was the first microprocessor, putting an
+          entire CPU on a single silicon chip.
+        </p>
+        <input type="text" placeholder="Your answer" />
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+      <div class="question" data-answer="Hollerith Tabulator">
+        <p>
+          Q8: A machine built in 1890 to process U.S. Census data using punched
+          cards, later inspiring IBM’s early business machines.
+        </p>
+        <input type="text" placeholder="Your answer" />
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+      <div class="question" data-answer="Microprocessor">
+        <p>
+          Q9: A 1971 invention that put an entire CPU on a single silicon chip,
+          making personal computers possible.
+        </p>
+        <input type="text" placeholder="Your answer" />
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+      <div class="question" data-answer="Analytical Engine">
+        <p>
+          Q10: A 19th-century device designed by Charles Babbage that could
+          perform any calculation (not just specific ones) and inspired modern
+          computers—though it was never fully built in his lifetime.
+        </p>
+        <input type="text" placeholder="Your answer" />
+        <button onclick="checkAnswer(this)">Check</button>
+        <span class="feedback"></span>
+      </div>
+
+    <script src="ques.js"></script>
+  </body>
+</html>

@@ -352,3 +352,51 @@ body {
         border-right-width: 15px;
     }
 }
+
+/* Quiz Navigation Button */
+.quiz-navigation {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem 0;
+}
+
+.quiz-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.quiz-button i {
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+}
+
+.quiz-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.quiz-button:hover::before {
+    left: 100%;
+}

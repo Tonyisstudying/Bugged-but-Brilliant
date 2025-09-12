@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Data Structures & Algorithms</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../DSA/DSA.css">
+</head>
+<body>
+    <div class="container">
+        <div class="back-to-course">
+            <a href="../course_page.html" class="course-btn"><i class="fas fa-arrow-left"></i> Back to Course</a>
+        </div>
+        <header>
+            <h1>Data Structures & Algorithms</h1>
+            <p class="subtitle">Master the fundamentals of computer science</p>
+        </header>
+        
+        <div class="choice-section">
+            <h2 class="choice-title">What would you like to learn today?</h2>
+            <div class="choices">
+                <div class="choice-card" onclick="showContent('data-structures')">
+                    <div class="choice-card-inner">
+                        <div class="choice-card-front">
+                            <i class="fas fa-project-diagram"></i>
+                            <h3>Data Structures</h3>
+                            <p>Click to learn more</p>
+                        </div>
+                        <div class="choice-card-back">
+                            <h3>Data Structures</h3>
+                            <p>Ways to organize, store, and manage data for efficient access and modification.</p>
+                            <ul>
+                                <li>Arrays</li>
+                                <li>Linked Lists</li>
+                                <li>Stacks & Queues</li>
+                                <li>Trees</li>
+                                <li>Graphs</li>
+                                <li>Hash Tables</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="choice-card" onclick="showContent('algorithms')">
+                    <div class="choice-card-inner">
+                        <div class="choice-card-front">
+                            <i class="fas fa-cogs"></i>
+                            <h3>Algorithms</h3>
+                            <p>Click to learn more</p>
+                        </div>
+                        <a href="../DSA/algorithms.html" class="choice-card-back"><p>Start</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="data-structures-content" class="content-section">
+            <div class="content-header">
+                <h2>Data Structures</h2>
+                <p>A data structure is a way of organizing, storing, and managing data so it can be accessed and modified efficiently. The choice of data structure often impacts the efficiency of algorithms and overall system performance.</p>
+            </div>
+            
+            <div class="topics">
+                <div class="topic-card" onclick="toggleDetail('arrays-detail')">
+                    <i class="fas fa-bars"></i>
+                    <h3>Arrays</h3>
+                    <p>Collection of elements identified by array index</p>
+                </div>
+                
+                <div class="topic-card" onclick="toggleDetail('linked-lists-detail')">
+                    <i class="fas fa-link"></i>
+                    <h3>Linked Lists</h3>
+                    <p>Linear collection of data elements</p>
+                </div>
+                
+                <div class="topic-card" onclick="toggleDetail('stacks-detail')">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Stacks</h3>
+                    <p>Collection with Last-In-First-Out order</p>
+                </div>
+                
+                <div class="topic-card" onclick="toggleDetail('queues-detail')">
+                    <i class="fas fa-users"></i>
+                    <h3>Queues</h3>
+                    <p>Collection with First-In-First-Out order</p>
+                </div>
+                
+                <div class="topic-card" onclick="toggleDetail('hashing-detail')">
+                    <i class="fas fa-key"></i>
+                    <h3>Hashing</h3>
+                    <p>Technique for efficient data access</p>
+                </div>
+                
+                <div class="topic-card" onclick="toggleDetail('trees-detail')">
+                    <i class="fas fa-tree"></i>
+                    <h3>Trees</h3>
+                    <p>Hierarchical data structure</p>
+                </div>
+                
+                <div class="topic-card" onclick="toggleDetail('heap-detail')">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Heap</h3>
+                    <p>Complete binary tree with heap property</p>
+                </div>
+                
+                <div class="topic-card" onclick="toggleDetail('graphs-detail')">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Graphs</h3>
+                    <p>Collection of nodes connected by edges</p>
+                </div>
+            </div>
+            
+            <!-- Arrays Detail -->
+            <div id="arrays-detail" class="detail-content">
+                <h3>Arrays</h3>
+                <p>Array is a linear data structure where elements are allocated contiguous memory, allowing for constant-time access.</p>
+                
+                <h4>1D Array</h4>
+                <p>A list of elements arranged in a single line.</p>
+                <div class="code-example">
+                    <pre>int numbers[5] = {10, 20, 30, 40, 50};</pre>
+                </div>
+                
+                <h4>2D Array</h4>
+                <p>A collection of elements arranged in rows and columns, like a matrix.</p>
+                <div class="code-example">
+                    <pre>int matrix[2][3] = {
+    {1, 2, 3},
+    {4, 5, 6}
+};</pre>
+                </div>
+                
+                <h4>Multi-dimensional Array</h4>
+                <p>An array with more than two dimensions, used to represent grids, tables, or images.</p>
+                <div class="code-example">
+                    <pre>int cube[2][3][2] = {
+    { {1, 2}, {3, 4}, {5, 6} },
+    { {7, 8}, {9, 10}, {11, 12} }
+};</pre>
+                </div>
+            </div>
+            
+            <!-- Linked Lists Detail -->
+            <div id="linked-lists-detail" class="detail-content">
+                <h3>Linked Lists</h3>
+                <p>A linear data structure that stores data in nodes, which are connected by pointers. Unlike arrays, nodes of linked lists are not stored in contiguous memory locations and can only be accessed sequentially, starting from the head of list.</p>
+                
+                <ul class="detail-list">
+                    <li><strong>Singly Linked List</strong> is a linked list where each node points to the next node only.</li>
+                    <li><strong>Doubly Linked List</strong> is a linked list where each node points to both the previous and next nodes.</li>
+                    <li><strong>Circular Linked List</strong> is a linked list where the last node points back to the first node.</li>
+                </ul>
+            </div>
+            
+            <!-- Stacks Detail -->
+            <div id="stacks-detail" class="detail-content">
+                <h3>Stacks</h3>
+                <p>A linear data structure that follows the Last In, First Out (LIFO) principle. Stacks play an important role in managing function calls, memory, and are widely used in algorithms like stock span problem, next greater element and largest area in a histogram.</p>
+                
+                <ul class="detail-list">
+                    <li><strong>Simple Stack</strong> is a stack where the last added element is removed first, like a stack of plates.</li>
+                    <li><strong>Stack for Undo/Redo</strong> is a stack used to manage undo and redo operations in applications.</li>
+                    <li><strong>Expression Evaluation Stack</strong> is a stack used to evaluate expressions in calculators or compilers.</li>
+                </ul>
+            </div>
+            
+            <!-- Queues Detail -->
+            <div id="queues-detail" class="detail-content">
+                <h3>Queues</h3>
+                <p>Queue is a linear data structure that follows the First In, First Out (FIFO) principle. Queues play an important role in managing tasks or data in order, scheduling and message handling systems.</p>
+                
+                <ul class="detail-list">
+                    <li><strong>Simple Queue</strong> is a queue where the first element added is removed first, like people in line.</li>
+                    <li><strong>Circular Queue</strong> is a queue where the end connects back to the front to efficiently use space.</li>
+                    <li><strong>Priority Queue</strong> is a queue where elements with higher priority are removed first.</li>
+                    <li><strong>Deque (Double-Ended Queue)</strong> is a queue where elements can be added or removed from both ends.</li>
+                </ul>
+            </div>
+            
+            <!-- Hashing Detail -->
+            <div id="hashing-detail" class="detail-content">
+                <h3>Hashing</h3>
+                <p>Hashing is a technique that generates a fixed-size output (hash value) from an input of variable size using mathematical formulas called hash functions. Hashing is commonly used in data structures for efficient searching, insertion and deletion.</p>
+            </div>
+            
+            <!-- Trees Detail -->
+            <div id="trees-detail" class="detail-content">
+                <h3>Trees</h3>
+                <p>A non-linear, hierarchical data structure consisting of nodes connected by edges, with a top node called the root and nodes having child nodes. It is widely used in file systems, databases, decision-making algorithms, etc.</p>
+                
+                <ul class="detail-list">
+                    <li><strong>Binary Tree</strong> is a tree where each node has at most two children called the left child and the right child.</li>
+                    <li><strong>Binary Search Tree (BST)</strong> is a type of binary tree where each node has at most two children, with all left children smaller and all right children larger than the parent node. This structure allows fast searching, insertion, and deletion.</li>
+                    <li><strong>AVL Tree</strong> is a self-balancing binary search tree.</li>
+                    <li><strong>Trie</strong> is a tree used for efficient prefix-based searches, like autocomplete.</li>
+                </ul>
+            </div>
+            
+            <!-- Heap Detail -->
+            <div id="heap-detail" class="detail-content">
+                <h3>Heap</h3>
+                <p>A complete binary tree that satisfies the heap property. Heaps are usually used to implement priority queues, where the smallest or largest element is always at the root of the tree.</p>
+                
+                <ul class="detail-list">
+                    <li><strong>Min Heap</strong> is a heap where the parent node is smaller than its children.</li>
+                    <li><strong>Max Heap</strong> is a heap where the parent node is larger than its children.</li>
+                    <li><strong>Priority Queue Heap</strong> is a heap used to implement priority queues for scheduling tasks.</li>
+                </ul>
+            </div>
+            
+            <!-- Graphs Detail -->
+            <div id="graphs-detail" class="detail-content">
+                <h3>Graphs</h3>
+                <p>A non-linear data structure consisting of a finite set of vertices (or nodes) and a set of edges (or links) that connect a pair of nodes. Graphs are widely used to represent relationships between entities.</p>
+                
+                <ul class="detail-list">
+                    <li><strong>Directed Graph</strong> is a graph where edges have a specific direction.</li>
+                    <li><strong>Undirected Graph</strong> is a graph where edges do not have a direction.</li>
+                    <li><strong>Weighted Graph</strong> is a graph where edges carry a weight or cost.</li>
+                    <li><strong>Unweighted Graph</strong> is a graph where edges have no weight.</li>
+                    <li><strong>Special Graphs</strong> are graphs like trees, cycles, or complete graphs with unique properties.</li>
+                </ul>
+            </div>
+            
+            <button class="back-btn" onclick="showChoiceSection()">Back to Selection</button>
+        </div>
+        
+        <div id="algorithms-content" class="content-section">
+            <div class="content-header">
+                <h2>Algorithms</h2>
+                <p>An algorithm is a step-by-step set of instructions or rules designed to solve a specific problem or perform a computation efficiently. Algorithms are essential for data processing and automated reasoning.</p>
+            </div>
+            
+            <div class="topics">
+                <div class="topic-card">
+                    <i class="fas fa-sort-amount-down"></i>
+                    <h3>Sorting</h3>
+                    <p>Arranging items in a certain sequence (e.g., Quick Sort, Merge Sort)</p>
+                </div>
+                
+                <div class="topic-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Searching</h3>
+                    <p>Finding an item in a data structure (e.e., Binary Search)</p>
+                </div>
+                
+                <div class="topic-card">
+                    <i class="fas fa-route"></i>
+                    <h3>Pathfinding</h3>
+                    <p>Finding the shortest path between points (e.g., Dijkstra's Algorithm)</p>
+                </div>
+                
+                <div class="topic-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Machine Learning</h3>
+                    <p>Algorithms that improve through experience (e.g., Neural Networks)</p>
+                </div>
+                
+                <div class="topic-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Encryption</h3>
+                    <p>Securing data through encryption algorithms (e.g., RSA)</p>
+                </div>
+                
+                <div class="topic-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Optimization</h3>
+                    <p>Finding the best solution from all feasible solutions</p>
+                </div>
+            </div>
+            
+            <button class="back-btn" onclick="showChoiceSection()">Back to Selection</button>
+        </div>
+
+        <footer>
+            <p>Built for learning Computer Science fundamentals | Data Structures & Algorithms</p>
+            <p>How Google finds search results in milliseconds? How games track thousands of objects? The answer is DSA.</p>
+        </footer>
+    </div>
+
+    <script src="../DSA/DSA.js"></script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomized Algorithms</title>
+    <link rel="icon" type="image/x-icon" href="../../../Assets/images/team logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+
+        /* Hero section */
+        .hero-section {
+            background-color: #0052cc;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Content sections */
+        .content-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #0052cc;
+        }
+
+        .content-section p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Examples section */
+        .examples-section {
+            margin-bottom: 3rem;
+        }
+
+        .examples-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .example-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .example-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .example-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .example-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #0052cc;
+        }
+
+        .example-card p {
+            line-height: 1.6;
+        }
+
+        /* Key properties section */
+        .key-properties {
+            background-color: #e8f3ff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+
+        .key-properties h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #0052cc;
+        }
+
+        .key-properties ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .key-properties li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* Design steps section */
+        .design-steps {
+            background-color: #0052cc;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+
+        .design-steps h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .design-steps p {
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Code example */
+        .code-example {
+            background-color: #1e1e1e;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            color: #e0e0e0;
+            line-height: 1.6;
+            white-space: pre;
+        }
+
+        .highlight {
+            color: #569cd6;
+        }
+
+        .string {
+            color: #ce9178;
+        }
+
+        .comment {
+            color: #6a9955;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.3rem;
+            }
+            
+            .content-section h2 {
+                font-size: 1.7rem;
+            }
+            
+            .examples-section h2 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../algorithms.html" class="back-btn">← Back to Algorithms</a>
+        </div>
+        
+        <div class="hero-section">
+            <h1>Randomized Algorithms</h1>
+            <p>Algorithms that use randomness in their computations to achieve a desired outcome. These algorithms introduce randomness to improve efficiency or simplify algorithm design.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>What are Randomized Algorithms?</h2>
+            <p>Randomized algorithms in data structures and algorithms (DSA) are algorithms that use randomness in their computations to achieve a desired outcome. These algorithms introduce randomness to improve efficiency or simplify the algorithm design. By incorporating random choices into their processes, randomized algorithms can often provide faster solutions or better approximations compared to deterministic algorithms. They are particularly useful in situations where exact solutions are difficult to find or when a probabilistic approach is acceptable.</p>
+            <p>Unlike deterministic algorithms that always produce the same output for a given input, randomized algorithms may produce different outputs on different runs for the same input due to their random nature.</p>
+        </div>
+
+        <div class="design-steps">
+            <h2>Designing Randomized Algorithms</h2>
+            <p>The steps for designing and using randomized algorithms generally involve: defining the problem, integrating randomness by generating random numbers or choices to guide decisions, analyzing probabilistic performance, and executing the algorithm to get a probabilistically correct or bounded answer.</p>
+        </div>
+
+        <div class="key-properties">
+            <h2>Key Properties of Randomized Algorithms</h2>
+            <ul>
+                <li><strong>Randomness as a resource:</strong> They use random bits or random choices as part of their logic</li>
+                <li><strong>Probabilistic correctness:</strong> They may not always give the correct answer but have a high probability of being correct</li>
+                <li><strong>Efficiency:</strong> Often provide simpler or faster solutions than deterministic alternatives</li>
+                <li><strong>Two main types:</strong> Monte Carlo (may give incorrect answers with small probability) and Las Vegas (always correct but runtime varies)</li>
+            </ul>
+        </div>
+
+        <div class="examples-section">
+            <h2>Examples of Randomized Algorithms</h2>
+            <div class="example-cards">
+                <div class="example-card">
+                    <h3>Randomized Quicksort</h3>
+                    <p>A variation of the quicksort algorithm that randomly selects the pivot element. This randomization prevents the worst-case scenario in standard quicksort, making it more efficient on average.</p>
+                    <div class="code-example">
+<code><span class="highlight">function</span> randomizedQuickSort(arr) {
+    <span class="highlight">if</span> (arr.length <= 1) <span class="highlight">return</span> arr;
+    
+    <span class="comment">// Randomly select pivot index</span>
+    <span class="highlight">const</span> pivotIndex = Math.floor(Math.random() * arr.length);
+    <span class="highlight">const</span> pivot = arr[pivotIndex];
+    
+    <span class="highlight">const</span> left = [];
+    <span class="highlight">const</span> right = [];
+    
+    <span class="highlight">for</span> (<span class="highlight">let</span> i = 0; i < arr.length; i++) {
+        <span class="highlight">if</span> (i === pivotIndex) <span class="highlight">continue</span>;
+        <span class="highlight">if</span> (arr[i] < pivot) left.push(arr[i]);
+        <span class="highlight">else</span> right.push(arr[i]);
+    }
+    
+    <span class="highlight">return</span> [...randomizedQuickSort(left), pivot, ...randomizedQuickSort(right)];
+}</code>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <h3>Randomized Selection</h3>
+                    <p>An algorithm to find the k-th smallest element in an array. By randomly selecting pivots, it achieves an expected linear time complexity, making it efficient for large datasets.</p>
+                </div>
+                <div class="example-card">
+                    <h3>Monte Carlo Algorithms</h3>
+                    <p>Algorithms that might occasionally produce incorrect results but with a controlled probability. They are typically faster than their deterministic counterparts. Examples include primality testing algorithms like Miller-Rabin.</p>
+                </div>
+                <div class="example-card">
+                    <h3>Las Vegas Algorithms</h3>
+                    <p>Algorithms that always produce the correct result, but their running time is probabilistic. The randomized quicksort is an example, as it always correctly sorts the array, but its running time varies based on the random pivot selection.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Advantages of Randomized Algorithms</h2>
+            <ul>
+                <li><strong>Simplicity:</strong> Often simpler to implement than their deterministic counterparts</li>
+                <li><strong>Efficiency:</strong> Can provide better average-case performance</li>
+                <li><strong>Versatility:</strong> Useful for solving problems where deterministic solutions are difficult</li>
+                <li><strong>Robustness:</strong> Less vulnerable to adversarial inputs designed to trigger worst-case behavior</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Applications</h2>
+            <p>Randomized algorithms find applications in various fields:</p>
+            <ul>
+                <li><strong>Cryptography:</strong> For generating keys and securing communications</li>
+                <li><strong>Data Mining:</strong> For processing large datasets efficiently</li>
+                <li><strong>Machine Learning:</strong> For training models and feature selection</li>
+                <li><strong>Optimization:</strong> For solving complex optimization problems</li>
+                <li><strong>Network Routing:</strong> For load balancing and distributed systems</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Simple animation for content sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.content-section, .example-card, .key-properties, .design-steps');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

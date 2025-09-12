@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searching Algorithms - DSA</title>
+    <link rel="icon" type="image/x-icon" href="../../Assets/images/team logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/csharp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/php.min.js"></script>
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+        
+        /* Hero section */
+        .hero-section {
+            background-color: #0052cc;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        /* Algorithm examples */
+        .algo-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .algo-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .algo-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .algo-card h2 {
+            color: #0052cc;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .algo-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .code-example {
+            background-color: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        
+        code {
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+            white-space: pre;
+        }
+        
+        .complexity-info {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .complexity-info p {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .algo-card {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .algo-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .algo-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        /* Language switcher styling */
+        .implementation {
+            margin-top: 2rem;
+        }
+        
+        .implementation h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .language-switcher {
+            display: flex;
+            background-color: #333;
+            border-radius: 6px 6px 0 0;
+            overflow: hidden;
+        }
+        
+        .language-btn {
+            padding: 10px 15px;
+            background-color: transparent;
+            border: none;
+            color: #ccc;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .language-btn.active {
+            background-color: #505050;
+            color: white;
+        }
+        
+        .language-btn:hover:not(.active) {
+            background-color: #444;
+        }
+        
+        .code-block {
+            display: none;
+            margin-top: 0;
+            border-radius: 0 0 6px 6px;
+        }
+        
+        .code-block.active {
+            display: block;
+        }
+        
+        /* Icons for language buttons */
+        .language-btn i {
+            margin-right: 5px;
+            font-size: 14px;
+        }
+        
+        /* Code editor style */
+        .code-editor {
+            background-color: #282c34;
+            border-radius: 0 0 6px 6px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .editor-header {
+            background-color: #21252b;
+            padding: 6px 10px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .editor-button {
+            background-color: transparent;
+            border: none;
+            color: #9da5b4;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+            transition: color 0.2s;
+        }
+        
+        .editor-button:hover {
+            color: white;
+        }
+        
+        pre {
+            margin: 0;
+            padding: 15px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../algorithms.html" class="back-btn">← Back to Algorithms</a>
+        </div>
+        
+        <div class="hero-section">
+            <h1>Searching Algorithms</h1>
+            <p>Searching algorithms are essential tools in computer science used to locate specific items within a collection of data. In this tutorial, we are mainly going to focus upon searching in an array. When we search an item in an array, there are two most common algorithms used based on the type of input array.</p>
+        </div>
+        
+        <div class="algo-examples">
+            <div class="algo-card">
+                <h2>Linear Search</h2>
+                <p> It is used for an unsorted array. It mainly does one by one comparison of the item to be search with array elements. It takes linear or O(n) Time.</p>
+                <p>For example: Consider the array arr[] = {10, 50, 30, 70, 80, 20, 90, 40} and key = 30</p>
+                
+                <div class="implementation">
+                    <h3>Implementation:</h3>
+                    
+                    <div class="language-switcher">
+                        <button class="language-btn active" data-lang="cpp"><i class="fas fa-code"></i> C++</button>
+                        <button class="language-btn" data-lang="c"><i class="fas fa-code"></i> C</button>
+                        <button class="language-btn" data-lang="java"><i class="fab fa-java"></i> Java</button>
+                        <button class="language-btn" data-lang="python"><i class="fab fa-python"></i> Python</button>
+                        <button class="language-btn" data-lang="csharp"><i class="fas fa-code"></i> C#</button>
+                        <button class="language-btn" data-lang="javascript"><i class="fab fa-js"></i> JavaScript</button>
+                        <button class="language-btn" data-lang="php"><i class="fab fa-php"></i> PHP</button>
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-header">
+                            <button class="editor-button" title="Copy code"><i class="far fa-copy"></i></button>
+                            <button class="editor-button" title="Run code"><i class="fas fa-play"></i></button>
+                            <button class="editor-button" title="Full screen"><i class="fas fa-expand"></i></button>
+                        </div>
+                        
+                        <!-- C++ implementation -->
+                        <div class="code-block active" data-lang="cpp">
+                            <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int search(int arr[], int n, int x) {
+    // Iterate over the array in order to
+    // find the key x
+    for (int i = 0; i < n; i++)
+        if (arr[i] == x)
+            return i;
+    return -1;
+}
+
+// Driver code
+int main() {
+    int arr[] = { 2, 3, 4, 10, 40 };
+    int x = 10;
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    // Function call
+    int result = search(arr, n, x);
+    (result == -1)
+        cout << "Element is not present in array"
+        else cout << "Element is present at index " << result;
+    return 0;
+}</code></pre>
+                        </div>
+                        
+                        <!-- C implementation -->
+                        <div class="code-block" data-lang="c">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int search(int arr[], int n, int x) {
+    // Iterate over the array in order to
+    // find the key x
+    for (int i = 0; i < n; i++)
+        if (arr[i] == x)
+            return i;
+    return -1;
+}
+
+// Driver code
+int main(void) {
+    int arr[] = { 2, 3, 4, 10, 40 };
+    int x = 10;
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    // Function call
+    int result = search(arr, n, x);
+    (result == -1)
+        ? printf("Element is not present in array")
+        : printf("Element is present at index %d", result);
+    return 0;
+}</code></pre>
+                        </div>
+                        
+                        <!-- Java implementation -->
+                        <div class="code-block" data-lang="java">
+                            <pre><code class="language-java">class LinearSearch {
+    // Linear search function
+    static int search(int arr[], int n, int x) {
+        // Iterate over the array in order to
+        // find the key x
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == x)
+                return i;
+        }
+        return -1;
+    }
+
+    // Driver code
+    public static void main(String args[]) {
+        int arr[] = { 2, 3, 4, 10, 40 };
+        int x = 10;
+
+        // Function call
+        int result = search(arr, arr.length, x);
+        if (result == -1)
+            System.out.println("Element is not present in array");
+        else
+            System.out.println("Element is present at index " + result);
+    }
+}</code></pre>
+                        </div>
+                        
+                        <!-- Python implementation -->
+                        <div class="code-block" data-lang="python">
+                            <pre><code class="language-python">def search(arr, n, x):
+    # Iterate over the array in order to
+    # find the key x
+    for i in range(0, n):
+        if (arr[i] == x):
+            return i
+    return -1
+
+# Driver code
+if __name__ == "__main__":
+    arr = [2, 3, 4, 10, 40]
+    x = 10
+    n = len(arr)
+
+    # Function call
+    result = search(arr, n, x)
+    if(result == -1):
+        print("Element is not present in array")
+    else:
+        print("Element is present at index", result)</code></pre>
+                        </div>
+                        
+                        <!-- C# implementation -->
+                        <div class="code-block" data-lang="csharp">
+                            <pre><code class="language-csharp">using System;
+
+class LinearSearch {
+    // Linear search function
+    static int Search(int[] arr, int n, int x) {
+        // Iterate over the array in order to
+        // find the key x
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == x)
+                return i;
+        }
+        return -1;
+    }
+
+    // Driver code
+    public static void Main() {
+        int[] arr = { 2, 3, 4, 10, 40 };
+        int x = 10;
+
+        // Function call
+        int result = Search(arr, arr.Length, x);
+        if (result == -1)
+            Console.WriteLine("Element is not present in array");
+        else
+            Console.WriteLine("Element is present at index " + result);
+    }
+}</code></pre>
+                        </div>
+                        
+                        <!-- JavaScript implementation -->
+                        <div class="code-block" data-lang="javascript">
+                            <pre><code class="language-javascript">function search(arr, n, x) {
+    // Iterate over the array in order to
+    // find the key x
+    for (let i = 0; i < n; i++) {
+        if (arr[i] === x)
+            return i;
+    }
+    return -1;
+}
+
+// Driver code
+const arr = [2, 3, 4, 10, 40];
+const x = 10;
+const n = arr.length;
+
+// Function call
+const result = search(arr, n, x);
+if (result === -1)
+    console.log("Element is not present in array");
+else
+    console.log("Element is present at index " + result);</code></pre>
+                        </div>
+                        
+                        <!-- PHP implementation -->
+                        <div class="code-block" data-lang="php">
+                            <pre><code class="language-php">&lt;?php
+function search($arr, $n, $x) {
+    // Iterate over the array in order to
+    // find the key x
+    for ($i = 0; $i < $n; $i++) {
+        if ($arr[$i] === $x)
+            return $i;
+    }
+    return -1;
+}
+
+// Driver code
+$arr = array(2, 3, 4, 10, 40);
+$x = 10;
+$n = count($arr);
+
+// Function call
+$result = search($arr, $n, $x);
+if ($result === -1)
+    echo "Element is not present in array";
+else
+    echo "Element is present at index " , $result;
+?&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n) - In the worst case, we need to check all n elements.</p>
+                    <p><strong>Space Complexity:</strong> O(1) - Uses a constant amount of extra space.</p>
+                    <p><strong>When to use:</strong> Small arrays or unsorted data where setup costs of more advanced algorithms isn't justified.</p>
+                </div>
+            </div>
+            
+            <div class="algo-card">
+                <h2>Binary Search</h2>
+                <p>Binary Search is an searching algorithm that operates on a sorted or monotonic search space, repeatedly dividing it into halves to find a target value or optimal answer in logarithmic time O(log N).</p>
+                <p>For example: Consider the array arr[] = {10, 20, 30, 40, 50, 60, 70, 80} and key = 30</p>
+                <div class="implementation">
+                    <h3>Implementation:</h3>
+    
+                    <div class="language-switcher">
+                        <button class="language-btn active" data-lang="cpp2"><i class="fas fa-code"></i> C++</button>
+                        <button class="language-btn" data-lang="c2"><i class="fas fa-code"></i> C</button>
+                        <button class="language-btn" data-lang="java2"><i class="fab fa-java"></i> Java</button>
+                        <button class="language-btn" data-lang="python2"><i class="fab fa-python"></i> Python</button>
+                        <button class="language-btn" data-lang="csharp2"><i class="fas fa-code"></i> C#</button>
+                        <button class="language-btn" data-lang="javascript2"><i class="fab fa-js"></i> JavaScript</button>
+                        <button class="language-btn" data-lang="php2"><i class="fab fa-php"></i> PHP</button>
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-header">
+                            <button class="editor-button" title="Copy code"><i class="far fa-copy"></i></button>
+                            <button class="editor-button" title="Run code"><i class="fas fa-play"></i></button>
+                            <button class="editor-button" title="Full screen"><i class="fas fa-expand"></i></button>
+                        </div>
+                        
+                        <!-- C++ implementation -->
+                        <div class="code-block active" data-lang="cpp2">
+                            <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int binarySearch(int arr[], int l, int r, int x) {
+    if (r >= l) {
+        int mid = l + (r - l) / 2;
+        
+        // If the element is present at the middle
+        if (arr[mid] == x)
+            return mid;
+        
+        // If element is smaller than mid, then
+        // it can only be present in left subarray
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+        
+        // Else the element can only be present
+        // in right subarray
+        return binarySearch(arr, mid + 1, r, x);
+    }
+    
+    // Element is not present in array
+    return -1;
+}
+
+// Driver code
+int main() {
+    int arr[] = {2, 3, 4, 10, 40};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int x = 10;
+    
+    int result = binarySearch(arr, 0, n - 1, x);
+    (result == -1) 
+        ? cout << "Element is not present in array"
+        : cout << "Element is present at index " << result;
+    return 0;
+}</code></pre>
+                        </div>
+                        
+                        <!-- C implementation -->
+                        <div class="code-block" data-lang="c2">
+                            <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int binarySearch(int arr[], int l, int r, int x) {
+    if (r >= l) {
+        int mid = l + (r - l) / 2;
+        
+        // If the element is present at the middle
+        if (arr[mid] == x)
+            return mid;
+        
+        // If element is smaller than mid, then
+        // it can only be present in left subarray
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+        
+        // Else the element can only be present
+        // in right subarray
+        return binarySearch(arr, mid + 1, r, x);
+    }
+    
+    // Element is not present in array
+    return -1;
+}
+
+// Driver code
+int main(void) {
+    int arr[] = {2, 3, 4, 10, 40};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int x = 10;
+    
+    int result = binarySearch(arr, 0, n - 1, x);
+    (result == -1)
+        ? printf("Element is not present in array")
+        : printf("Element is present at index %d", result);
+    return 0;
+}</code></pre>
+                        </div>
+                        
+                        <!-- Java implementation -->
+                        <div class="code-block" data-lang="java2">
+                            <pre><code class="language-java">class BinarySearch {
+    // Binary Search function
+    static int binarySearch(int arr[], int l, int r, int x) {
+        if (r >= l) {
+            int mid = l + (r - l) / 2;
+            
+            // If the element is present at the middle
+            if (arr[mid] == x)
+                return mid;
+            
+            // If element is smaller than mid, then
+            // it can only be present in left subarray
+            if (arr[mid] > x)
+                return binarySearch(arr, l, mid - 1, x);
+            
+            // Else the element can only be present
+            // in right subarray
+            return binarySearch(arr, mid + 1, r, x);
+        }
+        
+        // Element is not present in array
+        return -1;
+    }
+    
+    // Driver code
+    public static void main(String args[]) {
+        int arr[] = {2, 3, 4, 10, 40};
+        int n = arr.length;
+        int x = 10;
+        
+        int result = binarySearch(arr, 0, n - 1, x);
+        if (result == -1)
+            System.out.println("Element is not present in array");
+        else
+            System.out.println("Element is present at index " + result);
+    }
+}</code></pre>
+                        </div>
+                        
+                        <!-- Python implementation -->
+                        <div class="code-block" data-lang="python2">
+                            <pre><code class="language-python">def binary_search(arr, l, r, x):
+    if r >= l:
+        mid = l + (r - l) // 2
+        
+        # If element is present at the middle
+        if arr[mid] == x:
+            return mid
+        
+        # If element is smaller than mid, then it
+        # can only be present in left subarray
+        elif arr[mid] > x:
+            return binary_search(arr, l, mid - 1, x)
+        
+        # Else the element can only be present
+        # in right subarray
+        else:
+            return binary_search(arr, mid + 1, r, x)
+    
+    # Element is not present in the array
+    else:
+        return -1
+
+# Driver code
+if __name__ == "__main__":
+    arr = [2, 3, 4, 10, 40]
+    x = 10
+    
+    result = binary_search(arr, 0, len(arr) - 1, x)
+    if result == -1:
+        print("Element is not present in array")
+    else:
+        print("Element is present at index", result)</code></pre>
+                        </div>
+                        
+                        <!-- C# implementation -->
+                        <div class="code-block" data-lang="csharp2">
+                            <pre><code class="language-csharp">using System;
+
+class BinarySearch {
+    // Binary Search function
+    static int binarySearch(int[] arr, int l, int r, int x) {
+        if (r >= l) {
+            int mid = l + (r - l) / 2;
+            
+            // If the element is present at the middle
+            if (arr[mid] == x)
+                return mid;
+            
+            // If element is smaller than mid, then
+            // it can only be present in left subarray
+            if (arr[mid] > x)
+                return binarySearch(arr, l, mid - 1, x);
+            
+            // Else the element can only be present
+            // in right subarray
+            return binarySearch(arr, mid + 1, r, x);
+        }
+        
+        // Element is not present in array
+        return -1;
+    }
+    
+    // Driver code
+    public static void Main() {
+        int[] arr = {2, 3, 4, 10, 40};
+        int n = arr.Length;
+        int x = 10;
+        
+        int result = binarySearch(arr, 0, n - 1, x);
+        if (result == -1)
+            Console.WriteLine("Element is not present in array");
+        else
+            Console.WriteLine("Element is present at index " + result);
+    }
+}</code></pre>
+                        </div>
+                        
+                        <!-- JavaScript implementation -->
+                        <div class="code-block" data-lang="javascript2">
+                            <pre><code class="language-javascript">function binarySearch(arr, l, r, x) {
+    if (r >= l) {
+        let mid = Math.floor(l + (r - l) / 2);
+        
+        // If the element is present at the middle
+        if (arr[mid] === x)
+            return mid;
+        
+        // If element is smaller than mid, then
+        // it can only be present in left subarray
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+        
+        // Else the element can only be present
+        // in right subarray
+        return binarySearch(arr, mid + 1, r, x);
+    }
+    
+    // Element is not present in array
+    return -1;
+}
+
+// Driver code
+const arr = [2, 3, 4, 10, 40];
+const x = 10;
+const n = arr.length;
+
+// Function call
+const result = binarySearch(arr, 0, n - 1, x);
+if (result === -1)
+    console.log("Element is not present in array");
+else
+    console.log("Element is present at index " + result);</code></pre>
+                        </div>
+                        
+                        <!-- PHP implementation -->
+                        <div class="code-block" data-lang="php2">
+                            <pre><code class="language-php">&lt;?php
+function binarySearch($arr, $l, $r, $x) {
+    if ($r >= $l) {
+        $mid = $l + floor(($r - $l) / 2);
+        
+        // If the element is present at the middle
+        if ($arr[$mid] == $x)
+            return $mid;
+        
+        // If element is smaller than mid, then
+        // it can only be present in left subarray
+        if ($arr[$mid] > $x)
+            return binarySearch($arr, $l, $mid - 1, $x);
+        
+        // Else the element can only be present
+        // in right subarray
+        return binarySearch($arr, $mid + 1, $r, $x);
+    }
+    
+    // Element is not present in array
+    return -1;
+}
+
+// Driver code
+$arr = array(2, 3, 4, 10, 40);
+$n = count($arr);
+$x = 10;
+
+// Function call
+$result = binarySearch($arr, 0, $n - 1, $x);
+if ($result == -1)
+    echo "Element is not present in array";
+else
+    echo "Element is present at index " . $result;
+?&gt;   </code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(log n) - The search space is halved with each iteration.</p>
+                    <p><strong>Space Complexity:</strong> O(1) - Uses a constant amount of extra space.</p>
+                    <p><strong>When to use:</strong> Large sorted arrays where lookup speed is critical.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize syntax highlighting
+            hljs.highlightAll();
+            
+            // Language switcher functionality
+            const languageBtns = document.querySelectorAll('.language-btn');
+            languageBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    const parent = this.closest('.implementation');
+                    
+                    // Update active button
+                    parent.querySelectorAll('.language-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Show corresponding code block
+                    parent.querySelectorAll('.code-block').forEach(block => {
+                        block.classList.remove('active');
+                    });
+                    parent.querySelector(`.code-block[data-lang="${lang}"]`).classList.add('active');
+                });
+            });
+            
+            // Copy button functionality
+            document.querySelectorAll('.editor-button[title="Copy code"]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const codeBlock = this.closest('.code-editor').querySelector('.code-block.active code');
+                    const textToCopy = codeBlock.textContent;
+                    
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        // Show feedback (you could add a tooltip or change button text temporarily)
+                        const originalIcon = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i>';
+                        setTimeout(() => {
+                            this.innerHTML = originalIcon;
+                        }, 1500);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

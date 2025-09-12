@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms - DSA</title>
+    <link rel="icon" type="image/x-icon" href="../../Assets/images/team logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+        
+        /* Hero section */
+        .hero-section {
+            background-color: #0052cc;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        /* Section title */
+        .section-title {
+            font-size: 2.2rem;
+            color: #333;
+            margin: 2.5rem 0 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #0052cc;
+        }
+        
+        /* Algorithm examples */
+        .algo-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .algo-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .algo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .algo-card h2 {
+            color: #0052cc;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+        
+        .algo-card p {
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        .complexity-info {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .complexity-info p {
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .learn-more {
+            margin-top: 1.2rem;
+            color: #0052cc;
+            font-weight: 600;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .learn-more i {
+            margin-left: 0.5rem;
+            transition: transform 0.2s;
+        }
+        
+        .algo-card:hover .learn-more i {
+            transform: translateX(5px);
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .algo-card {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        /* Staggered animations for cards */
+        .algo-card:nth-child(1) { animation-delay: 0.1s; }
+        .algo-card:nth-child(2) { animation-delay: 0.2s; }
+        .algo-card:nth-child(3) { animation-delay: 0.3s; }
+        .algo-card:nth-child(4) { animation-delay: 0.4s; }
+        .algo-card:nth-child(5) { animation-delay: 0.5s; }
+        .algo-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../algorithms.html" class="back-btn">← Back to Algorithms</a>
+        </div>
+        
+        <div class="hero-section">
+            <h1>Sorting Algorithms</h1>
+            <p>Sorting algorithms are used to arrange the elements of a list in a specific order, such as numerical or alphabetical. It organizes the items in a systematic way, making it easier to search for and access specific elements.</p>
+        </div>
+        
+        <h2 class="section-title">Comparison Based Sorting Algorithms</h2>
+        <div class="algo-examples">
+            <a href="../algorithms/sorting/bubble.html" class="algo-card">
+                <h2>Bubble Sort</h2>
+                <p>Compares and swaps adjacent items repeatedly. Easy to understand but slow for large datasets.</p>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n²) in worst and average cases</p>
+                    <p><strong>Space Complexity:</strong> O(1)</p>
+                </div>
+                <div class="learn-more">
+                    <span>Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+            
+            <a href="../algorithms/sorting/selection.html" class="algo-card">
+                <h2>Selection Sort</h2>
+                <p>Finds the minimum element and puts it at the beginning. Simple but inefficient for large lists.</p>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n²) in all cases</p>
+                    <p><strong>Space Complexity:</strong> O(1)</p>
+                </div>
+                <div class="learn-more">
+                    <span>Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+            
+            <a href="../algorithms/sorting/insertion.html" class="algo-card">
+                <h2>Insertion Sort</h2>
+                <p>Builds the sorted list one item at a time. Efficient for small data sets and nearly sorted data.</p>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n²) worst case, O(n) best case</p>
+                    <p><strong>Space Complexity:</strong> O(1)</p>
+                </div>
+                <div class="learn-more">
+                    <span>Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+            
+            <a href="../algorithms/sorting/merge.html" class="algo-card">
+                <h2>Merge Sort</h2>
+                <p>Divides the list into halves, sorts them, and merges. Reliable and efficient.</p>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n log n) in all cases</p>
+                    <p><strong>Space Complexity:</strong> O(n)</p>
+                </div>
+                <div class="learn-more">
+                    <span>Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+            
+            <a href="../algorithms/sorting/quicksort.html" class="algo-card">
+                <h2>Quick Sort</h2>
+                <p>Picks a "pivot," splits the list around it, and sorts recursively. Fast for most cases.</p>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n log n) average, O(n²) worst case</p>
+                    <p><strong>Space Complexity:</strong> O(log n) average</p>
+                </div>
+                <div class="learn-more">
+                    <span>Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+            
+            <a href="../algorithms/sorting/heapsort.html" class="algo-card">
+                <h2>Heap Sort</h2>
+                <p>Uses a binary heap data structure to sort elements. Efficient and in-place algorithm.</p>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n log n) in all cases</p>
+                    <p><strong>Space Complexity:</strong> O(1)</p>
+                </div>
+                <div class="learn-more">
+                    <span>Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+        </div>
+        
+        <h2 class="section-title">Non-Comparison Based Sorting Algorithms</h2>
+        <div class="algo-examples">
+            <a href="../algorithms/sorting/counting.html" class="algo-card">
+                <h2>Counting Sort</h2>
+                <p>Counts occurrences of each element and reconstructs the sorted array. Good for small range of integers.</p>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n+k) where k is the range of input</p>
+                    <p><strong>Space Complexity:</strong> O(n+k)</p>
+                </div>
+                <div class="learn-more">
+                    <span>Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="../algorithms/sorting/radix.html" class="algo-card">
+                <h2>Radix Sort</h2>
+                <p>Sorts numbers digit by digit from least to most significant digit. Works well for fixed-length integers.</p>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(d*(n+b)) where d is digits and b is base</p>
+                    <p><strong>Space Complexity:</strong> O(n+b)</p>
+                </div>
+                <div class="learn-more">
+                    <span>Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="../algorithms/sorting/bucket.html" class="algo-card">
+                <h2>Bucket Sort</h2>
+                <p>Distributes elements into buckets and sorts each bucket. Works well for uniformly distributed data.</p>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n+k) average case</p>
+                    <p><strong>Space Complexity:</strong> O(n+k)</p>
+                </div>
+                <div class="learn-more">
+                    <span>Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+        </div>
+        
+        <h2 class="section-title">Hybrid Sorting Algorithms</h2>
+        <div class="algo-examples">
+            <a href="../algorithms/sorting/tim.html" class="algo-card">
+                <h2>Tim Sort</h2>
+                <p>A hybrid of merge sort and insertion sort. Used in Python and Java standard libraries.</p>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n log n) worst case</p>
+                    <p><strong>Space Complexity:</strong> O(n)</p>
+                </div>
+                <div class="learn-more">
+                    <span>Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+            
+            <a href="../algorithms/sorting/introsort.html" class="algo-card">
+                <h2>Intro Sort</h2>
+                <p>Begins with quicksort and switches to heapsort when recursion depth exceeds a certain level.</p>
+                <div class="complexity-info">
+                    <p><strong>Time Complexity:</strong> O(n log n) worst case</p>
+                    <p><strong>Space Complexity:</strong> O(log n)</p>
+                </div>
+                <div class="learn-more">
+                    <span>Learn More <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Optional: Add animations or interactivity if needed
+            
+            // Make sure all algorithm cards get proper animation
+            const algoCards = document.querySelectorAll('.algo-card');
+            algoCards.forEach((card, index) => {
+                card.style.animationDelay = `${(index * 0.1) + 0.1}s`;
+            });
+            
+            // Add click handler to entire card
+            algoCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // If we're not clicking on a link inside the card (which would have its own action)
+                    if (e.target.tagName !== 'A') {
+                        // Navigate to the href of the card itself
+                        window.location.href = this.getAttribute('href');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
