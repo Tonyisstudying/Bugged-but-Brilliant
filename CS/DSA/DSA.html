@@ -5,13 +5,477 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn Data Structures & Algorithms</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../DSA/DSA.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #000000, #1a003a, #4a0042);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.2);
+            border: 1px solid #ff1493;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #ff1493, #9370db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #d8bfd8;
+            margin-bottom: 30px;
+        }
+        
+        .choice-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+        
+        .choice-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #ff1493;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+        }
+        
+        .choices {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .choice-card {
+            width: 300px;
+            height: 350px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        
+        .choice-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .choice-card:hover .choice-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .choice-card-front, .choice-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .choice-card-front {
+            background: linear-gradient(145deg, #000000, #4a0042);
+            border: 2px solid #ff1493;
+        }
+        
+        .choice-card-back {
+            background: linear-gradient(145deg, #4a0042, #000000);
+            border: 2px solid #9370db;
+            transform: rotateY(180deg);
+            overflow-y: auto;
+        }
+        
+        .choice-card i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #ff1493;
+            text-shadow: 0 0 15px rgba(255, 20, 147, 0.7);
+        }
+        
+        .choice-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ff1493;
+        }
+        
+        .choice-card p {
+            color: #d8bfd8;
+            line-height: 1.6;
+        }
+        
+        .choice-card-back h3 {
+            color: #9370db;
+            margin-bottom: 15px;
+        }
+        
+        .choice-card-back ul {
+            text-align: left;
+            color: #d8bfd8;
+            padding-left: 20px;
+        }
+        
+        .choice-card-back li {
+            margin-bottom: 10px;
+        }
+        
+        .content-section {
+            display: none;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(147, 112, 219, 0.2);
+            border: 1px solid #9370db;
+        }
+        
+        .content-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .content-header h2 {
+            font-size: 2.5rem;
+            color: #ff1493;
+            margin-bottom: 15px;
+        }
+        
+        .content-header p {
+            color: #d8bfd8;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .topic-card {
+            background: rgba(74, 0, 66, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            border: 1px solid #ff1493;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 20, 147, 0.3);
+        }
+        
+        .topic-card i {
+            font-size: 2.5rem;
+            color: #9370db;
+            margin-bottom: 15px;
+        }
+        
+        .topic-card h3 {
+            color: #ff1493;
+            margin-bottom: 10px;
+        }
+        
+        .topic-card p {
+            color: #d8bfd8;
+        }
+        
+        .detail-content {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(74, 0, 66, 0.2);
+            border-radius: 10px;
+            border: 1px solid #9370db;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .detail-content h3 {
+            color: #ff1493;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .detail-content p {
+            color: #d8bfd8;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .code-example {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            color: #ff9ed9;
+            border-left: 3px solid #ff1493;
+        }
+        
+        .code-example pre {
+            margin: 0;
+        }
+        
+        .detail-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .detail-list li {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: rgba(147, 112, 219, 0.1);
+            border-radius: 5px;
+            border-left: 3px solid #9370db;
+        }
+        
+        .detail-list li strong {
+            color: #ff1493;
+        }
+        
+        .back-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #ff1493, #9370db);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+        }
+        
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.6);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #d8bfd8;
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            border: 1px solid #9370db;
+        }
+        
+        footer p {
+            margin: 10px 0;
+        }
+        
+        /* Exercise Section Styles */
+        .exercise-section {
+            display: none;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(147, 112, 219, 0.2);
+            border: 1px solid #9370db;
+        }
+        
+        .exercise-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .exercise-header h2 {
+            font-size: 2.5rem;
+            color: #ff1493;
+            margin-bottom: 15px;
+        }
+        
+        .exercise-header p {
+            color: #d8bfd8;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .question {
+            background: rgba(74, 0, 66, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ff1493;
+        }
+        
+        .question h3 {
+            color: #ff1493;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        @media (max-width: 600px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .option {
+            background: rgba(147, 112, 219, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .option:hover {
+            background: rgba(147, 112, 219, 0.3);
+            border-color: #9370db;
+        }
+        
+        .option.selected {
+            background: rgba(255, 20, 147, 0.3);
+            border-color: #ff1493;
+        }
+        
+        .option.correct {
+            background: rgba(0, 128, 0, 0.3);
+            border-color: #00ff00;
+        }
+        
+        .option.incorrect {
+            background: rgba(255, 0, 0, 0.3);
+            border-color: #ff0000;
+        }
+        
+        .exercise-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #9370db, #ff1493);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(147, 112, 219, 0.4);
+        }
+        
+        .exercise-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(147, 112, 219, 0.6);
+        }
+        
+        .results {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(74, 0, 66, 0.2);
+            border-radius: 10px;
+            border: 1px solid #9370db;
+            display: none;
+        }
+        
+        .results h3 {
+            color: #ff1493;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .score {
+            font-size: 2rem;
+            color: #9370db;
+            margin: 15px 0;
+        }
+        
+        .exercise-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .choices {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .choice-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .topic-card {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="back-to-course">
-            <a href="../course_page.html" class="course-btn"><i class="fas fa-arrow-left"></i> Back to Course</a>
-        </div>
         <header>
             <h1>Data Structures & Algorithms</h1>
             <p class="subtitle">Master the fundamentals of computer science</p>
@@ -49,10 +513,25 @@
                             <h3>Algorithms</h3>
                             <p>Click to learn more</p>
                         </div>
-                        <a href="../DSA/algorithms.html" class="choice-card-back"><p>Start</p></a>
+                        <div class="choice-card-back">
+                            <h3>Algorithms</h3>
+                            <p>Step-by-step procedures to solve problems or perform computations.</p>
+                            <ul>
+                                <li>Sorting Algorithms</li>
+                                <li>Searching Algorithms</li>
+                                <li>Graph Algorithms</li>
+                                <li>Dynamic Programming</li>
+                                <li>Encryption Algorithms</li>
+                                <li>Machine Learning Algorithms</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
+            
+            <button class="exercise-btn" onclick="showContent('exercise')">
+                <i class="fas fa-pen-to-square"></i> Test Your Knowledge
+            </button>
         </div>
         
         <div id="data-structures-content" class="content-section">
@@ -242,7 +721,7 @@
                 <div class="topic-card">
                     <i class="fas fa-search"></i>
                     <h3>Searching</h3>
-                    <p>Finding an item in a data structure (e.e., Binary Search)</p>
+                    <p>Finding an item in a data structure (e.g., Binary Search)</p>
                 </div>
                 
                 <div class="topic-card">
@@ -272,13 +751,277 @@
             
             <button class="back-btn" onclick="showChoiceSection()">Back to Selection</button>
         </div>
-
+        
+        <!-- Exercise Section -->
+        <div id="exercise-content" class="exercise-section">
+            <div class="exercise-header">
+                <h2>DSA Knowledge Test</h2>
+                <p>Test your understanding of Data Structures and Algorithms with these 8 multiple-choice questions.</p>
+            </div>
+            
+            <div class="quiz-container">
+                <div class="question" id="q1">
+                    <h3>1. Which data structure follows the LIFO (Last In First Out) principle?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'q1')">Queue</div>
+                        <div class="option" onclick="selectOption(this, 'q1')">Stack</div>
+                        <div class="option" onclick="selectOption(this, 'q1')">Linked List</div>
+                        <div class="option" onclick="selectOption(this, 'q1')">Tree</div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q2">
+                    <h3>2. What is the time complexity of binary search in a sorted array?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'q2')">O(1)</div>
+                        <div class="option" onclick="selectOption(this, 'q2')">O(n)</div>
+                        <div class="option" onclick="selectOption(this, 'q2')">O(log n)</div>
+                        <div class="option" onclick="selectOption(this, 'q2')">O(n log n)</div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q3">
+                    <h3>3. Which algorithm uses a divide and conquer approach?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'q3')">Bubble Sort</div>
+                        <div class="option" onclick="selectOption(this, 'q3')">Insertion Sort</div>
+                        <div class="option" onclick="selectOption(this, 'q3')">Merge Sort</div>
+                        <div class="option" onclick="selectOption(this, 'q3')">Selection Sort</div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q4">
+                    <h3>4. In a binary tree, what is the maximum number of nodes at level 'l'?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'q4')">2^l</div>
+                        <div class="option" onclick="selectOption(this, 'q4')">2^(l-1)</div>
+                        <div class="option" onclick="selectOption(this, 'q4')">2^(l+1)</div>
+                        <div class="option" onclick="selectOption(this, 'q4')">l^2</div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q5">
+                    <h3>5. Which data structure is typically used for implementing recursion?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'q5')">Queue</div>
+                        <div class="option" onclick="selectOption(this, 'q5')">Stack</div>
+                        <div class="option" onclick="selectOption(this, 'q5')">Linked List</div>
+                        <div class="option" onclick="selectOption(this, 'q5')">Tree</div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q6">
+                    <h3>6. What is the worst-case time complexity of quicksort?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'q6')">O(n)</div>
+                        <div class="option" onclick="selectOption(this, 'q6')">O(n log n)</div>
+                        <div class="option" onclick="selectOption(this, 'q6')">O(log n)</div>
+                        <div class="option" onclick="selectOption(this, 'q6')">O(n²)</div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q7">
+                    <h3>7. Which of the following is a linear data structure?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'q7')">Graph</div>
+                        <div class="option" onclick="selectOption(this, 'q7')">Tree</div>
+                        <div class="option" onclick="selectOption(this, 'q7')">Array</div>
+                        <div class="option" onclick="selectOption(this, 'q7')">Heap</div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q8">
+                    <h3>8. In a hash table, what technique is used to handle collisions?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'q8')">Chaining</div>
+                        <div class="option" onclick="selectOption(this, 'q8')">Sorting</div>
+                        <div class="option" onclick="selectOption(this, 'q8')">Indexing</div>
+                        <div class="option" onclick="selectOption(this, 'q8')">Traversing</div>
+                    </div>
+                </div>
+                
+                <button class="exercise-btn" onclick="checkAnswers()">Submit Answers</button>
+                
+                <div class="results" id="results">
+                    <h3>Your Results</h3>
+                    <div class="score" id="score">0/8</div>
+                    <p id="feedback">Keep learning and try again!</p>
+                    <div class="exercise-controls">
+                        <button class="exercise-btn" onclick="resetQuiz()">Try Again</button>
+                        <button class="back-btn" onclick="showChoiceSection()">Back to Main</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <footer>
             <p>Built for learning Computer Science fundamentals | Data Structures & Algorithms</p>
             <p>How Google finds search results in milliseconds? How games track thousands of objects? The answer is DSA.</p>
         </footer>
     </div>
 
-    <script src="../DSA/DSA.js"></script>
+    <script>
+        // Correct answers for the quiz
+        const correctAnswers = {
+            q1: 1, // Stack
+            q2: 2, // O(log n)
+            q3: 2, // Merge Sort
+            q4: 1, // 2^(l-1)
+            q5: 1, // Stack
+            q6: 3, // O(n²)
+            q7: 2, // Array
+            q8: 0  // Chaining
+        };
+        
+        // User's selected answers
+        const userAnswers = {};
+        
+        function showContent(contentType) {
+            // Hide choice section
+            document.querySelector('.choice-section').style.display = 'none';
+            
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Hide exercise section
+            document.querySelector('.exercise-section').style.display = 'none';
+            
+            // Show selected content section
+            document.getElementById(contentType + '-content').style.display = 'block';
+            
+            // Scroll to the top of the content
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        function showChoiceSection() {
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Hide exercise section
+            document.querySelector('.exercise-section').style.display = 'none';
+            
+            // Hide all detail contents
+            document.querySelectorAll('.detail-content').forEach(detail => {
+                detail.style.display = 'none';
+            });
+            
+            // Show choice section
+            document.querySelector('.choice-section').style.display = 'block';
+            
+            // Scroll to choice section
+            document.querySelector('.choice-section').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        function toggleDetail(detailId) {
+            // Hide all detail contents
+            document.querySelectorAll('.detail-content').forEach(detail => {
+                if (detail.id !== detailId) {
+                    detail.style.display = 'none';
+                }
+            });
+            
+            // Toggle the selected detail content
+            const detailContent = document.getElementById(detailId);
+            if (detailContent.style.display === 'block') {
+                detailContent.style.display = 'none';
+            } else {
+                detailContent.style.display = 'block';
+                detailContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
+        // Exercise functions
+        function selectOption(option, questionId) {
+            const question = document.getElementById(questionId);
+            const options = question.querySelectorAll('.option');
+            
+            // Remove selected class from all options in this question
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to the clicked option
+            option.classList.add('selected');
+            
+            // Store the user's answer
+            const optionIndex = Array.from(options).indexOf(option);
+            userAnswers[questionId] = optionIndex;
+        }
+        
+        function checkAnswers() {
+            let score = 0;
+            
+            // Check each question
+            for (const questionId in correctAnswers) {
+                const correctIndex = correctAnswers[questionId];
+                const userIndex = userAnswers[questionId];
+                
+                const question = document.getElementById(questionId);
+                const options = question.querySelectorAll('.option');
+                
+                // Mark correct answer
+                options[correctIndex].classList.add('correct');
+                
+                // If user answered
+                if (userIndex !== undefined) {
+                    if (userIndex === correctIndex) {
+                        score++;
+                    } else {
+                        // Mark incorrect answer
+                        options[userIndex].classList.add('incorrect');
+                    }
+                }
+            }
+            
+            // Display results
+            const results = document.getElementById('results');
+            const scoreElement = document.getElementById('score');
+            const feedback = document.getElementById('feedback');
+            
+            scoreElement.textContent = `${score}/8`;
+            
+            if (score === 8) {
+                feedback.textContent = "Perfect! You're a DSA expert!";
+            } else if (score >= 5) {
+                feedback.textContent = "Good job! You have a solid understanding of DSA.";
+            } else if (score >= 3) {
+                feedback.textContent = "Not bad! Keep studying and you'll improve.";
+            } else {
+                feedback.textContent = "Keep learning and try again! DSA takes practice.";
+            }
+            
+            results.style.display = 'block';
+            results.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function resetQuiz() {
+            // Clear user answers
+            for (const key in userAnswers) {
+                delete userAnswers[key];
+            }
+            
+            // Clear all selections
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // Hide results
+            document.getElementById('results').style.display = 'none';
+            
+            // Scroll to top of quiz
+            document.getElementById('exercise-content').scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
 </body>
 </html>
