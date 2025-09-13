@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introsort - DSA</title>
+    <link rel="icon" type="image/x-icon" href="../../../Assets/images/team logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/csharp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/php.min.js"></script>
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f0fc, #e6e6fa, #f0f8ff);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .back-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-btn:hover {
+            background-color: #006cc1;
+            transform: translateX(-5px);
+        }
+
+        /* Algorithm content */
+        .algorithm-container {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .algorithm-header h1 {
+            font-size: 2.5rem;
+            color: #0052cc;
+        }
+        
+        .last-updated {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        .algorithm-description {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .algorithm-steps {
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-steps h2 {
+            margin-bottom: 1rem;
+            color: #0052cc;
+        }
+        
+        .algorithm-steps ul, .algorithm-steps ol {
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .algorithm-steps li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Implementation section */
+        .implementation {
+            margin-top: 2.5rem;
+        }
+        
+        .implementation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .implementation-header h2 {
+            color: #0052cc;
+        }
+        
+        .implementation-description {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        /* Code editor */
+        .code-container {
+            position: relative;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .language-tabs {
+            display: flex;
+            background: #333;
+            padding: 0.5rem;
+            overflow-x: auto;
+        }
+        
+        .language-tabs button {
+            background: none;
+            border: none;
+            color: #ccc;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            margin-right: 0.3rem;
+        }
+        
+        .language-tabs button.active {
+            background: #0e639c;
+            color: white;
+        }
+        
+        .language-tabs button:hover:not(.active) {
+            background: #444;
+        }
+        
+        .code-editor {
+            background: #1e1e1e;
+            position: relative;
+        }
+        
+        .editor-header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0.5rem;
+            background: #252526;
+            border-bottom: 1px solid #333;
+        }
+        
+        .editor-buttons button {
+            background: none;
+            border: none;
+            color: #ccc;
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: 0.3rem;
+        }
+        
+        .editor-buttons button:hover {
+            background: #444;
+        }
+        
+        .code-block {
+            display: none;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        
+        .code-block.active {
+            display: block;
+        }
+        
+        /* Practice button */
+        .practice-btn {
+            display: block;
+            background-color: #008964;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 2rem 0;
+            transition: background-color 0.3s ease;
+        }
+        
+        .practice-btn:hover {
+            background-color: #006e50;
+        }
+        
+        .practice-btn i {
+            margin-left: 0.5rem;
+        }
+        
+        /* Output section */
+        .output-container {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .output-header {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .output-content {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* Share buttons */
+        .share-buttons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .share-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #0052cc;
+            margin-left: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .share-btn:hover {
+            transform: scale(1.15);
+        }
+        
+        /* Complexity table */
+        .complexity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .complexity-table th,
+        .complexity-table td {
+            padding: 1rem;
+            border: 1px solid #ddd;
+        }
+        
+        .complexity-table th {
+            background-color: #f0f0f0;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .complexity-table tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+        
+        /* Advantages and disadvantages */
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .pros, .cons {
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .pros {
+            background-color: #eafbf5;
+            border-left: 4px solid #008964;
+        }
+        
+        .cons {
+            background-color: #fff5f5;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .pros h3, .cons h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pros i {
+            color: #008964;
+            margin-right: 0.5rem;
+        }
+        
+        .cons i {
+            color: #e74c3c;
+            margin-right: 0.5rem;
+        }
+        
+        .applications {
+            background-color: #f0f7ff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid #0078d7;
+        }
+        
+        .applications h3 {
+            margin-bottom: 1rem;
+            color: #0052cc;
+            display: flex;
+            align-items: center;
+        }
+        
+        .applications i {
+            color: #0078d7;
+            margin-right: 0.5rem;
+        }
+
+        /* Animation */
+        .algorithm-animation {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .animation-container {
+            max-width: 100%;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .animation-placeholder {
+            background-color: #eee;
+            padding: 3rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .animation-placeholder i {
+            font-size: 3rem;
+            color: #aaa;
+            margin-bottom: 1rem;
+        }
+        
+        /* Features specific to Introsort */
+        .feature-box {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .feature-box h3 {
+            color: #0052cc;
+            margin-bottom: 0.8rem;
+        }
+        
+        .comparison-chart {
+            margin: 2rem 0;
+        }
+        
+        .comparison-chart table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+        
+        .comparison-chart th, 
+        .comparison-chart td {
+            padding: 0.8rem;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        .comparison-chart th {
+            background-color: #f0f0f0;
+        }
+        
+        .comparison-chart tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+        
+        .code-example {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .code-example pre {
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        
+        .note-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .note-box p {
+            margin: 0;
+        }
+
+        .algorithm-flowchart {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .flowchart-container {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+
+        .superscript {
+            vertical-align: super;
+            font-size: 0.8em;
+        }
+
+        @media (max-width: 768px) {
+            .algorithm-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .share-buttons {
+                margin-top: 1rem;
+            }
+            
+            .language-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .language-tabs button {
+                margin-bottom: 0.3rem;
+            }
+            
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <a href="../sorting.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Algorithms
+            </a>
+        </div>
+        
+        <div class="algorithm-container">
+            <div class="algorithm-header">
+                <h1>Introsort</h1>
+                <div class="share-buttons">
+                    <button class="share-btn" title="Share"><i class="fas fa-share-alt"></i></button>
+                    <button class="share-btn" title="Bookmark"><i class="far fa-bookmark"></i></button>
+                </div>
+            </div>
+            
+            <div class="algorithm-description">
+                <p>Simply putting, it is the best sorting algorithm around. It is a hybrid sorting algorithm, which means that it uses more than one sorting algorithms as a routine.</p>
+                <p>Introsort or Introspective Sort is a hybrid sorting algorithm that provides both fast average performance and optimal worst-case performance. It begins with quicksort and switches to heapsort when the recursion depth exceeds a certain level, and it uses insertion sort for small arrays.</p>
+                <p>This algorithm was invented by David Musser in 1997 with the specific purpose of giving a generic sorting algorithm for the C++ Standard Library that would have both optimal worst-case and average complexity.</p>
+            </div>
+            
+            <div class="algorithm-steps">
+                <h2>How Introsort Works</h2>
+                <p>Introsort begins with quicksort and if the recursion depth goes more than a particular limit it switches to Heapsort to avoid Quicksort's worst case O(n<span class="superscript">2</span>) time complexity. It also uses insertion sort when the number of elements to sort is quite less. So first it creates a partition. Three cases arises from here:</p>
+                <ol>
+                    <li>If the partition size is such that there is a possibility to exceed the maximum depth limit then the Introsort switches to Heapsort. We define the maximum depth limit as 2*log(N).</li>
+                    <li>If the partition size is too small then Quicksort decays to Insertion Sort. We define this cutoff as 16 (due to research). So if the partition size is less than 16 then we will do insertion sort.</li>
+                    <li>If the partition size is under the limit and not too small (i.e. between 16 and 2*log(N)), then it performs a simple quicksort.</li>
+                </ol>
+            </div>
+
+            <div class="feature-box">
+                <h3>Why is it better than simple Quicksort or Why the need of Introsort?</h3>
+                <p>Since Quicksort can have a worse case O(n<span class="superscript">2</span>) time complexity and it also increases the recursion stack space (O(log N) if tail recursion applied), so to avoid all these, we need to switch the algorithm from Quicksort to another if there is a chance of worse case. So Introsort solves this problem by switching to Heapsort.</p>
+                <p>Also due to larger constant factor, quicksort can perform even worse than O(n²) sorting algorithm when N is small enough. So it switches to insertion sort to decrease the running time of sorting. Also if a bad pivot-selection is done then the quicksort does no better than the bubble-sort.</p>
+            </div>
+            
+            <div class="feature-box">
+                <h3>Why is Insertion Sort used (and not Bubble Sort, etc)?</h3>
+                <p>Insertion sort offers following advantages:</p>
+                <ol>
+                    <li>It is a known and established fact that insertion sort is the most optimal comparison-based sorting algorithm for small arrays.</li>
+                    <li>It has a good locality of reference.</li>
+                    <li>It is an adaptive sorting algorithm, i.e. it outperforms all the other algorithms if the array elements are partially sorted.</li>
+                </ol>
+            </div>
+            
+            <div class="feature-box">
+                <h3>Why is Heapsort used (and not Mergesort etc)?</h3>
+                <p>This is solely because of memory requirements. Merge sort requires O(N) space whereas Heapsort is an in-place O(1) space algorithm.</p>
+            </div>
+            
+            <div class="feature-box">
+                <h3>Why is Heapsort not used in place of Quicksort when the partition size is under the limit?</h3>
+                <p>This question is same as why Quicksort generally outperforms Heapsort? The answer is, although Heapsort also being O(N log N) in average as well as worse case and O(1) space also, we still don't use it when the partition size is under the limit because the extra hidden constant factor in Heapsort is quite larger than that of Quicksort.</p>
+                <p>These values are chosen empirically as an approximate because of various tests and researches conducted.</p>
+            </div>
+
+            <div class="algorithm-animation">
+                <h2>Introsort Visualization</h2>
+                <p>Watch how Introsort dynamically switches between different sorting algorithms based on the input characteristics.</p>
+            </div>
+            
+            <div class="complexity-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Case</th>
+                            <th>Complexity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Best Case</td>
+                            <td>O(n log n)</td>
+                        </tr>
+                        <tr>
+                            <td>Average Case</td>
+                            <td>O(n log n)</td>
+                        </tr>
+                        <tr>
+                            <td>Worst Case</td>
+                            <td>O(n log n)</td>
+                        </tr>
+                        <tr>
+                            <td>Space</td>
+                            <td>O(log n)</td>
+                        </tr>
+                        <tr>
+                            <td>Stable</td>
+                            <td>NO</td>
+                        </tr>
+                        <tr>
+                            <td>In-Place Sorting</td>
+                            <td>YES</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="pros-cons">
+                <div class="pros">
+                    <h3><i class="fas fa-plus-circle"></i> Advantages</h3>
+                    <ul>
+                        <li>Guarantees O(n log n) worst-case performance</li>
+                        <li>Performs exceptionally well in practice due to its hybrid nature</li>
+                        <li>In-place sorting algorithm with O(log n) stack space</li>
+                        <li>Adaptive to the input characteristics by choosing the optimal algorithm</li>
+                        <li>Default sorting algorithm in many programming language standard libraries, including C++ STL</li>
+                    </ul>
+                </div>
+                
+                <div class="cons">
+                    <h3><i class="fas fa-minus-circle"></i> Disadvantages</h3>
+                    <ul>
+                        <li>Not a stable sorting algorithm (doesn't preserve relative order of equal elements)</li>
+                        <li>More complex implementation compared to simpler algorithms</li>
+                        <li>Harder to understand and maintain due to its hybrid nature</li>
+                        <li>Requires parameter tuning (max depth limit, insertion sort threshold) for optimal performance</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="applications">
+                <h3><i class="fas fa-lightbulb"></i> Applications</h3>
+                <ul>
+                    <li>Used as the default sorting algorithm in C++ Standard Template Library's <code>std::sort()</code></li>
+                    <li>Used in many real-world systems where worst-case performance guarantees are important</li>
+                    <li>Ideal for general-purpose sorting where the nature of the input data is unknown or varies widely</li>
+                    <li>Effective for large datasets where the balance of average and worst-case performance is critical</li>
+                    <li>Used in systems where memory usage is a concern (in-place sorting with minimal stack space)</li>
+                </ul>
+            </div>
+            
+            <div class="comparison-chart">
+                <h3>Introsort vs. Other Sorting Algorithms</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Best Case</th>
+                            <th>Average Case</th>
+                            <th>Worst Case</th>
+                            <th>Space</th>
+                            <th>Stable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Introsort</td>
+                            <td>O(n log n)</td>
+                            <td>O(n log n)</td>
+                            <td>O(n log n)</td>
+                            <td>O(log n)</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Quicksort</td>
+                            <td>O(n log n)</td>
+                            <td>O(n log n)</td>
+                            <td>O(n²)</td>
+                            <td>O(log n)</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Heapsort</td>
+                            <td>O(n log n)</td>
+                            <td>O(n log n)</td>
+                            <td>O(n log n)</td>
+                            <td>O(1)</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Insertion Sort</td>
+                            <td>O(n)</td>
+                            <td>O(n²)</td>
+                            <td>O(n²)</td>
+                            <td>O(1)</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Mergesort</td>
+                            <td>O(n log n)</td>
+                            <td>O(n log n)</td>
+                            <td>O(n log n)</td>
+                            <td>O(n)</td>
+                            <td>Yes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="implementation">
+                <div class="implementation-header">
+                    <h2>Implementation</h2>
+                </div>
+                
+                <div class="implementation-description">
+                    <p>Below is the implementation of Introsort algorithm in C++. Introsort is a complex algorithm that combines three sorting algorithms: quicksort, heapsort, and insertion sort.</p>
+                </div>
+                
+                <div class="code-container">
+                    <div class="language-tabs">
+                        <button class="language-tab active" data-lang="cpp">C++</button>
+                        <button class="language-tab" data-lang="python">Python</button>
+                        <button class="language-tab" data-lang="java">Java</button>
+                        <button class="language-tab" data-lang="js">JavaScript</button>
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-header">
+                            <div class="editor-buttons">
+                                <button title="Copy code"><i class="far fa-copy"></i></button>
+                                <button title="Run code"><i class="fas fa-play"></i></button>
+                                <button title="Full screen"><i class="fas fa-expand"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="code-block active" data-lang="cpp">
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+// A utility function to swap the values pointed by
+// the two pointers
+void swapValue(int *a, int *b)
+{
+    int *temp = a;
+    a = b;
+    b = temp;
+    return;
+}
+
+/* Function to sort an array using insertion sort*/
+void insertionSort(int arr[], int *begin, int *end)
+{
+    // Get the left and the right index of the subarray
+    // to be sorted
+    int left = begin - arr;
+    int right = end - arr;
+
+    for (int i = left+1; i <= right; i++)
+    {
+        int key = arr[i];
+        int j = i-1;
+
+        /* Move elements of arr[0..i-1], that are
+        greater than key, to one position ahead
+        of their current position */
+        while (j >= left && arr[j] > key)
+        {
+            arr[j+1] = arr[j];
+            j = j-1;
+        }
+        arr[j+1] = key;
+    }
+}
+
+// A function to partition the array and return
+// the partition point
+int* Partition(int arr[], int low, int high)
+{
+    int pivot = arr[high];    // pivot
+    int i = (low - 1);  // Index of smaller element
+
+    for (int j = low; j <= high- 1; j++)
+    {
+        // If current element is smaller than or
+        // equal to pivot
+        if (arr[j] <= pivot)
+        {
+            i++;    // increment index of smaller element
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + 1], arr[high]);
+    return (arr + i + 1);
+}
+
+// A function that find the middle of the
+// values pointed by the pointers a, b, c
+// and return that pointer
+int* MedianOfThree(int* a, int* b, int* c)
+{
+    if (*a < *b && *b < *c)
+        return b;
+
+    if (*a < *c && *c <= *b)
+        return c;
+
+    if (*b <= *a && *a < *c)
+        return a;
+
+    if (*b < *c && *c <= *a)
+        return c;
+
+    if (*c <= *a && *a < *b)
+        return a;
+
+    if (*c <= *b && *b <= *a)
+        return b;
+}
+
+// A Utility function to perform IntroSort
+void IntrosortUtil(int arr[], int* begin, int* end, int depthLimit)
+{
+    // Count the number of elements
+    int size = end - begin;
+
+    // If partition size is low then do insertion sort
+    if (size < 16)
+    {
+        insertionSort(arr, begin, end);
+        return;
+    }
+
+    // If the depth is zero use heapsort
+    if (depthLimit == 0)
+    {
+        make_heap(begin, end+1);
+        sort_heap(begin, end+1);
+        return;
+    }
+
+    // Else use a median-of-three concept to
+    // find a good pivot
+    int* pivot = MedianOfThree(begin, begin+size/2, end);
+
+    // Swap the values pointed by the two pointers
+    swapValue(pivot, end);
+
+    // Perform Quick Sort
+    int* partitionPoint = Partition(arr, begin-arr, end-arr);
+    IntrosortUtil(arr, begin, partitionPoint-1, depthLimit - 1);
+    IntrosortUtil(arr, partitionPoint+1, end, depthLimit - 1);
+}
+
+/* Implementation of Introsort*/
+void Introsort(int arr[], int *begin, int *end)
+{
+    int depthLimit = 2 * log(end-begin);
+
+    // Perform a recursive Introsort
+    IntrosortUtil(arr, begin, end, depthLimit);
+}
+
+// A utility function to print an array of size n
+void printArray(int arr[], int n)
+{
+    for (int i=0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+// Driver program to test Introsort
+int main()
+{
+    int arr[] = {3, 1, 23, -9, 233, 23, -313, 32, -9};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    // Pass the array, the pointer to the first element and
+    // the pointer to the last element
+    Introsort(arr, arr, arr+n-1);
+    printArray(arr, n);
+
+    return(0);
+}</code></pre>
+                        </div>
+                        
+                        <div class="code-block" data-lang="python">
+<pre><code class="language-python">import math
+
+# Insertion sort for small subarrays
+def insertion_sort(arr, start, end):
+    for i in range(start + 1, end + 1):
+        j = i
+        while j > start and arr[j] < arr[j - 1]:
+            arr[j], arr[j - 1] = arr[j - 1], arr[j]
+            j -= 1
+
+# Function to swap two elements
+def swap(arr, i, j):
+    arr[i], arr[j] = arr[j], arr[i]
+
+# Function to perform heapsort
+def heapsort(arr, start, end):
+    def sift_down(arr, start, end, root):
+        largest = root
+        left = 2 * root + 1
+        right = 2 * root + 2
+
+        if left <= end and arr[left] > arr[largest]:
+            largest = left
+
+        if right <= end and arr[right] > arr[largest]:
+            largest = right
+
+        if largest != root:
+            swap(arr, root, largest)
+            sift_down(arr, start, end, largest)
+
+    # Build heap
+    for i in range((end - start) // 2, -1, -1):
+        sift_down(arr, start, end, start + i)
+    
+    # Extract elements from heap
+    for i in range(end, start, -1):
+        swap(arr, start, i)
+        sift_down(arr, start, i - 1, start)
+
+# Function for partition in quicksort
+def partition(arr, low, high):
+    pivot = arr[high]
+    i = low - 1
+    
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i += 1
+            swap(arr, i, j)
+    
+    swap(arr, i + 1, high)
+    return i + 1
+
+# Function to find median of three values
+def median_of_three(arr, low, mid, high):
+    if arr[low] < arr[mid]:
+        if arr[mid] < arr[high]:
+            return mid
+        elif arr[low] < arr[high]:
+            return high
+        else:
+            return low
+    else:
+        if arr[low] < arr[high]:
+            return low
+        elif arr[mid] < arr[high]:
+            return high
+        else:
+            return mid
+
+# Main introsort function
+def introsort_util(arr, start, end, max_depth):
+    # Count the number of elements
+    size = end - start + 1
+    
+    # If the array is small, use insertion sort
+    if size < 16:
+        insertion_sort(arr, start, end)
+        return
+    
+    # If max_depth is 0, use heapsort
+    if max_depth == 0:
+        heapsort(arr, start, end)
+        return
+    
+    # Otherwise use quicksort with median-of-three pivot
+    mid = start + (end - start) // 2
+    pivot_idx = median_of_three(arr, start, mid, end)
+    swap(arr, pivot_idx, end)
+    
+    # Perform quicksort partition
+    p = partition(arr, start, end)
+    
+    # Recursively sort the subarrays
+    introsort_util(arr, start, p - 1, max_depth - 1)
+    introsort_util(arr, p + 1, end, max_depth - 1)
+
+# Main function to sort an array using introsort
+def introsort(arr):
+    n = len(arr)
+    # Maximum depth of recursion
+    max_depth = 2 * int(math.log2(n))
+    introsort_util(arr, 0, n - 1, max_depth)
+
+# Example usage
+if __name__ == "__main__":
+    arr = [3, 1, 23, -9, 233, 23, -313, 32, -9]
+    print("Original array:", arr)
+    introsort(arr)
+    print("Sorted array:", arr)</code></pre>
+                        </div>
+                        
+                        <div class="code-block" data-lang="java">
+<pre><code class="language-java">import java.util.Arrays;
+
+public class IntroSort {
+    
+    // Threshold for small arrays to use insertion sort
+    private static final int SIZE_THRESHOLD = 16;
+    
+    // Main method to call Introsort
+    public static void sort(int[] arr) {
+        if (arr == null || arr.length == 0)
+            return;
+        
+        int n = arr.length;
+        // Maximum recursion depth
+        int maxDepth = (int) (2 * Math.floor(Math.log(n) / Math.log(2)));
+        introsortUtil(arr, 0, n - 1, maxDepth);
+    }
+    
+    // A utility function for Introsort
+    private static void introsortUtil(int[] arr, int begin, int end, int depthLimit) {
+        int size = end - begin + 1;
+        
+        // If partition size is low then do insertion sort
+        if (size < SIZE_THRESHOLD) {
+            insertionSort(arr, begin, end);
+            return;
+        }
+        
+        // If the depth limit is zero use heapsort
+        if (depthLimit == 0) {
+            heapSort(arr, begin, end);
+            return;
+        }
+        
+        // Otherwise use quicksort
+        int pivot = partition(arr, begin, end);
+        introsortUtil(arr, begin, pivot - 1, depthLimit - 1);
+        introsortUtil(arr, pivot + 1, end, depthLimit - 1);
+    }
+    
+    // Function to perform insertion sort
+    private static void insertionSort(int[] arr, int left, int right) {
+        for (int i = left + 1; i <= right; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            
+            while (j >= left && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+    }
+    
+    // Function to perform heapsort
+    private static void heapSort(int[] arr, int begin, int end) {
+        // Build heap
+        for (int i = (end - begin) / 2; i >= begin; i--) {
+            heapify(arr, i, end, begin);
+        }
+        
+        // Extract elements from heap
+        for (int i = end; i > begin; i--) {
+            swap(arr, begin, i);
+            heapify(arr, begin, i - 1, begin);
+        }
+    }
+    
+    // Heapify function
+    private static void heapify(int[] arr, int root, int end, int offset) {
+        int largest = root;
+        int left = 2 * (root - offset) + 1 + offset;
+        int right = 2 * (root - offset) + 2 + offset;
+        
+        if (left <= end && arr[left] > arr[largest])
+            largest = left;
+        
+        if (right <= end && arr[right] > arr[largest])
+            largest = right;
+        
+        if (largest != root) {
+            swap(arr, root, largest);
+            heapify(arr, largest, end, offset);
+        }
+    }
+    
+    // Function for partition in quicksort
+    private static int partition(int[] arr, int low, int high) {
+        // Choose the pivot using median-of-three strategy
+        int mid = low + (high - low) / 2;
+        int pivot = medianOfThree(arr[low], arr[mid], arr[high]);
+        
+        // Find the index of the pivot value
+        int pivotIndex;
+        if (pivot == arr[low])
+            pivotIndex = low;
+        else if (pivot == arr[mid])
+            pivotIndex = mid;
+        else
+            pivotIndex = high;
+        
+        // Move pivot to the end
+        swap(arr, pivotIndex, high);
+        
+        // Standard partition logic
+        int i = low - 1;
+        
+        for (int j = low; j < high; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+                swap(arr, i, j);
+            }
+        }
+        
+        swap(arr, i + 1, high);
+        return i + 1;
+    }
+    
+    // Function to find median of three values
+    private static int medianOfThree(int a, int b, int c) {
+        if (a < b && b < c) return b;
+        if (a < c && c <= b) return c;
+        if (b <= a && a < c) return a;
+        if (b < c && c <= a) return c;
+        if (c <= a && a < b) return a;
+        return b;
+    }
+    
+    // Utility function to swap elements
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    
+    // Main method to test IntroSort
+    public static void main(String[] args) {
+        int[] arr = {3, 1, 23, -9, 233, 23, -313, 32, -9};
+        
+        System.out.println("Original array: " + Arrays.toString(arr));
+        sort(arr);
+        System.out.println("Sorted array: " + Arrays.toString(arr));
+    }
+}</code></pre>
+                        </div>
+                        
+                        <div class="code-block" data-lang="js">
+<pre><code class="language-javascript">// JavaScript implementation of Introsort
+
+// Insertion sort for small arrays
+function insertionSort(arr, start, end) {
+    for (let i = start + 1; i <= end; i++) {
+        let key = arr[i];
+        let j = i - 1;
+        
+        while (j >= start && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+    return arr;
+}
+
+// Heapsort implementation
+function heapSort(arr, start, end) {
+    // Build heap
+    let heapSize = end - start + 1;
+    for (let i = Math.floor(heapSize / 2) - 1; i >= 0; i--) {
+        heapify(arr, i + start, end, start);
+    }
+    
+    // Extract elements from heap
+    for (let i = end; i > start; i--) {
+        // Move current root to end
+        [arr[start], arr[i]] = [arr[i], arr[start]];
+        
+        // Call heapify on the reduced heap
+        heapify(arr, start, i - 1, start);
+    }
+    return arr;
+}
+
+// Heapify function
+function heapify(arr, root, end, start) {
+    let largest = root;
+    let left = 2 * (root - start) + 1 + start;
+    let right = 2 * (root - start) + 2 + start;
+    
+    if (left <= end && arr[left] > arr[largest]) {
+        largest = left;
+    }
+    
+    if (right <= end && arr[right] > arr[largest]) {
+        largest = right;
+    }
+    
+    if (largest !== root) {
+        [arr[root], arr[largest]] = [arr[largest], arr[root]];
+        heapify(arr, largest, end, start);
+    }
+}
+
+// Partition function for quicksort
+function partition(arr, low, high) {
+    // Choose pivot as median of three
+    const mid = Math.floor((low + high) / 2);
+    const pivotIndex = medianOfThree(arr, low, mid, high);
+    const pivot = arr[pivotIndex];
+    
+    // Move pivot to end
+    [arr[pivotIndex], arr[high]] = [arr[high], arr[pivotIndex]];
+    
+    let i = low - 1;
+    
+    for (let j = low; j < high; j++) {
+        if (arr[j] <= pivot) {
+            i++;
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+    }
+    
+    [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+    return i + 1;
+}
+
+// Function to find median of three values
+function medianOfThree(arr, low, mid, high) {
+    // Return the index of the median value among arr[low], arr[mid], arr[high]
+    if (arr[low] < arr[mid]) {
+        if (arr[mid] < arr[high]) return mid;
+        if (arr[low] < arr[high]) return high;
+        return low;
+    } else {
+        if (arr[low] < arr[high]) return low;
+        if (arr[mid] < arr[high]) return high;
+        return mid;
+    }
+}
+
+// Main introsort function
+function introsortUtil(arr, start, end, maxDepth) {
+    // Count the number of elements
+    const size = end - start + 1;
+    
+    // If the array is small, use insertion sort
+    if (size < 16) {
+        insertionSort(arr, start, end);
+        return arr;
+    }
+    
+    // If max depth is 0, use heapsort
+    if (maxDepth === 0) {
+        heapSort(arr, start, end);
+        return arr;
+    }
+    
+    // Otherwise use quicksort
+    const pivotIndex = partition(arr, start, end);
+    
+    // Recursively sort the subarrays
+    if (start < pivotIndex - 1) {
+        introsortUtil(arr, start, pivotIndex - 1, maxDepth - 1);
+    }
+    if (pivotIndex + 1 < end) {
+        introsortUtil(arr, pivotIndex + 1, end, maxDepth - 1);
+    }
+    
+    return arr;
+}
+
+// Main sort function
+function introsort(arr) {
+    if (!arr || arr.length <= 1) return arr;
+    
+    const maxDepth = Math.floor(2 * Math.log2(arr.length));
+    return introsortUtil([...arr], 0, arr.length - 1, maxDepth);
+}
+
+// Example usage
+const arr = [3, 1, 23, -9, 233, 23, -313, 32, -9];
+console.log("Original array:", arr);
+const sortedArr = introsort(arr);
+console.log("Sorted array:", sortedArr);</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="output-container">
+                    <div class="output-header">Output</div>
+                    <div class="output-content">
+                        Original array:<br>
+                        3 1 23 -9 233 23 -313 32 -9<br>
+                        <br>
+                        Sorted array:<br>
+                        -313 -9 -9 1 3 23 23 32 233
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            hljs.highlightAll();
+            const tabs = document.querySelectorAll('.language-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    const codeBlocks = document.querySelectorAll('.code-block');
+                    codeBlocks.forEach(block => block.classList.remove('active'));
+                    const lang = this.getAttribute('data-lang');
+                    document.querySelector(`.code-block[data-lang="${lang}"]`).classList.add('active');
+                });
+            });
+            const copyButtons = document.querySelectorAll('.editor-buttons button[title="Copy code"]');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const codeBlock = this.closest('.code-editor').querySelector('.code-block.active');
+                    const code = codeBlock.textContent;
+                    
+                    navigator.clipboard.writeText(code).then(() => {
+                        const originalIcon = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i>';
+                        setTimeout(() => {
+                            this.innerHTML = originalIcon;
+                        }, 2000);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
