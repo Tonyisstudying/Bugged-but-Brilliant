@@ -130,7 +130,7 @@
         /* Big-O visualization */
         .bigo-chart {
             width: 100%;
-            height: 300px;
+            height: 450px;
             background-color: white;
             border-radius: 15px;
             padding: 2rem;
@@ -140,7 +140,7 @@
         
         .chart-container {
             width: 100%;
-            height: 250px;
+            height: 400px;
             position: relative;
         }
         
@@ -149,6 +149,26 @@
             color: #333;
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
+        }
+        
+        .chart-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .chart-legend-item {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 1rem;
+        }
+        
+        .chart-legend-color {
+            width: 20px;
+            height: 12px;
+            border-radius: 3px;
+            margin-right: 8px;
         }
         
         /* Animation */
@@ -288,6 +308,10 @@
             <div class="chart-container">
                 <canvas id="bigOChart"></canvas>
             </div>
+            <div class="chart-description" style="margin-top: 20px; text-align: center; font-size: 0.9rem; color: #555;">
+                <p>This interactive chart shows how different algorithm complexities scale with input size.</p>
+                <p>Use the toggle button to switch between logarithmic and linear scales for better visualization.</p>
+            </div>
         </div>
         
         <div class="examples-section">
@@ -319,6 +343,7 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.1.0/dist/chartjs-plugin-annotation.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Create Big-O chart
@@ -338,9 +363,19 @@
             const linear = (n) => n;
             const linearithmic = (n) => n * (Math.log2(n) || 0.1);
             const quadratic = (n) => n * n;
-            const exponential = (n) => Math.min(2 ** n, 100); // Cap for display purposes
+            const exponential = (n) => Math.min(2 ** n, 500); // Increased cap but still limited
+            const factorial = (n) => {
+                if (n <= 1) return n;
+                // Limit factorial calculation to avoid excessive values
+                if (n > 10) return 500;
+                let result = 1;
+                for (let i = 2; i <= n; i++) {
+                    result *= i;
+                }
+                return Math.min(result, 500); // Cap for display
+            };
             
-            const n = 10;
+            const n = 20; // Increased number of data points
             
             const chart = new Chart(ctx, {
                 type: 'line',
@@ -351,6 +386,7 @@
                             data: generateData(constant, n),
                             borderColor: 'rgba(54, 162, 235, 1)',
                             backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderWidth: 3,
                             tension: 0.4
                         },
                         {
@@ -358,6 +394,7 @@
                             data: generateData(logarithmic, n),
                             borderColor: 'rgba(75, 192, 192, 1)',
                             backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderWidth: 3,
                             tension: 0.4
                         },
                         {
@@ -365,6 +402,7 @@
                             data: generateData(linear, n),
                             borderColor: 'rgba(255, 159, 64, 1)',
                             backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                            borderWidth: 3,
                             tension: 0.4
                         },
                         {
@@ -372,6 +410,7 @@
                             data: generateData(linearithmic, n),
                             borderColor: 'rgba(153, 102, 255, 1)',
                             backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                            borderWidth: 3,
                             tension: 0.4
                         },
                         {
@@ -379,6 +418,7 @@
                             data: generateData(quadratic, n),
                             borderColor: 'rgba(255, 99, 132, 1)',
                             backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderWidth: 3,
                             tension: 0.4
                         },
                         {
@@ -386,6 +426,15 @@
                             data: generateData(exponential, n),
                             borderColor: 'rgba(255, 0, 0, 1)',
                             backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                            borderWidth: 3,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'O(n!) - Factorial',
+                            data: generateData(factorial, n),
+                            borderColor: 'rgba(128, 0, 128, 1)',
+                            backgroundColor: 'rgba(128, 0, 128, 0.2)',
+                            borderWidth: 3,
                             tension: 0.4
                         }
                     ]
@@ -393,22 +442,110 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'nearest',
+                        intersect: false,
+                        axis: 'x'
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                boxWidth: 15,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.dataset.label || '';
+                                    const value = context.parsed.y.toFixed(2);
+                                    return `${label}: ${value} operations`;
+                                }
+                            },
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            titleFont: {
+                                size: 14
+                            },
+                            bodyFont: {
+                                size: 13
+                            },
+                            padding: 10,
+                            displayColors: true
+                        }
+                    },
                     scales: {
                         x: {
                             title: {
                                 display: true,
-                                text: 'Input Size (n)'
+                                text: 'Input Size (n)',
+                                font: {
+                                    weight: 'bold',
+                                    size: 14
+                                },
+                                padding: {top: 10, bottom: 0}
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value;
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
                             }
                         },
                         y: {
+                            type: 'logarithmic', // Using logarithmic scale to better visualize differences
                             title: {
                                 display: true,
-                                text: 'Operations'
+                                text: 'Operations (log scale)',
+                                font: {
+                                    weight: 'bold',
+                                    size: 14
+                                },
+                                padding: {top: 0, bottom: 10}
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value;
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
                             }
                         }
                     }
                 }
             });
+            
+            // Add a toggle button for linear/logarithmic scale
+            const chartContainer = document.querySelector('.chart-container');
+            const toggleBtn = document.createElement('button');
+            toggleBtn.textContent = 'Toggle Scale: Logarithmic';
+            toggleBtn.style.position = 'absolute';
+            toggleBtn.style.top = '10px';
+            toggleBtn.style.right = '10px';
+            toggleBtn.style.zIndex = '100';
+            toggleBtn.style.padding = '5px 10px';
+            toggleBtn.style.backgroundColor = '#0078d7';
+            toggleBtn.style.color = 'white';
+            toggleBtn.style.border = 'none';
+            toggleBtn.style.borderRadius = '4px';
+            toggleBtn.style.cursor = 'pointer';
+            
+            toggleBtn.addEventListener('click', function() {
+                const scale = chart.options.scales.y.type === 'logarithmic' ? 'linear' : 'logarithmic';
+                chart.options.scales.y.type = scale;
+                toggleBtn.textContent = `Toggle Scale: ${scale.charAt(0).toUpperCase() + scale.slice(1)}`;
+                chart.options.scales.y.title.text = `Operations (${scale} scale)`;
+                chart.update();
+            });
+            
+            chartContainer.style.position = 'relative';
+            chartContainer.appendChild(toggleBtn);
         });
     </script>
 </body>
